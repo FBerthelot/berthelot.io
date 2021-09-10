@@ -2,12 +2,14 @@ import angularCourse from './angular'
 import javaScript from './javaScript'
 import esModules from './esmodules'
 import redux from './redux'
-import tddComponents from './testerComposants'
+import javascriptCraftmanship from './javascriptCraftmanship'
+import typescript from './typescript'
 
 export default [
   javaScript,
+  javascriptCraftmanship,
   esModules,
+  typescript,
   angularCourse,
-  tddComponents,
   redux,
 ].map((s) => ({ ...s, type: 'course' }))
