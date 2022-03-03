@@ -782,7 +782,7 @@
               let [val1, val2, val3] = unTableau;
               console.log(val1, val2, val3); // 1, paul, 4
 
-              const unObject = { toto: 42 };
+              const unObjet = { toto: 42 };
               const {toto} = unObjet;
               console.log(toto); // 42
               ```
@@ -813,6 +813,7 @@
               ## Opérateur ... (Rest et spread)
 
               ```javascript
+              let unTableau = [1, 'paul', 4, 5];
               function uneFonction(arg1, ...autreArgs) {
                  return autreArgs;
               }
