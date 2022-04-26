@@ -1491,13 +1491,13 @@
               Utile pour du cache !
 
               ```JavaScript
-             const maRef = new WeakRef({toto: 42});
+              const maRef = new WeakRef({toto: 42});
 
-             console.log(maRef.deref());
-             // {toto: 42}
+              console.log(maRef.deref());
+              // {toto: 42}
 
-             console.log(maRef.deref());
-             // {toto: 42} ou undefined si le garbage collector est passé
+              console.log(maRef.deref());
+              // {toto: 42} ou undefined si le garbage collector est passé
               ```
 
 
@@ -1507,39 +1507,133 @@
               Le compagnon de WeakRef pour intéragir avec le garbage collector.
 
               ```JavaScript
-             const maRef = new WeakRef({toto: 42});
-             const registry = new FinalizationRegistry((value) => {
-                console.log(value);
-              });
+                const maRef = new WeakRef({toto: 42});
+                const registry = new FinalizationRegistry((value) => {
+                    console.log(value);
+                });
 
-            registry.register(maRef, 'hello');
+                registry.register(maRef, 'hello');
 
-            maRef.deref();
+                maRef.deref();
 
-            // Affichera 'hello' quand maRef sera garbage collecté
+                // Affichera 'hello' quand maRef sera garbage collecté
               ```
 
 
 
-              # Pratiquons !
+            <!-- .slide: data-background="#eb4034" -->
+            # ES2022
 
-              - [Code Combat](https://codecombat.com)
-              - [Coding Game](https://www.codingame.com)
-              - [NodeSchool](http://nodeschool.io/)
-              - [plunker](https://plnkr.co/)
-              - [jsfiddle](https://jsfiddle.net/)
-
-              - [**ES6 katas**](http://es6katas.org/)
-
-              - [Code kata](http://codekata.com/)
-              - [Coding Dojo](http://codingdojo.org/kata/)
+            Utile, mais est-ce classieux ?
 
 
+            <!-- .slide: data-background="#eb4034" -->
+            ## Top level await
 
-              # Liens
+            ```javascript
+            const students = ['Florent', 'Agnès'];
+            const florentNotes = await import(`/i18n/${students[0]}`);
+            ```
 
-              - [Proposal](https://github.com/tc39/proposals)
-              - [Finished Proposal](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
+
+            <!-- .slide: data-background="#eb4034" -->
+            ## array.prototype.at()
+
+            ```javascript
+            const array = ['Un', 'Deux', 'trois'];
+
+            array.at(2); // 'Trois'
+            array.at(-2); // 'Deux'
+            array.at(200); // undefined
+            ```
+
+
+            <!-- .slide: data-background="#eb4034" -->
+            ## Public Typescript style
+
+            ```javascript
+            class Boulangerie {
+              by = 'nobody';
+              buyerMoney = 10_00;
+              static amount = 5_80;
+
+              buySandwitch() {
+                this.by = 'Florent Berthelot';
+                this.money -= Boulangerie.amount;
+
+                return 'done';
+              }
+            }
+            ```
+
+
+            <!-- .slide: data-background="#eb4034" -->
+            ## Private
+
+            ```javascript
+            class TwitterIsFullPrivate {
+              #by;
+
+              #buyTwitter() {
+                this.by = 'Elon Musk'
+                return 'done';
+              }
+
+              static #AMOUNT = 44_000_000_000;
+
+              static getAmount() {
+                return this.#AMOUNT;
+              }
+            }
+            ```
+
+
+            <!-- .slide: data-background="#eb4034" -->
+            ## RegExp Match Indices
+
+            ```javascript
+            const match = /(?<nom>.*) (?<prenom>.*)/d.exec('Florent Berthelot');
+
+            match.indices.groups;
+            /*
+              {
+                  nom: [0,7],
+                  prenom: [8,17]
+              }
+            */
+            ```
+
+
+            <!-- .slide: data-background="#eb4034" -->
+            ## Error Cause
+
+            ```javascript
+            throw new Error(`Une erreur est survenue.`,
+              {cause: new Error('Une erreur de récursivité ?')}
+            );
+            ```
+
+
+
+            # Pratiquons !
+
+            - [Code Combat](https://codecombat.com)
+            - [Coding Game](https://www.codingame.com)
+            - [NodeSchool](http://nodeschool.io/)
+            - [plunker](https://plnkr.co/)
+            - [jsfiddle](https://jsfiddle.net/)
+
+            - [**ES6 katas**](http://es6katas.org/)
+
+            - [Code kata](http://codekata.com/)
+            - [Coding Dojo](http://codingdojo.org/kata/)
+
+
+
+            # Liens
+
+            - [Proposal](https://github.com/tc39/proposals)
+            - [Finished Proposal](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
           </script>
         </section>
       </div>
