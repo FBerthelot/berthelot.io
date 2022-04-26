@@ -1552,18 +1552,18 @@
             ## Public Typescript style
 
             ```javascript
-            class Boulangerie {
-              by = 'nobody';
-              buyerMoney = 10_00;
-              static amount = 5_80;
+              class Boulangerie {
+                by = 'nobody';
+                buyerMoney = 10_00;
+                static amount = 5_80;
 
-              buySandwitch() {
-                this.by = 'Florent Berthelot';
-                this.money -= Boulangerie.amount;
+                buySandwitch() {
+                  this.by = 'Florent Berthelot';
+                  this.money -= Boulangerie.amount;
 
-                return 'done';
+                  return 'done';
+                }
               }
-            }
             ```
 
 
@@ -1571,20 +1571,20 @@
             ## Private
 
             ```javascript
-            class TwitterIsFullPrivate {
-              #by;
+              class TwitterIsFullPrivate {
+                #by;
 
-              #buyTwitter() {
-                this.by = 'Elon Musk'
-                return 'done';
+                #buyTwitter() {
+                  this.#by = 'Elon Musk'
+                  return 'done';
+                }
+
+                static #AMOUNT = 44_000_000_000;
+
+                static getAmount() {
+                  return this.#AMOUNT;
+                }
               }
-
-              static #AMOUNT = 44_000_000_000;
-
-              static getAmount() {
-                return this.#AMOUNT;
-              }
-            }
             ```
 
 
