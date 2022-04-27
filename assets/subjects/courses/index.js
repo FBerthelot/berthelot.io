@@ -4,6 +4,7 @@ import esModules from './esmodules'
 import redux from './redux'
 import javascriptCraftmanship from './javascriptCraftmanship'
 import typescript from './typescript'
+import gitflow from './git-flow'
 
 export default [
   javaScript,
@@ -11,5 +12,6 @@ export default [
   esModules,
   typescript,
   angularCourse,
+  gitflow,
   redux,
 ].map((s) => ({ ...s, type: 'course' }))
