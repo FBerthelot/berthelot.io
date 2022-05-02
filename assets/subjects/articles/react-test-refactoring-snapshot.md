@@ -6,12 +6,12 @@ He is a contractor, so he joins teams for that purpose, to refactor and to impro
 
 While the cowboy developer read the legacy code, he tends to refactor everything. He write clean new code and test his code properly. But, in the end, his refactoring always stumbles upon some edge case that he was not aware of and here it comes… Despite the tests he had created, he has introduced some bugs! :fearful:.
 
-
 What's wrong with this process ?
 
 There are two major breaches in his way of refactoring:
- - our cowboy is refactoring a whole system without knowing the exact behavior
- - our cowboy is testing his code according to the refactored code and not according to both legacy and new code.
+
+- our cowboy is refactoring a whole system without knowing the exact behavior
+- our cowboy is testing his code according to the refactored code and not according to both legacy and new code.
 
 While the first mistake is hard to fix, we will improve the cowboy developer's process by changing the way he refactor the code.
 
@@ -22,6 +22,7 @@ The first step to successfully refactor a piece of code is to add tests to the l
 We have to find another way to achieve that. The first tool we will use is snapshot testing using Jest.
 
 What is a snapshot test? It's simple:
+
 - Take a picture of a component
 - Modify the code
 - Take another picture after the code was changed
@@ -32,10 +33,11 @@ It means the output of the component should be the same before and after the ref
 Imagine an application our cowboy developer uses for counting cows and keep some data on them. Here is the application:
 
 The code:
+
 ```jsx
-import React from "react";
-import "bulma";
-import "./styles.css";
+import React from 'react'
+import 'bulma'
+import './styles.css'
 
 export default function App() {
   return (
@@ -105,7 +107,7 @@ export default function App() {
         </div>
       </section>
     </div>
-  );
+  )
 }
 ```
 
@@ -128,101 +130,98 @@ In order to have the best refactoring workflow possible, we need to add tests on
 In the React ecosystem, there are 2 major libraries to test components: Enzyme and @testing-library.
 I’ve also created [my own library, component-test-utils](https://component-test-utils.berthelot.io/) earlier this year and I will write the tests with each library so you can have the one you use in an example.
 
-Whichever test library you’re using, make sure to render all the React tree and not only one component, so please *do not use any mock while you are refactoring*.
+Whichever test library you’re using, make sure to render all the React tree and not only one component, so please _do not use any mock while you are refactoring_.
 
 ```jsx
-import App from "./App";
-import React from "react";
-import renderer from "react-test-renderer";
-import {shallow} from "component-test-utils-react";
-import {render} from "@testing-library/react";
-import Enzyme, {mount} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import App from './App'
+import React from 'react'
+import renderer from 'react-test-renderer'
+import { shallow } from 'component-test-utils-react'
+import { render } from '@testing-library/react'
+import Enzyme, { mount } from 'enzyme'
+import Adapter from 'enzyme-adapter-react-16'
 
-Enzyme.configure({ adapter: new Adapter() });
+Enzyme.configure({ adapter: new Adapter() })
 
 // React test render
-describe("App - react-test-render - Refactoring Tests", () => {
-  it("should look the same", () => {
-    const tree = renderer.create(<App />).toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-});
-
+describe('App - react-test-render - Refactoring Tests', () => {
+  it('should look the same', () => {
+    const tree = renderer.create(<App />).toJSON()
+    expect(tree).toMatchSnapshot()
+  })
+})
 
 // Enzyme
-describe("App - enzyme - Refactoring Tests", () => {
-  it("should look the same", () => {
-    const component = mount(<App />);
-    expect(component.html()).toMatchSnapshot();
-  });
-});
+describe('App - enzyme - Refactoring Tests', () => {
+  it('should look the same', () => {
+    const component = mount(<App />)
+    expect(component.html()).toMatchSnapshot()
+  })
+})
 
 // component-test-utils-react
-describe("App - component-test-utils-react - Refactoring Tests", () => {
-  it("should look the same", () => {
-    const component = shallow(<App />, {blackList: true});
-    expect(component.html({snapshot: true})).toMatchSnapshot();
-  });
-});
+describe('App - component-test-utils-react - Refactoring Tests', () => {
+  it('should look the same', () => {
+    const component = shallow(<App />, { blackList: true })
+    expect(component.html({ snapshot: true })).toMatchSnapshot()
+  })
+})
 
 // @testing-library
-describe("App - @testing-library/react - Refactoring Tests", () => {
-  it("should look the same", () => {
-    const {container} = render(<App />);
-    expect(container.firstChild).toMatchSnapshot();
-  });
-});
+describe('App - @testing-library/react - Refactoring Tests', () => {
+  it('should look the same', () => {
+    const { container } = render(<App />)
+    expect(container.firstChild).toMatchSnapshot()
+  })
+})
 ```
 
 When executing the tests for the first time, Jest will create a `__snapshots__` folder with a copy of your React tree. If you make any change, Jest will verify if the new code generates the same React tree.
-
 
 ### Creating a Cow component
 
 Now we can start developing a Cow component using TDD as usual.
 
 ```jsx
-import React from 'react';
-import {Cow} from './Cow';
-import {shallow} from "component-test-utils-react";
+import React from 'react'
+import { Cow } from './Cow'
+import { shallow } from 'component-test-utils-react'
 
 describe('Cow', () => {
   const cow = {
     name: 'Margueritte',
     location: 'Field A',
-    description: 'She\'s smiling at me, it\'s weird.',
-    image: 'http://toto.toto.com'
+    description: "She's smiling at me, it's weird.",
+    image: 'http://toto.toto.com',
   }
   it('should display cow name', () => {
-    const component = shallow(<Cow cow={cow}/>);
-    expect(component.html()).toContain(cow.name);
-  });
+    const component = shallow(<Cow cow={cow} />)
+    expect(component.html()).toContain(cow.name)
+  })
 
   it('should display where the cow is', () => {
-    const component = shallow(<Cow cow={cow}/>);
-    expect(component.html()).toContain(cow.location);
-  });
+    const component = shallow(<Cow cow={cow} />)
+    expect(component.html()).toContain(cow.location)
+  })
 
-  it('should display the cow\'s description', () => {
-    const component = shallow(<Cow cow={cow}/>);
-    expect(component.html()).toContain(cow.description);
-  });
+  it("should display the cow's description", () => {
+    const component = shallow(<Cow cow={cow} />)
+    expect(component.html()).toContain(cow.description)
+  })
 
-  it('should display the cow\'s image', () => {
-    const component = shallow(<Cow cow={cow}/>);
-    expect(component.html()).toContain(cow.image);
-  });
+  it("should display the cow's image", () => {
+    const component = shallow(<Cow cow={cow} />)
+    expect(component.html()).toContain(cow.image)
+  })
 })
 ```
-
 
 As you can see we test that each data sent to the component is displayed no matter the HTML tree. The Cow component is very simple, nothing special here.
 
 ```jsx
-import React from 'react';
+import React from 'react'
 
-export const Cow = ({cow}) => {
+export const Cow = ({ cow }) => {
   return (
     <div className="card">
       <div className="card-image">
@@ -242,57 +241,57 @@ export const Cow = ({cow}) => {
         <div className="content">{cow.description}</div>
       </div>
     </div>
-  );
+  )
 }
 ```
-
 
 ### Using the Cow component
 
 The Cow component is ready now, it's time for our cowboy to destroy the old code and use his new Cow card.
 
 ```jsx
-import React from "react";
-import "bulma";
-import "./styles.css";
-import {Cow} from './Cow';
+import React from 'react'
+import 'bulma'
+import './styles.css'
+import { Cow } from './Cow'
 
 export default function App() {
   const cows = [
     {
       name: 'Margueritte',
-      image: 'https://lh3.googleusercontent.com/eLxDr87icLAQlzF2LFIig62i46hm7f8sH77zIaZX6t64kFsjHlok6QMyCiReOzBcfpkPTZSv3g=w640-h400-e365',
+      image:
+        'https://lh3.googleusercontent.com/eLxDr87icLAQlzF2LFIig62i46hm7f8sH77zIaZX6t64kFsjHlok6QMyCiReOzBcfpkPTZSv3g=w640-h400-e365',
       location: 'Field A',
-      description: 'She loves organizing poker games in the basement of the farm.'
+      description:
+        'She loves organizing poker games in the basement of the farm.',
     },
     {
       name: 'Thérèse',
-      image: 'https://image.posterlounge.fr/img/products/650000/649832/649832_poster_l.jpg',
+      image:
+        'https://image.posterlounge.fr/img/products/650000/649832/649832_poster_l.jpg',
       location: 'Field A',
-      description: 'During the confinement, her hair grew significantly.'
+      description: 'During the confinement, her hair grew significantly.',
     },
     {
       name: 'Evelyne',
-      image: 'https://oldmooresalmanac.com/wp-content/uploads/2017/11/cow-2896329_960_720-Copy-476x459.jpg',
+      image:
+        'https://oldmooresalmanac.com/wp-content/uploads/2017/11/cow-2896329_960_720-Copy-476x459.jpg',
       location: 'Field B',
-      description: 'She\'s smiling at me, it\'s weird.'
-    }
-  ];
-
+      description: "She's smiling at me, it's weird.",
+    },
+  ]
 
   return (
     <div className="App">
       <h1>MY COWS</h1>
 
       <section className="cows">
-        {
-          cows.map(cow => {
-            return <Cow cow={cow} key={cow.name} />;
-          })
-        }
+        {cows.map((cow) => {
+          return <Cow cow={cow} key={cow.name} />
+        })}
       </section>
     </div>
-  );
+  )
 }
 ```
 
@@ -308,12 +307,8 @@ Let's execute our cowboy’s favorite command `rm ./src/App.snapshot.spec.js`!
 
 ## What's next?
 
-In this first article, our cowboy developer refactors a very simple piece of code, there is no logic in this app. In the next article, we will complexify our Cow application, introducing along the way another tool to make property-based-testing.
+In this article, our cowboy developer refactors a very simple piece of code, there is no logic in this app. To handle more complexe piece of code, you can use another tools like property-based-testing to find what is the logic behind the crappy old code.
 
-
-Stay tuned!
-
-
-----------
+---
 
 The code of [the repository is here](https://github.com/FBerthelot/my-cows-react-refactoring-kata) and you can navigate between steps with a branch system.

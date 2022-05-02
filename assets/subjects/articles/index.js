@@ -2,8 +2,7 @@ import reactRefactoring from './react-test-refactoring-snapshot.md'
 
 export default [
   {
-    name:
-      'React refactoring: Kills of the legacy with snapshot testing (part 1)',
+    name: 'React refactoring: Kills of the legacy with snapshot testing',
     slug: 'react-test-refactoring-snapshot',
     content: reactRefactoring,
     date: new Date('2020-06-04'),
