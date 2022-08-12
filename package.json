@@ -31,7 +31,7 @@
     "nuxt": "^2.12.2",
     "nuxt-i18n": "^6.11.1",
     "prismjs": "^1.20.0",
-    "reveal.js": "^3.9.2"
+    "reveal.js": "^4.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
