@@ -1,4 +1,3 @@
-import Vue from 'vue'
 import { Logo } from './'
 
 export default {

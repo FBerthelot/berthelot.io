@@ -18,11 +18,11 @@ describe('Card title', () => {
         component: 'h4',
       },
     })
-    expect(component.contains('h4')).toBeTruthy()
+    expect(component.html()).toContain('h4')
   })
 
   it('should use h2 by default', () => {
     const component = mount(CardTitle)
-    expect(component.contains('h2')).toBeTruthy()
+    expect(component.html()).toContain('h2')
   })
 })

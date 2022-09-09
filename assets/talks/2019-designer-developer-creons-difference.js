@@ -1,6 +1,5 @@
 module.exports = {
-  name:
-    'Designer, Développeur, créons la différence ! (feat C. Freyd-Foucault)',
+  name: 'Designer, Développeur, créons la différence ! (feat C. Freyd-Foucault)',
   metaInfo: 'Paris Web - Octobre 2019',
   video: 'https://player.vimeo.com/video/381753514',
   slides:

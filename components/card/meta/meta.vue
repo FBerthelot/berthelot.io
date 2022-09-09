@@ -14,6 +14,7 @@ export default {
     component: {
       type: String,
       required: false,
+      default: 'div',
     },
   },
 }

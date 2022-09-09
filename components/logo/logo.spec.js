@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
+import { nextTick } from 'vue'
 import { Logo } from './'
-import Vue from 'vue'
 
 describe('Logo', () => {
   beforeEach(() => {
@@ -21,7 +21,7 @@ describe('Logo', () => {
     const component = mount(Logo)
     expect(component.find('.logo__face-b').isVisible()).toBe(false)
     jest.advanceTimersByTime(30001)
-    await Vue.nextTick()
+    await nextTick()
     expect(component.find('.logo__face-b').isVisible()).toBe(true)
     component.destroy()
   })
@@ -59,7 +59,7 @@ describe('Logo', () => {
       },
     })
     jest.advanceTimersByTime(30001)
-    await Vue.nextTick()
+    await nextTick()
     expect(component.find('.logo__face-a').isVisible()).toBe(true)
     expect(component.find('.logo__face-b').isVisible()).toBe(false)
     component.destroy()
@@ -72,7 +72,7 @@ describe('Logo', () => {
       },
     })
     jest.advanceTimersByTime(30001)
-    await Vue.nextTick()
+    await nextTick()
     expect(component.find('.logo__face-a').isVisible()).toBe(false)
     expect(component.find('.logo__face-b').isVisible()).toBe(true)
     component.destroy()

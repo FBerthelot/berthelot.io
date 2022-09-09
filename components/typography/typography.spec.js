@@ -4,7 +4,7 @@ import Typography from './typography.vue'
 describe('Typography', () => {
   it('should be p by default', () => {
     const component = shallowMount(Typography)
-    expect(component.contains('p')).toBeTruthy()
+    expect(component.html()).toContain('p')
   })
 
   it('should use div when overidding component', () => {
@@ -13,7 +13,7 @@ describe('Typography', () => {
         component: 'div',
       },
     })
-    expect(component.contains('div')).toBeTruthy()
+    expect(component.html()).toContain('div')
   })
 
   it('should display slots', () => {

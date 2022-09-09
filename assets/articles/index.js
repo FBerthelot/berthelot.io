@@ -1,6 +1,6 @@
 import reactRefactoring from './react-test-refactoring-snapshot.md'
 
-export default [
+export const articles = [
   {
     name: 'React refactoring: Kills of the legacy with snapshot testing',
     slug: 'react-test-refactoring-snapshot',

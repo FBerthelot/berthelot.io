@@ -1,7 +1,5 @@
 <template>
-  <Typography :component="component" class="button">
-    &#9660;
-  </Typography>
+  <Typography :component="component" class="button"> &#9660; </Typography>
 </template>
 
 <script>

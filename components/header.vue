@@ -1,3 +1,24 @@
+<i18n>
+{
+  "fr": {
+    "nav": {
+      "articles": "Articles",
+      "courses": "Cours",
+      "talks": "Talks",
+      "activities": "Activités"
+    }
+  },
+  "en": {
+    "nav": {
+      "articles": "Articles",
+      "courses": "Courses",
+      "talks": "Talks",
+      "activities": "Activities"
+    }
+  }
+}
+</i18n>
+
 <template>
   <header class="header">
     <div class="header__logo">
@@ -13,51 +34,51 @@
     <div class="header__actions">
       <div class="tabs">
         <nuxt-link
-          :to="localePath('/subjects/articles')"
-          :tabindex="$route.path.includes('/subjects/articles') ? -1 : 0"
+          :to="localePath('/articles')"
+          :tabindex="$route.path.includes('/articles') ? -1 : 0"
         >
           <Typography
             class="tab"
-            :class="{ active: $route.path.includes('/subjects/articles') }"
+            :class="{ active: $route.path.includes('/articles') }"
             component="span"
           >
             {{ $t('nav.articles') }}
           </Typography>
         </nuxt-link>
         <nuxt-link
-          :to="localePath('/subjects/courses')"
-          :tabindex="$route.path.includes('/subjects/courses') ? -1 : 0"
+          :to="localePath('/courses')"
+          :tabindex="$route.path.includes('/courses') ? -1 : 0"
         >
           <Typography
             class="tab"
-            :class="{ active: $route.path.includes('/subjects/courses') }"
+            :class="{ active: $route.path.includes('/courses') }"
             component="span"
           >
             {{ $t('nav.courses') }}
           </Typography>
         </nuxt-link>
         <nuxt-link
-          :to="localePath('/subjects/talks')"
-          :tabindex="$route.path.includes('/subjects/talks') ? -1 : 0"
+          :to="localePath('/talks')"
+          :tabindex="$route.path.includes('/talks') ? -1 : 0"
         >
           <Typography
             class="tab"
-            :class="{ active: $route.path.includes('/subjects/talks') }"
+            :class="{ active: $route.path.includes('/talks') }"
             component="span"
           >
             {{ $t('nav.talks') }}
           </Typography>
         </nuxt-link>
         <nuxt-link
-          :to="localePath('/subjects/projects')"
-          :tabindex="$route.path.includes('/subjects/projects') ? -1 : 0"
+          :to="localePath('/activities')"
+          :tabindex="$route.path.includes('/activities') ? -1 : 0"
         >
           <Typography
             class="tab"
-            :class="{ active: $route.path.includes('/subjects/projects') }"
+            :class="{ active: $route.path.includes('/activities') }"
             component="span"
           >
-            {{ $t('nav.projects') }}
+            {{ $t('nav.activities') }}
           </Typography>
         </nuxt-link>
       </div>

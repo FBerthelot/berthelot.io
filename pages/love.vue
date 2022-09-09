@@ -1,3 +1,20 @@
+<i18n>
+{
+  "fr": {
+    "love": {
+      "title": "Ma pacsé, je l'aime !",
+      "meta_description": "Sur cette page, vous trouverez des dessins de ma bien aimée"
+    }
+  },
+  "en": {
+    "love": {
+      "title": "I love my girlfriend",
+      "meta_description": "Here is my beloved's drawing"
+    }
+  }
+}
+</i18n>
+
 <template>
   <main id="love-page">
     <h1 class="title"><LoveU class="loveu" /></h1>

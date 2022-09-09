@@ -1,11 +1,11 @@
 import { mount } from '@vue/test-utils'
-import Vue from 'vue'
-import { GrenadeButton } from './'
+import { nextTick } from 'vue'
+import { GrenadeButton } from '.'
 
 describe('GrenadeButton', () => {
   it('should use button tag by default', () => {
     const component = mount(GrenadeButton)
-    expect(component.contains('button')).toBeTruthy()
+    expect(component.html()).toContain('button')
   })
 
   it('should use div when overidding component', () => {
@@ -14,7 +14,7 @@ describe('GrenadeButton', () => {
         component: 'div',
       },
     })
-    expect(component.contains('div')).toBeTruthy()
+    expect(component.html()).toContain('div')
     component.destroy()
   })
 
@@ -38,7 +38,7 @@ describe('GrenadeButton', () => {
 
     expect(component.find('.grenade--throwed').exists()).toBe(false)
     jest.advanceTimersByTime(2000)
-    await Vue.nextTick()
+    await nextTick()
     expect(component.find('.grenade--throwed').exists()).toBe(true)
   })
 })

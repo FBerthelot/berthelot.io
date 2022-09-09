@@ -1,12 +1,14 @@
 <template>
   <div id="article-page">
-    <Header :title="article.name" backLink="/subjects/articles/" />
+    <Header :title="article.name" back-link="/articles/" />
 
+    <!--  eslint-disable vue/no-v-html -->
     <Typography
       class="article"
       component="main"
       v-html="article.content"
     ></Typography>
+    <!--  eslint-enable vue/no-v-html -->
 
     <Footer />
   </div>
@@ -17,7 +19,7 @@ import { Typography } from '~/components/typography'
 import Header from '~/components/header'
 import Footer from '~/components/footer'
 
-import { articles } from '~/assets/subjects'
+import { articles } from '~/assets/articles'
 
 export default {
   components: {
@@ -26,11 +28,13 @@ export default {
     Footer,
   },
   validate({ params }) {
-    return !!articles.find((article) => [params.article])
+    return !!articles.find((article) => article.slug === params.article)
   },
   data() {
     return {
-      article: articles.find((article) => [this.$route.article]),
+      article: articles.find(
+        (article) => article.slug === this.$route.params.article
+      ),
     }
   },
   head() {
@@ -73,7 +77,7 @@ export default {
         {
           hid: 'og:url',
           property: 'og:url',
-          content: `https://berthelot.io/subjects/articles/${this.article.slug}`,
+          content: `https://berthelot.io/articles/${this.article.slug}`,
         },
         {
           hid: 'og:image',

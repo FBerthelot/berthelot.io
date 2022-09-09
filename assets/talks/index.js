@@ -4,7 +4,7 @@ import webVRTalk from './2018-webVR'
 import webAudioTalk from './2017-webAudio'
 import packageAllInclusiveTalk from './2017-packageAllInclusive'
 
-export default [
+export const talks = [
   designerDeveloperCreonsDifferenceTalk,
   reactFiberTalk,
   webVRTalk,

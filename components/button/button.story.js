@@ -1,5 +1,5 @@
-import Vue from 'vue'
-import { MoreButton, GrenadeButton } from './'
+/* import Vue from 'vue'
+import { MoreButton, GrenadeButton } from '.'
 import { boolean } from '@storybook/addon-knobs'
 
 export default {
@@ -41,4 +41,4 @@ export const grenade = () => ({
     <GrenadeButton :disabled="disabled">Twitter</GrenadeButton>
   </div>
   `,
-})
+}) */

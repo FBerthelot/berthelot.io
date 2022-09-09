@@ -2,7 +2,7 @@
   <div>
     <div
       class="alternatives"
-      v-bind:class="{ 'alternatives--displayed': displayAlternatives }"
+      :class="{ 'alternatives--displayed': displayAlternatives }"
       :aria-hidden="!displayAlternatives"
     >
       <slot></slot>
@@ -10,7 +10,7 @@
 
     <MoreButton
       class="card__alternative-button"
-      v-bind:class="{ 'card__alternative-button--open': displayAlternatives }"
+      :class="{ 'card__alternative-button--open': displayAlternatives }"
       role="button"
       @click.stop.native="toggleDisplayAlternatives"
     />
@@ -18,11 +18,9 @@
 </template>
 
 <script>
-import { Typography } from '../../typography'
 import { MoreButton } from '../../button'
 export default {
   components: {
-    Typography,
     MoreButton,
   },
   data: () => ({

@@ -1,10 +1,10 @@
 import { mount } from '@vue/test-utils'
-import { MoreButton } from './'
+import { MoreButton } from '.'
 
 describe('MoreButton', () => {
   it('should use button tag by default', () => {
     const component = mount(MoreButton)
-    expect(component.contains('button')).toBeTruthy()
+    expect(component.html()).toContain('button')
   })
 
   it('should use div when overidding component', () => {
@@ -13,6 +13,6 @@ describe('MoreButton', () => {
         component: 'div',
       },
     })
-    expect(component.contains('div')).toBeTruthy()
+    expect(component.html()).toContain('div')
   })
 })

@@ -1,22 +1,18 @@
 language: node_js
 node_js:
-  - '16'
+  - lts/*
 
-cache:
-  directories:
-    - node_modules
+os:
+  - linux
+dist: focal
+
+branches:
+  only:
+    - main
+    - master
+
+cache: npm
 
 script:
   - npm run lint
   - npm run test
-  - npm run build-storybook
-  - npm run build
-  - npm run generate
-
-deploy:
-  provider: pages
-  skip_cleanup: true
-  local_dir: './dist/'
-  github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
-  on:
-    branch: master

@@ -4,3 +4,4 @@ export { default as CardMeta } from './meta/meta.vue'
 export { default as CardSecondary } from './secondary/secondary.vue'
 export { default as CardVideo } from './video/video.vue'
 export { default as CardLink } from './link/link.vue'
+export default {}

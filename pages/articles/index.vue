@@ -1,3 +1,20 @@
+<i18n>
+{
+  "fr": {
+    "articles": {
+      "title": "Blog d'un artisan du web",
+      "meta_description": "J'écris sur le web, les tests, le JavaScript, les designs systems, ..."
+    }
+  },
+  "en": {
+    "articles": {
+      "title": "Blog",
+      "meta_description": "I write on Web, tests, JavaScript, Design Systems, ..."
+    }
+  }
+}
+</i18n>
+
 <template>
   <div id="articles-page">
     <Header :title="$t('articles.title')" />
@@ -5,12 +22,13 @@
     <main class="subjects">
       <Card
         v-for="subject in subjects"
-        :link="`/subjects/articles/${subject.slug}`"
-        internalLink
-        class="subject"
         :key="subject.name"
+        :link="`/articles/${subject.slug}`"
+        internal-link
+        class="subject"
       >
         <CardTitle>{{ subject.name }}</CardTitle>
+        <!-- eslint-disable-next-line vue/no-v-html -->
         <Typography><span v-html="subject.description"></span></Typography>
         <no-ssr>
           <CardMeta>{{
@@ -29,28 +47,18 @@
 </template>
 
 <script>
-import {
-  Card,
-  CardTitle,
-  CardMeta,
-  CardVideo,
-  CardLink,
-  CardSecondary,
-} from '~/components/card'
+import { Card, CardTitle, CardMeta } from '~/components/card'
 import { Typography } from '~/components/typography'
 import Header from '~/components/header'
 import Footer from '~/components/footer'
 
-import { articles } from '~/assets/subjects'
+import { articles } from '~/assets/articles'
 
 export default {
   components: {
     Card,
     CardTitle,
     CardMeta,
-    CardVideo,
-    CardLink,
-    CardSecondary,
     Typography,
     Header,
     Footer,
@@ -95,7 +103,7 @@ export default {
         {
           hid: 'og:url',
           property: 'og:url',
-          content: 'https://berthelot.io/subjects/articles',
+          content: 'https://berthelot.io/articles',
         },
       ],
     }

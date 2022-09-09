@@ -6,6 +6,6 @@ module.exports = {
     '@storybook/addon-notes/register',
     '@storybook/addon-backgrounds/register',
     '@storybook/addon-viewport/register',
-    '@storybook/addon-a11y/register'
+    '@storybook/addon-a11y/register',
   ],
-};
+}

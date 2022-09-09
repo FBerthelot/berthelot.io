@@ -1,6 +1,0 @@
-node_modules/
-.nuxt/
-dist/
-static/reveal/
-coverage/
-storybook-static/

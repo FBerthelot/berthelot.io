@@ -25,11 +25,8 @@
 </template>
 
 <script>
-import Typography from '../typography/typography.vue'
 export default {
-  components: {
-    Typography,
-  },
+  components: {},
   props: {
     link: {
       type: String,

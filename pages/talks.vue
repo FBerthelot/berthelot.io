@@ -1,10 +1,38 @@
+<i18n>
+{
+  "fr": {
+    "talks": {
+      "title": "Sujets de conférences",
+      "meta_description": "Liste des conférences que j'ai eu la chance de donner.",
+      "video_title": "Vidéo de la conférence",
+      "slide_link": "Lien vers les slides",
+      "alternative": "L'ensemble des versions",
+      "alternative_video": "Vidéo",
+      "alternative_slide": "Slides"
+    }
+  },
+  "en": {
+    "talks": {
+      "title": "Conferences talks",
+      "meta_description": "List of conferences I had the chance to lead.",
+      "video_title": "Video of the conference",
+      "slide_link": "Slide link",
+      "alternative": "Alternative versions",
+      "alternative_video": "Video",
+      "alternative_slide": "Slides"
+    }
+  }
+}
+</i18n>
+
 <template>
   <div id="talks-page">
     <Header :title="$t('talks.title')" />
 
     <main class="subjects">
-      <Card v-for="subject in subjects" class="subject" :key="subject.name">
+      <Card v-for="subject in subjects" :key="subject.name" class="subject">
         <CardTitle>{{ subject.name }}</CardTitle>
+        <!-- eslint-disable-next-line vue/no-v-html -->
         <Typography><span v-html="subject.description"></span></Typography>
         <CardMeta>{{ subject.metaData }}</CardMeta>
 
@@ -24,22 +52,22 @@
           </Typography>
           <ul>
             <Typography
-              component="li"
               v-for="alternative in subject.alternatives"
               :key="alternative.name"
+              component="li"
             >
               {{ alternative.name }}:
               <Typography
-                component="a"
                 v-if="alternative.video"
+                component="a"
                 target="_blank"
                 rel="noopener"
                 :href="alternative.video"
                 >{{ $t('talks.alternative_video') }}</Typography
               >
               <Typography
-                component="a"
                 v-if="alternative.slide"
+                component="a"
                 target="_blank"
                 rel="noopener"
                 :href="alternative.slide"
@@ -68,7 +96,7 @@ import {
 import { Typography } from '~/components/typography'
 import Header from '~/components/header'
 import Footer from '~/components/footer'
-import { talks } from '~/assets/subjects'
+import { talks } from '~/assets/talks'
 
 export default {
   components: {
@@ -122,7 +150,7 @@ export default {
         {
           hid: 'og:url',
           property: 'og:url',
-          content: 'https://berthelot.io/subjects/talks',
+          content: 'https://berthelot.io/talks',
         },
       ],
     }

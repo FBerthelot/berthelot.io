@@ -1,4 +1,4 @@
-import Vue from 'vue'
+/* import Vue from 'vue'
 import Typography from './typography.vue'
 import { select, text } from '@storybook/addon-knobs'
 
@@ -35,3 +35,4 @@ export const allVariants = () => ({
     </div>
   `,
 })
+*/

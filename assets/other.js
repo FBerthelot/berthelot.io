@@ -2,8 +2,7 @@ export default [
   {
     title: 'Les framework JavaScript',
     description: "Slide issue d'une matinal sur les Framework JavaScript.",
-    url:
-      'https://docs.google.com/presentation/d/1l7pXU3k2dDEo1MOleZF22hsWQlYbUuBiSjhzLNJaxpE/edit#slide=id.g1e43053bed_0_176',
+    url: 'https://docs.google.com/presentation/d/1l7pXU3k2dDEo1MOleZF22hsWQlYbUuBiSjhzLNJaxpE/edit#slide=id.g1e43053bed_0_176',
   },
   {
     title: 'Headless CMS',

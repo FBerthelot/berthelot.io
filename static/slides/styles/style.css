@@ -1,9 +1,9 @@
 .reveal section p img {
-    display: block;
-    border: none;
-    margin: auto;
+  display: block;
+  border: none;
+  margin: auto;
 }
 
 .reveal cite {
-    font-style: oblique;
+  font-style: oblique;
 }

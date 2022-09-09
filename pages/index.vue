@@ -1,3 +1,34 @@
+<i18n>
+{
+  "fr": {
+    "home": {
+      "tagline": "Prêcheur des Design System et des programmes bien testés",
+      "presentation": "Je suis passionné du Web et des technologies qui gravitent autour. J'aime le W3C, le TC39 (quand il ne smoosh pas devant moi), le WhatWG, les frameworks JS (React, Vue.js, Node.js, Angular, ...) et la vanille.<br /><br />Transmettre ma passion pour l'artisanat web occupe une part importante de mon travail de développeur (meetups, formations, conférences, encadrement de stagiaires).<br /><br />Vive le web, Vive le JS et Vive l'artisanat!",
+      "meta_description": "Mon site où tu retrouvera mes articles, supports de cours, conférences, ..."
+    },
+    "nav": {
+      "articles": "Articles",
+      "courses": "Cours",
+      "talks": "Talks",
+      "activities": "Activités"
+    }
+  },
+  "en": {
+    "home": {
+      "tagline": "Design system and well-tested programs evangelist",
+      "presentation": "I love Web and all related technologies. I love the W3C, TC39, WhatWG, all JS frameworks (React, Vue.js, Node.js, Angular, ...) and vanilla because they allow me to learn everyday.<br /><br /> Sharing my passion for web craftsmanship is an important part of my developer job (Meetup, Courses, Conferences, training interns).<br /><br />Long live the Web, JS and Craftsmanship!",
+      "meta_description": "You will find here my articles, courses, conferences talks, ..."
+    },
+    "nav": {
+      "articles": "Articles",
+      "courses": "Courses",
+      "talks": "Talks",
+      "activities": "Activities"
+    }
+  }
+}
+</i18n>
+
 <template>
   <div
     class="container"
@@ -36,39 +67,40 @@
       :class="{ 'main-content__visible': !videoIsRunning }"
       class="main-content"
     >
-      <nav class="main-links" v-if="!videoIsRunning">
+      <nav v-if="!videoIsRunning" class="main-links">
         <ul>
           <li>
-            <nuxt-link :to="localePath('/subjects/articles')">
+            <nuxt-link :to="localePath('/articles')">
               <GrenadeButton component="div">
                 {{ $t('nav.articles') }}
               </GrenadeButton>
             </nuxt-link>
           </li>
           <li>
-            <nuxt-link :to="localePath('/subjects/courses')">
-              <GrenadeButton :throwIn="200" component="div">
+            <nuxt-link :to="localePath('/courses')">
+              <GrenadeButton :throw-in="200" component="div">
                 {{ $t('nav.courses') }}
               </GrenadeButton>
             </nuxt-link>
           </li>
           <li>
-            <nuxt-link :to="localePath('/subjects/talks')">
-              <GrenadeButton :throwIn="550" component="div">
+            <nuxt-link :to="localePath('/talks')">
+              <GrenadeButton :throw-in="550" component="div">
                 {{ $t('nav.talks') }}
               </GrenadeButton>
             </nuxt-link>
           </li>
           <li>
-            <nuxt-link :to="localePath('/subjects/projects')">
-              <GrenadeButton component="div" :throwIn="300">
-                {{ $t('nav.projects') }}
+            <nuxt-link :to="localePath('/activities')">
+              <GrenadeButton component="div" :throw-in="300">
+                {{ $t('nav.activities') }}
               </GrenadeButton>
             </nuxt-link>
           </li>
         </ul>
       </nav>
       <Card class="presentation">
+        <!-- eslint-disable-next-line vue/no-v-html -->
         <Typography v-html="$t('home.presentation')"></Typography>
       </Card>
     </main>
@@ -97,11 +129,6 @@ export default {
     return {
       videoIsRunning: true,
     }
-  },
-  methods: {
-    explosionEnd() {
-      this.videoIsRunning = false
-    },
   },
   head() {
     return {
@@ -142,6 +169,11 @@ export default {
         },
       ],
     }
+  },
+  methods: {
+    explosionEnd() {
+      this.videoIsRunning = false
+    },
   },
 }
 </script>

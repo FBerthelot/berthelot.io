@@ -1,67 +1,68 @@
-html, body {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+html,
+body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 header {
-    background-color: #424242;
-    color: whitesmoke;
-    padding: 15px;
+  background-color: #424242;
+  color: whitesmoke;
+  padding: 15px;
 }
-    header .sub-title {
-        display: flex;
-        justify-content: space-between;
-    }
-    header h1 {
-        text-align: center;
-        font-size: 2rem;
-    }
-    header h2 {
-        font-size: 1.2rem;
-        text-align: right;
-    }
+header .sub-title {
+  display: flex;
+  justify-content: space-between;
+}
+header h1 {
+  text-align: center;
+  font-size: 2rem;
+}
+header h2 {
+  font-size: 1.2rem;
+  text-align: right;
+}
 
 .container {
-    height: 100%;
-    background-color: whitesmoke;
+  height: 100%;
+  background-color: whitesmoke;
 }
-  .container .slide-list {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-around;
-      height: 90%;
-  }
-  .container .slide-list li {
-      text-align: center;
-      min-height: 75px;
-      width: 50%;
-      border-radius: 15px;
-      border: 1px #424242 solid;
-  }
-    .container .slide-list li:hover {
-        background-color: #424242;
-    }
-  .container .slide-list li a {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      color: #424242;
-      text-decoration: none;
-  }
-    .container .slide-list li a:hover {
-      color: whitesmoke;
-    }
+.container .slide-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 90%;
+}
+.container .slide-list li {
+  text-align: center;
+  min-height: 75px;
+  width: 50%;
+  border-radius: 15px;
+  border: 1px #424242 solid;
+}
+.container .slide-list li:hover {
+  background-color: #424242;
+}
+.container .slide-list li a {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #424242;
+  text-decoration: none;
+}
+.container .slide-list li a:hover {
+  color: whitesmoke;
+}
 
-      .slide-list .slide-title {
-          font-size: 1.7rem;
-      }
-      .slide-list .slide-date {
-          font-size: 1rem;
-          font-style: italic;
-      }
+.slide-list .slide-title {
+  font-size: 1.7rem;
+}
+.slide-list .slide-date {
+  font-size: 1rem;
+  font-style: italic;
+}
 
 .pagination {
   display: flex;

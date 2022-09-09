@@ -1,6 +1,6 @@
 import { shallowMount } from '@vue/test-utils'
+import { nextTick } from 'vue'
 import CardSecondary from './secondary.vue'
-import Vue from 'vue'
 
 describe('Card Secondary', () => {
   it('should hide alternatives by default', () => {
@@ -18,7 +18,7 @@ describe('Card Secondary', () => {
       },
     })
     component.find('morebutton-stub').trigger('click')
-    await Vue.nextTick()
+    await nextTick()
     expect(component.find('.alternatives').classes()).toContain(
       'alternatives--displayed'
     )

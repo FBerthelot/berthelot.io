@@ -14,7 +14,7 @@ describe('Card meta', () => {
 
   it('should be p by default', () => {
     const component = mount(CardMeta)
-    expect(component.contains('p')).toBeTruthy()
+    expect(component.html()).toContain('p')
   })
 
   it('should use div when overidding component', () => {
@@ -23,6 +23,6 @@ describe('Card meta', () => {
         component: 'div',
       },
     })
-    expect(component.contains('div')).toBeTruthy()
+    expect(component.html()).toContain('div')
   })
 })

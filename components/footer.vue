@@ -47,12 +47,10 @@
 
 <script>
 import { Typography } from '~/components/typography'
-import { Logo } from '~/components/logo'
 
 export default {
   components: {
     Typography,
-    Logo,
   },
 }
 </script>

@@ -6,7 +6,7 @@ import javascriptCraftmanship from './javascriptCraftmanship'
 import typescript from './typescript'
 import gitflow from './git-flow'
 
-export default [
+export const courses = [
   javaScript,
   javascriptCraftmanship,
   esModules,

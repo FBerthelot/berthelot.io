@@ -1,4 +1,4 @@
-import Vue from 'vue'
+/* import Vue from 'vue'
 import {
   Card,
   CardTitle,
@@ -119,3 +119,4 @@ export const talkCard = () => ({
     </div>
   `,
 })
+*/

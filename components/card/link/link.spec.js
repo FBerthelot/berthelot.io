@@ -4,7 +4,7 @@ import CardLink from './link.vue'
 describe('Card Link', () => {
   it('should be a tag by default', () => {
     const component = mount(CardLink)
-    expect(component.contains('a')).toBeTruthy()
+    expect(component.html()).toContain('a')
   })
 
   it('should use button when overidding component', () => {
@@ -13,7 +13,7 @@ describe('Card Link', () => {
         component: 'button',
       },
     })
-    expect(component.contains('button')).toBeTruthy()
+    expect(component.html()).toContain('button')
   })
 
   it('should display slots', () => {

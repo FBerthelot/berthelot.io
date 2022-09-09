@@ -1,84 +1,50 @@
-import pkg from './package'
-import fr from './assets/fr.json'
-import en from './assets/en.json'
-
+import axios from 'axios'
 import Prism from 'prismjs'
 import loadLanguages from 'prismjs/components/'
 loadLanguages(['jsx'])
 
 export default {
-  mode: 'universal',
+  // Target: https://go.nuxtjs.dev/config-target
+  target: 'static',
 
-  /*
-   ** Headers of the page
-   */
+  // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
+    title: 'berthelot.io',
     htmlAttrs: {
-      prefix: 'og: http://ogp.me/ns#',
+      lang: 'en',
     },
-    title: 'Florent Berthelot - Web developer',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      {
-        hid: 'twitter:card',
-        name: 'twitter:card',
-        content: 'summary',
-      },
-      {
-        hid: 'twitter:creator',
-        name: 'twitter:creator',
-        content: '@berthel350',
-      },
-      {
-        hid: 'og:image',
-        property: 'og:image',
-        content: 'https://berthelot.io/assets/moi.jpg',
-      },
-      {
-        hid: 'og:type',
-        property: 'og:type',
-        content: 'website',
-      },
+      { hid: 'description', name: 'description', content: '' },
+      { name: 'format-detection', content: 'telephone=no' },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
-  /*
-   ** Customize the progress-bar color
-   */
-  loading: { color: '#3B8070' },
 
-  /*
-   ** Global CSS
-   */
+  // Global CSS: https://go.nuxtjs.dev/config-css
   css: [],
 
-  /*
-   ** Plugins to load before mounting the App
-   */
+  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
 
-  /*
-   ** Nuxt.js modules
-   */
+  // Auto import components: https://go.nuxtjs.dev/config-components
+  components: false,
+
+  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
+  buildModules: [
+    // https://go.nuxtjs.dev/eslint
+    '@nuxtjs/eslint-module',
+  ],
+
+  // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/i18n',
     '@nuxtjs/markdownit',
-    'nuxt-i18n',
     '@nuxtjs/robots',
     '@nuxtjs/sitemap',
   ],
 
-  i18n: {
-    locales: ['en', 'fr'],
-    defaultLocale: 'fr',
-    vueI18n: {
-      messages: {
-        en,
-        fr,
-      },
-    },
-    detectBrowserLanguage: false,
-  },
   sitemap: {
     hostname: 'https://berthelot.io',
     gzip: true,
@@ -86,8 +52,17 @@ export default {
   },
   robots: {
     UserAgent: '*',
-    Disallow: '',
+    Disallow: ['mariage/*', 'en/mariage/*'],
     Sitemap: 'https://berthelot.io/sitemap.xml',
+  },
+
+  i18n: {
+    locales: ['en', 'fr'],
+    defaultLocale: 'fr',
+    vueI18nLoader: true,
+    vueI18n: {
+      fallbackLocale: 'fr',
+    },
   },
 
   markdownit: {
@@ -95,31 +70,27 @@ export default {
     linkify: true,
     breaks: true,
     use: ['markdown-it-footnote', 'markdown-it-ins', 'markdown-it-emoji'],
-    highlight: function (str, lang) {
+    highlight(str, lang) {
       return Prism.highlight(str, Prism.languages[lang], lang)
     },
   },
 
-  /*
-   ** Build configuration
-   */
-  build: {
-    /*
-     ** You can extend webpack config here
-     */
-    extend(config, ctx) {
-      // Run ESLint on save
-      if (ctx.isDev && ctx.isClient) {
-        config.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /(node_modules)/,
-        })
-      }
-    },
-  },
+  // Build Configuration: https://go.nuxtjs.dev/config-build
+  build: {},
+
   generate: {
-    routes: ['/subjects/articles/react-test-refactoring-snapshot'],
+    routes: async () => {
+      const { data: invitations } = await axios.get(
+        'https://sheetdb.io/api/v1/yd2k17v9irxae?sheet=Invitations'
+      )
+
+      return [
+        '/articles/react-test-refactoring-snapshot',
+        ...invitations.flatMap((invitation) => [
+          `/mariage/${invitation["Id de l'invitation"]}`,
+          `en/mariage/${invitation["Id de l'invitation"]}`,
+        ]),
+      ]
+    },
   },
 }

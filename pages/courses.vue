@@ -1,19 +1,35 @@
+<i18n>
+{
+  "fr": {
+    "courses": {
+        "title": "Supports de formations",
+        "meta_description": "Supports de cours que j'utilise pour former au développement web."
+      }
+  },
+  "en": {
+    "courses": {
+      "title": "Courses",
+      "meta_description": "I use those materials to give courses on Web development."
+    }
+  }
+}
+</i18n>
+
 <template>
-  <div id="projects-page">
-    <Header :title="$t('projects.title')" />
+  <div id="courses-page">
+    <Header :title="$t('courses.title')" />
 
     <main class="subjects">
       <Card
         v-for="subject in subjects"
-        class="subject"
-        :link="subject.link"
         :key="subject.name"
+        :link="subject.url"
+        class="subject"
       >
         <CardTitle>{{ subject.name }}</CardTitle>
-        <Typography
-          ><span v-html="subject.description[$i18n.locale]"></span
-        ></Typography>
-        <CardMeta>{{ subject.metaInfo[$i18n.locale] }}</CardMeta>
+        <!-- eslint-disable-next-line vue/no-v-html -->
+        <Typography><span v-html="subject.description"></span></Typography>
+        <CardMeta>{{ subject.metaData }}</CardMeta>
       </Card>
     </main>
 
@@ -22,34 +38,25 @@
 </template>
 
 <script>
-import {
-  Card,
-  CardTitle,
-  CardMeta,
-  CardVideo,
-  CardLink,
-  CardSecondary,
-} from '~/components/card'
+import { Card, CardTitle, CardMeta } from '~/components/card'
 import { Typography } from '~/components/typography'
 import Header from '~/components/header'
 import Footer from '~/components/footer'
-import { projects } from '~/assets/subjects'
+
+import { courses } from '~/assets/courses'
 
 export default {
   components: {
     Card,
     CardTitle,
     CardMeta,
-    CardVideo,
-    CardLink,
-    CardSecondary,
     Typography,
     Header,
     Footer,
   },
   data() {
     return {
-      subjects: projects,
+      subjects: courses,
     }
   },
   head() {
@@ -57,37 +64,37 @@ export default {
       htmlAttrs: {
         lang: this.$i18n.locale,
       },
-      title: `Florent Berthelot - ${this.$t('projects.title')}`,
+      title: `Florent Berthelot - ${this.$t('courses.title')}`,
       meta: [
         {
           hid: 'twitter:title',
           name: 'twitter:title',
-          content: `Florent Berthelot - ${this.$t('projects.title')}`,
+          content: `Florent Berthelot - ${this.$t('courses.title')}`,
         },
         {
           hid: 'og:title',
           property: 'og:title',
-          content: `Florent Berthelot - ${this.$t('projects.title')}`,
+          content: `Florent Berthelot - ${this.$t('courses.title')}`,
         },
         {
           hid: 'description',
           name: 'description',
-          content: this.$t('projects.meta_description'),
+          content: this.$t('courses.meta_description'),
         },
         {
           hid: 'twitter:description',
           name: 'twitter:description',
-          content: this.$t('projects.meta_description'),
+          content: this.$t('courses.meta_description'),
         },
         {
           hid: 'og:description',
           property: 'og:description',
-          content: this.$t('projects.meta_description'),
+          content: this.$t('courses.meta_description'),
         },
         {
           hid: 'og:url',
           property: 'og:url',
-          content: 'https://berthelot.io/subjects/projects',
+          content: 'https://berthelot.io/courses',
         },
       ],
     }
@@ -96,7 +103,7 @@ export default {
 </script>
 
 <style scoped>
-#projects-page {
+#courses-page {
   height: 100%;
 }
 
