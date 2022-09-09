@@ -2,16 +2,22 @@
   "name": "berthelot.io",
   "version": "1.0.0",
   "private": true,
+  "description": "My website",
+  "author": "FBerthelot <florent@berthelot.io>",
+  "license": "SEE LICENSE IN LICENSE.md FILE",
   "scripts": {
-    "dev": "nuxt",
-    "build": "nuxt build",
+    "reveal": "rimraf static/reveal/ && cpr node_modules/reveal.js/ static/reveal/",
+    "dev": "npm run reveal && nuxt",
+    "build": "npm run reveal && nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
     "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
     "lint:prettier": "prettier --check .",
     "lint": "npm run lint:js && npm run lint:prettier",
     "lintfix": "prettier --write --list-different . && npm run lint:js -- --fix",
-    "test": "jest"
+    "test": "jest",
+    "storybook": "start-storybook -s ./static -p 6006",
+    "build-storybook": "build-storybook && mv storybook-static static/storybook"
   },
   "dependencies": {
     "@nuxtjs/i18n": "^7.2.3",
