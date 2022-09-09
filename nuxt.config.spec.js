@@ -5,8 +5,8 @@ describe('nuxt.config', () => {
   const routesToGenerate = config.generate.routes
 
   articles.forEach((article) => {
-    it(`should generate dynamic routes for "${article.name}"`, () => {
-      expect(routesToGenerate).toContain(`/articles/${article.slug}`)
+    it(`should generate dynamic routes for "${article.name}"`, async () => {
+      expect(await routesToGenerate()).toContain(`/articles/${article.slug}`)
     })
   })
 })
