@@ -48,7 +48,12 @@ export default {
   sitemap: {
     hostname: 'https://berthelot.io',
     gzip: true,
-    i18n: 'en',
+
+    exclude: ['/mariage/**/*', '/en/mariage/**/*'],
+    i18n: true,
+    locales: ['en', 'fr'],
+
+    routes: ['/slides/javascript.html', '/slides/afterwork.html'],
   },
   robots: {
     UserAgent: '*',
