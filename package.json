@@ -22,7 +22,7 @@
   "dependencies": {
     "@nuxtjs/i18n": "^7.2.3",
     "@nuxtjs/markdownit": "^2.0.0",
-    "core-js": "^3.19.3",
+    "core-js": "^3.25.1",
     "nuxt": "^2.15.8",
     "remove": "^0.1.5",
     "reveal.js": "3.9.2",
