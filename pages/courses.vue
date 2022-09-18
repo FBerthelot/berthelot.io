@@ -54,6 +54,7 @@ export default {
     Header,
     Footer,
   },
+  layout: 'default',
   data() {
     return {
       subjects: courses,

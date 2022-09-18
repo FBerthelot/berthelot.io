@@ -1,5 +1,5 @@
 <template>
-  <nuxt class="default" />
+  <nuxt />
 </template>
 
 <script>
@@ -11,17 +11,7 @@ export default {}
 </script>
 
 <style>
-html {
-  font-size: 16px;
-}
 body {
   background-color: var(--color-black);
-}
-
-html,
-body,
-#__nuxt,
-#__layout {
-  height: 100%;
 }
 </style>

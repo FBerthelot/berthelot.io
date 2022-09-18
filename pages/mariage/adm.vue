@@ -185,6 +185,7 @@
 <script>
 export default {
   components: {},
+  layout: 'mariage',
   data() {
     return {
       loading: true,

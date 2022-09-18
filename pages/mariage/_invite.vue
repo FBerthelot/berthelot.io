@@ -9,18 +9,18 @@
   <div id="wedding-page">
     <Annimation />
 
-    <div v-if="annimationOver">
-      <div v-if="error">
+    <main v-if="annimationOver">
+      <div v-if="error" class="error-container">
         Désolé, une erreur est survenu. Vous pouvez nous contacter par
         <a href="mailto:florent@berthelot.io">mail</a> ou par
         <a href="tel:+33650999618">téléphone.</a>
       </div>
-      <div v-if="loading">
+      <div v-if="loading" class="error-container">
         Ta connexion internet ne doit pas être très bonne :/.
       </div>
-      <div v-if="!invitation && !loading">
+      <div v-if="!invitation && !loading" class="error-container">
         Désolé, mais nous ne trouvons pas votre invitation. Vous pouvez nous
-        contacter par <a href="mailto:florent@berthelot.io">mail</a>.
+        contacter par&nbsp;<a href="mailto:florent@berthelot.io">mail</a>.
       </div>
 
       <!-- Formulaire -->
@@ -37,7 +37,7 @@
           :invitation="invitation"
         />
       </transition>
-    </div>
+    </main>
   </div>
 </template>
 
@@ -149,5 +149,12 @@ export default {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+
+.error-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 20vh;
 }
 </style>

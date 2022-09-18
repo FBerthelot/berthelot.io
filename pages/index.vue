@@ -125,6 +125,7 @@ export default {
     Footer,
     LanguageSwitcher,
   },
+  layout: 'default',
   data() {
     return {
       videoIsRunning: true,
