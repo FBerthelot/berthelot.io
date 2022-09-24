@@ -7,7 +7,7 @@
 
 <template>
   <div id="wedding-page">
-    <Annimation />
+    <Animation />
 
     <main v-if="annimationOver">
       <div v-if="error" class="error-container">
@@ -43,12 +43,12 @@
 
 <script>
 import InviteForm from '~/components/mariage/inviteForm.vue'
-import Annimation from '~/components/mariage/annimation.vue'
+import Animation from '~/components/mariage/animation.vue'
 import Schedule from '~/components/mariage/schedule.vue'
 
 export default {
   components: {
-    Annimation,
+    Animation,
     InviteForm,
     Schedule,
   },
