@@ -435,9 +435,9 @@ export default {
 }
 @media (orientation: portrait) {
   .pontoon {
-    height: 15vh;
-    width: 40vw;
-    left: calc(50% - 20vw);
+    height: 25vh;
+    width: 50vw;
+    left: calc(50% - 25vw);
   }
 }
 
@@ -450,7 +450,7 @@ export default {
 @media (orientation: portrait) {
   .us {
     width: 18vw;
-    bottom: 6vh;
+    bottom: 16vh;
     left: calc(50% - 9vw);
   }
 }
