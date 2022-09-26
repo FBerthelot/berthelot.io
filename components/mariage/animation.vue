@@ -137,6 +137,14 @@ export default {
     },
   },
   mounted() {
+    if (this.animate) {
+      setTimeout(() => {
+        this.$emit('animationOver')
+      }, 10000)
+    } else {
+      this.$emit('animationOver')
+    }
+
     const isImageLoaded = (src) => {
       return new Promise((resolve, reject) => {
         let isTimeouted = false
@@ -200,15 +208,15 @@ export default {
 }
 
 .landscape {
-  --top-side-sky: #be91c6;
+  --top-side-sky: #8e6f94;
   --top-middle-sky: #ff846e;
   --bottom-sky: #fea798;
 
-  --bottom-water: #8a65cc;
+  --bottom-water: #6681d7;
   --top-middle-water: #ff846e;
   --top-water: #fea79855;
-  --top-water-alpha: #fea798aa;
-  --bottom-water-alpha: #8a65ccee;
+  --top-water-alpha: rgb(252, 156, 132, 52%);
+  --bottom-water-alpha: #6681d7ee;
   --background: white;
 
   --sun: white;
@@ -484,7 +492,12 @@ export default {
 
 /** Animations **/
 
-.reduceAtTheEnd.landscape {
+.reduceAtTheEnd.landscape:not(.animate) {
+  height: 80vh;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+.animate.reduceAtTheEnd.landscape {
   animation: reduce 1s ease 10s 1 forwards;
 }
 @keyframes reduce {
@@ -493,6 +506,8 @@ export default {
   }
   100% {
     height: 80vh;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
   }
 }
 
