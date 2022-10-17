@@ -15,14 +15,6 @@
       </li>
       <li>
         <nuxt-link
-          :to="localePath(`/mariage/${$route.params.invite}?noAnimation=true`)"
-          class="wedding-button"
-        >
-          <span class="wedding-button-content">Accueil</span>
-        </nuxt-link>
-      </li>
-      <li>
-        <nuxt-link
           :to="
             localePath(`/mariage/${$route.params.invite}/info?noAnimation=true`)
           "
@@ -48,13 +40,30 @@
 </template>
 
 <style scoped>
-.menu {
+/* .menu {
+  width: 15vw;
+} */
+
+.menu-list {
+  margin: 2rem 0.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
   width: 100%;
 }
 
-.menu-list {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
+.wedding-button {
+  transition: all 0.4s ease;
+}
+
+.wedding-button:hover {
+  transform: scale(1.2);
+}
+
+@media (orientation: portrait) {
+  .menu {
+    display: none;
+  }
 }
 </style>

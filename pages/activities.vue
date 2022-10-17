@@ -147,7 +147,7 @@
             <CardMeta>{{ $t('aqua-compose.status') }}</CardMeta>
           </Card>
 
-          <Card class="subject">
+          <Card class="subject" link="/afterwork.html">
             <CardTitle>Afterworks</CardTitle>
             <Typography component="div">
               <p>{{ $t('afterworks.p1') }}</p>

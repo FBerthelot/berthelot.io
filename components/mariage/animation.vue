@@ -73,17 +73,13 @@
       alt="Florent et Agnès main dans la main"
     />
 
-    <!-- <img src="./coeur.png" class="logo" alt="Agnès et Florent - 19 Août 2023" /> -->
+    <header class="header">
+      <h2 class="date">19 & 20 août 2023</h2>
+      <h1 class="title">Agnès et Florent</h1>
+      <p class="subtitle">Vont se marier !</p>
+    </header>
 
-    <!-- <h1 class="title">Agnès 🤍 Florent</h1> -->
-    <!-- <svg viewBox="0 0 200 60" class="title">
-      <title>Agnès et Florent</title>
-      <path id="path" d="m0,60 C 90,0 110,0 200,60" fill="transparent"></path>
-      <text font-size="16" y="-10" x="62.5" fill="white">
-        <textPath xlink:href="#path">Agnès 🤍 Florent</textPath>
-        Agnès 🤍 Florent
-      </text>
-    </svg> -->
+    <!-- <img src="./coeur.png" class="logo" alt="Agnès et Florent - 19 Août 2023" /> -->
   </div>
 </template>
 
@@ -233,29 +229,6 @@ export default {
     var(--bottom-sky),
     var(--top-side-sky)
   );
-}
-
-.loading {
-  width: 100%;
-  height: 50%;
-  display: flex;
-  align-items: center;
-  color: var(--background);
-  justify-content: center;
-  animation: loading-blink 3s infinite linear;
-  animation-delay: 2s;
-  opacity: 0;
-}
-@keyframes loading-blink {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
 }
 
 .front {
@@ -463,25 +436,62 @@ export default {
   }
 }
 
-/** TITLE */
-/* .title {
-  height: 7.5rem;
-  width: auto;
-  position: absolute;
-  left: 10rem;
-  bottom: 5rem;
+/* Textes */
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 3rem;
-  color: white;
-}
-
-.title_container {
+.loading {
   width: 100%;
+  height: 50%;
+  padding-top: 2rem;
+  display: flex;
+  align-items: flex-start;
+  color: var(--background);
+  justify-content: center;
+  animation: loading-blink 3s infinite linear;
+  animation-delay: 2s;
+  opacity: 0;
 }
+@keyframes loading-blink {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.header {
+  position: absolute;
+  top: 20vh;
+  width: 100%;
+  color: var(--sun);
+  z-index: 5;
+}
+.date {
+  position: relative;
+  font-family: 'Parisienne', cursive;
+  font-size: 1.1rem;
+  line-height: 1.5rem;
+  text-align: center;
+}
+.title {
+  position: relative;
+  font-family: 'Parisienne', cursive;
+  font-size: 2rem;
+  line-height: 2.5rem;
+  text-align: center;
+}
+.subtitle {
+  position: relative;
+  font-family: 'Pacifico', cursive;
+  font-size: 1.1rem;
+  line-height: 1.5rem;
+  text-align: center;
+}
+
+/*
 .logo {
   height: 7.5rem;
   width: auto;
@@ -577,6 +587,21 @@ export default {
     opacity: 0;
   }
 }
+
+/* .animate .header {
+  animation: fade 10s;
+}
+@keyframes fade {
+  0%,
+  90% {
+    transform: translate3d(0, 50vh, 0);
+    color: transparent;
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+    color: var(--sun);
+  }
+} */
 
 /* .animate  .us {
   animation: walk-on-pontoon 10s ease;
