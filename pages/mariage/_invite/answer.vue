@@ -10,9 +10,16 @@
       "party": "À la soirée",
       "after": "Le lendemain"
     },
+    "meal": {
+      "question": "Que mange tu ? | Que mangez-vous ?",
+      "meat": "Viande saignante",
+      "fish": "Poisson",
+      "children": "Menu enfant"
+    },
     "plus1": {
       "question": "Viens-tu accompagné ? | Vennez-vous accompagné ?",
-      "placeholder": "Si oui, quel est sont nom ? Si non, ne pas remplir."
+      "placeholder": "Si oui, quel est sont nom ? Si non, ne pas remplir.",
+      "mealQuestion": "Et son repas ?"
     },
     "comment": {
       "question": "Un commentaire ?",
@@ -29,7 +36,8 @@
     "parker": {
       "p1": " Un service de voiturier sera disponnible pendant la soirée pour rentrer en sécurité."
     },
-    "submit": "J'envoie ma réponse"
+    "submit": "J'envoie ma réponse",
+    "submitLoading": "Envoi..."
   },
   "en": {
     "hello": "Hello {names}!",
@@ -41,9 +49,15 @@
       "party": "At the party",
       "after": "The day after"
     },
+    "meal": {
+      "question": "You do you eat?",
+      "meat": "Rare meat",
+      "fish": "Fish"
+    },
     "plus1": {
-      "question": "Are you comming with someone ?",
-      "placeholder": "If yes, what is her/his name ? If no, let the field blank."
+      "question": "Are you comming with someone?",
+      "placeholder": "If yes, what is her/his name? If no, let the field blank.",
+      "mealQuestion": "And his/her meal?"
     },
     "comment": {
       "question": "Any comment ?",
@@ -60,7 +74,8 @@
     "parker": {
       "p1": "A taxi service will be available during the night for safety purpose."
     },
-    "submit": "I send my answer."
+    "submit": "I send my answer.",
+    "submitLoading": "Sending..."
   }
 }
 </i18n>
@@ -71,145 +86,265 @@
 
     <main v-if="animationOver" class="main">
       <section class="container">
-        <form @submit.prevent="$emit('answerToInvite', formData)">
-          <h2 class="hello">{{ $t('hello', { names: invitation.name }) }}</h2>
+        <div v-if="error" class="error-container">
+          Une erreur est survenu 😱. <br />
+          Vous pouvez nous contacter par
+          <a href="mailto:florent@berthelot.io">mail</a> ou par
+          <a href="tel:+33650999618">téléphone.</a>
+        </div>
+        <span v-if="loading">Chargement...</span>
+        <ValidationObserver v-slot="{ handleSubmit }">
+          <form
+            v-if="!loading && !error"
+            @submit.prevent="handleSubmit(submitForm)"
+          >
+            <h2 class="hello">{{ $t('hello', { names: invitation.name }) }}</h2>
 
-          <fieldset class="question-container">
-            <span class="question">{{
-              $tc('attending.question', invitation.nbOfPeople)
-            }}</span>
-            <div class="answers">
-              <label v-if="invitation.invitedTo.cityHall">
-                <input
-                  v-model="formData.attending"
-                  type="checkbox"
-                  name="attending"
-                  value="cityHall"
-                />
-                {{ $t('attending.cityHall') }}
-              </label>
-              <label v-if="invitation.invitedTo.church">
-                <input
-                  v-model="formData.attending"
-                  type="checkbox"
-                  name="attending"
-                  value="church"
-                />
-                {{ $t('attending.church') }}
-              </label>
-              <label v-if="invitation.invitedTo.wineReception">
-                <input
-                  v-model="formData.attending"
-                  type="checkbox"
-                  name="attending"
-                  value="wineReception"
-                />
-                {{ $t('attending.wineReception') }}
-              </label>
-              <label v-if="invitation.invitedTo.party">
-                <input
-                  v-model="formData.attending"
-                  type="checkbox"
-                  name="attending"
-                  value="party"
-                />
-                {{ $t('attending.party') }}
-              </label>
-              <label v-if="invitation.invitedTo.after">
-                <input
-                  v-model="formData.attending"
-                  type="checkbox"
-                  name="attending"
-                  value="after"
-                />
-                {{ $t('attending.after') }}
-              </label>
-            </div>
-          </fieldset>
+            <fieldset class="question-container">
+              <span class="question">{{
+                $tc('attending.question', invitation.nbOfPeople)
+              }}</span>
+              <div class="answers">
+                <label v-if="invitation.invitedTo.cityHall">
+                  <input
+                    v-model="formValues.attending"
+                    type="checkbox"
+                    name="attending"
+                    value="cityHall"
+                  />
+                  {{ $t('attending.cityHall') }}
+                </label>
+                <label v-if="invitation.invitedTo.church">
+                  <input
+                    v-model="formValues.attending"
+                    type="checkbox"
+                    name="attending"
+                    value="church"
+                  />
+                  {{ $t('attending.church') }}
+                </label>
+                <label v-if="invitation.invitedTo.wineReception">
+                  <input
+                    v-model="formValues.attending"
+                    type="checkbox"
+                    name="attending"
+                    value="wineReception"
+                  />
+                  {{ $t('attending.wineReception') }}
+                </label>
+                <label v-if="invitation.invitedTo.party">
+                  <input
+                    v-model="formValues.attending"
+                    type="checkbox"
+                    name="attending"
+                    value="party"
+                  />
+                  {{ $t('attending.party') }}
+                </label>
+                <label v-if="invitation.invitedTo.after">
+                  <input
+                    v-model="formValues.attending"
+                    type="checkbox"
+                    name="attending"
+                    value="after"
+                  />
+                  {{ $t('attending.after') }}
+                </label>
+              </div>
+            </fieldset>
 
-          <label class="question-container">
-            <span class="question">{{
-              $tc('plus1.question', invitation.nbOfPeople)
-            }}</span>
-            <input
-              v-model="formData.plus1"
-              :placeholder="$t('plus1.placeholder')"
-              type="text"
-              name="plus1Name"
-              class="plus1-input"
-            />
-          </label>
+            <fieldset
+              v-if="invitation.invitedTo.party"
+              class="question-container"
+            >
+              <span class="question">{{
+                $tc('meal.question', invitation.nbOfPeople)
+              }}</span>
+              <div class="answers">
+                <ul class="meal-people">
+                  <li v-for="peopleName of invitation.people" :key="peopleName">
+                    <ValidationProvider
+                      v-slot="{ errors }"
+                      tag="div"
+                      rules="required"
+                    >
+                      <div>
+                        <span class="answer">{{ peopleName }}</span>
+                        <label>
+                          <input
+                            v-model="formValues[`meal-${peopleName}`]"
+                            type="radio"
+                            :name="`meal-${peopleName}`"
+                            value="meat"
+                          />
+                          {{ $t('meal.meat') }}
+                        </label>
+                        <label>
+                          <input
+                            v-model="formValues[`meal-${peopleName}`]"
+                            type="radio"
+                            :name="`meal-${peopleName}`"
+                            value="fish"
+                          />
+                          {{ $t('meal.fish') }}
+                        </label>
+                      </div>
+                      <div class="error">{{ errors[0] }}</div>
+                    </ValidationProvider>
+                  </li>
+                </ul>
+              </div>
+            </fieldset>
 
-          <label class="question-container">
-            <span class="question">{{ $t('comment.question') }}</span>
-            <textarea
-              v-model="formData.comment"
-              :placeholder="$t('comment.placeholder')"
-            ></textarea>
-          </label>
-
-          <div class="pet-forbidden">
-            <div class="sad-dog-container">
-              <img
-                src="https://www.canidia.be/wp-content/uploads/2016/06/chien-triste-bloblog-1300x650.jpg"
-                :alt="$t('pet.alt')"
-                class="sad-dog"
+            <label class="question-container">
+              <span class="question">{{
+                $tc('plus1.question', invitation.nbOfPeople)
+              }}</span>
+              <input
+                v-model="formValues.plus1"
+                :placeholder="$t('plus1.placeholder')"
+                type="text"
+                name="plus1Meal"
+                class="plus1-input"
               />
-            </div>
-            {{ $t('pet.p1') }} <br />
-            {{ $t('pet.p2') }}
-          </div>
+            </label>
 
-          <div class="pet-forbidden">
-            <div class="sad-dog-container">
-              <img
-                src="https://focus.courrierinternational.com/2022/02/05/0/0/4592/3448/1280/0/60/0/387e5da_1644022364629-expats-et-logement.jpg"
-                alt=""
-                class="sad-dog"
-              />
-            </div>
-            {{ $t('housing.p1') }}
-          </div>
+            <label v-if="formValues.plus1" class="question-container">
+              <span class="question">{{
+                $tc('plus1.mealQuestion', invitation.nbOfPeople)
+              }}</span>
+              <ValidationProvider
+                v-slot="{ errors }"
+                tag="div"
+                rules="required"
+              >
+                <div>
+                  <span class="answer">{{ formValues.plus1 }}</span>
+                  <label>
+                    <input
+                      v-model="formValues.plus1Meal"
+                      type="radio"
+                      name="plus1Meal"
+                      value="meat"
+                    />
+                    {{ $t('meal.meat') }}
+                  </label>
+                  <label>
+                    <input
+                      v-model="formValues.plus1Meal"
+                      type="radio"
+                      name="plus1Meal"
+                      value="fish"
+                    />
+                    {{ $t('meal.fish') }}
+                  </label>
+                </div>
+                <div class="error">{{ errors[0] }}</div>
+              </ValidationProvider>
+            </label>
 
-          <div class="pet-forbidden">
-            <div class="sad-dog-container">
-              <img
-                src="https://www.flconseilsparis.com/image/cache/catalog/casquette%20voiturier%20noir%20et%20or%2001-500x500-200x200.jpg"
-                alt=""
-                class="sad-dog"
-              />
-            </div>
-            {{ $t('parker.p1') }}
-          </div>
+            <ValidationProvider v-slot="{ errors }" tag="div" rules="required">
+              <label class="question-container">
+                <span class="question">{{ $t('comment.question') }}</span>
+                <textarea
+                  v-model="formValues.comment"
+                  :placeholder="$t('comment.placeholder')"
+                ></textarea>
+              </label>
+              <span class="error">{{ errors[0] }}</span>
+            </ValidationProvider>
 
-          <div class="action">
-            <button type="submit">{{ $t('submit') }}</button>
-          </div>
-        </form>
+            <div class="pet-forbidden">
+              <div class="sad-dog-container">
+                <img
+                  src="https://www.canidia.be/wp-content/uploads/2016/06/chien-triste-bloblog-1300x650.jpg"
+                  :alt="$t('pet.alt')"
+                  class="sad-dog"
+                />
+              </div>
+              {{ $t('pet.p1') }} <br />
+              {{ $t('pet.p2') }}
+            </div>
+
+            <div class="pet-forbidden">
+              <div class="sad-dog-container">
+                <img
+                  src="https://focus.courrierinternational.com/2022/02/05/0/0/4592/3448/1280/0/60/0/387e5da_1644022364629-expats-et-logement.jpg"
+                  alt=""
+                  class="sad-dog"
+                />
+              </div>
+              {{ $t('housing.p1') }}
+            </div>
+
+            <div class="pet-forbidden">
+              <div class="sad-dog-container">
+                <img
+                  src="https://www.flconseilsparis.com/image/cache/catalog/casquette%20voiturier%20noir%20et%20or%2001-500x500-200x200.jpg"
+                  alt=""
+                  class="sad-dog"
+                />
+              </div>
+              {{ $t('parker.p1') }}
+            </div>
+
+            <div class="action">
+              <button type="submit" :disabled="submitFormStatus.loading">
+                {{
+                  submitFormStatus.loading ? $t('submitLoading') : $t('submit')
+                }}
+              </button>
+              <span class="error">{{
+                submitFormStatus.error ? 'Une erreur est survenue !' : ''
+              }}</span>
+            </div>
+          </form>
+        </ValidationObserver>
       </section>
 
-      <Menu />
+      <!-- <Menu /> -->
     </main>
   </div>
 </template>
 
 <script>
+import { ValidationProvider, ValidationObserver, extend } from 'vee-validate'
 import Animation from '~/components/mariage/animation.vue'
-import Menu from '~/components/mariage/menu.vue'
+import {
+  getTheInvitation,
+  saveInvitationAnswer,
+} from '~/components/mariage/fetcher'
+// import Menu from '~/components/mariage/menu.vue'
+
+extend('required', {
+  validate(value) {
+    return {
+      required: true,
+      valid: !['', null, undefined].includes(value),
+    }
+  },
+  computesRequired: true,
+})
 
 export default {
   components: {
     Animation,
-    Menu,
+    // Menu,
+    ValidationProvider,
+    ValidationObserver,
   },
   layout: 'mariage',
   data() {
     return {
       animate: !this.$route.query.noAnimation,
       animationOver: false,
-      formData: {
-        attending: [],
-        plus1: this.invitation.plus1Name,
+      invitation: {},
+      formValues: undefined,
+      loading: true,
+      error: null,
+      submitFormStatus: {
+        loading: false,
+        error: null,
       },
     }
   },
@@ -220,6 +355,71 @@ export default {
       },
       title: `Mariage Agnès et Florent - 19 Août 2022`,
     }
+  },
+  async mounted() {
+    try {
+      this.invitation = await getTheInvitation(
+        this.$config.SHEETDB_URL,
+        this.$route.params.invite
+      )
+
+      this.formValues = {
+        attending: [],
+        plus1: '',
+        plus1Meal: null,
+        comment: '',
+        ...this.invitation.people.reduce((acc, peopleName) => {
+          return {
+            ...acc,
+            [`meal-${peopleName}`]: null,
+          }
+        }, {}),
+      }
+    } catch (err) {
+      // eslint-disable-next-line no-console
+      console.error(err)
+      this.error = err
+    } finally {
+      this.loading = false
+    }
+  },
+  methods: {
+    async submitForm() {
+      this.submitFormStatus.loading = true
+      const meals = this.invitation.people.reduce((acc, peopleName) => {
+        return {
+          ...acc,
+          [peopleName]: this.formValues[`meal-${peopleName}`],
+        }
+      }, {})
+
+      if (this.formValues.plus1) {
+        meals[`${this.formValues.plus1} (+1)`] = this.formValues.plus1Meal
+      }
+
+      try {
+        await saveInvitationAnswer(
+          this.$config.SLACK_URL,
+          this.formValues.plus1
+            ? [...this.invitation.people, `${this.formValues.plus1} (+1)`]
+            : this.invitation.people,
+          this.formValues.attending,
+          meals,
+          this.formValues.comment
+        )
+        this.$router.push(
+          this.localePath(
+            `/mariage/${this.$route.params.invite}?noAnimation=true`
+          )
+        )
+      } catch (err) {
+        // eslint-disable-next-line no-console
+        console.error(err)
+        this.submitFormStatus.error = err
+      }
+
+      this.submitFormStatus.loading = false
+    },
   },
 }
 </script>
@@ -270,6 +470,12 @@ export default {
   margin-left: 7rem;
 }
 
+.meal-people span {
+  display: inline-block;
+  width: 7rem;
+  font-size: 1rem;
+}
+
 .plus1-input {
   display: block;
   margin-top: 0.5rem;
@@ -302,5 +508,9 @@ export default {
 .action button {
   padding: 0.25rem;
   margin: auto;
+}
+
+.error {
+  color: red;
 }
 </style>

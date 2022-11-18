@@ -198,8 +198,7 @@ export default {
 
     const script = document.createElement('script')
     script.type = 'text/javascript'
-    script.src =
-      'https://maps.googleapis.com/maps/api/js?key=AIzaSyAn1-5rizMpzzJTPnnO5acHg5gA_OpFEhw&callback=initMap&v=weekly'
+    script.src = this.$config.MAPS_URL
     document.body.appendChild(script)
   },
   updated() {
