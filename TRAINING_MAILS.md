@@ -6,12 +6,12 @@ Bonjour,
 
 J'espère que vous allez bien. 😇
 
-Je serai votre Formateur <FormationName/> pour la semaine prochaine.
+Je serai votre formateur <FormationName/> pour la semaine prochaine.
 
 Afin de mieux cerner vos attentes et ainsi adapter au mieux la formation, seriez-vous disponnible pour un entretien téléphonique d'environ 15 minutes ?
 
 {Si Distanciel}
-La formation étant en distantiel, ce sera également l'ocassion de m'assurer que vous avez bien le materiel requis pour suivre la formation le jour J.
+La formation étant en distantiel, ce sera également l'ocassion de m'assurer que vous avez bien le matériel requis pour suivre la formation le jour J.
 {/Si Distanciel]
 
 Merci d'avance,
@@ -22,7 +22,7 @@ Merci d'avance,
 Bonjour à tous,
 
 J'espère que vous allez tous bien. 😇
-Je serai votre Formateur {trainingName} pour la semaine prochaine.
+Je serai votre formateur {trainingName} pour la semaine prochaine.
 
 La formation démarrera {date}, il est donc l'heure de préparer les choses suivantes :
 
@@ -30,7 +30,7 @@ La formation démarrera {date}, il est donc l'heure de préparer les choses suiv
 - Un vidéo projecteur doit être disponible dans la salle 📽
 - C'est un plus pour la formation s'il y a de quoi écrire (Exemple : un tableau) 🎓
 - Chacun doit avoir un ordinateur 👩‍💻 👨‍💻
-- Un accès Internet et pas uniquement Intranet. Nous allons avoir besoin d'accès à NPM, github et tout autres service utiles aux developpeurs. 🌍
+- Un accès Internet et pas uniquement Intranet. Nous allons avoir besoin d'accès à NPM, github et tout autres service utiles aux développeurs. 🌍
 
 Concernant mes accès à vos locaux, est-ce qu'il y a une procédure spécifique ?
 Qui dois-je demander quand j'arrive ?
