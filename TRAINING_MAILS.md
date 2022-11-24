@@ -6,12 +6,12 @@ Bonjour,
 
 J'espère que vous allez bien. 😇
 
-Je serai votre formateur <FormationName/> pour la semaine prochaine.
+Je serai votre formateur pour la session <FormationName/>.
 
-Afin de mieux cerner vos attentes et ainsi adapter au mieux la formation, seriez-vous disponnible pour un entretien téléphonique d'environ 15 minutes ?
+Afin de mieux cerner vos attentes et ainsi adapter au mieux la formation, seriez-vous disponible pour un entretien téléphonique d'environ 15 minutes ?
 
 {Si Distanciel}
-La formation étant en distantiel, ce sera également l'ocassion de m'assurer que vous avez bien le matériel requis pour suivre la formation le jour J.
+La formation étant en distanciel, ce sera également l'occasion de m'assurer que vous avez bien le matériel requis pour suivre la formation le jour J.
 {/Si Distanciel]
 
 Merci d'avance,
