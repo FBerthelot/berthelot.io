@@ -38,3 +38,14 @@ Qui dois-je demander quand j'arrive ?
 
 Excellente fin de semaine et soyez en forme {data} à 9h ! 😉
 
+
+## Après la formation
+
+Bonsoir à tous,
+
+Comme promis, voici le corrigé de la formation https://github.com/FBerthelot/training-typescript-pokemon.
+Chacun des commits se situe après un des exercices, vous pouvez donc naviguer facilement entre chaque TP.
+
+Je reste à l'écoute de vos questions. Comme je l'ai dit, n'hésitez pas 😃
+Excellente soirée,
+
