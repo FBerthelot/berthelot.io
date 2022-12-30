@@ -269,6 +269,11 @@ export default {
           endDate: new Date('2023/08/20 5:00'),
           title: 'Service de Voiturier disponible',
         },
+        {
+          startDate: new Date('2023/08/20 11:00'),
+          endDate: new Date('2023/08/20 18:00'),
+          title: 'Retour des mariées',
+        },
       ],
       currentDate: new Date(),
       timerInterval: null,

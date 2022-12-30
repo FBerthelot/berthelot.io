@@ -76,7 +76,7 @@
     <header class="header">
       <h2 class="date">19 & 20 août 2023</h2>
       <h1 class="title">Agnès et Florent</h1>
-      <p class="subtitle">Vont se marier !</p>
+      <!-- <p class="subtitle">Vont se marier !</p> -->
     </header>
 
     <!-- <img src="./coeur.png" class="logo" alt="Agnès et Florent - 19 Août 2023" /> -->
@@ -425,7 +425,7 @@ export default {
 /** US **/
 .us {
   width: 9vw;
-  bottom: 10vh;
+  bottom: 0;
   left: calc(50% - 4.5vw);
 }
 @media (orientation: portrait) {
@@ -471,21 +471,21 @@ export default {
 }
 .date {
   position: relative;
-  font-family: 'Parisienne', cursive;
+  font-family: 'DM Serif Display';
   font-size: 1.1rem;
   line-height: 1.5rem;
   text-align: center;
 }
 .title {
   position: relative;
-  font-family: 'Parisienne', cursive;
+  font-family: 'DM Serif Display';
   font-size: 2rem;
   line-height: 2.5rem;
   text-align: center;
 }
 .subtitle {
   position: relative;
-  font-family: 'Pacifico', cursive;
+  font-family: 'DM Serif Display';
   font-size: 1.1rem;
   line-height: 1.5rem;
   text-align: center;
@@ -504,8 +504,6 @@ export default {
 
 .reduceAtTheEnd.landscape:not(.animate) {
   height: 80vh;
-  border-bottom-left-radius: 0.5rem;
-  border-bottom-right-radius: 0.5rem;
 }
 .animate.reduceAtTheEnd.landscape {
   animation: reduce 1s ease 10s 1 forwards;
@@ -516,8 +514,6 @@ export default {
   }
   100% {
     height: 80vh;
-    border-bottom-left-radius: 0.5rem;
-    border-bottom-right-radius: 0.5rem;
   }
 }
 

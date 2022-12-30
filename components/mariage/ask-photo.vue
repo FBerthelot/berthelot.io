@@ -1,10 +1,13 @@
 <template>
   <section class="ask-photo">
-    <img class="illustration" src="./img/photos.jpg" alt="" />
+    <h3 class="title">Partage de photos et vidéos</h3>
 
     <div class="ask-photo-content">
-      <h3 class="title">PARTAGE DE PHOTOS ET VIDEOS</h3>
-      <p>Vous allez pouvoir nous partager les photos et vidéos du mariage !</p>
+      <img class="illustration" src="./img/patchwork.png" alt="" />
+      <p>
+        Vous allez pouvoir nous partager les photos et vidéos du mariage via ce
+        site !
+      </p>
     </div>
   </section>
 </template>
@@ -12,39 +15,73 @@
 <style scoped>
 .ask-photo {
   width: 100%;
-  position: relative;
-}
-
-.ask-photo-content {
-  position: absolute;
-  top: 0;
-  left: 25%;
-  width: 50%;
-  height: 100%;
-  color: white;
-  text-align: center;
-  flex-direction: column;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  font-size: 1.3rem;
-  line-height: 2rem;
+  padding: 4rem;
+  gap: 2rem;
+
+  background: #2e3f4b;
+  color: #fffbf8;
+  box-sizing: border-box;
 }
 
 .title {
-  font-size: 2rem;
-  line-height: 5rem;
+  font-family: 'DM Serif Display';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 3.25rem;
+  line-height: 4.5rem;
 }
 
-.ask-photo-content p {
-  flex-grow: 1;
+.ask-photo-content {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 2.5rem;
+}
+
+.ask-photo-content p {
+  width: 40%;
+
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.125rem;
+  line-height: 1.6rem;
 }
 
 .illustration {
-  width: 100%;
+  width: 50%;
+  border-radius: 0.5rem;
   height: auto;
   display: block;
+}
+
+@media screen and (max-width: 900px) {
+  .ask-photo {
+    padding: 2rem 1rem;
+  }
+
+  .title {
+    font-size: 2rem;
+    line-height: 2.75rem;
+    text-align: center;
+  }
+
+  .ask-photo-content {
+    display: flex;
+
+    flex-direction: column;
+    margin-top: 1rem;
+  }
+
+  .ask-photo-content p {
+    width: 100%;
+  }
+
+  .illustration {
+    width: 100%;
+  }
 }
 </style>

@@ -1,117 +1,77 @@
 <template>
   <section class="map-schedule">
-    <div id="gmap" ref="gmap-ref"></div>
     <div class="schedule">
-      <h3 class="schedule-title">Programme des festivités</h3>
+      <h3 class="schedule-title">Où et quand</h3>
       <article>
-        <h4 class="schedule-subtitle">
-          Jour 1 - Mariage le samedi 20 août 2023
-        </h4>
-        <details
-          :open="elementSelected === 'council'"
-          @click="onSelect($event, 'council')"
-        >
-          <summary>13h à 13h30 - Mariage civil 🏫</summary>
-          <address>
-            La mairie de Donville-les-Bains<br />
-            97 Route de Coutances <br />
-            50350 Donville-les-Bains
-          </address>
-        </details>
-        <details
-          :open="elementSelected === 'church'"
-          @click="onSelect($event, 'church')"
-        >
-          <summary>14h à 15h - Mariage religieux 💒</summary>
-          <address>
-            L'église de Notre-Dame du Cap Lihou<br />
-            Place du Parvis Notre Dame<br />
-            50400 Granville
-          </address>
-        </details>
+        <h4 class="schedule-subtitle">19 août 2023</h4>
+        <div class="schedule-day">
+          <div class="schedule-item" @click="onSelect($event, 'council')">
+            <img
+              class="schedule-item-icon"
+              alt=""
+              src="./img/mariage_civil.svg"
+            />
+            <h4 class="schedule-item-title">Mariage civil</h4>
+            <div class="schedule-item-hour">13h - 13h30</div>
+            <address class="schedule-item-address">
+              La mairie de Donville-les-Bains<br />
+              97 Route de Coutances <br />
+              50350 Donville-les-Bains
+            </address>
+          </div>
+          <div class="schedule-item" @click="onSelect($event, 'church')">
+            <img class="schedule-item-icon" alt="" src="./img/church.svg" />
+            <h4 class="schedule-item-title">Mariage religieux</h4>
+            <div class="schedule-item-hour">14h - 15h</div>
+            <address class="schedule-item-address">
+              L'église de Notre-Dame du Cap Lihou<br />
+              Place du Parvis Notre Dame<br />
+              50400 Granville
+            </address>
+          </div>
 
-        <details
-          :open="elementSelected === 'wineReception'"
-          @click="onSelect($event, 'wineReception')"
-        >
-          <summary>16h à 17h30 - Vin d'honneur 🎉</summary>
-          <address>
-            Château de la Crête<br />
-            476 Rue de la Crète<br />
-            50400 Granville
-          </address>
-        </details>
-
-        <details
-          :open="elementSelected === 'cocktail'"
-          @click="onSelect($event, 'cocktail')"
-        >
-          <summary>17h30 à 19h30 - Cocktail 🥂</summary>
-          <address>
-            Château de la Crête<br />
-            476 Rue de la Crète<br />
-            50400 Granville
-          </address>
-        </details>
-
-        <details
-          :open="elementSelected === 'lunch'"
-          @click="onSelect($event, 'lunch')"
-        >
-          <summary>20h - Dîner 🍽</summary>
-          <address>
-            Château de la Crête<br />
-            476 Rue de la Crète<br />
-            50400 Granville
-          </address>
-        </details>
-
-        <details
-          :open="elementSelected === 'dancing'"
-          @click="onSelect($event, 'dancing')"
-        >
-          <summary>23h30 - Ouverture du bal 💃🏽🕺🏻</summary>
-          <address>
-            Château de la Crête<br />
-            476 Rue de la Crète<br />
-            50400 Granville
-          </address>
-        </details>
-
-        <details
-          :open="elementSelected === 'driver'"
-          @click="onSelect($event, 'driver')"
-        >
-          <summary>1h30 - Ouverture du service voiturier 🚕</summary>
-          <address>
-            Château de la Crête<br />
-            476 Rue de la Crète<br />
-            50400 Granville
-          </address>
-        </details>
+          <div class="schedule-item" @click="onSelect($event, 'party')">
+            <img class="schedule-item-icon" alt="" src="./img/castle.svg" />
+            <h4 class="schedule-item-title">Fête ou Wine selon</h4>
+            <div class="schedule-item-hour">à partir de 16h</div>
+            <address class="schedule-item-address">
+              Château de la Crête<br />
+              476 Rue de la Crète<br />
+              50400 Granville
+            </address>
+          </div>
+        </div>
       </article>
 
       <article>
-        <h4 class="schedule-subtitle">
-          Jour 2 - Retour des mariés le dimanche 20 août 2023
-        </h4>
-        <details
-          :open="elementSelected === 'chill'"
-          @click="onSelect($event, 'chill')"
-        >
-          <summary>11h à 18h - Chill tous ensemble</summary>
-          <address>
-            Château de la Crête<br />
-            476 Rue de la Crète<br />
-            50400 Granville
-          </address>
-        </details>
+        <h4 class="schedule-subtitle">20 août 2023</h4>
+        <div class="schedule-day">
+          <div class="schedule-item" @click="onSelect($event, 'chill')">
+            <img
+              class="schedule-item-icon"
+              alt=""
+              src="./img/just-maried.svg"
+            />
+            <h4 class="schedule-item-title">Retour des mariés</h4>
+            <div class="schedule-item-hour">à partir de 11h</div>
+            <address class="schedule-item-address">
+              Château de la Crête<br />
+              476 Rue de la Crète<br />
+              50400 Granville
+            </address>
+          </div>
+        </div>
       </article>
     </div>
+    <div id="gmap" ref="gmap-ref"></div>
   </section>
 </template>
 
 <script>
+import churchPointerImg from './img/church_pointer.png'
+import castlePointerImg from './img/castle_pointer.png'
+import councilPointerImg from './img/council_pointer.png'
+
 export default {
   components: {},
   data() {
@@ -123,24 +83,36 @@ export default {
             lat: 48.82745538689812,
             lng: -1.5813597743139869,
           },
-          label: 'Château',
           title: 'Château de la Crête',
+          icon: {
+            url: castlePointerImg,
+            w: 81 * 0.5,
+            h: 110 * 0.5,
+          },
         },
         church: {
           position: {
             lat: 48.837211427949974,
             lng: -1.6049305131131149,
           },
-          label: 'Église',
           title: 'Église Notre Dame du Cap Lihou',
+          icon: {
+            url: churchPointerImg,
+            w: 57 * 0.5,
+            h: 110 * 0.5,
+          },
         },
         council: {
           position: {
             lat: 48.847201739752144,
             lng: -1.5803493159197195,
           },
-          label: 'Mairie',
           title: 'Mairie de Donville-les-Bains',
+          icon: {
+            url: councilPointerImg,
+            w: 62 * 0.5,
+            h: 110 * 0.5,
+          },
         },
       },
       elementSelected: null,
@@ -163,7 +135,6 @@ export default {
         fullscreenControl: false,
         streetViewControl: false,
         mapTypeControl: false,
-        mapTypeId: 'satellite',
       })
 
       const infoWindow = new window.google.maps.InfoWindow()
@@ -172,6 +143,13 @@ export default {
       Object.keys(this.markers).forEach((place) => {
         this.markers[place].marker = new window.google.maps.Marker({
           ...this.markers[place],
+          icon: {
+            url: this.markers[place].icon.url,
+            scaledSize: new window.google.maps.Size(
+              this.markers[place].icon.w,
+              this.markers[place].icon.h
+            ),
+          },
           map: this.map,
         })
 
@@ -189,7 +167,7 @@ export default {
               ? 'church'
               : place === 'council'
               ? 'council'
-              : 'wineReception'
+              : 'party'
         })
       })
 
@@ -203,12 +181,12 @@ export default {
   },
   updated() {
     Object.keys(this.markers).forEach((place) => {
-      if (this.markers[place].marker.getAnimation() !== null) {
-        this.markers[place].marker.setAnimation(null)
+      if (this.markers[place].marker?.getAnimation() !== null) {
+        this.markers[place].marker?.setAnimation(null)
       }
     })
     if (this.placeSelected) {
-      this.markers[this.placeSelected].marker.setAnimation(
+      this.markers[this.placeSelected].marker?.setAnimation(
         window.google.maps.Animation.BOUNCE
       )
     }
@@ -225,41 +203,105 @@ export default {
 <style scoped>
 .map-schedule {
   display: flex;
+  flex-direction: column;
   width: 100%;
-  height: 50vh;
 }
 
 #gmap {
-  width: 60%;
-  height: 100%;
+  width: 100%;
+  height: 32rem;
 }
 
 .schedule {
-  width: 40%;
+  width: 100%;
+  padding: 3rem 0;
+  background-color: #faf8ff;
+  box-sizing: border-box;
 }
 
 .schedule-title {
+  font-family: 'DM Serif Display';
+  font-weight: 400;
+  font-size: 3.25rem;
+  line-height: 4.5rem;
+  color: #2e3f4b;
+
+  margin-bottom: 2rem;
+
   text-align: center;
-  margin: 1rem 0;
-  line-height: 2rem;
-  font-size: 1.3rem;
 }
 
 .schedule-subtitle {
+  font-family: 'Open Sans';
+  font-size: 2.5rem;
+  font-weight: 600;
+  line-height: 3.4rem;
+  text-align: center;
+  color: #8d4b9a;
+}
+
+.schedule-day {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+  margin: 2rem;
+  flex-wrap: wrap;
+}
+
+.schedule-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.schedule-item-icon {
+  width: 5rem;
+  height: 5rem;
+  margin-bottom: 1.5rem;
+}
+
+.schedule-item-title {
+  font-family: 'Open Sans';
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 2.4rem;
+  color: #2e3f4b;
+  margin-bottom: 0.5rem;
+}
+
+.schedule-item-hour {
+  font-family: 'Open Sans';
+  font-size: 1.75rem;
+  font-weight: 500;
   line-height: 2rem;
-  font-size: 1rem;
+  color: #2e3f4b;
+  margin-bottom: 0.5rem;
 }
 
-details {
-  margin-left: 2rem;
+.schedule-item-address {
+  font-family: 'Open Sans';
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.6rem;
+  color: #2e3f4b;
+  text-align: center;
 }
 
-details[open='open'] {
-  margin-bottom: 1rem;
-}
+@media screen and (max-width: 900px) {
+  .schedule {
+    padding: 2rem 1rem;
+  }
 
-summary {
-  margin-left: -1.5rem;
-  margin-bottom: 0.25rem;
+  .schedule-title {
+    font-size: 2rem;
+    line-height: 2.75rem;
+    text-align: center;
+  }
+
+  .schedule-subtitle {
+    font-size: 1.75rem;
+    line-height: 2.375rem;
+  }
 }
 </style>

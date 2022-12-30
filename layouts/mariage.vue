@@ -15,8 +15,5 @@ export default {
 </script>
 
 <style>
-/* @import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap'); */
-
-/* @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Parisienne&display=swap'); */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&family=Pacifico&family=Parisienne&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Open+Sans:wght@400;500;600&display=swap');
 </style>

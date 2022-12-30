@@ -1,11 +1,36 @@
 <template>
   <section class="countdown-container">
-    <img class="countdown-img" src="./img/bague.jpeg" />
-    <p class="countdown">
-      On se dira oui dans... <br />
-      {{ days }} jours {{ hours }} heures {{ minutes }} minutes
-      {{ seconds }} secondes
-    </p>
+    <h2 class="title">Le compte à rebours a commencé...</h2>
+    <h3 class="subtitle">
+      Voici le temps qu’il vous reste pour fêter avec nous le meilleur jour de
+      notre vie :
+    </h3>
+    <div class="countdown">
+      <div>
+        <div class="number">
+          {{ days }}
+        </div>
+        <div class="unit">jours</div>
+      </div>
+      <div>
+        <div class="number">
+          {{ hours }}
+        </div>
+        <div class="unit">heures</div>
+      </div>
+      <div>
+        <div class="number">
+          {{ minutes }}
+        </div>
+        <div class="unit">minutes</div>
+      </div>
+      <div>
+        <div class="number">
+          {{ seconds }}
+        </div>
+        <div class="unit">secondes</div>
+      </div>
+    </div>
   </section>
 </template>
 
@@ -86,19 +111,79 @@ export default {
 
 <style scoped>
 .countdown-container {
-  position: relative;
-}
-.countdown-img {
+  color: #2e3f4b;
+  background-color: #f1e8ff;
+  padding: 3rem 0;
   width: 100%;
-  aspect-ratio: 16/9;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
+.title {
+  font-family: 'DM Serif Display';
+  font-size: 3.25rem;
+  font-weight: 400;
+  line-height: 4.5rem;
+  text-align: justified;
+}
+
+.subtitle {
+  font-family: 'Open Sans';
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.563rem;
+}
+
 .countdown {
+  display: flex;
+  margin-top: 2rem;
+  gap: 2.5rem;
   text-align: center;
-  position: absolute;
-  top: 25vh;
-  left: 5vw;
-  font-size: 2rem;
-  line-height: 2.5rem;
+}
+
+.number {
+  font-family: 'Open Sans';
+  font-size: 5.5rem;
+  font-weight: 600;
+  line-height: 7.5rem;
+}
+.unit {
+  font-family: 'Open Sans';
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 2.1rem;
+}
+
+@media screen and (max-width: 900px) {
+  .countdown-container {
+    box-sizing: border-box;
+    padding: 3rem 1rem;
+  }
+
+  .title {
+    font-size: 2rem;
+    line-height: 2.75rem;
+    text-align: center;
+  }
+  .subtitle {
+    font-size: 1rem;
+    line-height: 1.375rem;
+    text-align: center;
+  }
+
+  .countdown {
+    gap: 1.5rem;
+  }
+
+  .number {
+    font-size: 2.75rem;
+    line-height: 3.75rem;
+  }
+
+  .unit {
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+  }
 }
 </style>
