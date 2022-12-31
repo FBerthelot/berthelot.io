@@ -35,9 +35,7 @@ La formation démarrera {date}, il est donc l'heure de préparer les choses suiv
 Concernant mes accès à vos locaux, est-ce qu'il y a une procédure spécifique ?
 Qui dois-je demander quand j'arrive ?
 
-
 Excellente fin de semaine et soyez en forme {data} à 9h ! 😉
-
 
 ## Après la formation
 
@@ -48,4 +46,3 @@ Chacun des commits se situe après un des exercices, vous pouvez donc naviguer f
 
 Je reste à l'écoute de vos questions. Comme je l'ai dit, n'hésitez pas 😃
 Excellente soirée,
-
