@@ -63,7 +63,7 @@ export default {
 }
 
 .title {
-  font-family: 'DM Serif Display';
+  font-family: 'DM Serif Display', serif;
   font-weight: 400;
   font-size: 3.25rem;
   line-height: 4.5rem;
@@ -73,7 +73,7 @@ export default {
 }
 
 .subtitle {
-  font-family: Open Sans;
+  font-family: 'Open Sans', sans-serif;
   font-size: 1.125rem;
   font-weight: 400;
   line-height: 1.6rem;
@@ -82,7 +82,7 @@ export default {
 }
 
 .wedding-button {
-  font-family: 'Open Sans';
+  font-family: 'Open Sans ', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 1.5rem;

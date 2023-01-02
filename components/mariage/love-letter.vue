@@ -30,7 +30,7 @@
 }
 
 .title {
-  font-family: 'DM Serif Display';
+  font-family: 'DM Serif Display', serif;
   font-weight: 400;
   font-size: 3.25rem;
   line-height: 4.5rem;
@@ -48,7 +48,7 @@
 }
 
 .invite-paragraph {
-  font-family: 'Open Sans';
+  font-family: 'Open Sans', sans-serif;
   font-size: 1rem;
   font-weight: 500;
   line-height: 1.6rem;

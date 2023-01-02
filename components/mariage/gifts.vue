@@ -33,7 +33,7 @@
 }
 
 .title {
-  font-family: 'DM Serif Display';
+  font-family: 'DM Serif Display', serif;
   font-style: normal;
   font-weight: 400;
   font-size: 3.25rem;
@@ -50,7 +50,7 @@
 .gifts-content p {
   width: 40%;
 
-  font-family: 'Open Sans';
+  font-family: 'Open Sans', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 1.125rem;

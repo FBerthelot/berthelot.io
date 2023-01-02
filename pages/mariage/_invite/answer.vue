@@ -596,7 +596,7 @@ export default {
 }
 
 .subtitle {
-  font-family: Open Sans;
+  font-family: 'Open Sans', sans-serif;
   font-size: 1.125rem;
   font-weight: 500;
   line-height: 1.6rem;
@@ -616,7 +616,7 @@ export default {
   display: block;
   margin-bottom: 0.5rem;
 
-  font-family: 'Open Sans';
+  font-family: 'Open Sans', sans-serif;
   font-size: 1.125rem;
   font-weight: 500;
   line-height: 1.6rem;
@@ -625,7 +625,7 @@ export default {
 }
 
 .question-instruction {
-  font-family: 'Open Sans';
+  font-family: 'Open Sans', sans-serif;
   font-size: 0.875rem;
   font-weight: 500;
   line-height: 1.125rem;
@@ -696,7 +696,7 @@ export default {
 }
 
 .answers.checkboxes label .option-title {
-  font-family: 'Open Sans';
+  font-family: 'Open Sans', sans-serif;
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.375rem;
@@ -706,7 +706,7 @@ export default {
 }
 
 .answers.checkboxes label .option-date {
-  font-family: 'Open Sans';
+  font-family: 'Open Sans', sans-serif;
   font-size: 0.75rem;
   font-weight: 400;
   line-height: 1rem;
@@ -727,7 +727,7 @@ input[type='text'] {
   width: 20rem;
   height: 2.75rem;
 
-  font-family: 'Open Sans';
+  font-family: 'Open Sans', sans-serif;
   font-size: 1rem;
   font-weight: 400;
   line-height: 2.5rem;
@@ -770,7 +770,7 @@ textarea {
   background: #f1e8ff;
   color: #2e3f4b;
 
-  font-family: 'Open Sans';
+  font-family: 'Open Sans', sans-serif;
   font-size: 1.125rem;
   font-weight: 500;
   line-height: 1.5rem;
@@ -802,7 +802,7 @@ textarea {
   display: flex;
   align-items: flex-start;
 
-  font-family: 'Open Sans';
+  font-family: 'Open Sans', sans-serif;
   font-size: 1.125rem;
   font-weight: 500;
   line-height: 1.5rem;
@@ -837,7 +837,7 @@ textarea {
 
   border: none;
 
-  font-family: 'Open Sans';
+  font-family: 'Open Sans', sans-serif;
   font-size: 1.5rem;
   font-weight: 500;
   line-height: 2rem;

@@ -287,7 +287,7 @@ export default {
 }
 
 .title {
-  font-family: 'DM Serif Display';
+  font-family: 'DM Serif Display', serif;
   font-weight: 400;
   font-size: 3.25rem;
   line-height: 4.5rem;
@@ -296,7 +296,7 @@ export default {
 }
 
 .subtitle {
-  font-family: Open Sans;
+  font-family: 'Open Sans', sans-serif;
   font-size: 1.125rem;
   font-weight: 400;
   line-height: 1.6rem;
@@ -313,7 +313,7 @@ export default {
   flex: 1;
   background: #f7f7f7;
   color: black;
-  font-family: 'Open Sans';
+  font-family: 'Open Sans', sans-serif;
   font-size: 1.125rem;
   font-weight: 500;
   line-height: 1.6rem;
@@ -362,7 +362,7 @@ export default {
 }
 
 .item-title {
-  font-family: 'Open Sans';
+  font-family: 'Open Sans', sans-serif;
   font-size: 1.125rem;
   font-weight: 600;
   line-height: 1.5rem;
@@ -382,7 +382,7 @@ a.item-title:focus {
 
 .item address {
   color: #000000;
-  font-family: 'Open Sans';
+  font-family: 'Open Sans', sans-serif;
   font-size: 1.125rem;
   font-weight: 400;
   line-height: 1.5rem;
@@ -392,7 +392,7 @@ a.item-title:focus {
 .phone-number,
 .phone-number a {
   color: #000000;
-  font-family: 'Open Sans';
+  font-family: 'Open Sans', sans-serif;
   font-size: 1.125rem;
   font-weight: 400;
   line-height: 1.5rem;

@@ -86,8 +86,8 @@
 <script>
 import montImg from './img/mont-min.png'
 import rocImg from './img/roc-min.png'
-import usImg from './img/us.png'
-import pontonImg from './img/ponton.png'
+import usImg from './img/us-2.png'
+import pontonImg from './img/ponton3.png'
 
 export default {
   name: 'Loader',
@@ -409,30 +409,36 @@ export default {
 
 .pontoon {
   position: absolute;
-  bottom: -5%;
-  left: calc(50% - 15vw);
-  height: 25vh;
-  width: 30vw;
+  bottom: 0;
+  left: 0;
+  height: 10vh;
+  width: 120vw;
+  z-index: 1;
 }
 @media (orientation: portrait) {
   .pontoon {
-    height: 25vh;
-    width: 50vw;
-    left: calc(50% - 25vw);
+    width: 135vw;
   }
 }
 
 /** US **/
 .us {
   width: 9vw;
-  bottom: 0;
-  left: calc(50% - 4.5vw);
+  bottom: 2.5vh;
+  left: calc(50% - 15vw);
+  z-index: 2;
 }
 @media (orientation: portrait) {
   .us {
-    width: 18vw;
-    bottom: 16vh;
-    left: calc(50% - 9vw);
+    width: 20vw;
+    bottom: 5vh;
+    left: calc(50% - 20vw);
+  }
+}
+
+@media (min-width: 700px) {
+  .us {
+    bottom: 2.5vh;
   }
 }
 
@@ -471,21 +477,21 @@ export default {
 }
 .date {
   position: relative;
-  font-family: 'DM Serif Display';
+  font-family: 'DM Serif Display', serif;
   font-size: 1.1rem;
   line-height: 1.5rem;
   text-align: center;
 }
 .title {
   position: relative;
-  font-family: 'DM Serif Display';
+  font-family: 'DM Serif Display', serif;
   font-size: 2rem;
   line-height: 2.5rem;
   text-align: center;
 }
 .subtitle {
   position: relative;
-  font-family: 'DM Serif Display';
+  font-family: 'DM Serif Display', serif;
   font-size: 1.1rem;
   line-height: 1.5rem;
   text-align: center;

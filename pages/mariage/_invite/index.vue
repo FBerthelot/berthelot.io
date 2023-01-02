@@ -167,7 +167,7 @@ export default {
 }
 
 .error-container {
-  font-family: 'Open Sans';
+  font-family: 'Open Sans', sans-serif;
   font-size: 1.125rem;
   font-weight: 500;
   line-height: 1.5rem;

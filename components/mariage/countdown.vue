@@ -121,7 +121,7 @@ export default {
 }
 
 .title {
-  font-family: 'DM Serif Display';
+  font-family: 'DM Serif Display', serif;
   font-size: 3.25rem;
   font-weight: 400;
   line-height: 4.5rem;
@@ -129,7 +129,7 @@ export default {
 }
 
 .subtitle {
-  font-family: 'Open Sans';
+  font-family: 'Open Sans', sans-serif;
   font-size: 1.125rem;
   font-weight: 500;
   line-height: 1.563rem;
@@ -143,13 +143,13 @@ export default {
 }
 
 .number {
-  font-family: 'Open Sans';
+  font-family: 'Open Sans', sans-serif;
   font-size: 5.5rem;
   font-weight: 600;
   line-height: 7.5rem;
 }
 .unit {
-  font-family: 'Open Sans';
+  font-family: 'Open Sans', sans-serif;
   font-size: 1.5rem;
   font-weight: 500;
   line-height: 2.1rem;
