@@ -2,6 +2,7 @@
 <template>
   <div
     :class="{
+      willBeAnimated: animate,
       animate: animate && everythingIsLoaded,
       reduceAtTheEnd,
       'mode-sunset': everythingIsLoaded && mode === 'sunset',
@@ -76,10 +77,9 @@
     <header class="header">
       <h2 class="date">19 & 20 août 2023</h2>
       <h1 class="title">Agnès et Florent</h1>
-      <!-- <p class="subtitle">Vont se marier !</p> -->
     </header>
 
-    <!-- <img src="./coeur.png" class="logo" alt="Agnès et Florent - 19 Août 2023" /> -->
+    <img src="./img/logo-02.svg" class="logo" alt="" />
   </div>
 </template>
 
@@ -497,22 +497,39 @@ export default {
   text-align: center;
 }
 
-/*
 .logo {
-  height: 7.5rem;
+  height: 5rem;
   width: auto;
   position: absolute;
-  right: 10rem;
-  bottom: 5rem;
-} */
+  right: 1rem;
+  bottom: 2rem;
+  opacity: 0;
+}
+
+@media (max-width: 900px) {
+  .logo {
+    height: 4rem;
+    bottom: 2.5rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .logo {
+    height: 3rem;
+    bottom: 2rem;
+  }
+}
 
 /** Animations **/
 
-.reduceAtTheEnd.landscape:not(.animate) {
+.reduceAtTheEnd.landscape {
   height: 80vh;
 }
 .animate.reduceAtTheEnd.landscape {
   animation: reduce 1s ease 10s 1 forwards;
+}
+.willBeAnimated.reduceAtTheEnd.landscape {
+  height: 100vh;
 }
 @keyframes reduce {
   0% {
@@ -590,46 +607,16 @@ export default {
   }
 }
 
-/* .animate .header {
-  animation: fade 10s;
+.animate .logo {
+  opacity: 0;
+  animation: fade 5s ease 5s 1 forwards;
 }
 @keyframes fade {
-  0%,
-  90% {
-    transform: translate3d(0, 50vh, 0);
-    color: transparent;
-  }
-  100% {
-    transform: translate3d(0, 0, 0);
-    color: var(--sun);
-  }
-} */
-
-/* .animate  .us {
-  animation: walk-on-pontoon 10s ease;
-}
-@keyframes walk-on-pontoon {
   0% {
-    transform: scale3d(1);
-    bottom: -18vmin;
-  }
-  100% {
-    bottom: 8vmin;
-    transform: scale3d(0.8);
-  }
-} */
-
-/* .animate .title,
-.animate .logo {
-  animation: title-fade 20s ease;
-}
-@keyframes title-fade {
-  0%,
-  30% {
     opacity: 0;
   }
   100% {
-    opacity: 1;
+    opacity: 0.5;
   }
-} */
+}
 </style>
