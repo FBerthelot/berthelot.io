@@ -30,7 +30,7 @@
             </address>
           </div>
 
-          <div class="schedule-item" @click="onSelect($event, 'party')">
+          <div class="schedule-item" @click="onSelect($event, 'castle')">
             <img class="schedule-item-icon" alt="" src="./img/castle.svg" />
             <h4 class="schedule-item-title">Fête ou Wine selon</h4>
             <div class="schedule-item-hour">à partir de 16h</div>
@@ -46,7 +46,7 @@
       <article>
         <h4 class="schedule-subtitle">20 août 2023</h4>
         <div class="schedule-day">
-          <div class="schedule-item" @click="onSelect($event, 'chill')">
+          <div class="schedule-item" @click="onSelect($event, 'castle')">
             <img
               class="schedule-item-icon"
               alt=""
@@ -195,6 +195,7 @@ export default {
     onSelect(event, place) {
       event.preventDefault()
       this.elementSelected = this.elementSelected === place ? null : place
+      this.$refs['gmap-ref'].scrollIntoView({ behavior: 'smooth' })
     },
   },
 }
@@ -253,6 +254,14 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
+.schedule-item:hover {
+  box-shadow: 0 0 2rem #8d4b9a;
 }
 
 .schedule-item-icon {

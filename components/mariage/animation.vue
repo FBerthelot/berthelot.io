@@ -521,7 +521,6 @@ export default {
 }
 
 /** Animations **/
-
 .reduceAtTheEnd.landscape {
   height: 80vh;
 }
@@ -579,9 +578,9 @@ export default {
 }
 
 .animate .sun-container-1:after {
-  animation: fade 10s;
+  animation: sunfade 10s forwards;
 }
-@keyframes fade {
+@keyframes sunfade {
   0%,
   30% {
     opacity: 0;

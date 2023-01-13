@@ -106,14 +106,18 @@
 
 <template>
   <div id="wedding-page">
-    <main class="main">
-      <div v-if="error" class="error-container">
-        Une erreur est survenu 😱. <br />
+    <div v-if="error" class="error-container">
+      <p>Une erreur est survenu 😱.</p>
+      <p>
         Vous pouvez nous contacter par
         <a href="mailto:florent@berthelot.io">mail</a> ou par
         <a href="tel:+33650999618">téléphone.</a>
-      </div>
-      <span v-if="loading">Chargement...</span>
+      </p>
+    </div>
+    <div v-if="loading" class="loading">
+      <img :src="logoImg" alt="Chargement..." />
+    </div>
+    <main class="main">
       <ValidationObserver v-slot="{ handleSubmit }" component="div">
         <form
           v-if="!loading && !error"
@@ -449,9 +453,13 @@ import {
 
 import cityHallImg from '~/components/mariage/img/mariage_civil.svg'
 import churchImg from '~/components/mariage/img/church.svg'
-// import partyImg from '~/components/mariage/img/diner.svg'
-// import wineReceptionImg from '~/components/mariage/img/diner.svg'
+import partyImg from '~/components/mariage/img/diner.svg'
+import wineReceptionImg from '~/components/mariage/img/cocktail.svg'
 import afterImg from '~/components/mariage/img/just-maried.svg'
+import logoImg from '~/components/mariage/img/logo-04.svg'
+import noPetImg from '~/components/mariage/img/no-pets.svg'
+import housingImg from '~/components/mariage/img/hotel.svg'
+import parkerImg from '~/components/mariage/img/driver.svg'
 
 extend('required', {
   validate(value) {
@@ -473,12 +481,13 @@ export default {
     return {
       churchImg,
       cityHallImg,
-      partyImg: churchImg,
-      wineReceptionImg: churchImg,
+      partyImg,
+      wineReceptionImg,
       afterImg,
-      noPetImg: churchImg,
-      housingImg: churchImg,
-      parkerImg: churchImg,
+      noPetImg,
+      housingImg,
+      parkerImg,
+      logoImg,
       invitation: {},
       formValues: undefined,
       loading: true,
@@ -580,6 +589,49 @@ export default {
 
 .main {
   padding: 2rem 20rem;
+  height: 100%;
+}
+
+.loading {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+.loading img {
+  width: 5rem;
+  height: auto;
+  animation: blink 1s infinite alternate;
+}
+@keyframes blink {
+  0% {
+    opacity: 0.4;
+    scale: 0.2;
+  }
+  100% {
+    opacity: 1;
+    scale: 1.5;
+  }
+}
+
+.error-container {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.6rem;
+}
+.error-container a {
+  color: #8d4b9a;
+}
+.error-container a:hover {
+  text-decoration: none;
 }
 
 .title {
@@ -847,5 +899,40 @@ textarea {
 
 .error {
   color: red;
+}
+
+@media screen and (max-width: 850px) {
+  .main {
+    padding: 2rem 1rem;
+  }
+  .title {
+    font-size: 2rem;
+    line-height: 2.75rem;
+  }
+
+  .answers.checkboxes {
+    justify-content: center;
+  }
+
+  .answers.checkboxes label input ~ .checkbox-content {
+    height: 9rem;
+    width: 9rem;
+  }
+
+  .answers.checkboxes.checkboxes--small label {
+    width: calc(50% - 1rem);
+  }
+  .answers.checkboxes.checkboxes--small label input ~ .checkbox-content {
+    width: auto;
+  }
+
+  .meal-people fieldset {
+    display: block;
+  }
+
+  .question-container textarea,
+  input[type='text'] {
+    width: calc(100% - 2rem);
+  }
 }
 </style>
