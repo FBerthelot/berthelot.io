@@ -65,7 +65,7 @@
 
       <Map v-if="!error && invitation && !loading" />
 
-      <!-- <NeedAnwser v-if="!error && invitation && !loading" /> -->
+      <NeedAnwser v-if="!error && invitation && !loading" />
 
       <Infos v-if="!error && invitation && !loading" />
 
