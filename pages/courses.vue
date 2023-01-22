@@ -118,19 +118,39 @@ export default {
           name: 'React',
           description: {
             fr: `
-              Cours d'une semaine pour l'apprentisage du framework de facebook et vercel.
+              Cours de 3 jours pour l'apprentisage du framework de facebook et vercel.
               Voyons ensemble ce qui tout ce qui compose un des framework frontend les plus populaires.
               <br></br>
               Durée de la formation :  3 jours
             `,
             en: `
-              One week course to learn the facebook's and vercel's frontend framwork.
+              3 days course to learn the facebook's and vercel's frontend framwork.
               Let's see together everything is in one of the most popular frontend framework.
               <br/><br/>
               Duration: 3 days.
             `,
           },
           url: 'https://slides.com/florentberthelot/react',
+          external: true,
+          type: 'course',
+        },
+        {
+          name: 'React Avancé',
+          description: {
+            fr: `
+              Cours de 3 jours pour approfondir React et maîtriser le framework.
+              Après cette formation, le fonctionnement interne de React, Redux et les Hooks n'aurons plus aucun secret pour vous.
+              <br></br>
+              Durée de la formation :  3 jours
+            `,
+            en: `
+              A 3 days course to deepen your understanding of React and master the framework.
+              After this course, the interal workings of React, Redux and Hooks won't have any more secrets for you.
+              <br/><br/>
+              Duration: 3 days.
+            `,
+          },
+          url: 'https://slides.com/florentberthelot/react-advanced',
           external: true,
           type: 'course',
         },
