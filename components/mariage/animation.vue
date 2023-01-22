@@ -1,14 +1,14 @@
 <i18n>
 {
   "fr": {
-    "bad_reception": "Tu capte mal 😅",
+    "bad_reception": "Tu captes mal... 😅",
     "date": "19 & 20 août 2023",
     "name": "Agnès et Florent"
   },
   "en": {
-    "bad_reception": "Tu capte mal 😅",
-    "date": "19 & 20 août 2023",
-    "name": "Agnès et Florent"
+    "bad_reception": "You have poor reception... 😅",
+    "date": "19th & 20th of August 2023",
+    "name": "Agnès and Florent"
   }
 }
 </i18n>
