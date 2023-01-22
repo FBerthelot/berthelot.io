@@ -63,7 +63,7 @@
 
       <Countdown v-if="!error && invitation && !loading" />
 
-      <Map v-if="!error && invitation && !loading" />
+      <Map v-if="!error && invitation && !loading" :invitation="invitation" />
 
       <NeedAnwser v-if="!error && invitation && !loading" />
 
@@ -107,7 +107,7 @@ export default {
       animationOver: false,
       loading: true,
       error: false,
-      invitation: {},
+      invitation: null,
     }
   },
   head() {

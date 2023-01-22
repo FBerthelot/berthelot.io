@@ -118,7 +118,11 @@
       <article>
         <h4 class="schedule-subtitle">{{ $t('day1.title') }}</h4>
         <div class="schedule-day">
-          <div class="schedule-item" @click="onSelect($event, 'council')">
+          <div
+            v-if="invitation.invitedTo.cityHall"
+            class="schedule-item"
+            @click="onSelect($event, 'council')"
+          >
             <img
               class="schedule-item-icon"
               alt=""
@@ -134,7 +138,11 @@
               {{ $t('day1.council.address.line3') }}
             </address>
           </div>
-          <div class="schedule-item" @click="onSelect($event, 'church')">
+          <div
+            v-if="invitation.invitedTo.church"
+            class="schedule-item"
+            @click="onSelect($event, 'church')"
+          >
             <img class="schedule-item-icon" alt="" src="./img/church.svg" />
             <h4 class="schedule-item-title">{{ $t('day1.church.title') }}</h4>
             <div class="schedule-item-hour">
@@ -147,24 +155,61 @@
             </address>
           </div>
 
-          <div class="schedule-item" @click="onSelect($event, 'castle')">
+          <div
+            v-if="
+              invitation.invitedTo.party || invitation.invitedTo.wineReception
+            "
+            class="schedule-item"
+            @click="onSelect($event, 'castle')"
+          >
             <img class="schedule-item-icon" alt="" src="./img/castle.svg" />
             <h4 class="schedule-item-title">
-              {{ $t('day1.wineReceptionOnly.title') }}
+              {{
+                $t(
+                  invitation.invitedTo.party
+                    ? 'day1.allParty.title'
+                    : 'day1.wineReceptionOnly.title'
+                )
+              }}
             </h4>
             <div class="schedule-item-hour">
-              {{ $t('day1.wineReceptionOnly.duration') }}
+              {{
+                $t(
+                  invitation.invitedTo.party
+                    ? 'day1.allParty.duration'
+                    : 'day1.wineReceptionOnly.duration'
+                )
+              }}
             </div>
             <address class="schedule-item-address">
-              {{ $t('day1.wineReceptionOnly.address.line1') }}<br />
-              {{ $t('day1.wineReceptionOnly.address.line2') }} <br />
-              {{ $t('day1.wineReceptionOnly.address.line3') }}
+              {{
+                $t(
+                  invitation.invitedTo.party
+                    ? 'day1.allParty.address.line1'
+                    : 'day1.wineReceptionOnly.address.line1'
+                )
+              }}<br />
+              {{
+                $t(
+                  invitation.invitedTo.party
+                    ? 'day1.allParty.address.line2'
+                    : 'day1.wineReceptionOnly.address.line2'
+                )
+              }}
+              <br />
+              {{
+                $t(
+                  invitation.invitedTo.party
+                    ? 'day1.allParty.address.line3'
+                    : 'day1.wineReceptionOnly.address.line3'
+                )
+              }}
             </address>
           </div>
         </div>
       </article>
 
-      <article>
+      <article v-if="invitation.invitedTo.after">
         <h4 class="schedule-subtitle">{{ $t('day2.title') }}</h4>
         <div class="schedule-day">
           <div class="schedule-item" @click="onSelect($event, 'castle')">
@@ -196,7 +241,12 @@ import castlePointerImg from './img/castle_pointer.png'
 import councilPointerImg from './img/council_pointer.png'
 
 export default {
-  components: {},
+  props: {
+    invitation: {
+      type: Object,
+      required: true,
+    },
+  },
   data() {
     return {
       map: null,
