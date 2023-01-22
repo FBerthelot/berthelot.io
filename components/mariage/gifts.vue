@@ -1,21 +1,33 @@
+<i18n>
+{
+  "fr": {
+    "title": "Voyage de noces",
+    "p1": "Votre présence est notre cadeau de mariage le plus précieux.",
+    "p2": "Nous ne souhaitons pas établir de liste de mariage, ceux qui le voudront pourront participer à notre voyage de noces. Une urne sera à votre disposition pendant la soirée.",
+    "img_alt": "Plage paradisiaque"
+  },
+  "en": {
+    "title": "Voyage de noces",
+    "p1": "Votre présence est notre cadeau de mariage le plus précieux.",
+    "p2": "Nous ne souhaitons pas établir de liste de mariage, ceux qui le voudront pourront participer à notre voyage de noces. Une urne sera à votre disposition pendant la soirée.",
+    "img_alt": "Plage paradisiaque"
+  }
+}
+</i18n>
+
 <template>
   <section class="gifts">
-    <h3 class="title">Voyage de noces</h3>
+    <h3 class="title">{{ $t('title') }}</h3>
 
     <div class="gifts-content">
       <p>
-        Votre présence est notre cadeau de mariage le plus précieux. <br />
+        {{ $t('p1') }}
+        <br />
         <br />
 
-        Nous ne souhaitons pas établir de liste de mariage, ceux qui le voudront
-        pourront participer à notre voyage de noces. Une urne sera à votre
-        disposition pendant la soirée.
+        {{ $t('p2') }}
       </p>
-      <img
-        class="illustration"
-        src="./img/maldives.png"
-        alt="Plage paradisiaque"
-      />
+      <img class="illustration" src="./img/maldives.png" :alt="$t('img_alt')" />
     </div>
   </section>
 </template>

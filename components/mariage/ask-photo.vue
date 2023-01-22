@@ -1,12 +1,24 @@
+<i18n>
+{
+  "fr": {
+    "title": "Partage de photos et vidéos",
+    "paragraph": " Vous allez pouvoir nous partager les photos et vidéos du mariage via ce site !"
+  },
+  "en": {
+    "title": "Partage de photos et vidéos",
+    "paragraph": " Vous allez pouvoir nous partager les photos et vidéos du mariage via ce site !"
+  }
+}
+</i18n>
+
 <template>
   <section class="ask-photo">
-    <h3 class="title">Partage de photos et vidéos</h3>
+    <h3 class="title">{{ $t('title') }}</h3>
 
     <div class="ask-photo-content">
       <img class="illustration" src="./img/patchwork.png" alt="" />
       <p>
-        Vous allez pouvoir nous partager les photos et vidéos du mariage via ce
-        site !
+        {{ $t('paragraph') }}
       </p>
     </div>
   </section>

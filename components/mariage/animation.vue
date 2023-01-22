@@ -1,3 +1,18 @@
+<i18n>
+{
+  "fr": {
+    "bad_reception": "Tu capte mal 😅",
+    "date": "19 & 20 août 2023",
+    "name": "Agnès et Florent"
+  },
+  "en": {
+    "bad_reception": "Tu capte mal 😅",
+    "date": "19 & 20 août 2023",
+    "name": "Agnès et Florent"
+  }
+}
+</i18n>
+
 <!-- modified from https://codepen.io/pehaa/pen/yLVeLNg -->
 <template>
   <div
@@ -10,7 +25,9 @@
     }"
     class="landscape"
   >
-    <div v-if="!everythingIsLoaded" class="loading">Tu capte mal 😅</div>
+    <div v-if="!everythingIsLoaded" class="loading">
+      {{ $t('bad_reception') }}
+    </div>
 
     <img
       v-if="images.mont.loaded"
@@ -75,8 +92,8 @@
     />
 
     <header class="header">
-      <h2 class="date">19 & 20 août 2023</h2>
-      <h1 class="title">Agnès et Florent</h1>
+      <h2 class="date">{{ $t('date') }}</h2>
+      <h1 class="title">{{ $t('name') }}</h1>
     </header>
 
     <img src="./img/logo-02.svg" class="logo" alt="" />

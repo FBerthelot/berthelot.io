@@ -1,18 +1,31 @@
+<i18n>
+{
+  "fr": {
+    "title": "On se marie !",
+    "p1": "Après 5 ans d'amour et de bonheur, nous nous préparons à embarquer pour une nouvelle aventure à deux.",
+    "p2": "Nous avons le plaisir de vous inviter à célébrer avec nous notre mariage qui aura lieu le 19 août 2023 au bord de la mer qui nous tient tant à coeur.",
+    "p3": "⚓️&nbsp;Préparez-vous à larguer les amarres avec nous&nbsp;!&nbsp;⚓️"
+  },
+  "en": {
+    "title": "On se marie !",
+    "p1": "Après 5 ans d'amour et de bonheur, nous nous préparons à embarquer pour une nouvelle aventure à deux.",
+    "p2": "Nous avons le plaisir de vous inviter à célébrer avec nous notre mariage qui aura lieu le 19 août 2023 au bord de la mer qui nous tient tant à coeur.",
+    "p3": "⚓️&nbsp;Préparez-vous à larguer les amarres avec nous&nbsp;!&nbsp;⚓️"
+  }
+}
+</i18n>
+
 <template>
   <section class="invite">
-    <h2 class="title">On se marie !</h2>
+    <h2 class="title">{{ $t('title') }}</h2>
     <div class="container">
       <p class="invite-paragraph">
-        Après 5 ans d'amour et de bonheur, nous nous préparons à embarquer pour
-        une nouvelle aventure à deux.
+        {{ $t('p1') }}
         <br /><br />
-        Nous avons le plaisir de vous inviter à célébrer avec nous notre mariage
-        qui aura lieu le 19 août 2023 au bord de la mer qui nous tient tant à
-        coeur.
-
+        {{ $t('p2') }}
         <br />
         <br />
-        ⚓️&nbsp;Préparez-vous à larguer les amarres avec nous&nbsp;!&nbsp;⚓️
+        {{ $t('p3') }}
       </p>
 
       <img class="dans-la-vallee" src="./img/bague.jpeg" />

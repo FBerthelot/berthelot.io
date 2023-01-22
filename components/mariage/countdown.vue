@@ -1,34 +1,54 @@
+<i18n>
+{
+  "fr": {
+    "title": "Le compte à rebours a commencé...",
+    "subtitle": " Voici le temps qu’il vous reste pour fêter avec nous le meilleur jour de notre vie :",
+    "days": "jours",
+    "hours": "heures",
+    "minutes": "minutes",
+    "secondes": "secondes"
+  },
+  "en": {
+    "title": "Le compte à rebours a commencé...",
+    "subtitle": " Voici le temps qu’il vous reste pour fêter avec nous le meilleur jour de notre vie :",
+    "days": "jours",
+    "hours": "heures",
+    "minutes": "minutes",
+    "secondes": "secondes"
+  }
+}
+</i18n>
+
 <template>
   <section class="countdown-container">
-    <h2 class="title">Le compte à rebours a commencé...</h2>
+    <h2 class="title">{{ $t('title') }}</h2>
     <h3 class="subtitle">
-      Voici le temps qu’il vous reste pour fêter avec nous le meilleur jour de
-      notre vie :
+      {{ $t('subtitle') }}
     </h3>
     <div class="countdown">
       <div>
         <div class="number">
           {{ days }}
         </div>
-        <div class="unit">jours</div>
+        <div class="unit">{{ $t('days') }}</div>
       </div>
       <div>
         <div class="number">
           {{ hours }}
         </div>
-        <div class="unit">heures</div>
+        <div class="unit">{{ $t('hours') }}</div>
       </div>
       <div>
         <div class="number">
           {{ minutes }}
         </div>
-        <div class="unit">minutes</div>
+        <div class="unit">{{ $t('minutes') }}</div>
       </div>
       <div>
         <div class="number">
           {{ seconds }}
         </div>
-        <div class="unit">secondes</div>
+        <div class="unit">{{ $t('secondes') }}</div>
       </div>
     </div>
   </section>

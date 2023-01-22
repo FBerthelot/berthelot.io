@@ -1,7 +1,40 @@
+<i18n>
+{
+  "fr": {
+    "title": "Hébergement",
+    "subtitle": "Voici les possibilités de logements à proximité",
+
+    "gites": {
+      "title": "Gîtes"
+    },
+    "hostel": {
+      "title": "Hôtels"
+    },
+    "houses": {
+      "title": "Location"
+    }
+  },
+  "en": {
+    "title": "Hébergement",
+    "subtitle": "Voici les possibilités de logements à proximité",
+
+    "gites": {
+      "title": "Gîtes"
+    },
+    "hostel": {
+      "title": "Hôtels"
+    },
+    "houses": {
+      "title": "Location"
+    }
+  }
+}
+</i18n>
+
 <template>
   <section class="hosting">
-    <h2 class="title">Hébergement</h2>
-    <h2 class="subtitle">Voici les possibilités de logements à proximité</h2>
+    <h2 class="title">{{ $t('title') }}</h2>
+    <h2 class="subtitle">{{ $t('subtitle') }}</h2>
 
     <div class="tablist" role="tablist" aria-labelledby="tablist-1">
       <button
@@ -13,7 +46,7 @@
         aria-controls="tabpanel-1"
         @click="changeSelectedTab('bnb')"
       >
-        Gîtes
+        {{ $t('gites.title') }}
       </button>
       <button
         id="tab-2"
@@ -25,7 +58,7 @@
         tabindex="-1"
         @click="changeSelectedTab('hotel')"
       >
-        Hôtels
+        {{ $t('hostel.title') }}
       </button>
       <button
         id="tab-3"
@@ -37,7 +70,7 @@
         tabindex="-1"
         @click="changeSelectedTab('houses')"
       >
-        Location
+        {{ $t('houses.title') }}
       </button>
     </div>
 

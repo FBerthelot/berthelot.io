@@ -1,26 +1,49 @@
+<i18n>
+{
+  "fr": {
+    "title": "Vous vous joignez à nous ?",
+    "subtitle": "Réponse souhaitée avant le 1er mars 2023",
+    "answer": "Répondre à l'invitation",
+    "answered": {
+      "title": "★ Vous pouvez gardez ce site dans vos favoris ! ★",
+      "addToCalendar": "Ajouter au calendrier"
+    }
+  },
+  "en": {
+    "title": "Vous vous joignez à nous ?",
+    "subtitle": "Réponse souhaitée avant le 1er mars 2023",
+    "answer": "Répondre à l'invitation",
+    "answered": {
+      "title": "★ Vous pouvez gardez ce site dans vos favoris ! ★",
+      "addToCalendar": "Ajouter au calendrier"
+    }
+  }
+}
+</i18n>
+
 <template>
   <section class="need-answer">
     <div class="firework-container"></div>
 
     <div class="container">
-      <h3 class="title">Vous vous joignez à nous ?</h3>
-      <h4 class="subtitle">Réponse souhaitée avant le 1er mars 2023</h4>
+      <h3 class="title">{{ $t('title') }}</h3>
+      <h4 class="subtitle">{{ $t('subtitle') }}</h4>
       <nuxt-link
         :to="localePath(`/mariage/${$route.params.invite}/answer`)"
         class="wedding-button"
       >
-        Répondre à l'invitation
+        {{ $t('answer') }}
       </nuxt-link>
 
       <div v-if="isAnswered" class="actions">
-        <p>★ Vous pouvez gardez ce site dans vos favoris ! ★</p>
+        <p>{{ $t('answered.title') }}</p>
 
         <!-- https://www.labnol.org/calendar/ -->
         <a
           href="https://calendar.google.com/calendar/render?action=TEMPLATE&dates=20230819T120000Z%2F20230819T215900Z&location=Granville&text=Mariage%20Agn%C3%A8s%20Florent"
           class="addToCalendar"
           target="_blank"
-          >Ajouter au calendrier (Google)</a
+          >{{ $t('title.addToCalendar') }}</a
         >
       </div>
     </div>
@@ -72,7 +95,7 @@ export default {
             max: 0.5,
           },
         },
-        // autoresize: true,
+        autoresize: true,
         brightness: {
           min: 50,
           max: 80,
@@ -81,18 +104,18 @@ export default {
             max: 0.03,
           },
         },
-        // sound: {
-        //   enabled: false,
-        //   files: [
-        //     location.href + 'sounds/explosion0.mp3',
-        //     location.href + 'sounds/explosion1.mp3',
-        //     location.href + 'sounds/explosion2.mp3',
-        //   ],
-        //   volume: {
-        //     min: 2,
-        //     max: 4,
-        //   },
-        // },
+        sound: {
+          enabled: true,
+          files: [
+            '/assets/explosion0.mp3',
+            '/assets/explosion1.mp3',
+            '/assets/explosion2.mp3',
+          ],
+          volume: {
+            min: 2,
+            max: 4,
+          },
+        },
         mouse: {
           click: true,
           move: false,
@@ -103,6 +126,7 @@ export default {
     })
   },
   destroyed() {
+    this.fireworks?.stop()
     this.fireworks?.clear()
   },
 }

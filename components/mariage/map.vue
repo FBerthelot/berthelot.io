@@ -1,9 +1,122 @@
+<i18n>
+{
+  "fr": {
+    "title": "Où et quand",
+    "day1": {
+      "title": "19 août 2023",
+      "council": {
+        "title": "Mariage civil",
+        "duration": "13h - 13h30",
+        "address": {
+          "line1": "La mairie de Donville-les-Bains",
+          "line2": "97 Route de Coutances",
+          "line3": "50350 Donville-les-Bains"
+        }
+      },
+      "church": {
+        "title": "Mariage religieux",
+        "duration": "14h - 15h",
+        "address": {
+          "line1": "L'église de Notre-Dame du Cap Lihou",
+          "line2": "Place du Parvis Notre Dame",
+          "line3": "50400 Granville"
+        }
+      },
+      "wineReceptionOnly": {
+        "title": "Vin d'honneur",
+        "duration": "à partir de 16h",
+        "address": {
+          "line1": "Château de la Crête",
+          "line2": "476 Rue de la Crète",
+          "line3": "50400 Granville"
+        }
+      },
+      "allParty": {
+        "title": "Réjouissances",
+        "duration": "16h - 5h",
+        "address": {
+          "line1": "Château de la Crête",
+          "line2": "476 Rue de la Crète",
+          "line3": "50400 Granville"
+        }
+      }
+    },
+    "day2": {
+      "title": "20 août 2023",
+      "comeback": {
+        "title": "Retour des mariés",
+        "duration": "à partir de 11h",
+        "address": {
+          "line1": "Château de la Crête",
+          "line2": "476 Rue de la Crète",
+          "line3": "50400 Granville"
+        }
+      }
+    }
+  },
+  "en": {
+    "title": "Où et quand",
+    "day1": {
+      "title": "19 août 2023",
+      "council": {
+        "title": "Mariage civil",
+        "duration": "13h - 13h30",
+        "address": {
+          "line1": "La mairie de Donville-les-Bains",
+          "line2": "97 Route de Coutances",
+          "line3": "50350 Donville-les-Bains"
+        }
+      },
+      "church": {
+        "title": "Mariage religieux",
+        "duration": "14h - 15h",
+        "address": {
+          "line1": "L'église de Notre-Dame du Cap Lihou",
+          "line2": "Place du Parvis Notre Dame",
+          "line3": "50400 Granville"
+        }
+      },
+      "wineReceptionOnly": {
+        "title": "Vin d'honneur",
+        "duration": "à partir de 16h",
+        "address": {
+          "line1": "Château de la Crête",
+          "line2": "476 Rue de la Crète",
+          "line3": "50400 Granville"
+        }
+      },
+      "allParty": {
+        "title": "Réjouissances",
+        "duration": "16h - 5h",
+        "address": {
+          "line1": "Château de la Crête",
+          "line2": "476 Rue de la Crète",
+          "line3": "50400 Granville"
+        }
+      }
+    },
+    "day2": {
+      "title": "20 août 2023",
+      "comeback": {
+        "title": "Retour des mariés",
+        "duration": "à partir de 11h",
+        "address": {
+          "line1": "Château de la Crête",
+          "line2": "476 Rue de la Crète",
+          "line3": "50400 Granville"
+        }
+      }
+    }
+  }
+}
+</i18n>
+
 <template>
   <section class="map-schedule">
     <div class="schedule">
-      <h3 class="schedule-title">Où et quand</h3>
+      <h3 class="schedule-title">{{ $t('title') }}</h3>
       <article>
-        <h4 class="schedule-subtitle">19 août 2023</h4>
+        <h4 class="schedule-subtitle">{{ $t('day1.title') }}</h4>
         <div class="schedule-day">
           <div class="schedule-item" @click="onSelect($event, 'council')">
             <img
@@ -11,40 +124,48 @@
               alt=""
               src="./img/mariage_civil.svg"
             />
-            <h4 class="schedule-item-title">Mariage civil</h4>
-            <div class="schedule-item-hour">13h - 13h30</div>
+            <h4 class="schedule-item-title">{{ $t('day1.council.title') }}</h4>
+            <div class="schedule-item-hour">
+              {{ $t('day1.council.duration') }}
+            </div>
             <address class="schedule-item-address">
-              La mairie de Donville-les-Bains<br />
-              97 Route de Coutances <br />
-              50350 Donville-les-Bains
+              {{ $t('day1.council.address.line1') }}<br />
+              {{ $t('day1.council.address.line2') }} <br />
+              {{ $t('day1.council.address.line3') }}
             </address>
           </div>
           <div class="schedule-item" @click="onSelect($event, 'church')">
             <img class="schedule-item-icon" alt="" src="./img/church.svg" />
-            <h4 class="schedule-item-title">Mariage religieux</h4>
-            <div class="schedule-item-hour">14h - 15h</div>
+            <h4 class="schedule-item-title">{{ $t('day1.church.title') }}</h4>
+            <div class="schedule-item-hour">
+              {{ $t('day1.church.duration') }}
+            </div>
             <address class="schedule-item-address">
-              L'église de Notre-Dame du Cap Lihou<br />
-              Place du Parvis Notre Dame<br />
-              50400 Granville
+              {{ $t('day1.church.address.line1') }}<br />
+              {{ $t('day1.church.address.line2') }} <br />
+              {{ $t('day1.church.address.line3') }}
             </address>
           </div>
 
           <div class="schedule-item" @click="onSelect($event, 'castle')">
             <img class="schedule-item-icon" alt="" src="./img/castle.svg" />
-            <h4 class="schedule-item-title">Fête ou Wine selon</h4>
-            <div class="schedule-item-hour">à partir de 16h</div>
+            <h4 class="schedule-item-title">
+              {{ $t('day1.wineReceptionOnly.title') }}
+            </h4>
+            <div class="schedule-item-hour">
+              {{ $t('day1.wineReceptionOnly.duration') }}
+            </div>
             <address class="schedule-item-address">
-              Château de la Crête<br />
-              476 Rue de la Crète<br />
-              50400 Granville
+              {{ $t('day1.wineReceptionOnly.address.line1') }}<br />
+              {{ $t('day1.wineReceptionOnly.address.line2') }} <br />
+              {{ $t('day1.wineReceptionOnly.address.line3') }}
             </address>
           </div>
         </div>
       </article>
 
       <article>
-        <h4 class="schedule-subtitle">20 août 2023</h4>
+        <h4 class="schedule-subtitle">{{ $t('day2.title') }}</h4>
         <div class="schedule-day">
           <div class="schedule-item" @click="onSelect($event, 'castle')">
             <img
@@ -52,12 +173,14 @@
               alt=""
               src="./img/just-maried.svg"
             />
-            <h4 class="schedule-item-title">Retour des mariés</h4>
-            <div class="schedule-item-hour">à partir de 11h</div>
+            <h4 class="schedule-item-title">{{ $t('day2.comeback.title') }}</h4>
+            <div class="schedule-item-hour">
+              {{ $t('day2.comeback.duration') }}
+            </div>
             <address class="schedule-item-address">
-              Château de la Crête<br />
-              476 Rue de la Crète<br />
-              50400 Granville
+              {{ $t('day2.comeback.address.line1') }}<br />
+              {{ $t('day2.comeback.address.line2') }} <br />
+              {{ $t('day2.comeback.address.line3') }}
             </address>
           </div>
         </div>
