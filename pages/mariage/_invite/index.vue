@@ -26,7 +26,7 @@
     "slow_internet": "Your internet connection is slow. 😅 Please wait a moment...",
     "fatal_error": {
       "p1": "An error occured ! 😱",
-      "p2": "You can contact us by",
+      "p2": "Please contact us by",
       "mail": "email",
       "p3": "or by",
       "phone": "phone."
