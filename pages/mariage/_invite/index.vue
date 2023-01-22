@@ -3,14 +3,14 @@
   "fr": {
     "title": "Mariage d'Agnès et Florent - 19 Août 2023",
     "not_found": {
-      "p1": "Désolés, nous ne trouvons pas ton invitation. | Désolés, nous ne trouvons pas votre invitation.",
-      "p2": "Tu peux nous contacter par | Vous pouvez nous contacter par",
+      "p1": "Désolés, nous ne trouvons pas ton invitation.",
+      "p2": "Tu peux nous contacter par",
       "mail": "email."
     },
-    "slow_internet": "Ta connexion internet est mauvaise. 😅 Merci de patienter encore un peu... | Votre connexion internet est mauvaise. 😅 Merci de patienter encore un peu...",
+    "slow_internet": "La connexion internet est mauvaise. 😅 Merci de patienter encore un peu...",
     "fatal_error": {
       "p1": "Une erreur est survenue ! 😱",
-      "p2": "Tu peux nous contacter par | Vous pouvez nous contacter par",
+      "p2": "Merci de nous contacter par",
       "mail": "email",
       "p3": "ou par",
       "phone": "téléphone."
