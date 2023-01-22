@@ -1,35 +1,35 @@
 <i18n>
 {
   "fr": {
-    "title": "Mariage Agnès et Florent - 19 Août 2022",
+    "title": "Mariage d'Agnès et Florent - 19 Août 2023",
     "not_found": {
-      "p1": "Désolé, mais nous ne trouvons pas votre invitation.",
-      "p2": "Vous pouvez nous contacter par",
+      "p1": "Désolés, nous ne trouvons pas ton invitation. | Désolés, nous ne trouvons pas votre invitation.",
+      "p2": "Tu peux nous contacter par | Vous pouvez nous contacter par",
       "mail": "email."
     },
-    "slow_internet": "Ta connexion internet est mauvaise 😅. Faut patienter encore un peu...",
+    "slow_internet": "Ta connexion internet est mauvaise. 😅 Merci de patienter encore un peu... | Votre connexion internet est mauvaise. 😅 Merci de patienter encore un peu...",
     "fatal_error": {
-      "p1": "Une erreur est survenue 😱.",
-      "p2": "Vous pouvez nous contacter par",
+      "p1": "Une erreur est survenue ! 😱",
+      "p2": "Tu peux nous contacter par | Vous pouvez nous contacter par",
       "mail": "email",
       "p3": "ou par",
       "phone": "téléphone."
     }
   },
   "en": {
-    "title": "Mariage Agnès et Florent - 19 Août 2022",
+    "title": "Agnès and Florent's Wedding - 19th of August 2023",
     "not_found": {
-      "p1": "Désolé, mais nous ne trouvons pas votre invitation.",
-      "p2": "Vous pouvez nous contacter par",
+      "p1": "Sorry, we can't find your invitation.",
+      "p2": "You can contact us by",
       "mail": "email."
     },
-    "slow_internet": "Ta connexion internet est mauvaise 😅. Faut patienter encore un peu...",
+    "slow_internet": "Your internet connection is slow. 😅 Please wait a moment...",
     "fatal_error": {
-      "p1": "Une erreur est survenu 😱.",
-      "p2": "Vous pouvez nous contacter par",
+      "p1": "An error occured ! 😱",
+      "p2": "You can contact us by",
       "mail": "email",
-      "p3": "ou par",
-      "phone": "téléphone."
+      "p3": "or by",
+      "phone": "phone."
     }
   }
 }
