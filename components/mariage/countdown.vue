@@ -2,19 +2,19 @@
 {
   "fr": {
     "title": "Le compte à rebours a commencé...",
-    "subtitle": " Voici le temps qu’il vous reste pour fêter avec nous le meilleur jour de notre vie :",
-    "days": "jours",
-    "hours": "heures",
-    "minutes": "minutes",
-    "secondes": "secondes"
+    "subtitle": "Voici le temps qu’il te reste avant de fêter avec nous le meilleur jour de notre vie :  | Voici le temps qu’il vous reste avant de fêter avec nous le meilleur jour de notre vie :",
+    "days": "jour | jours",
+    "hours": "heure | heures",
+    "minutes": "minute | minutes",
+    "secondes": "seconde | secondes"
   },
   "en": {
-    "title": "Le compte à rebours a commencé...",
-    "subtitle": " Voici le temps qu’il vous reste pour fêter avec nous le meilleur jour de notre vie :",
-    "days": "jours",
-    "hours": "heures",
-    "minutes": "minutes",
-    "secondes": "secondes"
+    "title": "The countdown has started...",
+    "subtitle": "Here's the time left before you celebrate with us the best day of our lives :",
+    "days": "day | days",
+    "hours": "hour | hours",
+    "minutes": "minute | minutes",
+    "secondes": "second | seconds"
   }
 }
 </i18n>
