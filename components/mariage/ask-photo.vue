@@ -2,11 +2,11 @@
 {
   "fr": {
     "title": "Partage de photos et vidéos",
-    "paragraph": " Vous allez pouvoir nous partager les photos et vidéos du mariage via ce site !"
+    "paragraph": " Vous allez pouvoir nous partager vos photos et vidéos du mariage via ce site !"
   },
   "en": {
-    "title": "Partage de photos et vidéos",
-    "paragraph": " Vous allez pouvoir nous partager les photos et vidéos du mariage via ce site !"
+    "title": "Photos and videos sharing",
+    "paragraph": " You will be able to share with us your photos and videos of the wedding via this website !"
   }
 }
 </i18n>
