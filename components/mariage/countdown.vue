@@ -23,7 +23,7 @@
   <section class="countdown-container">
     <h2 class="title">{{ $t('title') }}</h2>
     <h3 class="subtitle">
-      {{ $t('subtitle') }}
+      {{ $tc('subtitle', invitation.nbOfPeople) }}
     </h3>
     <div class="countdown">
       <div>
@@ -63,6 +63,12 @@ const MILLISECONDS_DAY = 24 * MILLISECONDS_HOUR
 const weddingDate = new Date('2023-08-19T14:00:00.000+01:00')
 
 export default {
+  props: {
+    invitation: {
+      type: Object,
+      required: true,
+    },
+  },
   data() {
     return {
       /**

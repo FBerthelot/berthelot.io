@@ -61,7 +61,10 @@
 
       <LoveLetter v-if="!error && invitation && !loading" />
 
-      <Countdown v-if="!error && invitation && !loading" />
+      <Countdown
+        v-if="!error && invitation && !loading"
+        :invitation="invitation"
+      />
 
       <Map v-if="!error && invitation && !loading" :invitation="invitation" />
 
@@ -69,7 +72,7 @@
 
       <Infos v-if="!error && invitation && !loading" />
 
-      <Gifts v-if="!error && invitation && !loading" />
+      <Gifts v-if="!error && invitation && !loading" :invitation="invitation" />
 
       <Photos v-if="!error && invitation && !loading" />
     </main>

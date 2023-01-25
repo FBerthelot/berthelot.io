@@ -21,7 +21,7 @@
 
     <div class="gifts-content">
       <p>
-        {{ $t('p1') }}
+        {{ $tc('p1', invitation.nbOfPeople) }}
         <br />
         <br />
 
@@ -31,6 +31,17 @@
     </div>
   </section>
 </template>
+
+<script>
+export default {
+  props: {
+    invitation: {
+      type: Object,
+      required: true,
+    },
+  },
+}
+</script>
 
 <style scoped>
 .gifts {
