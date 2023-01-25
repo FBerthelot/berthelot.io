@@ -2,14 +2,14 @@
 {
   "fr": {
     "title": "Voyage de noces",
-    "p1": "Votre présence est notre cadeau de mariage le plus précieux.",
-    "p2": "Nous ne souhaitons pas établir de liste de mariage, ceux qui le voudront pourront participer à notre voyage de noces. Une urne sera à votre disposition pendant la soirée.",
+    "p1": "Ta présence à nos côtés est notre cadeau de mariage le plus précieux. | Votre présence à nos côtés est notre cadeau de mariage le plus précieux.",
+    "p2": "Une urne sera à disposition pendant la fête pour ceux qui souhaitent également participer à notre voyage de noces.",
     "img_alt": "Plage paradisiaque"
   },
   "en": {
-    "title": "Voyage de noces",
-    "p1": "Votre présence est notre cadeau de mariage le plus précieux.",
-    "p2": "Nous ne souhaitons pas établir de liste de mariage, ceux qui le voudront pourront participer à notre voyage de noces. Une urne sera à votre disposition pendant la soirée.",
+    "title": "Honeymoon",
+    "p1": "Your attendance is our most precious wedding gift.",
+    "p2": "A collection box will be available during the party for those who also wish to contribute to our honeymoon.",
     "img_alt": "Plage paradisiaque"
   }
 }
