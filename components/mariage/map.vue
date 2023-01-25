@@ -434,7 +434,7 @@ export default {
 }
 
 .schedule-item:hover {
-  box-shadow: 0 0 2rem #8d4b9a;
+  box-shadow: 0 0.25rem 1rem #9b61a7;
 }
 
 .schedule-item-icon {

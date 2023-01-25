@@ -134,8 +134,8 @@ export default {
 
 <style scoped>
 .need-answer {
-  background-color: #2e3f4b;
   color: #faf8ff;
+  background-color: #2e3f4b;
   width: 100%;
   height: 80vh;
   position: relative;
@@ -188,25 +188,37 @@ export default {
 
   padding: 0.75rem 1rem;
 
-  /* background: #2e3f4c; */
   border-radius: 0.5rem;
 
   text-decoration: none;
   display: block;
 
-  border: 1px solid #8d4b9a;
+  color: #2e3f4b;
+  background-color: #fffbf8;
 
-  color: #faf8ff;
-
-  transition: all 0.3s ease;
+  transition: all 0.5s ease;
 }
 
 .wedding-button:hover,
 .wedding-button:focus {
-  background: #8d4b9a;
+  box-shadow: 0 0 0.5rem #fffbf8;
+  transform: scale(1.1);
+  outline: none;
+
+  background-color: #f1e8ff;
+  animation: blink 1s infinite alternate;
 }
 
 .wedding-button:active {
-  box-shadow: 0 0 2rem #8d4b9a;
+  box-shadow: 0 0 1rem #9b61a7;
+}
+
+@keyframes blink {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.2);
+  }
 }
 </style>
