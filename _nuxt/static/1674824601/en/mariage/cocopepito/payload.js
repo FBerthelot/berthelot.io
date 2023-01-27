@@ -1,0 +1,1 @@
+__NUXT_JSONP__("en/mariage/cocopepito", {data:[{}],fetch:{},mutations:void 0});
