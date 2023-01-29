@@ -24,7 +24,7 @@
       },
       "wineReceptionOnly": {
         "title": "Vin d'honneur",
-        "duration": "à partir de 16h",
+        "duration": "16h - 19h",
         "address": {
           "line1": "Château de la Crête",
           "line2": "476 Rue de la Crète",
@@ -55,30 +55,30 @@
     }
   },
   "en": {
-    "title": "Où et quand",
+    "title": "Where and when",
     "day1": {
-      "title": "19 août 2023",
+      "title": "19th of August 2023",
       "council": {
-        "title": "Mariage civil",
-        "duration": "13h - 13h30",
+        "title": "Civil marriage",
+        "duration": "1pm - 1.30pm",
         "address": {
-          "line1": "La mairie de Donville-les-Bains",
+          "line1": "Town hall of Donville-les-Bains",
           "line2": "97 Route de Coutances",
           "line3": "50350 Donville-les-Bains"
         }
       },
       "church": {
-        "title": "Mariage religieux",
-        "duration": "14h - 15h",
+        "title": "Religious marriage",
+        "duration": "2pm - 3pm",
         "address": {
-          "line1": "L'église de Notre-Dame du Cap Lihou",
+          "line1": "Church of Notre-Dame du Cap Lihou",
           "line2": "Place du Parvis Notre Dame",
           "line3": "50400 Granville"
         }
       },
       "wineReceptionOnly": {
-        "title": "Vin d'honneur",
-        "duration": "à partir de 16h",
+        "title": "Reception",
+        "duration": "4pm - 7pm",
         "address": {
           "line1": "Château de la Crête",
           "line2": "476 Rue de la Crète",
@@ -86,8 +86,8 @@
         }
       },
       "allParty": {
-        "title": "Réjouissances",
-        "duration": "16h - 5h",
+        "title": "Festivities",
+        "duration": "4pm - 5am",
         "address": {
           "line1": "Château de la Crête",
           "line2": "476 Rue de la Crète",
@@ -96,10 +96,10 @@
       }
     },
     "day2": {
-      "title": "20 août 2023",
+      "title": "20th of August 2023",
       "comeback": {
-        "title": "Retour des mariés",
-        "duration": "à partir de 11h",
+        "title": "Return of the newlyweds",
+        "duration": "from 11am",
         "address": {
           "line1": "Château de la Crête",
           "line2": "476 Rue de la Crète",
