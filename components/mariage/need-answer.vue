@@ -1,21 +1,21 @@
 <i18n>
 {
   "fr": {
-    "title": "Vous vous joignez à nous ?",
-    "subtitle": "Réponse souhaitée avant le 1er mars 2023",
+    "title": "Tu te joins à nous ? | Vous vous joignez à nous ?",
+    "subtitle": "Réponse souhaitée avant le 30 avril 2023",
     "answer": "Répondre à l'invitation",
     "answered": {
-      "title": "★ Vous pouvez gardez ce site dans vos favoris ! ★",
+      "title": "★ Tu peux garder ce site dans tes favoris ! ★ | ★ Vous pouvez gardez ce site dans vos favoris ! ★",
       "addToCalendar": "Ajouter au calendrier"
     }
   },
   "en": {
-    "title": "Vous vous joignez à nous ?",
-    "subtitle": "Réponse souhaitée avant le 1er mars 2023",
-    "answer": "Répondre à l'invitation",
+    "title": "Will you be joigning us ?",
+    "subtitle": "Please reply before the 30th of April 2023",
+    "answer": "Respond to the invitation",
     "answered": {
-      "title": "★ Vous pouvez gardez ce site dans vos favoris ! ★",
-      "addToCalendar": "Ajouter au calendrier"
+      "title": "★ You can keep this website within your bookmarks ! ★",
+      "addToCalendar": "Add to calendar"
     }
   }
 }
