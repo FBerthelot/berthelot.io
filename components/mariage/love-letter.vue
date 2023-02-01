@@ -2,15 +2,15 @@
 {
   "fr": {
     "title": "On se marie !",
-    "p1": "Après 5 ans d'amour et de bonheur, nous nous préparons à embarquer pour une nouvelle aventure à deux.",
-    "p2": "Nous avons le plaisir de vous inviter à célébrer avec nous notre mariage qui aura lieu le 19 août 2023 au bord de la mer qui nous tient tant à coeur.",
-    "p3": "⚓️&nbsp;Préparez-vous à larguer les amarres avec nous&nbsp;!&nbsp;⚓️"
+    "p1": "Tout à commencé pour nous face à la mer devant un sublime coucher de soleil au Beg Léguer. 3 ans plus tard jour pour jour, devant un coucher de soleil miraculeux à Saint-Cast Le Guildo, nous décidions d'embarquer pour une nouvelle aventure à deux du haut de la falaise surplombant les flots.",
+    "p2": "Après bientôt 5 ans d'amour et de bonheur, nous avons le plaisir de t'inviter à célébrer avec nous notre mariage qui aura lieu le 19 août 2023 au bord de cette belle étendue bleue qui nous tient tant à coeur. | Après bientôt 5 ans d'amour et de bonheur, nous avons le plaisir de vous inviter à célébrer avec nous notre mariage qui aura lieu le 19 août 2023 au bord de cette belle étendue bleue qui nous tient tant à coeur.",
+    "p3": "⚓️&nbsp;Prépares toi à venir larguer les amarres avec nous&nbsp;!&nbsp;⚓️ | ⚓️&nbsp;Préparez vous à venir larguer les amarres avec nous&nbsp;!&nbsp;⚓️"
   },
   "en": {
-    "title": "On se marie !",
-    "p1": "Après 5 ans d'amour et de bonheur, nous nous préparons à embarquer pour une nouvelle aventure à deux.",
-    "p2": "Nous avons le plaisir de vous inviter à célébrer avec nous notre mariage qui aura lieu le 19 août 2023 au bord de la mer qui nous tient tant à coeur.",
-    "p3": "⚓️&nbsp;Préparez-vous à larguer les amarres avec nous&nbsp;!&nbsp;⚓️"
+    "title": "We're tying the knot !",
+    "p1": "Everything begun for us facing the sea and a gorgeous sunset in Beg Léguer. 3 years later to the day in Saint-Cast Le Guildo, from the top of a cliff overlooking the sea, we decided to embark on a brand new adventure together in front of a miraculous sunset.",
+    "p2": "After nearly 5 years of love and happiness, we have the pleasure of inviting you to celebrate with us our wedding that will take place on the 19th of August 2023 by the shores we hold so close to our hearts.",
+    "p3": "⚓️&nbsp;Get ready to cast off with us&nbsp;!&nbsp;⚓️"
   }
 }
 </i18n>
