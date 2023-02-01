@@ -2,7 +2,7 @@
 {
   "fr": {
     "title": "Hébergement",
-    "subtitle": "Voici les possibilités de logements à proximité",
+    "subtitle": "Afin de profiter au mieux de la fête, nous vous conseillons de choisir un logement aux alentours de Granville. Pour information, un service de voiturier sera mis à votre disposition gratuitement entre 1h et 5h du matin pour vous permettre de rentrer en toute sécurité dans un rayon de x kms". Il reviendra ensuite chercher les conducteurs dans la matinée.
 
     "gites": {
       "title": "Gîtes"
