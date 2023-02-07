@@ -97,9 +97,15 @@ export default {
 
       return [
         '/articles/react-test-refactoring-snapshot',
+        '/mariage/testdata',
+        'en/mariage/testdata',
+        'mariage/testdata/answer',
+        'en/mariage/testdata/answer',
         ...invitations.flatMap((invitation) => [
           `/mariage/${invitation["Id de l'invitation"]}`,
           `en/mariage/${invitation["Id de l'invitation"]}`,
+          `/mariage/${invitation["Id de l'invitation"]}/answer`,
+          `en/mariage/${invitation["Id de l'invitation"]}/answer`,
         ]),
       ]
     },
