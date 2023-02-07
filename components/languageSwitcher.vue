@@ -1,3 +1,4 @@
+<!-- eslint-disable @intlify/vue-i18n/no-raw-text -->
 <template>
   <Typography class="languageSwitcher">
     <nuxt-link v-if="$i18n.locale !== 'en'" :to="switchLocalePath('en')">

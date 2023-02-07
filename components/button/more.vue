@@ -1,3 +1,4 @@
+<!-- eslint-disable @intlify/vue-i18n/no-raw-text -->
 <template>
   <Typography :component="component" class="button"> &#9660; </Typography>
 </template>

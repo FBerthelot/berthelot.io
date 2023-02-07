@@ -1,3 +1,20 @@
+<i18n>
+{
+  "fr": {
+    "linkedin": "Linkedin",
+    "github": "Github",
+    "Twitter": "Twitter",
+    "Mail": "Mail"
+  },
+  "en": {
+    "linkedin": "Linkedin",
+    "github": "Github",
+    "Twitter": "Twitter",
+    "Mail": "Mail"
+  }
+}
+</i18n>
+
 <template>
   <footer class="footer">
     <ul class="social-network">
@@ -9,7 +26,7 @@
           href="https://twitter.com/berthel350"
         >
           <img src="/assets/twitter.svg" alt="" />
-          Twitter
+          {{ $t(`Twitter`) }}
         </Typography>
       </li>
       <li>
@@ -20,7 +37,7 @@
           href="https://www.linkedin.com/in/florent-berthelot-a2678861/"
         >
           <img src="/assets/linkedin.svg" alt="" />
-          Linkedin
+          {{ $t(`linkedin`) }}
         </Typography>
       </li>
       <li>
@@ -30,15 +47,14 @@
           target="_blank"
           href="https://github.com/FBerthelot"
         >
-          <img src="/assets/github.svg" alt="" />
-          Github
-        </Typography>
+          <img src="/assets/github.svg" alt="" />{{ $t(`github`) }}</Typography
+        >
       </li>
 
       <li>
         <Typography component="a" href="mailto:florent@berthelot.io">
           <img src="/assets/email.svg" alt="" />
-          Mail
+          {{ $t(`Mail`) }}
         </Typography>
       </li>
     </ul>

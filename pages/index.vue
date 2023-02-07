@@ -1,6 +1,8 @@
+<!-- eslint-disable @intlify/vue-i18n/no-html-messages -->
 <i18n>
 {
   "fr": {
+    "name": "Florent Berthelot",
     "home": {
       "tagline": "Prêcheur des Design System et des programmes bien testés",
       "presentation": "Je suis passionné du Web et des technologies qui gravitent autour. J'aime le W3C, le TC39 (quand il ne smoosh pas devant moi), le WhatWG, les frameworks JS (React, Vue.js, Node.js, Angular, ...) et la vanille.<br /><br />Transmettre ma passion pour l'artisanat web occupe une part importante de mon travail de développeur (meetups, formations, conférences, encadrement de stagiaires).<br /><br />Vive le web, Vive le JS et Vive l'artisanat!",
@@ -14,6 +16,7 @@
     }
   },
   "en": {
+    "name": "Florent Berthelot",
     "home": {
       "tagline": "Design system and well-tested programs evangelist",
       "presentation": "I love Web and all related technologies. I love the W3C, TC39, WhatWG, all JS frameworks (React, Vue.js, Node.js, Angular, ...) and vanilla because they allow me to learn everyday.<br /><br /> Sharing my passion for web craftsmanship is an important part of my developer job (Meetup, Courses, Conferences, training interns).<br /><br />Long live the Web, JS and Craftsmanship!",
@@ -48,7 +51,7 @@
       <div class="header--1-level">
         <nuxt-link to="/love" class="myPic"><Logo :face="0" /></nuxt-link>
         <Typography component="h1" variant="title">
-          Florent Berthelot
+          {{ $t('name') }}
         </Typography>
         <nuxt-link to="/love" class="avatar"><Logo :face="1" /></nuxt-link>
       </div>
@@ -100,7 +103,7 @@
         </ul>
       </nav>
       <Card class="presentation">
-        <!-- eslint-disable-next-line vue/no-v-html -->
+        <!-- eslint-disable-next-line vue/no-v-html, @intlify/vue-i18n/no-v-html -->
         <Typography v-html="$t('home.presentation')"></Typography>
       </Card>
     </main>

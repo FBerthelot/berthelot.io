@@ -68,7 +68,10 @@
 
       <Map v-if="!error && invitation && !loading" :invitation="invitation" />
 
-      <NeedAnwser v-if="!error && invitation && !loading" />
+      <NeedAnwser
+        v-if="!error && invitation && !loading"
+        :invitation="invitation"
+      />
 
       <Infos v-if="!error && invitation && !loading" />
 
@@ -81,16 +84,16 @@
 
 <script>
 /* eslint-disable vue/no-unused-components */
-import Animation from '~/components/mariage/animation.vue'
-import Map from '~/components/mariage/map.vue'
-import Countdown from '~/components/mariage/countdown.vue'
-import NeedAnwser from '~/components/mariage/need-answer.vue'
-import LoveLetter from '~/components/mariage/love-letter.vue'
-import Infos from '~/components/mariage/infos.vue'
-import Gifts from '~/components/mariage/gifts.vue'
-import Photos from '~/components/mariage/ask-photo.vue'
+import Animation from '~/components/mariage/00_shared/animation/animation.vue'
+import Map from '~/components/mariage/home/map.vue'
+import Countdown from '~/components/mariage/home/countdown.vue'
+import NeedAnwser from '~/components/mariage/home/need-answer.vue'
+import LoveLetter from '~/components/mariage/home/love-letter.vue'
+import Infos from '~/components/mariage/home/infos.vue'
+import Gifts from '~/components/mariage/home/gifts.vue'
+import Photos from '~/components/mariage/home/ask-photo.vue'
 
-import { getTheInvitation } from '~/components/mariage/fetcher'
+import { getTheInvitation } from '~/components/mariage/00_shared/fetcher'
 
 export default {
   components: {

@@ -1,10 +1,3 @@
-<i18n>
-{
-  "fr": {},
-  "en": {}
-}
-</i18n>
-
 <template>
   <div id="wedding-page">
     <Animation
@@ -20,7 +13,7 @@
 </template>
 
 <script>
-import Animation from '~/components/mariage/animation.vue'
+import Animation from '~/components/mariage/00_shared/animation/animation.vue'
 
 export default {
   components: {

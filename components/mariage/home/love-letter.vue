@@ -28,7 +28,7 @@
         {{ $t('p3') }}
       </p>
 
-      <img class="dans-la-vallee" src="./img/bague.jpeg" />
+      <img class="dans-la-vallee" src="./assets/bague.jpeg" />
     </div>
   </section>
 </template>

@@ -16,7 +16,7 @@
     <h3 class="title">{{ $t('title') }}</h3>
 
     <div class="ask-photo-content">
-      <img class="illustration" src="./img/patchwork.png" alt="" />
+      <img class="illustration" src="./assets/patchwork.png" alt="" />
       <p>
         {{ $t('paragraph') }}
       </p>

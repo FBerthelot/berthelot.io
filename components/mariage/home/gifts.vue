@@ -27,7 +27,11 @@
 
         {{ $t('p2') }}
       </p>
-      <img class="illustration" src="./img/maldives.png" :alt="$t('img_alt')" />
+      <img
+        class="illustration"
+        src="./assets/maldives.png"
+        :alt="$t('img_alt')"
+      />
     </div>
   </section>
 </template>

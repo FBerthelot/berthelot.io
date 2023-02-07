@@ -31,6 +31,8 @@
 }
 </i18n>
 
+<!-- eslint-disable @intlify/vue-i18n/no-raw-text -->
+
 <template>
   <section class="hosting">
     <h2 class="title">{{ $t('title') }}</h2>

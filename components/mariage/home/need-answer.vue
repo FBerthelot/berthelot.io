@@ -5,7 +5,8 @@
     "subtitle": "Réponse souhaitée avant le 30 avril 2023",
     "answer": "Répondre à l'invitation",
     "answered": {
-      "title": "★ Tu peux garder ce site dans tes favoris ! ★ | ★ Vous pouvez gardez ce site dans vos favoris ! ★",
+      "title": "Merci pour la réponse !",
+      "subtitle": "★ Tu peux garder ce site dans tes favoris ! ★ | ★ Vous pouvez gardez ce site dans vos favoris ! ★",
       "addToCalendar": "Ajouter au calendrier"
     }
   },
@@ -14,51 +15,75 @@
     "subtitle": "Please reply before the 30th of April 2023",
     "answer": "Respond to the invitation",
     "answered": {
-      "title": "★ You can keep this website within your bookmarks ! ★",
-      "addToCalendar": "Add to calendar"
+      "title": "Thanks you for your answer!",
+      "subtitle": "★ You can keep this website within your bookmarks ! ★",
+      "addToCalendar": "Ajouter au calendrier"
     }
   }
 }
 </i18n>
 
 <template>
-  <section class="need-answer">
+  <section id="need-answer" class="need-answer">
     <div class="firework-container"></div>
 
     <div class="container">
-      <h3 class="title">{{ $t('title') }}</h3>
-      <h4 class="subtitle">{{ $t('subtitle') }}</h4>
+      <h3 class="title">{{ $t(isAnswered ? 'answered.title' : 'title') }}</h3>
+      <h4 class="subtitle">
+        {{
+          $tc(
+            isAnswered ? 'answered.subtitle' : 'subtitle',
+            invitation.nbOfPeople
+          )
+        }}
+      </h4>
       <nuxt-link
+        v-if="!isAnswered"
         :to="localePath(`/mariage/${$route.params.invite}/answer`)"
         class="wedding-button"
       >
         {{ $t('answer') }}
       </nuxt-link>
 
-      <div v-if="isAnswered" class="actions">
-        <p>{{ $t('answered.title') }}</p>
-
-        <!-- https://www.labnol.org/calendar/ -->
-        <a
-          href="https://calendar.google.com/calendar/render?action=TEMPLATE&dates=20230819T120000Z%2F20230819T215900Z&location=Granville&text=Mariage%20Agn%C3%A8s%20Florent"
-          class="addToCalendar"
-          target="_blank"
-          >{{ $t('title.addToCalendar') }}</a
-        >
-      </div>
+      <a
+        v-if="isAnswered"
+        class="wedding-button"
+        href="https://calendar.google.com/calendar/render?action=TEMPLATE&dates=20230819T120000Z%2F20230819T215900Z&location=Granville&text=Mariage%20Agn%C3%A8s%20Florent"
+        target="_blank"
+        >{{ $t('answered.addToCalendar') }}</a
+      >
     </div>
   </section>
 </template>
 
 <script>
 export default {
+  props: {
+    invitation: {
+      type: Object,
+      required: true,
+    },
+  },
   data() {
     return {
-      isAnswered: false,
+      isAnswered: this.invitation.isAnswered,
       fireworks: null,
     }
   },
   async mounted() {
+    if (window.localStorage.getItem('answered') === 'true') {
+      this.isAnswered = true
+
+      if (this.$route.query.noAnimation) {
+        window.scrollTo({
+          top: window.document
+            .querySelector('#need-answer')
+            .getBoundingClientRect().top,
+          behavior: 'smooth',
+        })
+      }
+    }
+
     await import('fireworks-js').then(({ Fireworks }) => {
       const container = document.querySelector('.firework-container')
       this.fireworks = new Fireworks(container, {

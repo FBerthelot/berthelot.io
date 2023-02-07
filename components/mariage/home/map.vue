@@ -126,7 +126,7 @@
             <img
               class="schedule-item-icon"
               alt=""
-              src="./img/mariage_civil.svg"
+              src="../00_shared/assets/mariage_civil.svg"
             />
             <h4 class="schedule-item-title">{{ $t('day1.council.title') }}</h4>
             <div class="schedule-item-hour">
@@ -143,7 +143,11 @@
             class="schedule-item"
             @click="onSelect($event, 'church')"
           >
-            <img class="schedule-item-icon" alt="" src="./img/church.svg" />
+            <img
+              class="schedule-item-icon"
+              alt=""
+              src="../00_shared/assets/church.svg"
+            />
             <h4 class="schedule-item-title">{{ $t('day1.church.title') }}</h4>
             <div class="schedule-item-hour">
               {{ $t('day1.church.duration') }}
@@ -162,7 +166,7 @@
             class="schedule-item"
             @click="onSelect($event, 'castle')"
           >
-            <img class="schedule-item-icon" alt="" src="./img/castle.svg" />
+            <img class="schedule-item-icon" alt="" src="./assets/castle.svg" />
             <h4 class="schedule-item-title">
               {{
                 $t(
@@ -216,7 +220,7 @@
             <img
               class="schedule-item-icon"
               alt=""
-              src="./img/just-maried.svg"
+              src="../00_shared/assets/just-maried.svg"
             />
             <h4 class="schedule-item-title">{{ $t('day2.comeback.title') }}</h4>
             <div class="schedule-item-hour">
@@ -236,9 +240,9 @@
 </template>
 
 <script>
-import churchPointerImg from './img/church_pointer.png'
-import castlePointerImg from './img/castle_pointer.png'
-import councilPointerImg from './img/council_pointer.png'
+import churchPointerImg from './assets/church_pointer.png'
+import castlePointerImg from './assets/castle_pointer.png'
+import councilPointerImg from './assets/council_pointer.png'
 
 export default {
   props: {

@@ -16,6 +16,7 @@
 <!-- modified from https://codepen.io/pehaa/pen/yLVeLNg -->
 <template>
   <div
+    id="animation"
     :class="{
       willBeAnimated: animate,
       animate: animate && everythingIsLoaded,
@@ -96,15 +97,15 @@
       <h1 class="title">{{ $t('name') }}</h1>
     </header>
 
-    <img src="./img/logo-02.svg" class="logo" alt="" />
+    <img src="../logo/logo-02.svg" class="logo" alt="" />
   </div>
 </template>
 
 <script>
-import montImg from './img/mont-min.png'
-import rocImg from './img/roc-min.png'
-import usImg from './img/us-2.png'
-import pontonImg from './img/ponton3.png'
+import montImg from './mont-min.png'
+import rocImg from './roc-min.png'
+import usImg from './us-2.png'
+import pontonImg from './ponton3.png'
 
 export default {
   name: 'Loader',

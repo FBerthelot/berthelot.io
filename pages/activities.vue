@@ -9,20 +9,24 @@
     "paused": "En pause",
     "abandonned": "Ça n'a pas marché 🥲",
     "coacha": {
+      "name": "Coach'A",
       "p1": "Avec des amis, on développe une application de sport qui s'adapte un maximum aux utilisateurs et à leur environnement.",
       "p2": "Essayez l'application et n'hésitez pas à me faire des retours ! 😉",
       "status": "🚀 Beta public 🚀"
     },
     "component-test-utils": {
+      "name": "Component-test-utils",
       "p1": "J'ai développé un outil entre enzyme et test-utils qui permet de tester des composants quelque soit le framework.",
       "p2": "Malheureusement, n'étant pas très doué en communication, j'ai échoué à l'étape de le faire connaitre."
     },
     "hero": {
+      "name": "Hero",
       "p1": "Hero est l'acteur du paiement B2B en France.",
       "p2": "Je suis développeur au sein d'une équipe Crafts ultra motivée.",
       "status": "Levée de fonds de 12,4 millions faite ✅"
     },
     "wefacto": {
+      "name": "WeFacto",
       "p1": "Ma société que j'ai créée pour exercer mon métier en freelance.",
       "p2": "J'interviens pour des audits et des formations autour de l'univers JavaScript.",
       "status": "Ouvert pour des audits et des formations"
@@ -33,10 +37,12 @@
       "status": "💍 En préparation 💍"
     },
     "aqua-compose": {
+      "name": "Aqua-Compose",
       "p1": "Passioné d'aquariophilie, j'ai développé une application pour peupler sereinnement son aquarium.",
       "status": "MVP développé, en pause."
     },
     "afterworks": {
+      "name": "Afterworks",
       "p1": " J'ai pour habitude d'organiser des afterworks entre collègues environ une fois par mois.",
       "p2": "Le Covid étant passé par là, c'est en pause pour le moment.",
       "status": "A venir 🍻"
@@ -51,20 +57,24 @@
     "paused": "Paused",
     "abandonned": "It didn't work 🥲",
     "coacha": {
+      "name": "Coach'A",
       "p1": "With friends, we are making a sport app that adapts itself to it's users and their environnement.",
       "p2": "Try it, feedback welcome (only french available for now) 😉",
       "status": "🚀 Public beta 🚀"
     },
     "component-test-utils": {
+      "name": "Component-test-utils",
       "p1": "I've coded a tool between Enzyme and Test-Utils to test components.",
       "p2": "Unfortunatly, I didn't done any marketing so I failed to get the project known."
     },
     "hero": {
+      "name": "Hero",
       "p1": "Hero is a french fintech startup which is a standart for B2B payments.",
       "p2": "I'm developer in a team composed of very motivated Crafts.",
       "status": "We raised 12,4 millions ✅"
     },
     "wefacto": {
+      "name": "WeFacto",
       "p1": "I've created this company to work as a contractor.",
       "p2": "I give audits and training in the JavaScript universe.",
       "status": "Open to make audits et give training"
@@ -75,10 +85,12 @@
       "status": "💍 Preparations ongoing 💍"
     },
     "aqua-compose": {
+      "name": "Aqua-Compose",
       "p1": "I'm passionated of aquarium, so I've developped an app to help populate a fish tank.",
       "status": "MVP developped, paused."
     },
     "afterworks": {
+      "name": "Afterworks",
       "p1": "I've always organised afterworks with colleagues about one per month.",
       "p2": "Due to covid, it's paused.",
       "status": "Stay tuned 🍻"
@@ -98,7 +110,7 @@
         </Typography>
         <div class="subjects">
           <Card class="subject" link="https://www.wefacto.com">
-            <CardTitle>WeFacto</CardTitle>
+            <CardTitle>{{ $t('wefacto.name') }}</CardTitle>
             <Typography component="div">
               <p>{{ $t('wefacto.p1') }}</p>
               <p>{{ $t('wefacto.p2') }}</p>
@@ -107,7 +119,7 @@
           </Card>
 
           <Card class="subject" link="https://www.coachadaptative.com">
-            <CardTitle>Coach'A</CardTitle>
+            <CardTitle>{{ $t('coacha.name') }}</CardTitle>
             <Typography component="div">
               <p>{{ $t('coacha.p1') }}</p>
               <p>{{ $t('coacha.p2') }}</p>
@@ -116,7 +128,7 @@
           </Card>
 
           <Card class="subject" link="https://www.hero.fr/">
-            <CardTitle>Hero</CardTitle>
+            <CardTitle>{{ $t('hero.name') }}</CardTitle>
             <Typography component="div">
               <p>{{ $t('hero.p1') }}</p>
               <p>{{ $t('hero.p2') }}</p>
@@ -140,7 +152,7 @@
         </Typography>
         <div class="subjects">
           <Card class="subject" link="https://aqua-compose.berthelot.io/">
-            <CardTitle>Aqua-compose</CardTitle>
+            <CardTitle>{{ $t('aqua-compose.name') }}</CardTitle>
             <Typography component="div">
               {{ $t('aqua-compose.p1') }}
             </Typography>
@@ -148,7 +160,7 @@
           </Card>
 
           <Card class="subject" link="/afterwork.html">
-            <CardTitle>Afterworks</CardTitle>
+            <CardTitle>{{ $t('afterworks.name') }}</CardTitle>
             <Typography component="div">
               <p>{{ $t('afterworks.p1') }}</p>
               <p>
@@ -169,7 +181,7 @@
             class="subject"
             link="https://component-test-utils.berthelot.io/"
           >
-            <CardTitle>Component-test-utils</CardTitle>
+            <CardTitle>{{ $t('component-test-utils.name') }}</CardTitle>
             <Typography component="div">
               <p>{{ $t('component-test-utils.p1') }}</p>
               <p>

@@ -56,6 +56,7 @@
               :key="alternative.name"
               component="li"
             >
+              <!--eslint-disable-next-line @intlify/vue-i18n/no-raw-text-->
               {{ alternative.name }}:
               <Typography
                 v-if="alternative.video"
@@ -73,7 +74,9 @@
                 :href="alternative.slide"
                 >{{ $t('talks.alternative_slide') }}</Typography
               >
-              - {{ alternative.date }}
+              <!--eslint-disable-next-line @intlify/vue-i18n/no-raw-text-->
+              {{ '-' }}
+              {{ alternative.date }}
             </Typography>
           </ul>
         </CardSecondary>
