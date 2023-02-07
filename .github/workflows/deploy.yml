@@ -3,6 +3,9 @@ on: ['pull_request']
 
 env:
   NODE_VERSION: '16.17.1'
+  NEXT_ENV_SHEETDB_URL: ${{ secrets.NEXT_ENV_SHEETDB_URL }}
+  NUXT_ENV_MAPS_URL: ${{ secrets.NUXT_ENV_MAPS_URL }}
+  NUXT_ENV_SLACK_URL: ${{ secrets.NUXT_ENV_SLACK_URL }}
 
 jobs:
   build-and-deploy:
