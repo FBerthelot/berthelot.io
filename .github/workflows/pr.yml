@@ -2,7 +2,7 @@ name: Build and Deploy
 on:
   push:
     branches:
-      - main
+      - master
 
 env:
   NODE_VERSION: '16.17.1'
