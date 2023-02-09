@@ -60,7 +60,7 @@
       }
     },
     "pet": {
-      "p1": "Attention, les annimaux ne sont malheureusement pas autorisé.",
+      "p1": "Attention, les animaux ne sont malheureusement pas autorisé.",
       "p2": "Il faudra les faire garder."
     },
     "housing": {
@@ -143,7 +143,7 @@
       }
     },
     "pet": {
-      "p1": "Attention, les annimaux ne sont malheureusement pas autorisé.",
+      "p1": "Attention, les animaux ne sont malheureusement pas autorisé.",
       "p2": "Il faudra les faire garder."
     },
     "housing": {
