@@ -2,11 +2,11 @@
 {
   "fr": {
     "hello": "Bonjour {names} !",
-    "ultimatum": "On souhaiterait avoir ta réponse avant le 1er mars 2023 | On souhaiterait avoir votre réponse avant le 1er mars 2023",
+    "ultimatum": "On souhaiterait avoir ta réponse avant le 30 avril 2023. | On souhaiterait avoir votre réponse avant le 30 avril 2023.",
     "attending": {
       "title": "Accompagnants",
-      "question": "Viens-tu ? | Vennez-vous ?",
-      "instruction": "Multiple choix possibles",
+      "question": "Viens-tu ? | Venez-vous ?",
+      "instruction": "Plusieurs choix possibles",
       "cityHall": "À la mairie",
       "cityHallDate": "19 août 2023",
       "church": "À l'église",
@@ -19,18 +19,18 @@
       "after": "Le lendemain",
       "afterDate": "20 août 2023",
       "error": {
-        "required": "Merci de nous dire si vous venez ou pas."
+        "required": "Merci de nous confirmer ta présence. | Merci de nous confirmer ta présence."
       }
     },
     "meal": {
       "title": "Choix du plat",
       "subtitle": "Choix du plat uniquement pour les menus des adultes",
-      "meat": "Viande saignante",
+      "meat": "Viande rouge saignante",
       "fish": "Poisson",
       "children": "Menu enfant",
       "allergies": "Une allergie ?",
       "error": {
-        "required": "On a besoin de savoir ce que tu mange pour ne pas gâcher."
+        "required": "On a besoin de savoir ce que tu manges pour ne pas gâcher. | On a besoin de savoir ce que vous mangez pour ne pas gâcher."
       }
     },
     "plus1": {
@@ -39,81 +39,83 @@
       "yes": "Oui",
       "no": "Non",
       "error": {
-        "required": "Merci de nous dire si il ou elle viens."
+        "required": "Merci de nous confirmer qu'il ou elle vient."
       },
       "errorName": {
-        "required": "Dit-nous son nom, on en a besoin pour le plan de table ;)"
+        "required": "On a besoin du prénom de ton/ta +1 pour le plan de table. ;)"
       }
     },
     "children": {
-      "question": "Ton enfant vient-il ? | Tes enfants viennent-ils ?",
+      "question": "Ton/tes enfant(s) viennent-il(s) ? | Votre/Vos enfant(s) viennent-il(s) ?",
       "yes": "Oui",
       "no": "Non",
       "error": {
-        "required": "Merci de nous dire si les enfants viennent ou pas."
+        "required": "Merci de nous confirmer la présence ou non des enfants."
       }
     },
     "comment": {
       "question": "Un commentaire ?",
       "error": {
-        "required": "Laisse nous un petit commentaire, ça sera plus chaleureux 😇"
+        "required": "N'hésites pas à nous laisser un petit commentaire, ça nous fera plaisir. 😇 | N'hésitez pas à nous laisser un petit commentaire, ça nous fera plaisir. 😇"
       }
     },
     "pet": {
-      "p1": "Attention, les annimaux ne sont malheureusement pas autorisé.",
-      "p2": "Il faudra les faire garder."
+      "p1": "Attention, nos amis les annimaux ne sont malheureusement pas autorisés.",
+      "p2": "Il faudra prévoir de les faire garder."
     },
     "housing": {
-      "p1": "N'oubliez pas de prévoir un logement pour le weekend du 19 août 2023 à Granville ! On te donne des addresses une fois que tu as répondu ;)"
+      "p1": "N'oubliez pas de réserver dès que possible un logement pour le weekend du 19 août 2023 ! Granville est un lieu très touristique l'été."
     },
     "parker": {
-      "p1": " Un service de voiturier sera disponnible pendant la soirée pour rentrer en sécurité."
+      "p1": " Un service de taxi sera à votre disposition gratuitement pour que vous puissiez rentrer dormir en sécurité.",
+      "p2": " Il sera disponible pour vous ramener entre 1h et 5h du matin, si votre logement est situé dans un rayon de 10 km autour du Château de la Crête.",
+      "p3": " Le lendemain, il repassera chercher les conducteurs entre 11 et 12h pour les ramener au Château."
     },
     "cgu": {
-      "p1": "Une fois la réponse envoyée, en cas de modification, je contacterai Florent et Agnès directement :",
+      "p1": "Une fois la réponse envoyée, vous ne pourrez plus réutiliser ce formulaire pour la modifier. Si besoin, il faudra nous contacter directement :",
       "email": "Par mail vallee_a@hotmail.fr / florent@berthelot.io",
       "phone": " Par téléphone au 06 03 65 21 38 / 06 50 99 96 18",
       "error": {
-        "required": "Il faut lire et cocher cette case ;)"
+        "required": "Il faut lire le petit texte et cocher cette case. ;)"
       }
     },
     "submit": {
-      "text": "J'envoie ma réponse",
+      "text": "J'envoie ma réponse | Nous envoyons notre réponse",
       "loading": "Envoi...",
-      "error": "Une erreur est survenue lors de l'envoi du formulaire, réessaye !"
+      "error": "Une erreur est survenue lors de l'envoi du formulaire, réessaye ! | Une erreur est survenue lors de l'envoi du formulaire, réessayez !"
     }
   },
   "en": {
-    "hello": "Hello {names}!",
-    "ultimatum": "On souhaiterait avoir ta réponse avant le 1er mars 2023 | On souhaiterait avoir votre réponse avant le 1er mars 2023",
+   "hello": "Bonjour {names} !",
+    "ultimatum": "On souhaiterait avoir ta réponse avant le 30 avril 2023. | On souhaiterait avoir votre réponse avant le 30 avril 2023.",
     "attending": {
       "title": "Accompagnants",
-      "question": "Do you come ?",
-      "instruction": "Multiple choix possibles",
-      "cityHall": "At the city hall",
+      "question": "Viens-tu ? | Venez-vous ?",
+      "instruction": "Plusieurs choix possibles",
+      "cityHall": "À la mairie",
       "cityHallDate": "19 août 2023",
-      "church": "At the church",
+      "church": "À l'église",
       "churchDate": "19 août 2023",
-      "cant": "Je ne peux pas venir.",
-      "wineReception": "At the wine reception",
+      "wineReception": "Au vin d'honneur",
       "wineReceptionDate": "19 août 2023",
-      "party": "At the party",
+      "party": "À la soirée",
       "partyDate": "19 août 2023",
-      "after": "The day after",
+      "cant": "Je ne peux pas venir.",
+      "after": "Le lendemain",
       "afterDate": "20 août 2023",
       "error": {
-        "required": "Merci de nous dire si vous venez ou pas."
+        "required": "Merci de nous confirmer ta présence. | Merci de nous confirmer ta présence."
       }
     },
     "meal": {
       "title": "Choix du plat",
       "subtitle": "Choix du plat uniquement pour les menus des adultes",
-      "meat": "Viande saignante",
+      "meat": "Viande rouge saignante",
       "fish": "Poisson",
       "children": "Menu enfant",
       "allergies": "Une allergie ?",
       "error": {
-        "required": "On a besoin de savoir ce que tu mange pour ne pas gâcher."
+        "required": "On a besoin de savoir ce que tu manges pour ne pas gâcher. | On a besoin de savoir ce que vous mangez pour ne pas gâcher."
       }
     },
     "plus1": {
@@ -122,48 +124,50 @@
       "yes": "Oui",
       "no": "Non",
       "error": {
-        "required": "Merci de nous dire si il ou elle viens."
+        "required": "Merci de nous confirmer qu'il ou elle vient."
       },
       "errorName": {
-        "required": "Dit-nous son nom, on en a besoin pour le plan de table ;)"
+        "required": "On a besoin du prénom de ton/ta +1 pour le plan de table. ;)"
       }
     },
     "children": {
-      "question": "Ton enfant vient-il ? | Tes enfants viennent-ils ?",
+      "question": "Ton/tes enfant(s) viennent-il(s) ? | Votre/Vos enfant(s) viennent-il(s) ?",
       "yes": "Oui",
       "no": "Non",
       "error": {
-        "required": "Merci de nous dire si les enfants viennent ou pas."
+        "required": "Merci de nous confirmer la présence ou non des enfants."
       }
     },
     "comment": {
       "question": "Un commentaire ?",
       "error": {
-        "required": "Laisse nous un petit commentaire, ça sera plus chaleureux 😇"
+        "required": "N'hésites pas à nous laisser un petit commentaire, ça nous fera plaisir. 😇 | N'hésitez pas à nous laisser un petit commentaire, ça nous fera plaisir. 😇"
       }
     },
     "pet": {
-      "p1": "Attention, les annimaux ne sont malheureusement pas autorisé.",
-      "p2": "Il faudra les faire garder."
+      "p1": "Attention, nos amis les annimaux ne sont malheureusement pas autorisés.",
+      "p2": "Il faudra prévoir de les faire garder."
     },
     "housing": {
-      "p1": "Don't forget to schedule an acomodation fot the 19th of august 2023 at Granville ! We will give you addresses in the next page ;)"
+      "p1": "N'oubliez pas de réserver dès que possible un logement pour le weekend du 19 août 2023 ! Granville est un lieu très touristique l'été."
     },
     "parker": {
-      "p1": "A taxi service will be available during the night for safety purpose."
+      "p1": " Un service de taxi sera à votre disposition gratuitement pour que vous puissiez rentrer dormir en sécurité.",
+      "p2": " Il sera disponible pour vous ramener entre 1h et 5h du matin, si votre logement est situé dans un rayon de 10 km autour du Château de la Crête.",
+      "p3": " Le lendemain, il repassera chercher les conducteurs entre 11 et 12h pour les ramener au Château."
     },
     "cgu": {
-      "p1": "Une fois la réponse envoyée, en cas de modification, je contacterai Florent et Agnès directement :",
+      "p1": "Une fois la réponse envoyée, vous ne pourrez plus réutiliser ce formulaire pour la modifier. Si besoin, il faudra nous contacter directement :",
       "email": "Par mail vallee_a@hotmail.fr / florent@berthelot.io",
       "phone": " Par téléphone au 06 03 65 21 38 / 06 50 99 96 18",
       "error": {
-        "required": "Il faut lire et cocher cette case ;)"
+        "required": "Il faut lire le petit texte et cocher cette case. ;)"
       }
     },
     "submit": {
-      "text": "I send my answer.",
-      "loading": "Sending...",
-      "error": "Une erreur est survenue lors de l'envoi du formulaire, réessaye !"
+      "text": "J'envoie ma réponse | Nous envoyons notre réponse",
+      "loading": "Envoi...",
+      "error": "Une erreur est survenue lors de l'envoi du formulaire, réessaye ! | Une erreur est survenue lors de l'envoi du formulaire, réessayez !"
     }
   }
 }
