@@ -2,7 +2,7 @@
 {
   "fr": {
     "title": "Hébergement",
-    "subtitle": "Voici les possibilités de logements à proximité",
+    "subtitle": "Voici quelques possibilités de logements.<brN'oubliez pas qu'un service de taxi sera à votre disposition gratuitement pour que vous puissiez rentrer dormir en sécurité. Il sera disponible pour vous ramener entre 1h et 5h du matin, si votre logement est situé dans un rayon de 10 km autour du Château de la Crête.><brLe lendemain, il repassera chercher les conducteurs entre 11 et 12h pour les ramener au Château.>",
 
     "gites": {
       "title": "Gîtes"
@@ -15,17 +15,17 @@
     }
   },
   "en": {
-    "title": "Hébergement",
-    "subtitle": "Voici les possibilités de logements à proximité",
+    "title": "Accommodation",
+    "subtitle": "Here are a few options for your accomodation.<brPlease remember that a taxi service will be available free of charge so you can go back safely for the night. The taxi will be able to take you back between 1:00am and 5:00am, if your chosen accommodation is located within 10 km around the Château de la Crête.><brThe next day, the taxi will come back to pick up the drivers from 11:00am to 12:00pm and take them back to the Château.>",
 
     "gites": {
-      "title": "Gîtes"
+      "title": "Holiday accomodations"
     },
     "hostel": {
-      "title": "Hôtels"
+      "title": "Hotels"
     },
     "houses": {
-      "title": "Location"
+      "title": "Rentals"
     }
   }
 }
