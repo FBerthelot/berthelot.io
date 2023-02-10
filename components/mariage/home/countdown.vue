@@ -30,25 +30,25 @@
         <div class="number">
           {{ days }}
         </div>
-        <div class="unit">{{ $t('days') }}</div>
+        <div class="unit">{{ $tc('days', days) }}</div>
       </div>
       <div>
         <div class="number">
           {{ hours }}
         </div>
-        <div class="unit">{{ $t('hours') }}</div>
+        <div class="unit">{{ $tc('hours', hours) }}</div>
       </div>
       <div>
         <div class="number">
           {{ minutes }}
         </div>
-        <div class="unit">{{ $t('minutes') }}</div>
+        <div class="unit">{{ $tc('minutes', minutes) }}</div>
       </div>
       <div>
         <div class="number">
           {{ seconds }}
         </div>
-        <div class="unit">{{ $t('secondes') }}</div>
+        <div class="unit">{{ $tc('secondes', secondes) }}</div>
       </div>
     </div>
   </section>

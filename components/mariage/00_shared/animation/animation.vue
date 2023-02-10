@@ -521,7 +521,6 @@ export default {
   position: absolute;
   right: 1rem;
   bottom: 2rem;
-  opacity: 0;
 }
 
 @media (max-width: 900px) {

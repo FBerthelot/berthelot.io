@@ -59,7 +59,10 @@
         <a href="mailto:florent@berthelot.io">{{ $t('not_found.mail') }}</a>
       </div>
 
-      <LoveLetter v-if="!error && invitation && !loading" />
+      <LoveLetter
+        v-if="!error && invitation && !loading"
+        :invitation="invitation"
+      />
 
       <Countdown
         v-if="!error && invitation && !loading"

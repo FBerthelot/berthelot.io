@@ -15,23 +15,36 @@
 }
 </i18n>
 
+<!-- eslint-disable vue/no-v-html @intlify/vue-i18n/no-v-html -->
+
 <template>
   <section class="invite">
     <h2 class="title">{{ $t('title') }}</h2>
     <div class="container">
       <p class="invite-paragraph">
-        {{ $t('p1') }}
+        <span v-html="$tc('p1', invitation.nbOfPeople)" />
         <br /><br />
-        {{ $t('p2') }}
+        <span v-html="$tc('p2', invitation.nbOfPeople)" />
         <br />
         <br />
-        {{ $t('p3') }}
+        <span v-html="$tc('p3', invitation.nbOfPeople)" />
       </p>
 
       <img class="dans-la-vallee" src="./assets/bague.jpeg" />
     </div>
   </section>
 </template>
+
+<script>
+export default {
+  props: {
+    invitation: {
+      type: Object,
+      required: true,
+    },
+  },
+}
+</script>
 
 <style scoped>
 .invite {

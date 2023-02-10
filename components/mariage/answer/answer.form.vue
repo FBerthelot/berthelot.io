@@ -1,3 +1,4 @@
+<!-- eslint-disable @intlify/vue-i18n/no-html-messages -->
 <i18n>
 {
   "fr": {
@@ -60,16 +61,16 @@
       }
     },
     "pet": {
-      "p1": "Attention, nos amis les annimaux ne sont malheureusement pas autorisés.",
+      "p1": "Attention, nos amis les animaux ne sont malheureusement pas autorisés.",
       "p2": "Il faudra prévoir de les faire garder."
     },
     "housing": {
       "p1": "N'oubliez pas de réserver dès que possible un logement pour le weekend du 19 août 2023 ! Granville est un lieu très touristique l'été."
     },
     "parker": {
-      "p1": " Un service de taxi sera à votre disposition gratuitement pour que vous puissiez rentrer dormir en sécurité.",
-      "p2": " Il sera disponible pour vous ramener entre 1h et 5h du matin, si votre logement est situé dans un rayon de 10 km autour du Château de la Crête.",
-      "p3": " Le lendemain, il repassera chercher les conducteurs entre 11 et 12h pour les ramener au Château."
+      "p1": "Un service de taxi sera à votre disposition gratuitement pour que vous puissiez rentrer dormir en sécurité.<br>Il sera disponible pour vous ramener entre 1h et 5h du matin, si votre logement est situé dans un rayon de 10 km autour du Château de la Crête. Le lendemain, il repassera chercher les conducteurs entre 11 et 12h pour les ramener au Château.",
+      "p2": " ",
+      "p3": " "
     },
     "cgu": {
       "p1": "Une fois la réponse envoyée, vous ne pourrez plus réutiliser ce formulaire pour la modifier. Si besoin, il faudra nous contacter directement :",
@@ -86,7 +87,7 @@
     }
   },
   "en": {
-   "hello": "Bonjour {names} !",
+    "hello": "Bonjour {names} !",
     "ultimatum": "On souhaiterait avoir ta réponse avant le 30 avril 2023. | On souhaiterait avoir votre réponse avant le 30 avril 2023.",
     "attending": {
       "title": "Accompagnants",
@@ -145,7 +146,7 @@
       }
     },
     "pet": {
-      "p1": "Attention, nos amis les annimaux ne sont malheureusement pas autorisés.",
+      "p1": "Attention, nos amis les animaux ne sont malheureusement pas autorisés.",
       "p2": "Il faudra prévoir de les faire garder."
     },
     "housing": {
@@ -172,6 +173,8 @@
   }
 }
 </i18n>
+
+<!-- eslint-disable vue/no-v-html @intlify/vue-i18n/no-v-html -->
 
 <template>
   <main class="main">
@@ -521,10 +524,12 @@
             </div>
           </li>
           <li class="info">
-            <img src="./assets/driver.svg" class="info-icon" alt="" />
-            <div>
-              {{ $t('parker.p1') }}
-            </div>
+            <img
+              src="../00_shared/assets/driver.svg"
+              class="info-icon"
+              alt=""
+            />
+            <div v-html="$t('parker.p1')"></div>
           </li>
         </ul>
       </section>

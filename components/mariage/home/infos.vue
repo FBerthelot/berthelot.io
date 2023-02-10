@@ -1,8 +1,11 @@
+<!-- eslint-disable @intlify/vue-i18n/no-html-messages -->
+
 <i18n>
 {
   "fr": {
     "title": "Hébergement",
-    "subtitle": "Voici quelques possibilités de logements.<brN'oubliez pas qu'un service de taxi sera à votre disposition gratuitement pour que vous puissiez rentrer dormir en sécurité. Il sera disponible pour vous ramener entre 1h et 5h du matin, si votre logement est situé dans un rayon de 10 km autour du Château de la Crête.><brLe lendemain, il repassera chercher les conducteurs entre 11 et 12h pour les ramener au Château.>",
+    "subtitle": "Voici quelques possibilités de logements.",
+    "driver": "N'oubliez pas qu'un service de taxi sera à votre disposition gratuitement pour que vous puissiez rentrer dormir en sécurité. <br>Il sera disponible pour vous ramener entre 1h et 5h du matin, si votre logement est situé dans un rayon de 10 km autour du Château de la Crête. Le lendemain, il repassera chercher les conducteurs entre 11 et 12h pour les ramener au Château.",
 
     "gites": {
       "title": "Gîtes"
@@ -16,7 +19,8 @@
   },
   "en": {
     "title": "Accommodation",
-    "subtitle": "Here are a few options for your accomodation.<brPlease remember that a taxi service will be available free of charge so you can go back safely for the night. The taxi will be able to take you back between 1:00am and 5:00am, if your chosen accommodation is located within 10 km around the Château de la Crête.><brThe next day, the taxi will come back to pick up the drivers from 11:00am to 12:00pm and take them back to the Château.>",
+    "subtitle": "Here are a few options for your accomodation.",
+    "driver": "Please remember that a taxi service will be available free of charge so you can go back safely for the night. <br>The taxi will be able to take you back between 1:00am and 5:00am, if your chosen accommodation is located within 10 km around the Château de la Crête. The next day, the taxi will come back to pick up the drivers from 11:00am to 12:00pm and take them back to the Château.",
 
     "gites": {
       "title": "Holiday accomodations"
@@ -31,12 +35,17 @@
 }
 </i18n>
 
-<!-- eslint-disable @intlify/vue-i18n/no-raw-text -->
+<!-- eslint-disable @intlify/vue-i18n/no-raw-text @intlify/vue-i18n/no-v-html vue/no-v-html -->
 
 <template>
   <section class="hosting">
     <h2 class="title">{{ $t('title') }}</h2>
-    <h2 class="subtitle">{{ $t('subtitle') }}</h2>
+    <h2 class="subtitle" v-html="$t('subtitle')"></h2>
+
+    <div class="driver">
+      <img src="../00_shared/assets/driver.svg" class="driver-icon" alt="" />
+      <div v-html="$t('driver')"></div>
+    </div>
 
     <div class="tablist" role="tablist" aria-labelledby="tablist-1">
       <button
@@ -336,6 +345,27 @@ export default {
   font-weight: 400;
   line-height: 1.6rem;
   text-align: center;
+}
+
+.driver {
+  width: calc(100% - 40rem);
+
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+
+  padding: 1.5rem 20rem;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.driver-icon {
+  width: 3.25rem;
+  margin-right: 2rem;
 }
 
 .tablist {
