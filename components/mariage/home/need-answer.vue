@@ -23,16 +23,20 @@
 }
 </i18n>
 
+<!-- eslint-disable @intlify/vue-i18n/no-v-html -->
+<!-- eslint-disable vue/no-v-html -->
+
 <template>
   <section id="need-answer" class="need-answer">
     <div class="firework-container"></div>
 
     <div class="container">
-      <h3 class="title">
-        {{
+      <h3
+        class="title"
+        v-html="
           $tc(isAnswered ? 'answered.title' : 'title', invitation.nbOfPeople)
-        }}
-      </h3>
+        "
+      ></h3>
       <h4 class="subtitle">
         {{
           $tc(
