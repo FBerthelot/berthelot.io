@@ -441,12 +441,12 @@ describe('MainPage', () => {
 
           expect(errors.length).toBe(8)
 
-          expect(errors.at(0).text()).toBe('attending.error.required')
+          expect(errors.at(0).text()).toBe('attending.error.required5')
           expect(errors.at(1).text()).toBe('plus1.error.required')
           expect(errors.at(2).text()).toBe('children.error.required3')
           expect(errors.at(3).text()).toBe('meal.error.required')
           expect(errors.at(4).text()).toBe('meal.error.required')
-          expect(errors.at(5).text()).toBe('comment.error.required')
+          expect(errors.at(5).text()).toBe('comment.error.required5')
           expect(errors.at(6).text()).toBe('cgu.error.required')
           expect(errors.at(7).text()).toBe('')
         })
@@ -466,7 +466,7 @@ describe('MainPage', () => {
 
           expect(errors.length).toBe(9)
 
-          expect(errors.at(0).text()).toBe('attending.error.required')
+          expect(errors.at(0).text()).toBe('attending.error.required5')
           expect(errors.at(1).text()).toBe('')
           expect(errors.at(2).text()).toBe('plus1.errorName.required')
         })
