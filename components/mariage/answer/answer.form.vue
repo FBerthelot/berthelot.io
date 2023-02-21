@@ -65,7 +65,7 @@
       "p2": "Il faudra prévoir de les faire garder pour le weekend."
     },
     "housing": {
-      "p1": "N'oubliez pas de réserver dès que possible un logement pour le weekend des 19/20 août 2023 ! Granville est un lieu très touristique l'été."
+      "p1": "N'oubliez pas de réserver dès que possible un logement pour le weekend du 19 août 2023 ! Granville est un lieu très touristique l'été."
     },
     "parker": {
       "p1": "Un service de taxi sera à votre disposition gratuitement pour que vous puissiez rentrer dormir en sécurité.",
