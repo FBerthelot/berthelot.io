@@ -15,9 +15,9 @@
     "subtitle": "Please reply before the 30th of April 2023",
     "answer": "Respond to the invitation",
     "answered": {
-      "title": "Thanks you for your answer!",
-      "subtitle": "★ You can keep this website within your bookmarks! ★",
-      "addToCalendar": "Ajouter au calendrier"
+      "title": "Thank you for your answer!",
+      "subtitle": "★ You can keep this website among your bookmarks! ★",
+      "addToCalendar": "Add to calendar"
     }
   }
 }

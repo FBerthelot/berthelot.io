@@ -19,11 +19,11 @@
   },
   "en": {
     "title": "Accommodation",
-    "subtitle": "Here are a few options for your accomodation.",
+    "subtitle": "Here are a few options for your accommodation.",
     "driver": "Please remember that a taxi service will be available free of charge so you can go back safely for the night. <br>The taxi will be able to take you back between 1:00am and 5:00am, if your chosen accommodation is located within 10 km around the Château de la Crête. The next day, the taxi will come back to pick up the drivers from 11:00am to 12:00pm and take them back to the Château.",
 
     "gites": {
-      "title": "Holiday accomodations"
+      "title": "B&B"
     },
     "hostel": {
       "title": "Hotels"
@@ -97,52 +97,61 @@
       <div class="item">
         <a
           class="item-title"
-          href="https://www.chambres-lacotentine-manche.com/chambreshotes-mer-chambres"
+          target="__blank"
+          href="https://www.chambres-lacotentine-manche.com/"
           >La Cotentine</a
         >
-        <address>Saint Pair sur mer</address>
+        <address>Saint-Pair-sur-Mer (2km)</address>
       </div>
       <div class="item">
-        <span class="item-title">Logis d'Equilly</span>
-        <address>Equilly</address>
+        <a
+          class="item-title"
+          href="http://www.lelogisdequilly.fr/index.php/fr/"
+          target="__blank"
+        >
+          Logis d'Equilly
+        </a>
+        <address>Equilly (17km)</address>
         <div class="phone-number">
           <a href="tel:+33975851620">09 75 85 16 20</a> /
           <a href="tel:+33233610471">02 33 61 04 71</a>
         </div>
       </div>
       <div class="item">
-        <div class="item-title">Chantal Lebreton</div>
-        <address>Saint Pair sur mer</address>
-        <div class="phone-number">
-          <a href="tel:+33975851620">07 81 95 83 38</a>
-        </div>
-      </div>
-      <div class="item">
-        <div class="item-title">Valérie et Eric Lorin</div>
-        <address>Jullouville</address>
+        <a
+          class="item-title"
+          target="__blank"
+          href="https://www.tourisme-granville-terre-mer.com/ou-dormir/locations-de-vacances/gites-de-france-g404-les-eucalyptus-2373130"
+        >
+          Valérie et Eric Lorin
+        </a>
+        <address>Jullouville (11km)</address>
         <div class="phone-number">
           <a href="tel:+33676626034">06 76 62 60 34</a>
         </div>
       </div>
       <div class="item">
-        <a class="item-title" href="www.manoirdumesnil.fr"
-          >Manoir du Mesnil de Bas</a
+        <a
+          class="item-title"
+          target="__blank"
+          href="http://www.manoirdumesnil.fr"
         >
-        <address>Bréhal</address>
+          Manoir du Mesnil de Bas
+        </a>
+        <address>Bréhal (13km)</address>
         <div class="phone-number">
           <a href="tel:+33669159497">06 69 15 94 97</a>
         </div>
       </div>
       <div class="item">
-        <div class="item-title">Le Mascaret</div>
-        <address>Blainville sur mer</address>
-        <div class="phone-number">
-          <a href="tel:+33233458609">02 33 45 86 09</a>
-        </div>
-      </div>
-      <div class="item">
-        <div class="item-title">Le Logis du Roc</div>
-        <address>Haute ville de Granville</address>
+        <a
+          class="item-title"
+          target="__blank"
+          href="http://www.lelogisduroc.com/"
+        >
+          Le Logis du Roc
+        </a>
+        <address>Granville (3km)</address>
         <div class="phone-number">
           <a href="tel:+33233507571">02 33 50 75 71</a>
           /
@@ -150,18 +159,10 @@
         </div>
       </div>
       <div class="item">
-        <div class="item-title">Le Mascaret</div>
-        <address>
-          Gîtes dans l'ancien presbytère de Kairon <br />
-          S'adresser à l'office de tourisme de Saint Pair
-        </address>
-      </div>
-      <div class="item">
-        <div class="item-title">Villa Bel Amy</div>
-        <address>
-          Saint Pair sur mer<br />
-          3 appartements
-        </address>
+        <a class="item-title" target="__blank" href="http://villabelamy.fr/">
+          Villa Bel Amy
+        </a>
+        <address>Saint-Pair-sur-Mer (2km)</address>
         <div class="phone-number">
           <a href="tel:+33677945023">06 77 94 50 23</a>
         </div>
@@ -178,39 +179,75 @@
       aria-labelledby="tab-1"
     >
       <div class="item">
-        <span class="item-title">Hôtel Ibis Le Hérel</span>
+        <a
+          class="item-title"
+          target="__blank"
+          href="https://www.tripadvisor.fr/Hotel_Review-g951898-d251744-Reviews-Hotel_ibis_Granville_Port_de_Plaisance-Granville_Manche_Basse_Normandie_Normandy.html"
+        >
+          Hôtel Ibis Le Hérel
+        </a>
+        <address>Granville (3km)</address>
         <div class="phone-number">
           <a href="tel:+33233904800">02 33 90 48 00</a>
         </div>
       </div>
       <div class="item">
-        <span class="item-title"> Hôtel Mercure Le Grand Large</span>
+        <a
+          class="item-title"
+          target="__blank"
+          href="https://all.accor.com/hotel/6644/index.fr.shtml?utm_campaign=seo+maps&utm_medium=seo+maps&utm_source=google+Maps"
+        >
+          Hôtel Mercure Le Grand Large
+        </a>
+        <address>Granville (4km)</address>
         <div class="phone-number">
           <a href="tel:+33233911919">02 33 91 19 19</a>
         </div>
       </div>
       <div class="item">
-        <span class="item-title"> Hôtel du Musée</span>
+        <a
+          class="item-title"
+          href="https://www.hoteldumuseegranville.com/"
+          target="__blank"
+        >
+          Hôtel du Musée
+        </a>
+        <address>Granville (4km)</address>
         <div class="phone-number">
           <a href="tel:+33233500300">02 33 50 03 00</a>
         </div>
       </div>
       <div class="item">
-        <span class="item-title"> Hôtel « Au bout du quai »</span>
+        <a
+          class="item-title"
+          href="http://hotelauboutduquai.free.fr/"
+          target="__blank"
+        >
+          Hôtel Au bout du quai
+        </a>
+        <address>Granville (4km)</address>
         <div class="phone-number">
           <a href="tel:+33233500205">02 33 50 02 05</a>
         </div>
       </div>
       <div class="item">
-        <span class="item-title"> Le Relais des Iles</span>
-        <address>Coudeville sur mer</address>
+        <a
+          class="item-title"
+          href="https://lerelaisdesiles.com/hotel-2/"
+          target="__blank"
+        >
+          Le Relais des Iles</a
+        >
+        <address>Coudeville sur mer (13km)</address>
         <div class="phone-number">
           <a href="tel:+33233614350">02 33 61 43 50</a>
         </div>
       </div>
       <div class="item">
-        <span class="item-title"> Prévithal Hôtel de la Baie</span>
-        <address>Donville les Bains</address>
+        <a class="item-title" href="https://previthal.com/fr/" target="__blank">
+          Prévithal Hôtel de la Baie
+        </a>
+        <address>Donville les Bains (4km)</address>
         <div class="phone-number">
           <a href="tel:+33233903110"> 02 33 90 31 10</a>
         </div>
@@ -227,10 +264,13 @@
       aria-labelledby="tab-1"
     >
       <div class="item">
-        <a href="www.ailleurschezmoi.fr" class="item-title">
+        <a
+          href="http://www.ailleurschezmoi.fr"
+          target="__blank"
+          class="item-title"
+        >
           Ailleurs chez moi</a
         >
-        <address>Donville les Bains</address>
         <div class="phone-number">
           <a href="tel:+33233490236">02 33 49 02 36</a>
           <a href="mailto:contact@ailleurschezmoi.com"
@@ -240,66 +280,63 @@
       </div>
 
       <div class="item">
-        <a href=" www.conciergerielesmouettes.fr" class="item-title"
-          >Conciergerie Les Mouettes</a
+        <a
+          href="http://www.conciergerielesmouettes.fr"
+          target="__blank"
+          class="item-title"
         >
-        <address>Aurore Charbonnel</address>
+          Conciergerie Les Mouettes
+        </a>
         <div class="phone-number">
-          <a href="tel:+33674071327">06 74 07 13 27</a>
+          <a href="tel:+33674071327">
+            Aurore Charbonnel<br />
+            06 74 07 13 27
+          </a>
         </div>
       </div>
 
       <div class="item">
-        <a href="www.damdambnb.com" class="item-title">Damdambnb</a>
+        <a href="http://www.damdambnb.com" target="__blank" class="item-title">
+          Damdambnb
+        </a>
         <address>
-          2 maisons<br />Kairon plage et à Saint Pair<br />
-          chacune de 15 couchages
+          Kairon plage (4km)<br />
+          et<br />
+          Saint-Pair-sur-Mer (2km)
         </address>
       </div>
 
       <div class="item">
-        <a href="www.abritel.fr/location-vacances/p900915" class="item-title"
-          >Abritel 1</a
+        <a
+          href="http://www.abritel.fr/location-vacances/p900915"
+          target="__blank"
+          class="item-title"
         >
-      </div>
-
-      <div class="item">
-        <a href="www.abritel.fr/location-vacances/p1010686" class="item-title"
-          >Abritel 2</a
-        >
-      </div>
-
-      <div class="item">
-        <a href="www.abritel.fr/location-vacances/p1210724" class="item-title"
-          >Abritel 3</a
-        >
+          Abritel 1
+        </a>
+        <address>Granville (3km)</address>
       </div>
 
       <div class="item">
         <a
-          href="www.abritel.fr/location-vacances/p1677857a?adultsCount=8"
+          href="http://www.abritel.fr/location-vacances/p1210724"
+          target="__blank"
           class="item-title"
-          >Abritel 4</a
         >
-      </div>
-
-      <div class="item">
-        <a href=" www.conciergerielesmouettes.fr" class="item-title">
-          Villa Saint Maurice</a
-        >
-        <address>258 route de Lézeaux<br />Saint Pair sur mer</address>
-        <div class="phone-number">
-          <a href="tel:+33674003809">06 74 00 38 09</a>
-        </div>
+          Abritel 2
+        </a>
+        <address>Granville (3km)</address>
       </div>
 
       <div class="item">
         <a
-          href="www.airbnb.fr/rooms/2872456source_impression_id=p3_1593973438_863DXE%2Bafby3v2qJ&guests=1&adults=1&ch
-        eck_in=2020-10-09&check_out=2020-10-11"
+          href="http://www.abritel.fr/location-vacances/p1677857a"
+          target="__blank"
           class="item-title"
-          >AirBnB 1</a
         >
+          Abritel 3
+        </a>
+        <address>Granville (3km)</address>
       </div>
     </article>
   </section>
@@ -309,7 +346,7 @@
 export default {
   data() {
     return {
-      selectedTab: 'bnb',
+      selectedTab: 'hotel',
     }
   },
   methods: {

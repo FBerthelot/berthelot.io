@@ -1,14 +1,15 @@
+<!-- eslint-disable @intlify/vue-i18n/no-html-messages -->
 <i18n>
 {
   "fr": {
     "title": "On se marie !",
-    "p1": "Tout à commencé pour nous face à la mer devant un sublime coucher de soleil au Beg Léguer. 3 ans plus tard jour pour jour, devant un coucher de soleil miraculeux à Saint-Cast Le Guildo, nous décidions d'embarquer pour une nouvelle aventure à deux du haut de la falaise surplombant les flots.",
-    "p2": "Après bientôt 5 ans d'amour et de bonheur, nous avons le plaisir de t'inviter à célébrer avec nous notre mariage qui aura lieu le 19 août 2023 au bord de cette belle étendue bleue qui nous tient tant à coeur. | Après bientôt 5 ans d'amour et de bonheur, nous avons le plaisir de vous inviter à célébrer avec nous notre mariage qui aura lieu le 19 août 2023 au bord de cette belle étendue bleue qui nous tient tant à coeur.",
+    "p1": "Tout a vraiment commencé pour nous le 12 juillet 2018, face à la mer devant un sublime coucher de soleil au Beg Léguer...<br><br>3 ans plus tard jour pour jour, devant un coucher de soleil miraculeux à Saint-Cast Le Guildo, nous décidions d'embarquer pour une nouvelle aventure à deux.",
+    "p2": "Après bientôt 5 ans d'amour et de bonheur, nous avons le plaisir de t'inviter à célébrer avec nous notre mariage qui aura lieu le 19 août 2023 sur la côte qui nous tient tant à coeur. | Après bientôt 5 ans d'amour et de bonheur, nous avons le plaisir de vous inviter à célébrer avec nous notre mariage qui aura lieu le 19 août 2023 sur la côte qui nous tient tant à coeur.",
     "p3": "⚓️&nbsp;Prépares toi à venir larguer les amarres avec nous&nbsp;!&nbsp;⚓️ | ⚓️&nbsp;Préparez vous à venir larguer les amarres avec nous&nbsp;!&nbsp;⚓️"
   },
   "en": {
-    "title": "We're tying the knot !",
-    "p1": "Everything begun for us facing the sea and a gorgeous sunset in Beg Léguer. 3 years later to the day in Saint-Cast Le Guildo, from the top of a cliff overlooking the sea, we decided to embark on a brand new adventure together in front of a miraculous sunset.",
+    "title": "We're tying the knot!",
+    "p1": "Everything really began for us on the 12th of July 2018, facing the gorgeous sunset on the sea in Beg Léguer...<br><br>3 years later to the day, in front of a miraculous sunset in Saint-Cast Le Guildo, we decided to embark on a brand new adventure together.",
     "p2": "After nearly 5 years of love and happiness, we have the pleasure of inviting you to celebrate with us our wedding that will take place on the 19th of August 2023 by the shores we hold so close to our hearts.",
     "p3": "⚓️&nbsp;Get ready to cast off with us&nbsp;!&nbsp;⚓️"
   }

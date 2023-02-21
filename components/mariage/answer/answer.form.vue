@@ -24,13 +24,13 @@
     },
     "meal": {
       "title": "Choix du plat",
-      "subtitle": "Choix du plat uniquement pour les menus des adultes",
+      "subtitle": "Uniquement disponible pour les menus adultes",
       "meat": "Viande rouge saignante",
       "fish": "Poisson",
       "children": "Menu enfant",
       "allergies": "Une allergie ?",
       "error": {
-        "required": "On a besoin de savoir ce que tu manges pour ne pas gâcher. | On a besoin de savoir ce que vous mangez pour ne pas gâcher."
+        "required": "On a besoin de savoir ce que tu manges pour ne pas gâcher."
       }
     },
     "plus1": {
@@ -90,7 +90,7 @@
     "ultimatum": "Please answer before the 30th of April 2023.",
     "attending": {
       "question": "Will you come?",
-      "instruction": "Several choices possibles",
+      "instruction": "Several choices possible",
       "cityHall": "To the town hall",
       "cityHallDate": "19th of August 2023",
       "church": "To the church",
@@ -108,13 +108,13 @@
     },
     "meal": {
       "title": "Choice of main course",
-      "subtitle": "Main course choice is only available for adult menus.",
+      "subtitle": "Only available for adult menus.",
       "meat": "Red meat cooked rare",
       "fish": "Fish",
       "children": "Kids' menu",
       "allergies": "An allergy?",
       "error": {
-        "required": "We need to know what you would prefer eating to avoid wasting."
+        "required": "We need to know what you would prefer eating to avoid waste."
       }
     },
     "plus1": {
@@ -134,13 +134,13 @@
       "yes": "Yes",
       "no": "No",
       "error": {
-        "required": "Please confirm the attendance of your child.ren."
+        "required": "Please confirm the attendance of your child. | Please confirm the attendance of your children."
       }
     },
     "comment": {
       "question": "A comment?",
       "error": {
-        "required": "Don't hesite to leave a small comment, we'll love it. 😇"
+        "required": "Don't hesitate to leave a small comment, we'll love it. 😇"
       }
     },
     "pet": {
@@ -299,7 +299,9 @@
             />
             <div class="checkbox-content">
               <img class="option-icon" src="./assets/cant.png" alt="" />
-              <div class="option-title">{{ $t('attending.cant') }}</div>
+              <div class="option-title">
+                {{ $tc('attending.cant', invitation.nbOfPeople) }}
+              </div>
             </div>
           </label>
         </div>
@@ -308,7 +310,10 @@
       <span v-if="shouldValidateForm" class="error">
         {{
           formState.errors.attending
-            ? $t('attending.error.' + formState.errors.attending)
+            ? $tc(
+                'attending.error.' + formState.errors.attending,
+                invitation.nbOfPeople
+              )
             : ''
         }}
       </span>
@@ -495,7 +500,7 @@
         ></textarea>
       </label>
 
-      <section class="infos">
+      <section v-if="!formValues.attending.includes('cant')" class="infos">
         <ul>
           <li class="info">
             <img src="./assets/no-pets.svg" class="info-icon" alt="" />
@@ -533,7 +538,10 @@
       <div v-if="shouldValidateForm" class="error">
         {{
           formState.errors.comment
-            ? $t('comment.error.' + formState.errors.comment)
+            ? $tc(
+                'comment.error.' + formState.errors.comment,
+                invitation.nbOfPeople
+              )
             : ''
         }}
       </div>
@@ -832,6 +840,11 @@ export default {
   box-shadow: 0px 4px 16px rgba(155, 97, 167, 0.15);
   border-radius: 0.5rem;
   transition: all 0.3s ease;
+
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1rem;
 }
 
 .answers.checkboxes.checkboxes--small label input ~ .checkbox-content {

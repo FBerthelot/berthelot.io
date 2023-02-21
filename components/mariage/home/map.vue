@@ -98,7 +98,7 @@
     "day2": {
       "title": "20th of August 2023",
       "comeback": {
-        "title": "Return of the newlyweds",
+        "title": "Post-wedding brunch",
         "duration": "from 11am",
         "address": {
           "line1": "Château de la Crête",
@@ -455,6 +455,7 @@ export default {
   line-height: 2.4rem;
   color: #2e3f4b;
   margin-bottom: 0.5rem;
+  text-align: center;
 }
 
 .schedule-item-hour {
