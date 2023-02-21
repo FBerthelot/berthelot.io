@@ -16,11 +16,11 @@
       "wineReceptionDate": "19 août 2023",
       "party": "À la soirée",
       "partyDate": "19 août 2023",
-      "cant": "Je ne peux pas venir.",
+      "cant": "Je ne peux pas venir. | Nous ne pouvons pas venir.",
       "after": "Le lendemain",
       "afterDate": "20 août 2023",
       "error": {
-        "required": "Merci de nous confirmer ta présence. | Merci de nous confirmer ta présence."
+        "required": "Merci de nous confirmer ta présence. | Merci de nous confirmer votre présence."
       }
     },
     "meal": {
@@ -47,7 +47,7 @@
       }
     },
     "children": {
-      "question": "Ton/tes enfant(s) viennent-il(s) ? | Votre/Vos enfant(s) viennent-il(s) ?",
+      "question": "Ton/tes enfant(s) vien(nen)t-il(s) ? | Votre/Vos enfant(s) vien(nen)t-il(s) ?",
       "yes": "Oui",
       "no": "Non",
       "error": {
@@ -62,113 +62,113 @@
     },
     "pet": {
       "p1": "Attention, nos amis les animaux ne sont malheureusement pas autorisés.",
-      "p2": "Il faudra prévoir de les faire garder."
+      "p2": "Il faudra prévoir de les faire garder pour le weekend."
     },
     "housing": {
-      "p1": "N'oubliez pas de réserver dès que possible un logement pour le weekend du 19 août 2023 ! Granville est un lieu très touristique l'été."
+      "p1": "N'oubliez pas de réserver dès que possible un logement pour le weekend des 19/20 août 2023 ! Granville est un lieu très touristique l'été."
     },
     "parker": {
-      "p1": "Un service de taxi sera à votre disposition gratuitement pour que vous puissiez rentrer dormir en sécurité.<br>Il sera disponible pour vous ramener entre 1h et 5h du matin, si votre logement est situé dans un rayon de 10 km autour du Château de la Crête. Le lendemain, il repassera chercher les conducteurs entre 11 et 12h pour les ramener au Château.",
-      "p2": " ",
-      "p3": " "
+      "p1": "Un service de taxi sera à votre disposition gratuitement pour que vous puissiez rentrer dormir en sécurité.",
+      "p2": "Il sera disponible pour vous ramener entre 1h et 5h du matin, si votre logement est situé dans un rayon de 10 km autour du Château de la Crête.",
+      "p3": "Le lendemain, il repassera chercher les conducteurs entre 11 et 12h pour les ramener au Château."
     },
     "cgu": {
       "p1": "Une fois la réponse envoyée, vous ne pourrez plus réutiliser ce formulaire pour la modifier. Si besoin, il faudra nous contacter directement :",
       "email": "Par mail vallee_a@hotmail.fr / florent@berthelot.io",
       "phone": " Par téléphone au 06 03 65 21 38 / 06 50 99 96 18",
       "error": {
-        "required": "Il faut lire le petit texte et cocher cette case. ;)"
+        "required": "Il faut lire le petit message à la fin et cocher cette case. ;)"
       }
     },
     "submit": {
-      "text": "J'envoie ma réponse | Nous envoyons notre réponse",
+      "text": "Envoyer la réponse",
       "loading": "Envoi...",
       "error": "Une erreur est survenue lors de l'envoi du formulaire, réessaye ! | Une erreur est survenue lors de l'envoi du formulaire, réessayez !"
     }
   },
   "en": {
-    "hello": "Bonjour {names} !",
-    "ultimatum": "On souhaiterait avoir ta réponse avant le 30 avril 2023. | On souhaiterait avoir votre réponse avant le 30 avril 2023.",
+    "hello": "Hello {names}!",
+    "ultimatum": "Please answer before the 30th of April 2023.",
     "attending": {
       "title": "Accompagnants",
-      "question": "Viens-tu ? | Venez-vous ?",
-      "instruction": "Plusieurs choix possibles",
-      "cityHall": "À la mairie",
-      "cityHallDate": "19 août 2023",
-      "church": "À l'église",
-      "churchDate": "19 août 2023",
-      "wineReception": "Au vin d'honneur",
-      "wineReceptionDate": "19 août 2023",
-      "party": "À la soirée",
-      "partyDate": "19 août 2023",
-      "cant": "Je ne peux pas venir.",
-      "after": "Le lendemain",
-      "afterDate": "20 août 2023",
+      "question": "Will you come?",
+      "instruction": "Several choices possibles",
+      "cityHall": "To the town hall",
+      "cityHallDate": "19th of August 2023",
+      "church": "To the church",
+      "churchDate": "19th of August 2023",
+      "wineReception": "To the reception",
+      "wineReceptionDate": "19th of August 2023",
+      "party": "To the dinner and party",
+      "partyDate": "19th of August 2023",
+      "cant": "I can't come. | We can't come.",
+      "after": "The post-wedding brunch",
+      "afterDate": "20th of August 2023",
       "error": {
-        "required": "Merci de nous confirmer ta présence. | Merci de nous confirmer ta présence."
+        "required": "Please confirm your attendance."
       }
     },
     "meal": {
-      "title": "Choix du plat",
-      "subtitle": "Choix du plat uniquement pour les menus des adultes",
-      "meat": "Viande rouge saignante",
-      "fish": "Poisson",
-      "children": "Menu enfant",
-      "allergies": "Une allergie ?",
+      "title": "Choice of main course",
+      "subtitle": "Main course choice is only available for adult menus.",
+      "meat": "Red meat cooked rare",
+      "fish": "Fish",
+      "children": "Kids' menu",
+      "allergies": "An allergy?",
       "error": {
-        "required": "On a besoin de savoir ce que tu manges pour ne pas gâcher. | On a besoin de savoir ce que vous mangez pour ne pas gâcher."
+        "required": "We need to know what you would prefer eating to avoid wasting."
       }
     },
     "plus1": {
-      "question": "Viens-tu accompagné ?",
-      "questionName": "Peux-tu nous dire son prénom ?",
-      "yes": "Oui",
-      "no": "Non",
+      "question": "Will you come accompanied?",
+      "questionName": "What's their name?",
+      "yes": "Yes",
+      "no": "No",
       "error": {
-        "required": "Merci de nous confirmer qu'il ou elle vient."
+        "required": "Please confirm their attendance."
       },
       "errorName": {
-        "required": "On a besoin du prénom de ton/ta +1 pour le plan de table. ;)"
+        "required": "We need their name for the seating plan. ;)"
       }
     },
     "children": {
-      "question": "Ton/tes enfant(s) viennent-il(s) ? | Votre/Vos enfant(s) viennent-il(s) ?",
-      "yes": "Oui",
-      "no": "Non",
+      "question": "Is your child attending? | Are your children attending?",
+      "yes": "Yes",
+      "no": "No",
       "error": {
-        "required": "Merci de nous confirmer la présence ou non des enfants."
+        "required": "Please confirm the attendance of your child.ren."
       }
     },
     "comment": {
-      "question": "Un commentaire ?",
+      "question": "A comment?",
       "error": {
-        "required": "N'hésites pas à nous laisser un petit commentaire, ça nous fera plaisir. 😇 | N'hésitez pas à nous laisser un petit commentaire, ça nous fera plaisir. 😇"
+        "required": "Don't hesite to leave a small comment, we'll love it. 😇"
       }
     },
     "pet": {
-      "p1": "Attention, nos amis les animaux ne sont malheureusement pas autorisés.",
-      "p2": "Il faudra prévoir de les faire garder."
+      "p1": "Warning, pets are unfortunately not allowed.",
+      "p2": "You will have to plan ahead to have them looked after for the weekend."
     },
     "housing": {
-      "p1": "N'oubliez pas de réserver dès que possible un logement pour le weekend du 19 août 2023 ! Granville est un lieu très touristique l'été."
+      "p1": "Don't forget to book as soon as possible your accomodation for the weekend of the 19th/20th of August 2023 ! Granville is a very touristic area in Summer."
     },
     "parker": {
-      "p1": " Un service de taxi sera à votre disposition gratuitement pour que vous puissiez rentrer dormir en sécurité.",
-      "p2": " Il sera disponible pour vous ramener entre 1h et 5h du matin, si votre logement est situé dans un rayon de 10 km autour du Château de la Crête.",
-      "p3": " Le lendemain, il repassera chercher les conducteurs entre 11 et 12h pour les ramener au Château."
+      "p1": " A taxi service will be available free of charge so you can go back safely for the night.",
+      "p2": " The taxi will be able to take you back between 1:00am and 5:00am, if your chosen accommodation is located within 10 km around the Château de la Crête.",
+      "p3": " The next day, the taxi will come back to pick up the drivers from 11:00am to 12:00pm and take them back to the Château."
     },
     "cgu": {
-      "p1": "Une fois la réponse envoyée, vous ne pourrez plus réutiliser ce formulaire pour la modifier. Si besoin, il faudra nous contacter directement :",
-      "email": "Par mail vallee_a@hotmail.fr / florent@berthelot.io",
-      "phone": " Par téléphone au 06 03 65 21 38 / 06 50 99 96 18",
+      "p1": "Once your answer is sent, you won't be able to use this form to change it. If needed, please contact us directly:",
+      "email": "By email vallee_a@hotmail.fr / florent@berthelot.io",
+      "phone": " By phone at (+33) 6 03 65 21 38 / (+33) 6 50 99 96 18",
       "error": {
-        "required": "Il faut lire le petit texte et cocher cette case. ;)"
+        "required": "You have to read the little message at the end and tick this box. ;)"
       }
     },
     "submit": {
-      "text": "J'envoie ma réponse | Nous envoyons notre réponse",
-      "loading": "Envoi...",
-      "error": "Une erreur est survenue lors de l'envoi du formulaire, réessaye ! | Une erreur est survenue lors de l'envoi du formulaire, réessayez !"
+      "text": "Send the answer",
+      "loading": "Sending...",
+      "error": "An error occured while sending the form, try again!"
     }
   }
 }
