@@ -435,6 +435,7 @@ export default {
   transition: all 0.3s ease;
   border-radius: 0.5rem;
   padding: 0.5rem;
+  width: 20rem;
 }
 
 .schedule-item:hover {

@@ -2,6 +2,55 @@ import { mount } from '@vue/test-utils'
 import flushPromises from 'flush-promises'
 import MainPage from '~/pages/mariage/_invite/index.vue'
 
+jest.mock('../00_shared/sample.data.js', () => {
+  return {
+    invitationsMock: [
+      {
+        "Id de l'invitation": 'futursmaries',
+        "Nom de l'invitation (Web)": 'La famille Nigzy',
+        'Personne 1': 'Gens 1',
+        'Personne 2': 'Gens 2',
+        'Personne 3': 'Gens 3',
+        'Personne 4': 'Gens 4',
+        'Personne 5': 'Gens 5',
+        'Question sur +1': 'Oui',
+        'Nom du +1': '',
+        'Question sur Enfant': 'Oui',
+        'Invités pour mairie': 'Oui',
+        'Invités pour église': 'Oui',
+        "Invités pour vin d'honneur": 'Oui',
+        'Invités pour soirée': 'Oui',
+        'Invités pour retour': 'Oui',
+        'Placeholder allergies': 'Coucou placeholder allergies',
+        'Placeholder commentaire': 'Coucou placeholder commentaire',
+        'A répondu': 'Non',
+      },
+    ],
+    allPeoplesMock: [
+      {
+        Nom: 'Gens 1',
+        "Tranche d'age": '17 - 79 ans',
+      },
+      {
+        Nom: 'Gens 2',
+        "Tranche d'age": '17 - 79 ans',
+      },
+      {
+        Nom: 'Gens 3',
+        "Tranche d'age": '0 - 3 ans',
+      },
+      {
+        Nom: 'Gens 4',
+        "Tranche d'age": '4 - 12 ans',
+      },
+      {
+        Nom: 'Gens 5',
+        "Tranche d'age": '13 - 17 ans',
+      },
+    ],
+  }
+})
+
 jest.mock('fireworks-js', () => {
   return {
     Fireworks: class fireworks {
@@ -49,9 +98,9 @@ describe('MainPage', () => {
     jest.useRealTimers()
   })
 
-  describe('when use the fake data with id testdata', () => {
+  describe('when use the fake data with id futursmaries', () => {
     beforeEach(() => {
-      config.mocks.$route.params.invite = 'testdata'
+      config.mocks.$route.params.invite = 'futursmaries'
     })
 
     it('should not call fetch', () => {

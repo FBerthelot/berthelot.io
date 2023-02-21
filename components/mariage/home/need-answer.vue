@@ -1,7 +1,7 @@
 <i18n>
 {
   "fr": {
-    "title": "Tu te joins à nous ? | Vous vous joignez à nous ?",
+    "title": "Tu te joins à nous&nbsp;? | Vous vous joignez à nous&nbsp;?",
     "subtitle": "Réponse souhaitée avant le 30 avril 2023",
     "answer": "Répondre à l'invitation",
     "answered": {
@@ -11,12 +11,12 @@
     }
   },
   "en": {
-    "title": "Will you be joigning us ?",
+    "title": "Will you be joigning us?",
     "subtitle": "Please reply before the 30th of April 2023",
     "answer": "Respond to the invitation",
     "answered": {
       "title": "Thanks you for your answer!",
-      "subtitle": "★ You can keep this website within your bookmarks ! ★",
+      "subtitle": "★ You can keep this website within your bookmarks! ★",
       "addToCalendar": "Ajouter au calendrier"
     }
   }
@@ -28,7 +28,11 @@
     <div class="firework-container"></div>
 
     <div class="container">
-      <h3 class="title">{{ $t(isAnswered ? 'answered.title' : 'title') }}</h3>
+      <h3 class="title">
+        {{
+          $tc(isAnswered ? 'answered.title' : 'title', invitation.nbOfPeople)
+        }}
+      </h3>
       <h4 class="subtitle">
         {{
           $tc(
@@ -191,6 +195,7 @@ export default {
   font-size: 3.25rem;
   line-height: 4.5rem;
   margin-bottom: 0.5rem;
+  padding: 0 0.5rem;
 
   text-align: center;
 }

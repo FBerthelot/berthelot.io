@@ -30,7 +30,7 @@
         <span v-html="$tc('p3', invitation.nbOfPeople)" />
       </p>
 
-      <img class="dans-la-vallee" src="./assets/bague.jpeg" />
+      <img class="dans-la-vallee" src="./assets/bague.jpg" />
     </div>
   </section>
 </template>

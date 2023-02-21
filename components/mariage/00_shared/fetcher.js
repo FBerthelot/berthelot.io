@@ -1,50 +1,6 @@
-const invitationsMock = [
-  {
-    "Id de l'invitation": 'testdata',
-    "Nom de l'invitation (Web)": 'La famille Nigzy',
-    'Personne 1': 'Gens 1',
-    'Personne 2': 'Gens 2',
-    'Personne 3': 'Gens 3',
-    'Personne 4': 'Gens 4',
-    'Personne 5': 'Gens 5',
-    'Question sur +1': 'Oui',
-    'Nom du +1': '',
-    'Question sur Enfant': 'Oui',
-    'Invités pour mairie': 'Oui',
-    'Invités pour église': 'Oui',
-    "Invités pour vin d'honneur": 'Oui',
-    'Invités pour soirée': 'Oui',
-    'Invités pour retour': 'Oui',
-    'Placeholder allergies': 'Coucou placeholder allergies',
-    'Placeholder commentaire': 'Coucou placeholder commentaire',
-    'A répondu': 'Non',
-  },
-]
+import { allPeoplesMock, invitationsMock } from './sample.data'
 
-const allPeoplesMock = [
-  {
-    Nom: 'Gens 1',
-    "Tranche d'age": '17 - 79 ans',
-  },
-  {
-    Nom: 'Gens 2',
-    "Tranche d'age": '17 - 79 ans',
-  },
-  {
-    Nom: 'Gens 3',
-    "Tranche d'age": '0 - 3 ans',
-  },
-  {
-    Nom: 'Gens 4',
-    "Tranche d'age": '4 - 12 ans',
-  },
-  {
-    Nom: 'Gens 5',
-    "Tranche d'age": '13 - 17 ans',
-  },
-]
-
-const TEST_INVITE_ID = 'testdata'
+const TEST_INVITE_ID = 'futursmaries'
 
 export const getTheInvitation = async (SHEETDB_URL, inviteId) => {
   const invitations =
@@ -165,7 +121,7 @@ ${
   - ${guy} : mangera ${MealMapper[formValues[`meal-${guy}`]]}.
 `
         })
-        .join('/n')
+        .join('\n')
 }
 
 ${formValues.mealComment ? `:poultry_leg: : "${formValues.mealComment}"` : ''}

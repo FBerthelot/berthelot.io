@@ -5,7 +5,6 @@
     "hello": "Bonjour {names} !",
     "ultimatum": "On souhaiterait avoir ta réponse avant le 30 avril 2023. | On souhaiterait avoir votre réponse avant le 30 avril 2023.",
     "attending": {
-      "title": "Accompagnants",
       "question": "Viens-tu ? | Venez-vous ?",
       "instruction": "Plusieurs choix possibles",
       "cityHall": "À la mairie",
@@ -90,7 +89,6 @@
     "hello": "Hello {names}!",
     "ultimatum": "Please answer before the 30th of April 2023.",
     "attending": {
-      "title": "Accompagnants",
       "question": "Will you come?",
       "instruction": "Several choices possibles",
       "cityHall": "To the town hall",
@@ -314,16 +312,6 @@
             : ''
         }}
       </span>
-
-      <h3
-        v-if="
-          (invitation.plus1Invited || invitation.questionOnChildren) &&
-          !formValues.attending.includes('cant')
-        "
-        class="title title--only"
-      >
-        {{ $t('attending.title') }}
-      </h3>
 
       <fieldset
         v-if="invitation.plus1Invited && !formValues.attending.includes('cant')"
@@ -582,7 +570,9 @@
           :disabled="submitFormStatus.loading"
         >
           {{
-            submitFormStatus.loading ? $t('submit.loading') : $t('submit.text')
+            submitFormStatus.loading
+              ? $t('submit.loading')
+              : $tc('submit.text', invitation.nbOfPeople)
           }}
         </button>
         <span class="error">
@@ -664,10 +654,12 @@ export default {
 
       const errors = {
         attending: !this.formValues.attending?.length ? 'required' : false,
-        plus1Invited:
-          !this.formValues.attending.includes('cant') && !this.formValues.plus1
+        plus1Invited: this.invitation.plus1Invited
+          ? !this.formValues.attending.includes('cant') &&
+            !this.formValues.plus1
             ? 'required'
-            : false,
+            : false
+          : false,
         plus1Name:
           !this.formValues.attending.includes('cant') &&
           this.formValues.plus1 === 'yes' &&
@@ -812,6 +804,8 @@ export default {
   display: block;
   width: 100%;
   height: 10rem;
+  line-height: 1.5rem;
+  padding: 0.5rem;
 }
 
 .answers {
@@ -876,6 +870,7 @@ export default {
   color: #2e3f4b;
 
   margin-bottom: 0.25rem;
+  text-align: center;
 }
 
 .answers.checkboxes label .option-date {

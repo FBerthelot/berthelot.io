@@ -48,7 +48,7 @@
         <div class="number">
           {{ seconds }}
         </div>
-        <div class="unit">{{ $tc('secondes', secondes) }}</div>
+        <div class="unit">{{ $tc('secondes', seconds) }}</div>
       </div>
     </div>
   </section>

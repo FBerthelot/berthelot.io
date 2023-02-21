@@ -349,13 +349,12 @@ export default {
 
 .driver {
   width: calc(100% - 40rem);
+  padding: 1.5rem 20rem;
 
   font-family: 'Open Sans', sans-serif;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5rem;
-
-  padding: 1.5rem 20rem;
 
   display: flex;
   flex-direction: row;
@@ -499,6 +498,15 @@ a.item-title:focus {
 
   .item {
     width: 18rem;
+  }
+
+  .driver {
+    width: 100%;
+    padding: 0;
+    margin: 2rem 0 0 0;
+  }
+  .driver-icon {
+    width: 2rem;
   }
 }
 </style>
