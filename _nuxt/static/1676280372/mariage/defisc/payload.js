@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/mariage/defisc", {data:[{}],fetch:{},mutations:void 0});

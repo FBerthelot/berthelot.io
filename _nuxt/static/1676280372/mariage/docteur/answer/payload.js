@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/mariage/docteur/answer", {data:[{}],fetch:{},mutations:void 0});
