@@ -150,7 +150,7 @@
       "p2": "You will have to plan ahead to have them looked after for the weekend."
     },
     "housing": {
-      "p1": "Don't forget to book as soon as possible your accomodation for the weekend of the 19th/20th of August 2023 ! Granville is a very touristic area in Summer."
+      "p1": "Don't forget to book as soon as possible your accomodation for the weekend of the 19th of August 2023! Granville is a very touristic area in Summer."
     },
     "parker": {
       "p1": " A taxi service will be available free of charge so you can go back safely for the night.",
