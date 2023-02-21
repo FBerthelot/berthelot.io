@@ -7,9 +7,9 @@ export const invitationsMock = [
     'Personne 3': undefined,
     'Personne 4': undefined,
     'Personne 5': undefined,
-    'Question sur +1': 'Oui',
+    'Question sur +1': 'Non',
     'Nom du +1': '',
-    'Question sur Enfant': 'Oui',
+    'Question sur Enfant': 'Non',
     'Invités pour mairie': 'Oui',
     'Invités pour église': 'Oui',
     "Invités pour vin d'honneur": 'Oui',
@@ -28,19 +28,7 @@ export const allPeoplesMock = [
     "Tranche d'age": '17 - 79 ans',
   },
   {
-    Nom: 'Gens 2',
-    "Tranche d'age": '17 - 79 ans',
-  },
-  {
     Nom: 'Florent',
-    "Tranche d'age": '0 - 3 ans',
-  },
-  {
-    Nom: 'Gens 4',
-    "Tranche d'age": '4 - 12 ans',
-  },
-  {
-    Nom: 'Gens 5',
-    "Tranche d'age": '13 - 17 ans',
+    "Tranche d'age": '17 - 79 ans',
   },
 ]
