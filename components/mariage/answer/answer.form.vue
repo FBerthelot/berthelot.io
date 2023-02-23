@@ -584,7 +584,11 @@
           }}
         </button>
         <span class="error">
-          {{ submitFormStatus.error ? $t('submit.error') : '' }}
+          {{
+            submitFormStatus.error
+              ? $tc('submit.error', invitation.nbOfPeople)
+              : ''
+          }}
         </span>
       </div>
     </form>
