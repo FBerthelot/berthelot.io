@@ -58,7 +58,7 @@
         class="wedding-button"
         :href="
           invitation.invitedTo.council
-            ? 'https://calendar.google.com/calendar/render?action=TEMPLATE&dates=20230819T120000Z%2F20230819T215900Z&location=Granville&text=Mariage%20Agn%C3%A8s%20Florent'
+            ? 'https://calendar.google.com/calendar/render?action=TEMPLATE&dates=20230819T120000Z%2F20230819T170000Z&location=Granville&text=Mariage%20Agn%C3%A8s%20Florent'
             : 'https://calendar.google.com/calendar/render?action=TEMPLATE&dates=20230819T110000Z%2F20230819T215900Z&location=Granville&text=Mariage%20Agn%C3%A8s%20Florent'
         "
         target="_blank"

@@ -91,6 +91,12 @@
       class="us"
       alt="Florent et Agnès main dans la main"
     />
+    <img
+      v-if="images.nobel.loaded"
+      :src="images.nobel.src"
+      class="nobel"
+      alt="nobel"
+    />
 
     <header class="header">
       <h2 class="date">{{ $t('date') }}</h2>
@@ -106,6 +112,7 @@ import montImg from './mont-min.png'
 import rocImg from './roc-min.png'
 import usImg from './us-2.png'
 import pontonImg from './ponton3.png'
+import nobelImg from './nobel3.png'
 
 export default {
   name: 'Loader',
@@ -140,6 +147,10 @@ export default {
         },
         us: {
           src: usImg,
+          loaded: false,
+        },
+        nobel: {
+          src: nobelImg,
           loaded: false,
         },
       },
@@ -207,6 +218,13 @@ export default {
       .catch(console.error)
       .finally(() => {
         this.images.us.loaded = true
+      })
+
+    isImageLoaded(this.images.nobel.src)
+      // eslint-disable-next-line no-console
+      .catch(console.error)
+      .finally(() => {
+        this.images.nobel.loaded = true
       })
   },
 }
@@ -457,6 +475,28 @@ export default {
 @media (min-width: 700px) {
   .us {
     bottom: 2.5vh;
+  }
+}
+
+.nobel {
+  width: 3.5vw;
+  bottom: 3vh;
+  left: calc(50% - 5vw);
+  z-index: 2;
+}
+
+@media (orientation: portrait) {
+  .nobel {
+    bottom: 4vh;
+    width: 2rem;
+    left: calc(50% - 1vw);
+  }
+}
+
+@media (min-width: 700px) {
+  .nobel {
+    bottom: 4vh;
+    width: 4vh;
   }
 }
 
