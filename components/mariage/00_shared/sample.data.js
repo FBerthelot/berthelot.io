@@ -7,7 +7,7 @@ export const invitationsMock = [
     'Personne 3': undefined,
     'Personne 4': undefined,
     'Personne 5': undefined,
-    'Question sur +1': 'Non',
+    'Question sur +1': 'Oui',
     'Nom du +1': '',
     'Question sur Enfant': 'Non',
     'Invités pour mairie': 'Oui',
@@ -29,6 +29,10 @@ export const allPeoplesMock = [
   },
   {
     Nom: 'Florent',
-    "Tranche d'age": '17 - 79 ans',
+    /** "Tranche d'age": '0 - 3 ans' /**/
+    /** "Tranche d'age": '4 - 12 ans', /**/
+    /**/ "Tranche d'age": '13 - 17 ans' /**/,
+    /** "Tranche d'age": '17 - 79 ans', /**/
+    /** "Tranche d'age": '75 ans et +', /**/
   },
 ]

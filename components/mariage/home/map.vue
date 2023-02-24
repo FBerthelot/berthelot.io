@@ -243,6 +243,7 @@
 import churchPointerImg from './assets/church_pointer.png'
 import castlePointerImg from './assets/castle_pointer.png'
 import councilPointerImg from './assets/council_pointer.png'
+import parkingPointerImg from './assets/parking.png'
 
 export default {
   props: {
@@ -257,8 +258,8 @@ export default {
       markers: {
         castle: {
           position: {
-            lat: 48.82745538689812,
-            lng: -1.5813597743139869,
+            lat: 48.82692,
+            lng: -1.58139,
           },
           title: 'Château de la Crête',
           icon: {
@@ -267,10 +268,42 @@ export default {
             h: 110 * 0.5,
           },
         },
+        castleParking1: {
+          position: {
+            lat: 48.828589,
+            lng: -1.580086,
+          },
+          label: 'Parking rue de la Crète',
+          icon: {
+            url: parkingPointerImg,
+            w: 110 * 0.25,
+            h: 110 * 0.25,
+            labelOrigin: {
+              x: 110 * 0.125,
+              y: -110 * 0.125,
+            },
+          },
+        },
+        castleParking2: {
+          position: {
+            lat: 48.829468,
+            lng: -1.580203,
+          },
+          label: 'Parking Lycée',
+          icon: {
+            url: parkingPointerImg,
+            w: 110 * 0.25,
+            h: 110 * 0.25,
+            labelOrigin: {
+              x: 110 * 0.125,
+              y: -110 * 0.125,
+            },
+          },
+        },
         church: {
           position: {
-            lat: 48.837211427949974,
-            lng: -1.6049305131131149,
+            lat: 48.83667,
+            lng: -1.60494,
           },
           title: 'Église Notre Dame du Cap Lihou',
           icon: {
@@ -279,10 +312,42 @@ export default {
             h: 110 * 0.5,
           },
         },
+        churchParking1: {
+          position: {
+            lat: 48.836575,
+            lng: -1.607816,
+          },
+          label: "Parking Place d'Armes",
+          icon: {
+            url: parkingPointerImg,
+            w: 110 * 0.25,
+            h: 110 * 0.25,
+            labelOrigin: {
+              x: 110 * 0.125,
+              y: -110 * 0.125,
+            },
+          },
+        },
+        churchParking2: {
+          position: {
+            lat: 48.83425,
+            lng: -1.60999,
+          },
+          label: 'Parking du Vaufleury',
+          icon: {
+            url: parkingPointerImg,
+            w: 110 * 0.25,
+            h: 110 * 0.25,
+            labelOrigin: {
+              x: 110 * 0.125,
+              y: -110 * 0.125,
+            },
+          },
+        },
         council: {
           position: {
-            lat: 48.847201739752144,
-            lng: -1.5803493159197195,
+            lat: 48.84708,
+            lng: -1.5804,
           },
           title: 'Mairie de Donville-les-Bains',
           icon: {
@@ -291,27 +356,120 @@ export default {
             h: 110 * 0.5,
           },
         },
+        councilParking1: {
+          position: {
+            lat: 48.846718,
+            lng: -1.580078,
+          },
+          label: 'Parking de la Mairie',
+          icon: {
+            url: parkingPointerImg,
+            w: 110 * 0.25,
+            h: 110 * 0.25,
+            labelOrigin: {
+              x: 110 * 0.125,
+              y: -110 * 0.125,
+            },
+          },
+        },
+        councilParking2: {
+          position: {
+            lat: 48.846197,
+            lng: -1.579838,
+          },
+          label: 'Parking rue Goupy',
+          icon: {
+            url: parkingPointerImg,
+            w: 110 * 0.25,
+            h: 110 * 0.25,
+            labelOrigin: {
+              x: 110 * 0.125,
+              y: -110 * 0.125,
+            },
+          },
+        },
       },
       elementSelected: null,
     }
   },
-  computed: {
-    placeSelected() {
-      return this.elementSelected
-        ? this.elementSelected === 'council'
-          ? 'council'
-          : this.elementSelected === 'church'
-          ? 'church'
-          : 'castle'
-        : null
-    },
-  },
   mounted() {
     window.initMap = () => {
+      const mapStyle = [
+        {
+          featureType: 'administrative.land_parcel',
+          stylers: [
+            {
+              visibility: 'off',
+            },
+          ],
+        },
+        {
+          featureType: 'administrative.neighborhood',
+          stylers: [
+            {
+              visibility: 'off',
+            },
+          ],
+        },
+        {
+          featureType: 'poi',
+          elementType: 'labels.text',
+          stylers: [
+            {
+              visibility: 'off',
+            },
+          ],
+        },
+        {
+          featureType: 'poi.business',
+          stylers: [
+            {
+              visibility: 'off',
+            },
+          ],
+        },
+        {
+          featureType: 'road',
+          elementType: 'labels',
+          stylers: [
+            {
+              visibility: 'off',
+            },
+          ],
+        },
+        {
+          featureType: 'road',
+          elementType: 'labels.icon',
+          stylers: [
+            {
+              visibility: 'off',
+            },
+          ],
+        },
+        {
+          featureType: 'transit',
+          stylers: [
+            {
+              visibility: 'off',
+            },
+          ],
+        },
+        {
+          featureType: 'water',
+          elementType: 'labels.text',
+          stylers: [
+            {
+              visibility: 'off',
+            },
+          ],
+        },
+      ]
+
       this.map = new window.google.maps.Map(this.$refs['gmap-ref'], {
         fullscreenControl: false,
         streetViewControl: false,
         mapTypeControl: false,
+        styles: mapStyle,
       })
 
       const infoWindow = new window.google.maps.InfoWindow()
@@ -321,6 +479,7 @@ export default {
         this.markers[place].marker = new window.google.maps.Marker({
           ...this.markers[place],
           icon: {
+            ...this.markers[place].icon,
             url: this.markers[place].icon.url,
             scaledSize: new window.google.maps.Size(
               this.markers[place].icon.w,
@@ -332,23 +491,29 @@ export default {
 
         bounds.extend(this.markers[place].marker.getPosition())
 
-        this.markers[place].marker.addListener('click', () => {
-          infoWindow.close()
-          infoWindow.setContent(this.markers[place].marker.getTitle())
-          infoWindow.open(
-            this.markers[place].marker.getMap(),
-            this.markers[place].marker
-          )
-          this.elementSelected =
-            place === 'church'
-              ? 'church'
-              : place === 'council'
-              ? 'council'
-              : 'party'
-        })
+        if (this.markers[place].title) {
+          this.markers[place].marker.addListener('click', () => {
+            infoWindow.close()
+            infoWindow.setContent(this.markers[place].marker.getTitle())
+            infoWindow.open(
+              this.markers[place].marker.getMap(),
+              this.markers[place].marker
+            )
+            this.onSelect({ preventDefault: () => {} }, place)
+          })
+        }
       })
 
       this.map.fitBounds(bounds)
+
+      this.map.addListener('zoom_changed', () => {
+        const zoom = this.map.getZoom()
+        Object.keys(this.markers).forEach((place) => {
+          if (place.endsWith('Parking1') || place.endsWith('Parking2')) {
+            this.markers[place].marker.setVisible(zoom >= 15)
+          }
+        })
+      })
     }
 
     const script = document.createElement('script')
@@ -362,17 +527,16 @@ export default {
         this.markers[place].marker?.setAnimation(null)
       }
     })
-    if (this.placeSelected) {
-      this.markers[this.placeSelected].marker?.setAnimation(
-        window.google.maps.Animation.BOUNCE
-      )
-    }
   },
   methods: {
     onSelect(event, place) {
       event.preventDefault()
-      this.elementSelected = this.elementSelected === place ? null : place
       this.$refs['gmap-ref'].scrollIntoView({ behavior: 'smooth' })
+      const bounds = new window.google.maps.LatLngBounds()
+      bounds.extend(this.markers[place].marker.getPosition())
+      bounds.extend(this.markers[place + 'Parking1'].marker.getPosition())
+      bounds.extend(this.markers[place + 'Parking2'].marker.getPosition())
+      this.map.fitBounds(bounds)
     },
   },
 }

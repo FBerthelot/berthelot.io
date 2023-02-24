@@ -36,22 +36,34 @@ export const getTheInvitation = async (SHEETDB_URL, inviteId) => {
   const plus1Invited = rawInvitation['Question sur +1'] === 'Oui'
   const plus1Name = rawInvitation['Nom du +1']
   const questionOnChildren = rawInvitation['Question sur Enfant'] === 'Oui'
-  const children = people.filter((name) => {
+  const peopleInfos = people.map((name) => {
     const matchingPeople = allPeoples.find((p) => p.Nom === name)
-    return ['0 - 3 ans', '4 - 12 ans', '13 - 17 ans'].includes(
-      matchingPeople?.["Tranche d'age"]
-    )
+    return {
+      age: matchingPeople?.["Tranche d'age"],
+      name,
+      isChildren: ['0 - 3 ans', '4 - 12 ans', '13 - 17 ans'].includes(
+        matchingPeople?.["Tranche d'age"]
+      ),
+    }
   })
 
   return {
     id: rawInvitation["Id de l'invitation"],
     name: rawInvitation["Nom de l'invitation (Web)"],
     people,
+    ages: peopleInfos.reduce((acc, peopleInfos) => {
+      return {
+        ...acc,
+        [peopleInfos.name]: peopleInfos.age,
+      }
+    }, {}),
     nbOfPeople: plus1Name ? people.length - 1 : people.length,
     plus1Invited,
     plus1Name,
     questionOnChildren,
-    children,
+    children: peopleInfos
+      .filter((peopleInfo) => peopleInfo.isChildren)
+      .map((peopleInfo) => peopleInfo.name),
     placeholderComment: rawInvitation['Placeholder commentaire'],
     placeholderAllergies: rawInvitation['Placeholder allergies'],
     isAnswered: rawInvitation['A répondu'] === 'Oui',

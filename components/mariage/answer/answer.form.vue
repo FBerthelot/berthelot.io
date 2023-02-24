@@ -28,7 +28,7 @@
       "meat": "Viande rouge saignante",
       "fish": "Poisson",
       "children": "Menu enfant",
-      "allergies": "Une allergie ?",
+      "allergies": "Une allergie ? Un régime particulier ?",
       "error": {
         "required": "On a besoin de savoir ce que tu manges pour ne pas gâcher."
       }
@@ -112,7 +112,7 @@
       "meat": "Red meat cooked rare",
       "fish": "Fish",
       "children": "Kids' menu",
-      "allergies": "An allergy?",
+      "allergies": "Any allergy? Any special diet?",
       "error": {
         "required": "We need to know what you would prefer eating to avoid waste."
       }
@@ -442,7 +442,13 @@
           <fieldset class="question-container">
             <div class="question">{{ peopleName }}</div>
             <div class="answers checkboxes checkboxes--small">
-              <label>
+              <label
+                v-if="
+                  !['0 - 3 ans', '4 - 12 ans'].includes(
+                    invitation.ages[peopleName]
+                  )
+                "
+              >
                 <input
                   v-model="formValues[`meal-${peopleName}`]"
                   type="radio"
@@ -453,7 +459,13 @@
                   {{ $t('meal.meat') }}
                 </div>
               </label>
-              <label>
+              <label
+                v-if="
+                  !['0 - 3 ans', '4 - 12 ans'].includes(
+                    invitation.ages[peopleName]
+                  )
+                "
+              >
                 <input
                   v-model="formValues[`meal-${peopleName}`]"
                   type="radio"
@@ -619,7 +631,11 @@ export default {
         ...this.invitation.people.reduce((acc, peopleName) => {
           return {
             ...acc,
-            [`meal-${peopleName}`]: null,
+            [`meal-${peopleName}`]: ['0 - 3 ans', '4 - 12 ans'].includes(
+              this.invitation.ages[peopleName]
+            )
+              ? 'child'
+              : null,
           }
         }, {}),
       },
@@ -1091,6 +1107,11 @@ textarea {
   .question-container textarea,
   input[type='text'] {
     width: calc(100% - 2rem);
+  }
+
+  .infos {
+    margin: 2rem -1rem 4rem -1rem;
+    padding: 4rem 1rem;
   }
 }
 </style>

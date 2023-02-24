@@ -76,7 +76,9 @@
         :invitation="invitation"
       />
 
-      <Infos v-if="!error && invitation && !loading" />
+      <Infos
+        v-if="!error && invitation && !loading && invitation.invitedTo.after"
+      />
 
       <Gifts v-if="!error && invitation && !loading" :invitation="invitation" />
 

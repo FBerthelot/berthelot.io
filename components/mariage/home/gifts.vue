@@ -25,7 +25,7 @@
         <br />
         <br />
 
-        {{ $t('p2') }}
+        {{ $tc('p2', invitation.nbOfPeople) }}
       </p>
       <img
         class="illustration"
