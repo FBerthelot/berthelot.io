@@ -24,13 +24,13 @@
     },
     "meal": {
       "title": "Choix du plat",
-      "subtitle": "Uniquement disponible pour les menus adultes",
+      "subtitle": "Merci de choisir ce que tu souhaites manger pour le plat principal (uniquement disponible pour les menus adultes). | Merci de choisir ce que vous souhaitez manger pour le plat principal (uniquement disponible pour les menus adultes).",
       "meat": "Viande rouge saignante",
       "fish": "Poisson",
       "children": "Menu enfant",
       "allergies": "Une allergie ? Un régime particulier ?",
       "error": {
-        "required": "On a besoin de savoir ce que tu manges pour ne pas gâcher."
+        "required": "On a besoin de savoir ce que tu manges pour ne pas gâcher. | On a besoin de savoir ce que vous mangez pour ne pas gâcher."
       }
     },
     "plus1": {
@@ -64,15 +64,15 @@
       "p2": "Il faudra prévoir de les faire garder pour le weekend."
     },
     "housing": {
-      "p1": "N'oubliez pas de réserver dès que possible un logement pour le weekend du 19 août 2023 ! Granville est un lieu très touristique l'été."
+      "p1": "N'oublies pas de réserver dès que possible un logement pour le weekend du 19 août 2023 ! Granville est un lieu très touristique l'été. | N'oubliez pas de réserver dès que possible un logement pour le weekend du 19 août 2023 ! Granville est un lieu très touristique l'été."
     },
     "parker": {
-      "p1": "Un service de taxi sera à votre disposition gratuitement pour que vous puissiez rentrer dormir en sécurité.",
-      "p2": "Il sera disponible pour vous ramener entre 1h et 5h du matin, si votre logement est situé dans un rayon de 10 km autour du Château de la Crête.",
+      "p1": "Un service de taxi sera à ta disposition gratuitement pour que tu puisses rentrer dormir en sécurité. | Un service de taxi sera à votre disposition gratuitement pour que vous puissiez rentrer dormir en sécurité.",
+      "p2": "Il sera disponible pour te ramener entre 1h et 5h du matin, si ton logement est situé dans un rayon de 10 km autour du Château de la Crête. | Il sera disponible pour vous ramener entre 1h et 5h du matin, si votre logement est situé dans un rayon de 10 km autour du Château de la Crête.",
       "p3": "Le lendemain, il repassera chercher les conducteurs entre 11 et 12h pour les ramener au Château."
     },
     "cgu": {
-      "p1": "Une fois la réponse envoyée, vous ne pourrez plus réutiliser ce formulaire pour la modifier. Si besoin, il faudra nous contacter directement :",
+      "p1": "Une fois la réponse envoyée, tu ne pourras plus réutiliser ce formulaire pour la modifier. Si besoin, il faudra nous contacter directement : | Une fois la réponse envoyée, vous ne pourrez plus réutiliser ce formulaire pour la modifier. Si besoin, il faudra nous contacter directement :",
       "email": "Par mail vallee_a@hotmail.fr / florent@berthelot.io",
       "phone": " Par téléphone au 06 03 65 21 38 / 06 50 99 96 18",
       "error": {
@@ -108,7 +108,7 @@
     },
     "meal": {
       "title": "Choice of main course",
-      "subtitle": "Only available for adult menus.",
+      "subtitle": "Please choose your main course (only available for adult menus).",
       "meat": "Red meat cooked rare",
       "fish": "Fish",
       "children": "Kids' menu",
