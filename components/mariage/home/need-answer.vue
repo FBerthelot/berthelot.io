@@ -11,7 +11,7 @@
     }
   },
   "en": {
-    "title": "Will you be joigning us?",
+    "title": "Will you be joining us?",
     "subtitle": "Please reply before the 30th of April 2023",
     "answer": "Respond to the invitation",
     "answered": {
