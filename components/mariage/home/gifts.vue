@@ -3,13 +3,13 @@
   "fr": {
     "title": "Voyage de noces",
     "p1": "Ta présence à nos côtés est notre cadeau de mariage le plus précieux. | Votre présence à nos côtés est notre cadeau de mariage le plus précieux.",
-    "p2": "Une urne sera à disposition pendant la fête pour ceux qui souhaitent également participer à notre voyage de noces.",
+    "p2": "Si tu souhaites également participer à notre cagnotte de voyage de noces, une urne sera à disposition au Château de la Crête. | Si vous souhaitez également participer à notre cagnotte de voyage de noces, une urne sera à disposition au Château de la Crête.",
     "img_alt": "Plage paradisiaque"
   },
   "en": {
     "title": "Honeymoon",
     "p1": "Your attendance is our most precious wedding gift.",
-    "p2": "A collection box will be available during the party for those who also wish to contribute to our honeymoon.",
+    "p2": "If you also wish to contribute towards our honeymoon, a collection box will be available at the Château de la Crête.",
     "img_alt": "Plage paradisiaque"
   }
 }
