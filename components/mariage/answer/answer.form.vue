@@ -185,7 +185,7 @@
         {{ $tc('ultimatum', invitation.nbOfPeople) }}
       </p>
 
-      <fieldset class="question-container">
+      <fieldset id="attending" class="question-container">
         <div class="question">
           {{ $tc('attending.question', invitation.nbOfPeople) }}
         </div>
@@ -305,21 +305,22 @@
             </div>
           </label>
         </div>
-      </fieldset>
 
-      <span v-if="shouldValidateForm" class="error">
-        {{
-          formState.errors.attending
-            ? $tc(
-                'attending.error.' + formState.errors.attending,
-                invitation.nbOfPeople
-              )
-            : ''
-        }}
-      </span>
+        <span v-if="shouldValidateForm" class="error">
+          {{
+            formState.errors.attending
+              ? $tc(
+                  'attending.error.' + formState.errors.attending,
+                  invitation.nbOfPeople
+                )
+              : ''
+          }}
+        </span>
+      </fieldset>
 
       <fieldset
         v-if="invitation.plus1Invited && !formValues.attending.includes('cant')"
+        id="plus1Invited"
         class="question-container"
       >
         <span class="question">{{ $t('plus1.question') }}</span>
@@ -360,6 +361,7 @@
         v-if="
           formValues.plus1 === 'yes' && !formValues.attending.includes('cant')
         "
+        id="plus1Name"
         class="question-container"
         rules="required"
       >
@@ -384,6 +386,7 @@
           invitation.questionOnChildren &&
           !formValues.attending.includes('cant')
         "
+        id="children"
         class="question-container"
       >
         <span class="question">{{
@@ -425,7 +428,7 @@
         </div>
       </fieldset>
 
-      <h3 v-if="!formValues.attending.includes('cant')" class="title">
+      <h3 v-if="!formValues.attending.includes('cant')" id="meal" class="title">
         {{ $t('meal.title') }}
       </h3>
       <p v-if="!formValues.attending.includes('cant')" class="subtitle">
@@ -539,7 +542,7 @@
         </ul>
       </section>
 
-      <label class="question-container">
+      <label id="comment" class="question-container">
         <span class="question">{{ $t('comment.question') }}</span>
         <textarea
           v-model="formValues.comment"
@@ -558,29 +561,31 @@
         }}
       </div>
 
-      <label class="cgu-container">
-        <input
-          v-model="formValues.cgu"
-          type="checkbox"
-          name="cgu"
-          value="true"
-        />
-        <div>
-          {{ $t('cgu.p1') }}
-          <ul>
-            <li>
-              {{ $t('cgu.email') }}
-            </li>
-            <li>
-              {{ $t('cgu.phone') }}
-            </li>
-          </ul>
+      <div id="cgu" class="cgu-container">
+        <label class="cgu-label">
+          <input
+            v-model="formValues.cgu"
+            type="checkbox"
+            name="cgu"
+            value="true"
+          />
+          <div>
+            {{ $t('cgu.p1') }}
+            <ul>
+              <li>
+                {{ $t('cgu.email') }}
+              </li>
+              <li>
+                {{ $t('cgu.phone') }}
+              </li>
+            </ul>
+          </div>
+        </label>
+        <div v-if="shouldValidateForm" class="error">
+          {{
+            formState.errors.cgu ? $t('cgu.error.' + formState.errors.cgu) : ''
+          }}
         </div>
-      </label>
-      <div v-if="shouldValidateForm" class="error">
-        {{
-          formState.errors.cgu ? $t('cgu.error.' + formState.errors.cgu) : ''
-        }}
       </div>
 
       <div class="action">
@@ -736,6 +741,21 @@ export default {
         this.shouldValidateForm = true
       }
       if (!this.formState.valid) {
+        const firstError = [
+          'attending',
+          'plus1Invited',
+          'plus1Name',
+          'children',
+          'meal',
+          'comment',
+          'cgu',
+        ].find((error) => {
+          return !!this.formState.errors[error]
+        })
+
+        window.document
+          .querySelector(`#${firstError}`)
+          .scrollIntoView({ behavior: 'smooth' })
         return
       }
 
@@ -1000,15 +1020,17 @@ textarea {
 }
 
 .cgu-container {
-  display: flex;
-  align-items: flex-start;
-
   font-family: 'Open Sans', sans-serif;
   font-size: 1.125rem;
   font-weight: 500;
   line-height: 1.5rem;
   color: #344054;
   margin: 2rem 0;
+}
+
+.cgu-label {
+  display: flex;
+  align-items: flex-start;
 }
 
 .cgu-container input {
@@ -1073,6 +1095,10 @@ textarea {
 
 .error {
   color: red;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1rem;
 }
 
 @media screen and (max-width: 850px) {

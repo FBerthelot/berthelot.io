@@ -130,8 +130,6 @@ export default {
     }
   },
   async mounted() {
-    this.switchLocalePath(navigator.language.includes('en') ? 'en' : 'fr')
-
     try {
       this.invitation = await getTheInvitation(
         this.$config.SHEETDB_URL,
