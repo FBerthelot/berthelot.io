@@ -30,7 +30,7 @@
       "children": "Menu enfant",
       "allergies": "Une allergie ? Un régime particulier ?",
       "error": {
-        "required": "On a besoin de savoir ce que tu manges pour ne pas gâcher. | On a besoin de savoir ce que vous mangez pour ne pas gâcher."
+        "required": "On a besoin de savoir ce que {name} mange pour ne pas gâcher."
       }
     },
     "plus1": {
@@ -114,7 +114,7 @@
       "children": "Kids' menu",
       "allergies": "Any allergy? Any special diet?",
       "error": {
-        "required": "We need to know what you would prefer eating to avoid waste."
+        "required": "We need to know what {name} would prefer eating to avoid waste."
       }
     },
     "plus1": {
@@ -432,7 +432,7 @@
         {{ $t('meal.title') }}
       </h3>
       <p v-if="!formValues.attending.includes('cant')" class="subtitle">
-        {{ $t('meal.subtitle') }}
+        {{ $tc('meal.subtitle', invitation.nbOfPeople) }}
       </p>
 
       <ul
@@ -496,7 +496,9 @@
           <div v-if="shouldValidateForm" class="error">
             {{
               formState.errors.meal && formState.errors.meal[peopleName]
-                ? $t('meal.error.' + formState.errors.meal[peopleName])
+                ? $t('meal.error.' + formState.errors.meal[peopleName], {
+                    name: peopleName,
+                  })
                 : ''
             }}
           </div>
@@ -528,7 +530,7 @@
           <li class="info">
             <img src="./assets/hotel.svg" class="info-icon" alt="" />
             <div>
-              {{ $t('housing.p1') }}
+              {{ $tc('housing.p1', invitation.nbOfPeople) }}
             </div>
           </li>
           <li class="info">
@@ -537,28 +539,30 @@
               class="info-icon"
               alt=""
             />
-            <div v-html="$t('parker.p1')"></div>
+            <div v-html="$tc('parker.p1', invitation.nbOfPeople)"></div>
           </li>
         </ul>
       </section>
 
-      <label id="comment" class="question-container">
-        <span class="question">{{ $t('comment.question') }}</span>
-        <textarea
-          v-model="formValues.comment"
-          name="comment"
-          :placeholder="invitation.placeholderComment"
-        ></textarea>
-      </label>
-      <div v-if="shouldValidateForm" class="error">
-        {{
-          formState.errors.comment
-            ? $tc(
-                'comment.error.' + formState.errors.comment,
-                invitation.nbOfPeople
-              )
-            : ''
-        }}
+      <div class="question-container">
+        <label id="comment">
+          <span class="question">{{ $t('comment.question') }}</span>
+          <textarea
+            v-model="formValues.comment"
+            name="comment"
+            :placeholder="invitation.placeholderComment"
+          ></textarea>
+        </label>
+        <div v-if="shouldValidateForm" class="error">
+          {{
+            formState.errors.comment
+              ? $tc(
+                  'comment.error.' + formState.errors.comment,
+                  invitation.nbOfPeople
+                )
+              : ''
+          }}
+        </div>
       </div>
 
       <div id="cgu" class="cgu-container">
@@ -570,7 +574,7 @@
             value="true"
           />
           <div>
-            {{ $t('cgu.p1') }}
+            {{ $tc('cgu.p1', invitation.nbOfPeople) }}
             <ul>
               <li>
                 {{ $t('cgu.email') }}
@@ -987,6 +991,14 @@ textarea {
   margin: 0;
 }
 
+.meal-people .question-container {
+  margin-bottom: 0;
+}
+
+.meal-people li {
+  margin-bottom: 1rem;
+}
+
 .infos {
   background: #f1e8ff;
   color: #2e3f4b;
@@ -1031,11 +1043,13 @@ textarea {
 .cgu-label {
   display: flex;
   align-items: flex-start;
+  cursor: pointer;
 }
 
 .cgu-container input {
   margin-right: 0.75rem;
   height: 1.125rem;
+  cursor: pointer;
 }
 
 .cgu-container ul {
@@ -1099,6 +1113,7 @@ textarea {
   font-size: 0.8rem;
   font-weight: 400;
   line-height: 1rem;
+  padding: 0.5rem 0;
 }
 
 @media screen and (max-width: 850px) {
