@@ -16,7 +16,7 @@ export const invitationsMock = [
     'Invités pour soirée': 'Oui',
     'Invités pour retour': 'Oui',
     'Placeholder allergies':
-      'Dire qu\'Agnès est "une patate" est la pire des insultes pour elle.',
+      'Dire qu\'Agnès est "une patate" est la pire des insultes pour elle. Pour Florent, ce sont les marseillais auxquels il est allergique.',
     'Placeholder commentaire': 'On va se marier, on a hâte !',
     'A répondu': 'Non',
   },
