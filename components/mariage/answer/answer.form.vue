@@ -2,7 +2,7 @@
 <i18n>
 {
   "fr": {
-    "hello": "Bonjour {names} !",
+    "hello": "Bonjour {names}&nbsp;!",
     "ultimatum": "On souhaiterait avoir ta réponse avant le 30 avril 2023. | On souhaiterait avoir votre réponse avant le 30 avril 2023.",
     "attending": {
       "question": "Viens-tu ? | Venez-vous ?",
@@ -177,9 +177,7 @@
 <template>
   <main class="main">
     <form @submit.prevent="submitForm">
-      <h2 class="title">
-        {{ $t('hello', { names: invitation.name }) }}
-      </h2>
+      <h2 class="title" v-html="$t('hello', { names: invitation.name })"></h2>
 
       <p class="subtitle">
         {{ $tc('ultimatum', invitation.nbOfPeople) }}
