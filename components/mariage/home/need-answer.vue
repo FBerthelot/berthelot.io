@@ -5,7 +5,7 @@
     "subtitle": "Réponse souhaitée avant le 30 avril 2023",
     "answer": "Répondre à l'invitation",
     "answered": {
-      "title": "Merci pour la réponse !",
+      "title": "Merci pour la réponse&nbsp;!",
       "subtitle": "★ Tu peux garder ce site dans tes favoris ! ★ | ★ Vous pouvez gardez ce site dans vos favoris ! ★",
       "addToCalendar": "Ajouter au calendrier"
     }
@@ -52,18 +52,17 @@
       >
         {{ $t('answer') }}
       </nuxt-link>
-
       <a
         v-if="isAnswered"
         class="wedding-button"
         :href="
-          invitation.invitedTo.council
+          !invitation.invitedTo.cityHall
             ? 'https://calendar.google.com/calendar/render?action=TEMPLATE&dates=20230819T120000Z%2F20230819T170000Z&location=Granville&text=Mariage%20Agn%C3%A8s%20Florent'
             : 'https://calendar.google.com/calendar/render?action=TEMPLATE&dates=20230819T110000Z%2F20230819T215900Z&location=Granville&text=Mariage%20Agn%C3%A8s%20Florent'
         "
         target="_blank"
-        >{{ $t('answered.addToCalendar') }}</a
-      >
+        v-html="$t('answered.addToCalendar')"
+      ></a>
     </div>
   </section>
 </template>

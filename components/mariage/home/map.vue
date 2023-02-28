@@ -355,6 +355,7 @@ export default {
             w: 62 * 0.5,
             h: 110 * 0.5,
           },
+          shouldDipslay: !!this.invitation.invitedTo.cityHall,
         },
         councilParking1: {
           position: {
@@ -371,6 +372,7 @@ export default {
               y: -110 * 0.125,
             },
           },
+          shouldDipslay: !!this.invitation.invitedTo.cityHall,
         },
         councilParking2: {
           position: {
@@ -387,6 +389,7 @@ export default {
               y: -110 * 0.125,
             },
           },
+          shouldDipslay: !!this.invitation.invitedTo.cityHall,
         },
       },
       elementSelected: null,
@@ -475,44 +478,48 @@ export default {
       const infoWindow = new window.google.maps.InfoWindow()
       const bounds = new window.google.maps.LatLngBounds()
 
-      Object.keys(this.markers).forEach((place) => {
-        this.markers[place].marker = new window.google.maps.Marker({
-          ...this.markers[place],
-          icon: {
-            ...this.markers[place].icon,
-            url: this.markers[place].icon.url,
-            scaledSize: new window.google.maps.Size(
-              this.markers[place].icon.w,
-              this.markers[place].icon.h
-            ),
-          },
-          map: this.map,
-        })
-
-        bounds.extend(this.markers[place].marker.getPosition())
-
-        if (this.markers[place].title) {
-          this.markers[place].marker.addListener('click', () => {
-            infoWindow.close()
-            infoWindow.setContent(this.markers[place].marker.getTitle())
-            infoWindow.open(
-              this.markers[place].marker.getMap(),
-              this.markers[place].marker
-            )
-            this.onSelect({ preventDefault: () => {} }, place)
+      Object.keys(this.markers)
+        .filter((place) => this.markers[place].shouldDipslay !== false)
+        .forEach((place) => {
+          this.markers[place].marker = new window.google.maps.Marker({
+            ...this.markers[place],
+            icon: {
+              ...this.markers[place].icon,
+              url: this.markers[place].icon.url,
+              scaledSize: new window.google.maps.Size(
+                this.markers[place].icon.w,
+                this.markers[place].icon.h
+              ),
+            },
+            map: this.map,
           })
-        }
-      })
+
+          bounds.extend(this.markers[place].marker.getPosition())
+
+          if (this.markers[place].title) {
+            this.markers[place].marker.addListener('click', () => {
+              infoWindow.close()
+              infoWindow.setContent(this.markers[place].marker.getTitle())
+              infoWindow.open(
+                this.markers[place].marker.getMap(),
+                this.markers[place].marker
+              )
+              this.onSelect({ preventDefault: () => {} }, place)
+            })
+          }
+        })
 
       this.map.fitBounds(bounds)
 
       this.map.addListener('zoom_changed', () => {
         const zoom = this.map.getZoom()
-        Object.keys(this.markers).forEach((place) => {
-          if (place.endsWith('Parking1') || place.endsWith('Parking2')) {
-            this.markers[place].marker.setVisible(zoom >= 15)
-          }
-        })
+        Object.keys(this.markers)
+          .filter((place) => this.markers[place].shouldDipslay !== false)
+          .forEach((place) => {
+            if (place.endsWith('Parking1') || place.endsWith('Parking2')) {
+              this.markers[place].marker.setVisible(zoom >= 15)
+            }
+          })
       })
     }
 
@@ -522,11 +529,13 @@ export default {
     document.body.appendChild(script)
   },
   updated() {
-    Object.keys(this.markers).forEach((place) => {
-      if (this.markers[place].marker?.getAnimation() !== null) {
-        this.markers[place].marker?.setAnimation(null)
-      }
-    })
+    Object.keys(this.markers)
+      .filter((place) => this.markers[place].shouldDipslay !== false)
+      .forEach((place) => {
+        if (this.markers[place].marker?.getAnimation() !== null) {
+          this.markers[place].marker?.setAnimation(null)
+        }
+      })
   },
   methods: {
     onSelect(event, place) {
