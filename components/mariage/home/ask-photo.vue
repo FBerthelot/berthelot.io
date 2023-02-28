@@ -2,7 +2,7 @@
 {
   "fr": {
     "title": "Partage de photos et vidéos",
-    "paragraph": "Vous allez pouvoir nous partager vos photos et vidéos du mariage via ce site. Restez à l'affût !"
+    "paragraph": "Tu vas pouvoir nous partager tes photos et vidéos du mariage via ce site. Reste à l'affût ! | Vous allez pouvoir nous partager vos photos et vidéos du mariage via ce site. Restez à l'affût !"
   },
   "en": {
     "title": "Photos and videos sharing",
