@@ -5,7 +5,7 @@
   "fr": {
     "title": "Hébergement",
     "subtitle": "Voici quelques possibilités de logements.",
-    "driver": "N'oubliez pas qu'un service de taxi sera à votre disposition gratuitement pour que vous puissiez rentrer dormir en sécurité. <br>Il sera disponible pour vous ramener entre 1h et 5h du matin, si votre logement est situé dans un rayon de 10 km autour du Château de la Crête. Le lendemain, il repassera chercher les conducteurs entre 11 et 12h pour les ramener au Château.",
+    "driver": "N'oubliez pas qu'un service de taxi sera à votre disposition gratuitement pour que vous puissiez rentrer dormir en sécurité. <br>Il sera disponible pour vous ramener entre 1h et 5h du matin, si votre logement est situé dans un rayon de <strong>10 km</strong> autour du Château de la Crête. Le lendemain, il repassera chercher les conducteurs entre 11 et 12h pour les ramener au Château.",
 
     "gites": {
       "title": "Gîtes"
@@ -20,7 +20,7 @@
   "en": {
     "title": "Accommodation",
     "subtitle": "Here are a few options for your accommodation.",
-    "driver": "Please remember that a taxi service will be available free of charge so you can go back safely for the night. <br>The taxi will be able to take you back between 1:00am and 5:00am, if your chosen accommodation is located within 10 km around the Château de la Crête. The next day, the taxi will come back to pick up the drivers from 11:00am to 12:00pm and take them back to the Château.",
+    "driver": "Please remember that a taxi service will be available free of charge so you can go back safely for the night. <br>The taxi will be able to take you back between 1:00am and 5:00am, if your chosen accommodation is located within <strong>10 km</strong> around the Château de la Crête. The next day, the taxi will come back to pick up the drivers from 11:00am to 12:00pm and take them back to the Château.",
 
     "gites": {
       "title": "B&B"
@@ -38,7 +38,7 @@
 <!-- eslint-disable @intlify/vue-i18n/no-raw-text @intlify/vue-i18n/no-v-html vue/no-v-html -->
 
 <template>
-  <section class="hosting">
+  <section id="hosting-section" class="hosting">
     <h2 class="title">{{ $t('title') }}</h2>
     <h2 class="subtitle" v-html="$t('subtitle')"></h2>
 
@@ -356,6 +356,12 @@ export default {
   },
 }
 </script>
+
+<style>
+#hosting-section strong {
+  font-weight: 600;
+}
+</style>
 
 <style scoped>
 .hosting {

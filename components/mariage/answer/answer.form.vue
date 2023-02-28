@@ -68,7 +68,7 @@
     },
     "parker": {
       "p1": "Un service de taxi sera à ta disposition gratuitement pour que tu puisses rentrer dormir en sécurité. | Un service de taxi sera à votre disposition gratuitement pour que vous puissiez rentrer dormir en sécurité.",
-      "p2": "Il sera disponible pour te ramener entre 1h et 5h du matin, si ton logement est situé dans un rayon de 10 km autour du Château de la Crête. | Il sera disponible pour vous ramener entre 1h et 5h du matin, si votre logement est situé dans un rayon de 10 km autour du Château de la Crête.",
+      "p2": "Il sera disponible pour te ramener entre 1h et 5h du matin, si ton logement est situé dans un rayon de <strong>10 km</strong> autour du Château de la Crête. | Il sera disponible pour vous ramener entre 1h et 5h du matin, si votre logement est situé dans un rayon de <strong>10 km</strong> autour du Château de la Crête.",
       "p3": "Le lendemain, il repassera chercher les conducteurs entre 11 et 12h pour les ramener au Château."
     },
     "cgu": {
@@ -152,7 +152,7 @@
     },
     "parker": {
       "p1": " A taxi service will be available free of charge so you can go back safely for the night.",
-      "p2": " The taxi will be able to take you back between 1:00am and 5:00am, if your chosen accommodation is located within 10 km around the Château de la Crête.",
+      "p2": " The taxi will be able to take you back between 1:00am and 5:00am, if your chosen accommodation is located within <strong>10 km</strong> around the Château de la Crête.",
       "p3": " The next day, the taxi will come back to pick up the drivers from 11:00am to 12:00pm and take them back to the Château."
     },
     "cgu": {
@@ -175,7 +175,7 @@
 <!-- eslint-disable vue/no-v-html @intlify/vue-i18n/no-v-html -->
 
 <template>
-  <main class="main">
+  <main id="answer-main" class="main">
     <form @submit.prevent="submitForm">
       <h2 class="title" v-html="$t('hello', { names: invitation.name })"></h2>
 
@@ -537,7 +537,11 @@
               class="info-icon"
               alt=""
             />
-            <div v-html="$tc('parker.p1', invitation.nbOfPeople)"></div>
+            <div>
+              <div v-html="$tc('parker.p1', invitation.nbOfPeople)"></div>
+              <div v-html="$tc('parker.p2', invitation.nbOfPeople)"></div>
+              <div v-html="$tc('parker.p3', invitation.nbOfPeople)"></div>
+            </div>
           </li>
         </ul>
       </section>
@@ -790,6 +794,12 @@ export default {
   },
 }
 </script>
+
+<style>
+#answer-main strong {
+  font-weight: 600;
+}
+</style>
 
 <style scoped>
 .main {
