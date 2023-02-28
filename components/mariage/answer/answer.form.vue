@@ -30,7 +30,7 @@
       "children": "Menu enfant",
       "allergies": "Une allergie ? Un régime particulier ?",
       "error": {
-        "required": "On a besoin de savoir ce que {name} mange pour ne pas gâcher."
+        "required": "On a besoin de savoir ce que {name} mangera pour ne pas gâcher."
       }
     },
     "plus1": {
