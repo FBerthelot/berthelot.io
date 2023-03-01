@@ -426,10 +426,21 @@
         </div>
       </fieldset>
 
-      <h3 v-if="!formValues.attending.includes('cant')" id="meal" class="title">
+      <h3
+        v-if="
+          !formValues.attending.includes('cant') && invitation.invitedTo.party
+        "
+        id="meal"
+        class="title"
+      >
         {{ $t('meal.title') }}
       </h3>
-      <p v-if="!formValues.attending.includes('cant')" class="subtitle">
+      <p
+        v-if="
+          !formValues.attending.includes('cant') && invitation.invitedTo.party
+        "
+        class="subtitle"
+      >
         {{ $tc('meal.subtitle', invitation.nbOfPeople) }}
       </p>
 
@@ -504,7 +515,9 @@
       </ul>
 
       <label
-        v-if="!formValues.attending.includes('cant')"
+        v-if="
+          !formValues.attending.includes('cant') && invitation.invitedTo.party
+        "
         class="question-container"
       >
         <span class="question">{{ $t('meal.allergies') }}</span>
@@ -525,13 +538,13 @@
               {{ $t('pet.p2') }}
             </div>
           </li>
-          <li class="info">
+          <li v-if="invitation.invitedTo.party" class="info">
             <img src="./assets/hotel.svg" class="info-icon" alt="" />
             <div>
               {{ $tc('housing.p1', invitation.nbOfPeople) }}
             </div>
           </li>
-          <li class="info">
+          <li v-if="invitation.invitedTo.party" class="info">
             <img
               src="../00_shared/assets/driver.svg"
               class="info-icon"
@@ -680,11 +693,12 @@ export default {
       const mealErrors = this.peopleThatCome.reduce((acc, name) => {
         return {
           ...acc,
-          [name]:
-            !this.formValues.attending.includes('cant') &&
-            !this.formValues[`meal-${name}`]
+          [name]: this.invitation.invitedTo.party
+            ? !this.formValues.attending.includes('cant') &&
+              !this.formValues[`meal-${name}`]
               ? 'required'
-              : false,
+              : false
+            : false,
         }
       }, {})
       const mealIsValid = Object.values(mealErrors).reduce((isValid, error) => {
