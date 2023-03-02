@@ -34,7 +34,7 @@
       }
     },
     "plus1": {
-      "question": "Viens-tu accompagné ?",
+      "question": "Viens-tu accompagné(e) ?",
       "questionName": "Peux-tu nous dire son prénom ?",
       "yes": "Oui",
       "no": "Non",
