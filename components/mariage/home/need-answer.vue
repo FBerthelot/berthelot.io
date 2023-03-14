@@ -6,7 +6,7 @@
     "answer": "Répondre à l'invitation",
     "answered": {
       "title": "Merci pour la réponse&nbsp;!",
-      "subtitle": "★ Tu peux garder ce site dans tes favoris ! ★ | ★ Vous pouvez gardez ce site dans vos favoris ! ★",
+      "subtitle": "★ Tu peux garder ce site dans tes favoris ! ★ | ★ Vous pouvez garder ce site dans vos favoris ! ★",
       "addToCalendar": "Ajouter au calendrier"
     }
   },
