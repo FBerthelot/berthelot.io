@@ -42,7 +42,7 @@
         "required": "Merci de nous confirmer qu'il ou elle vient."
       },
       "errorName": {
-        "required": "On a besoin du prénom de ton/ta +1 pour le plan de table. ;)"
+        "required": "On a besoin du prénom de ton/ta +1. ;)"
       }
     },
     "children": {
