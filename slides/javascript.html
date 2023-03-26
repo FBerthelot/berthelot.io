@@ -1615,6 +1615,113 @@
 
 
 
+            <!-- .slide: data-background="#899fa9" -->
+            # ES2023
+
+            28 ans après, les tableaux sont réparés 🎉
+
+
+            <!-- .slide: data-background="#899fa9" -->
+            ## Commençons par la fin
+
+            ```javascript
+            [1,2,3,4].findLast((el) => el === 2) // 2
+            [1,2,3,4].findLastIndex((el) => el === 2) // 1
+
+            [1,2,3,4].findLastIndex(() => true) // 3
+            [1,2,3,4].findIndex(() => true) // 0
+            ```
+
+
+            <!-- .slide: data-background="#899fa9" -->
+            ## Bash compatible!
+
+            ```javascript
+            #!/usr/bin/env node
+
+            console.log('Bonjour :-) Je suis un script node !');
+            export default {};
+            ```
+
+
+            <!-- .slide: data-background="#899fa9" -->
+            ## Immutabilité ! (1/4)
+
+            ```javascript
+            const sample = ['p', 'o', 'r', 't'];
+
+            const newSample = sample.toReversed();
+            console.log(newSample); // trop
+            console.log(sample); // port
+
+            console.log(sample.reverse()); // trop
+            console.log(sample); // trop
+            ```
+
+
+            <!-- .slide: data-background="#899fa9" -->
+            ## Immutabilité ! (2/4)
+
+            ```javascript
+            const sample = [3, 2, 1];
+
+            console.log(sample.toSorted()); // 1 2 3
+            console.log(sample); // 3 2 1
+            console.log(sample.sort()); // 1 2 3
+            console.log(sample); // 1 2 3
+
+            Array.prototype.toSpliced(start, deleteCount, ...items)
+            ```
+
+
+            <!-- .slide: data-background="#899fa9" -->
+            ## Immutabilité ! (3/4)
+
+            ```javascript
+            const sample = [3, 2, 1];
+
+            console.log(sample.toSpliced(1, 2)); // 3
+            console.log(sample); // 3 2 1
+            console.log(sample.splice(1, 2)); // 2 1
+            console.log(sample); // 3
+            ```
+
+
+            <!-- .slide: data-background="#899fa9" -->
+            ## Immutabilité ! (4/4)
+
+            Si on change 4 lettres à coca ça fait...
+            ```javascript
+            const sample = ['c', 'o', 'c', 'a'];
+
+            const changed = sample
+              .with(0, 'a')
+              .with(1, 'c')
+              .with(2, 'i')
+              .with(3, 'd')
+
+            console.log(changed); // acid
+            console.log(sample); // coca
+            ```
+
+
+            <!-- .slide: data-background="#899fa9" -->
+            ## WeakMap supporte les symboles comme clé
+
+            ```javascript
+            const weak = new WeakMap();
+            weak.set(Symbol('borne'), {followers: 49.3});
+            ```
+
+
+
+            # Suivre l'actualité
+
+            - [Proposal](https://github.com/tc39/proposals)
+            - [Finished Proposal](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
+
+
+
             # Pratiquons !
 
             - [Code Combat](https://codecombat.com)
@@ -1627,13 +1734,6 @@
 
             - [Code kata](http://codekata.com/)
             - [Coding Dojo](http://codingdojo.org/kata/)
-
-
-
-            # Liens
-
-            - [Proposal](https://github.com/tc39/proposals)
-            - [Finished Proposal](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
           </script>
         </section>
       </div>
