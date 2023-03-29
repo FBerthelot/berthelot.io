@@ -762,11 +762,10 @@
               ## Tag Functions
 
               ```javascript
-              function greet(arr, child) {
+              function component(strings, child) {
                 return {
-                  component: arr[0].replace(' > '), // div
-                  child,
-                  other: [,...arr] // [' nobodyCare']
+                  component: strings[0].replace(' > '), // div
+                  child
                 }
               }
 
