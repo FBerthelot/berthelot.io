@@ -196,11 +196,6 @@ export default {
       inviteSearch: '',
       schedule: [
         {
-          startDate: new Date('2023/08/19 12:30'),
-          endDate: new Date('2023/08/19 13:00'),
-          title: 'Arrivée à la Marie',
-        },
-        {
           startDate: new Date('2023/08/19 13:00'),
           endDate: new Date('2023/08/19 13:30'),
           title: 'Mairie',
@@ -212,8 +207,13 @@ export default {
         },
         {
           startDate: new Date('2023/08/19 14:00'),
-          endDate: new Date('2023/08/19 15:30'),
+          endDate: new Date('2023/08/19 15:00'),
           title: 'Église',
+        },
+        {
+          startDate: new Date('2023/08/19 15:00'),
+          endDate: new Date('2023/08/19 15:30'),
+          title: 'Photo Cap Lihou (Trouver le spot)',
         },
         {
           startDate: new Date('2023/08/19 15:30'),
@@ -222,48 +222,38 @@ export default {
         },
         {
           startDate: new Date('2023/08/19 16:00'),
-          endDate: new Date('2023/08/19 18:00'),
+          endDate: new Date('2023/08/19 17:00'),
           title: "Vin d'honneur",
         },
         {
-          startDate: new Date('2023/08/19 18:00'),
-          endDate: new Date('2023/08/19 20:30'),
+          startDate: new Date('2023/08/19 17:00'),
+          endDate: new Date('2023/08/19 20:00'),
           title: 'Cocktail',
         },
         {
-          startDate: new Date('2023/08/19 20:30'),
-          endDate: new Date('2023/08/19 21:30'),
-          title: 'Plat principal (service à table)',
+          startDate: new Date('2023/08/19 17:00'),
+          endDate: new Date('2023/08/19 17:15'),
+          title: 'Photo de groupes au château',
         },
         {
-          startDate: new Date('2023/08/19 21:30'),
-          endDate: new Date('2023/08/19 22:00'),
-          title: 'Fromage',
+          startDate: new Date('2023/08/19 20:00'),
+          endDate: new Date('2023/08/19 23:30'),
+          title: 'Diner',
         },
         {
-          startDate: new Date('2023/08/19 22:00'),
-          endDate: new Date('2023/08/19 22:45'),
-          title: 'Desert',
-        },
-        {
-          startDate: new Date('2023/08/19 22:45'),
-          endDate: new Date('2023/08/19 23:00'),
+          startDate: new Date('2023/08/19 23:30'),
+          endDate: new Date('2023/08/19 23:33'),
           title: 'Ouverture du bal',
         },
         {
           startDate: new Date('2023/08/19 22:45'),
           endDate: new Date('2023/08/20 4:00'),
-          title: 'Soirée dansante',
-        },
-        {
-          startDate: new Date('2023/08/20 04:00'),
-          endDate: new Date('2023/08/20 04:30'),
-          title: 'Recharge - casse dalle',
+          title: 'Soirée dansante avec DJ',
         },
         {
           startDate: new Date('2023/08/20 04:00'),
           endDate: new Date('2023/08/20 05:00'),
-          title: 'Fin de soirée',
+          title: 'Fin de soirée - Casse dalle',
         },
         {
           startDate: new Date('2023/08/20 01:00'),
@@ -274,6 +264,11 @@ export default {
           startDate: new Date('2023/08/20 11:00'),
           endDate: new Date('2023/08/20 18:00'),
           title: 'Retour des mariées',
+        },
+        {
+          startDate: new Date('2023/08/20 12:00'),
+          endDate: new Date('2023/08/20 15:00'),
+          title: 'Food Truck',
         },
       ],
       currentDate: new Date(),

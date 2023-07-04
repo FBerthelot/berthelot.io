@@ -7,17 +7,21 @@
         "superTitle": "Ouverture",
         "list": [
           "**Entrée des Invités (Il faut indiquer qui est où ? Comment ça se passe ?)",
-          "**Entrée du marié avec sa mère (Musique ?)",
-          "**Entrée de la mariée avec son frère (Musique ?)",
+          "Début musique 'A Million Dreams'",
+          "Entrée du marié avec sa mère",
+          "Entrée des enfants d'honneurs",
+          "Entrée des témoins",
+          "Entrée de la mariée avec son frère",
+          "**Musique Sacré pour mettre dans l'ambiance type Bach.",
           "Salutation par le Prêtre",
-          "Hymne : Gloire à Dieu",
-          "Prière d'ouverture"
+          "Prière d'ouverture/oraison par le prêtre"
         ]
       },{
         "superTitle": "Liturgie de la Parole"
       },
       {
         "title": "Saint Paul, Apôtre, aux Corinthiens",
+        "reader": "Richard",
         "paragraph": [
           "Frères, recherchez avec ardeur les dons les plus grands.",
           "Et maintenant, je vais vous indiquer le chemin par excellence.",
@@ -36,30 +40,34 @@
         ]
       }, {
         "title": "Psaume 145",
+        "reader": "Marie-Ange",
         "paragraph": [
           "Le Seigneur est tendresse et pitié,",
           "lent à la colère et plein d'amour",
           "la bonté du Seigneur est pour tous,",
           "sa tendresse, pour toutes ses oeuvres.",
-          " ",
+          "",
           "Béni soit-tu, Seigneur : Dieu de tendresse et d'amour !",
           "",
           "Que tes oeuvres, Seigneur, te rendent grâce",
           "et que tes fidèles te bénissent !",
           "Les yeux sur toi, tous, ils espèrent :",
           "tu leur donnes la nourriture au temps voulu.",
-          " ",
+          "",
           "Béni soit-tu, Seigneur : Dieu de tendresse et d'amour !",
-          " ",
+          "",
           "Le Seigneur est juste en toutes ses voies,",
           "fidèle en tout ce qu'il fait.",
           "Il est proche de ceux qui l'invoquent,",
           "de tous ceux qui l'invoquent en vérité.",
-          " ",
+          "",
           "Béni soit-tu, Seigneur : Dieu de tendresse et d'amour !"
         ]
       }, {
+        "title": "**Alléluia (Chanson a prévoir ?)"
+      }, {
         "title": "Évangile de Jésus Christ selon Saint Matthieu",
+        "reader": "**Lucile et Maya ou Mary",
         "paragraph": [
           "En ce temps-là,",
           "Jésus disait à ses disciples :",
@@ -81,6 +89,8 @@
           "ils rendront gloire à votre Père qui est aux cieux. »"
         ]
       }, {
+        "title": "Homélie par le Prêtre"
+      }, {
         "superTitle": "Célébration du mariage"
       }, {
         "title": "Dialogue Initial",
@@ -95,6 +105,8 @@
           "Agnès et Florent : Oui !"
         ]
       }, {
+        "title": "invitation à l'échange des consentements"
+      }, {
         "title": "Échange des consentements",
         "paragraph": [
           "Florent : Agnès, veux-tu être mon épouse ?",
@@ -105,9 +117,11 @@
           "Ensemble : Pour nous aimer fidèlement dans le bonheur et dans les épreuves et nous soutenir l'un l'autre, tout au long de notre vie."
         ]
       }, {
+        "title": "réception des consentements"
+      }, {
         "title": "Bénédiction et remise des alliances",
         "paragraph": [
-          "Rosa et Nina apportent les aliances",
+          "Rosa et Nina apportent les aliances.",
           " ",
           " ",
           "Seigneur, bénis les alliances",
@@ -118,6 +132,8 @@
           "qu'ils vivent toujours dans l'amout mutuel.",
           "Amen."
         ]
+      }, {
+        "title": "** Chant de louage ou musique (Peut-être juste une partie 1 d'un chant)"
       }, {
         "title": "Bénédiction nuptiale",
         "paragraph": [
@@ -151,11 +167,41 @@
           "Tous: Amen"
         ]
       }, {
-        "title": "Chant de louange"
+        "title": "** Chant de louage ou musique (Peut-être juste une partie 2 d'un chant)"
       }, {
-        "title": "**Prière des époux (à écrire)"
+        "title": "Prière des époux",
+        "paragraph": [
+          "Florent : Seigneur, tu nous as conduis ici, devant toi, pour notre mariage :",
+          "Agnès : Après tant d’années à nous croiser, merci pour notre rencontre rennaise.",
+          "Florent : Après tant d’incertitudes et de timidité, merci de nous avoir montré le chemin de nos retrouvailles à Lannion.",
+          "Agnès : Merci aussi pour ton accompagnement et ton soutien de tout instant.",
+          "Florent : Nous l’avons ressenti très fortement lors de la demande en mariage. Nous t’en remercions.",
+          "Agnès : Tu nous as confiés l’un à l’autre et tu nous aides à fortifier notre amour chaque jour afin qu’il nous rende toujours plus heureux.",
+          "",
+          "Ensemble :",
+          "Maintenant, ensemble, nous voulons te confier notre avenir, nos projets, nos joies, nos peines.",
+          "Puisses-tu nous guider pour que notre amour continue à grandir par notre mariage.",
+          "Gardes-nous dans la paix, tiens-nous unis et fidèles",
+          "Que nous puissions continuer à partager notre joie.",
+          "",
+          "Amen."
+        ]
       }, {
-        "title": "**Prière universelle (R99 + Entends nos prières, entends nos voix...)"
+        "title": "Prière universelle (choisir lecteur - Boris - et chanteur)",
+        "paragraph": [
+          "Pour ces nouveaux époux et pour le bonheur de leur foyer, prions le Seigneur.",
+          "*Entends nos prières, entends nos voix, Entends nos prières monter vers toi. *",
+          "Pour leurs proches et leurs amis, et pour tous ceux qui les ont aidés, prions le Seigneur.",
+          "*Entends nos prières, entends nos voix, Entends nos prières monter vers toi. *",
+          "Pour les jeunes qui se préparent au mariage, et pour tous ceux que le Seigneur appelle à une autre vocation, prions le Seigneur.",
+          "*Entends nos prières, entends nos voix, Entends nos prières monter vers toi. *",
+          "Pour toutes les familles dans le monde, et pour que s’affermisse la paix entre les nations, prions le Seigneur.",
+          "*Entends nos prières, entends nos voix, Entends nos prières monter vers toi. *",
+          "Pour les menmbres de nos familles qui ont quitté cette vie et pour tous les défunts, prions le Seigneur.",
+          "*Entends nos prières, entends nos voix, Entends nos prières monter vers toi. *",
+          "Pour l'Église, peuple saint de Dieu et pour l'unité de tous les chrétiens, prions le Seigneur.",
+          "*Entends nos prières, entends nos voix, Entends nos prières monter vers toi. *"
+        ]
       }, {
         "superTitle": "Liturgie de l'echaristie",
         "paragraph": [
@@ -197,34 +243,49 @@
           "Amen."
         ]
       }, {
+        "title": "**Quête - Qui s'en occupe ? (Boris et Mathilde ?)"
+      }, {
         "title": "Signature de l'acte de mariage",
         "paragraph": [
           "Par les époux et les témoins :",
-          "Mathou Mancherons",
+          "Pauline Pays",
           "Maya McCutcheon",
           "Jordane Grenat",
           "Johnathan Flores"
         ]
+      }, {
+        "title": "Sortie de l'église",
+        "paragraph": [
+          "**Choix de la musique ou d'un chant",
+          "**Responsable pour enlever deco floral et la transporter",
+          "**Responsable distribution Pétales de fleurs et buleur",
+          "**Responsable nettoyage de pétales si besoin.",
+          "**Responsable récupération livrets de messes."
+        ]
       }]
     },
     "en": {
-            "title": "Église",
+      "title": "Église",
       "back-button": "⬅ Retour",
       "blocks": [{
         "superTitle": "Ouverture",
         "list": [
           "**Entrée des Invités (Il faut indiquer qui est où ? Comment ça se passe ?)",
-          "**Entrée du marié avec sa mère (Musique ?)",
-          "**Entrée de la mariée avec son frère (Musique ?)",
+          "Début musique 'A Million Dreams'",
+          "Entrée du marié avec sa mère",
+          "Entrée des enfants d'honneurs",
+          "Entrée des témoins",
+          "Entrée de la mariée avec son frère",
+          "**Musique Sacré pour mettre dans l'ambiance type Bach.",
           "Salutation par le Prêtre",
-          "Hymne : Gloire à Dieu",
-          "Prière d'ouverture"
+          "Prière d'ouverture/oraison par le prêtre"
         ]
       },{
         "superTitle": "Liturgie de la Parole"
       },
       {
         "title": "Saint Paul, Apôtre, aux Corinthiens",
+        "reader": "Richard",
         "paragraph": [
           "Frères, recherchez avec ardeur les dons les plus grands.",
           "Et maintenant, je vais vous indiquer le chemin par excellence.",
@@ -243,30 +304,34 @@
         ]
       }, {
         "title": "Psaume 145",
+        "reader": "Marie-Ange",
         "paragraph": [
           "Le Seigneur est tendresse et pitié,",
           "lent à la colère et plein d'amour",
           "la bonté du Seigneur est pour tous,",
           "sa tendresse, pour toutes ses oeuvres.",
-          " ",
+          "",
           "Béni soit-tu, Seigneur : Dieu de tendresse et d'amour !",
           "",
           "Que tes oeuvres, Seigneur, te rendent grâce",
           "et que tes fidèles te bénissent !",
           "Les yeux sur toi, tous, ils espèrent :",
           "tu leur donnes la nourriture au temps voulu.",
-          " ",
+          "",
           "Béni soit-tu, Seigneur : Dieu de tendresse et d'amour !",
-          " ",
+          "",
           "Le Seigneur est juste en toutes ses voies,",
           "fidèle en tout ce qu'il fait.",
           "Il est proche de ceux qui l'invoquent,",
           "de tous ceux qui l'invoquent en vérité.",
-          " ",
+          "",
           "Béni soit-tu, Seigneur : Dieu de tendresse et d'amour !"
         ]
       }, {
+        "title": "**Alléluia (Chanson a prévoir ?)"
+      }, {
         "title": "Évangile de Jésus Christ selon Saint Matthieu",
+        "reader": "**Lucile et Maya ou Mary",
         "paragraph": [
           "En ce temps-là,",
           "Jésus disait à ses disciples :",
@@ -288,6 +353,8 @@
           "ils rendront gloire à votre Père qui est aux cieux. »"
         ]
       }, {
+        "title": "Homélie par le Prêtre"
+      }, {
         "superTitle": "Célébration du mariage"
       }, {
         "title": "Dialogue Initial",
@@ -302,6 +369,8 @@
           "Agnès et Florent : Oui !"
         ]
       }, {
+        "title": "invitation à l'échange des consentements"
+      }, {
         "title": "Échange des consentements",
         "paragraph": [
           "Florent : Agnès, veux-tu être mon épouse ?",
@@ -312,9 +381,11 @@
           "Ensemble : Pour nous aimer fidèlement dans le bonheur et dans les épreuves et nous soutenir l'un l'autre, tout au long de notre vie."
         ]
       }, {
+        "title": "réception des consentements"
+      }, {
         "title": "Bénédiction et remise des alliances",
         "paragraph": [
-          "Rosa et Nina apportent les aliances",
+          "Rosa et Nina apportent les aliances.",
           " ",
           " ",
           "Seigneur, bénis les alliances",
@@ -325,6 +396,8 @@
           "qu'ils vivent toujours dans l'amout mutuel.",
           "Amen."
         ]
+      }, {
+        "title": "** Chant de louage ou musique (Peut-être juste une partie 1 d'un chant)"
       }, {
         "title": "Bénédiction nuptiale",
         "paragraph": [
@@ -358,11 +431,41 @@
           "Tous: Amen"
         ]
       }, {
-        "title": "Chant de louange"
+        "title": "** Chant de louage ou musique (Peut-être juste une partie 2 d'un chant)"
       }, {
-        "title": "**Prière des époux (à écrire)"
+        "title": "Prière des époux",
+        "paragraph": [
+          "Florent : Seigneur, tu nous as conduis ici, devant toi, pour notre mariage :",
+          "Agnès : Après tant d’années à nous croiser, merci pour notre rencontre rennaise.",
+          "Florent : Après tant d’incertitudes et de timidité, merci de nous avoir montré le chemin de nos retrouvailles à Lannion.",
+          "Agnès : Merci aussi pour ton accompagnement et ton soutien de tout instant.",
+          "Florent : Nous l’avons ressenti très fortement lors de la demande en mariage. Nous t’en remercions.",
+          "Agnès : Tu nous as confiés l’un à l’autre et tu nous aides à fortifier notre amour chaque jour afin qu’il nous rende toujours plus heureux.",
+          "",
+          "Ensemble :",
+          "Maintenant, ensemble, nous voulons te confier notre avenir, nos projets, nos joies, nos peines.",
+          "Puisses-tu nous guider pour que notre amour continue à grandir par notre mariage.",
+          "Gardes-nous dans la paix, tiens-nous unis et fidèles",
+          "Que nous puissions continuer à partager notre joie.",
+          "",
+          "Amen."
+        ]
       }, {
-        "title": "**Prière universelle (R99 + Entends nos prières, entends nos voix...)"
+        "title": "Prière universelle (choisir lecteur - Boris - et chanteur)",
+        "paragraph": [
+          "Pour ces nouveaux époux et pour le bonheur de leur foyer, prions le Seigneur.",
+          "*Entends nos prières, entends nos voix, Entends nos prières monter vers toi. *",
+          "Pour leurs proches et leurs amis, et pour tous ceux qui les ont aidés, prions le Seigneur.",
+          "*Entends nos prières, entends nos voix, Entends nos prières monter vers toi. *",
+          "Pour les jeunes qui se préparent au mariage, et pour tous ceux que le Seigneur appelle à une autre vocation, prions le Seigneur.",
+          "*Entends nos prières, entends nos voix, Entends nos prières monter vers toi. *",
+          "Pour toutes les familles dans le monde, et pour que s’affermisse la paix entre les nations, prions le Seigneur.",
+          "*Entends nos prières, entends nos voix, Entends nos prières monter vers toi. *",
+          "Pour les menmbres de nos familles qui ont quitté cette vie et pour tous les défunts, prions le Seigneur.",
+          "*Entends nos prières, entends nos voix, Entends nos prières monter vers toi. *",
+          "Pour l'Église, peuple saint de Dieu et pour l'unité de tous les chrétiens, prions le Seigneur.",
+          "*Entends nos prières, entends nos voix, Entends nos prières monter vers toi. *"
+        ]
       }, {
         "superTitle": "Liturgie de l'echaristie",
         "paragraph": [
@@ -404,13 +507,24 @@
           "Amen."
         ]
       }, {
+        "title": "**Quête - Qui s'en occupe ? (Boris et Mathilde ?)"
+      }, {
         "title": "Signature de l'acte de mariage",
         "paragraph": [
           "Par les époux et les témoins :",
-          "Mathou Mancherons",
+          "Pauline Pays",
           "Maya McCutcheon",
           "Jordane Grenat",
           "Johnathan Flores"
+        ]
+      }, {
+        "title": "Sortie de l'église",
+        "paragraph": [
+          "**Choix de la musique ou d'un chant",
+          "**Responsable pour enlever deco floral et la transporter",
+          "**Responsable distribution Pétales de fleurs et buleur",
+          "**Responsable nettoyage de pétales si besoin.",
+          "**Responsable récupération livrets de messes."
         ]
       }]
     }
