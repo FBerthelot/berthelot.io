@@ -33,7 +33,7 @@
     "webpack": "^4.46.0"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.21.3",
+    "@babel/eslint-parser": "^7.22.5",
     "@intlify/eslint-plugin-vue-i18n": "^2.0.0",
     "@nuxtjs/eslint-config": "^8.0.0",
     "@nuxtjs/eslint-module": "^4.0.2",
