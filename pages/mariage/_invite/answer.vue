@@ -73,12 +73,9 @@ export default {
       title: this.$t('meta.title'),
     }
   },
-  async mounted() {
+  mounted() {
     try {
-      this.invitation = await getTheInvitation(
-        this.$config.SHEETDB_URL,
-        this.$route.params.invite
-      )
+      this.invitation = getTheInvitation(this.$route.params.invite)
       if (!this.invitation) {
         throw new Error('Invite Not Found !')
       }

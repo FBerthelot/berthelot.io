@@ -6,7 +6,6 @@
       "blocks": [{
         "superTitle": "Ouverture",
         "list": [
-          "**Entrée des Invités (Il faut indiquer qui est où ? Comment ça se passe ?)",
           "Début musique 'A Million Dreams'",
           "Entrée du marié avec sa mère",
           "Entrée des enfants d'honneurs",
@@ -277,8 +276,7 @@
           "Entrée des témoins",
           "Entrée de la mariée avec son frère",
           "**Musique Sacré pour mettre dans l'ambiance type Bach.",
-          "Salutation par le Prêtre",
-          "Prière d'ouverture/oraison par le prêtre"
+          "Salutation par le Prêtre"
         ]
       },{
         "superTitle": "Liturgie de la Parole"

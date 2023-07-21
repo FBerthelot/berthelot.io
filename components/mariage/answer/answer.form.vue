@@ -783,7 +783,6 @@ export default {
 
       try {
         await saveInvitationAnswer(
-          this.$config.SLACK_URL,
           this.invitation.id,
           this.peopleThatCome,
           this.formValues,

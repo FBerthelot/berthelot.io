@@ -9,14 +9,16 @@
           "title": "Mise en bouche",
           "list": [
             "Ceviche de dorade et crevettes à la coriandre.",
-            "**Et pour les végétarien toto."
+            "Pour les végétariens : Moulinée de carotte au cumin et persil."
           ]
         }, {
           "title": "Plat",
           "list": [
             "Tournedos de bœuf sauce bordelaise --- tatin de tomate rouge et pomme Anna.",
+            "ou",
             "Filet de bar rôti et sa crème de yuzu --- corolle de légumes de saison Risotto (ou le risotto verde aux pointes d'asperges) ---",
-            "**Et pour les végétarien toto."
+            "ou",
+            "Lasagnes de légumes de saison confits au pistou"
           ]
         }, {
           "title": "Pause Normande"
@@ -39,9 +41,9 @@
         }, {
           "title": "Les boissons durant le repas",
           "list": [
-            "Softs (Eau plate, Eau Gazeuse, Coca)",
             "Vin Rouge",
             "Vin Blanc",
+            "Softs",
             "Champagne pour le dessert"
           ]
         },
@@ -89,14 +91,16 @@
           "title": "Mise en bouche",
           "list": [
             "Ceviche de dorade et crevettes à la coriandre.",
-            "**Et pour les végétarien toto."
+            "Pour les végétariens : Moulinée de carotte au cumin et persil"
           ]
         }, {
           "title": "Plat",
           "list": [
             "Tournedos de bœuf sauce bordelaise --- tatin de tomate rouge et pomme Anna.",
+            "ou",
             "Filet de bar rôti et sa crème de yuzu --- corolle de légumes de saison Risotto (ou le risotto verde aux pointes d'asperges) ---",
-            "**Et pour les végétarien toto."
+            "ou",
+            "Lasagnes de légumes de saison confits au pistou"
           ]
         }, {
           "title": "Pause Normande"

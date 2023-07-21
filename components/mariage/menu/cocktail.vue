@@ -14,8 +14,8 @@
             "Pic volaille, chorizo et patate douce rôtie",
             "Moelleux haddock et tomate confite",
             "Croustille de bœuf sauce tartare et savora",
-            "Melon et pastèque en fraicheur (en saison)",
-            "**La Corbeille de crudités et ses sauces"
+            "Melon et pastèque en fraicheur",
+            "La Corbeille de crudités et ses sauces"
           ]
         }, {
           "title": "Les mini shooters vitaminés",
@@ -59,10 +59,7 @@
             "Champagne",
             "Vin Rouge",
             "Vin Blanc",
-            "**Soupe angevine",
-            "**Cocktail Soft",
-            "Jus de fruits",
-            "Soft/Sodas"
+            "Softs"
           ]
       }]
     },
@@ -125,10 +122,7 @@
             "Champagne",
             "Vin Rouge",
             "Vin Blanc",
-            "**Soupe angevine",
-            "**Cocktail Soft",
-            "Jus de fruits",
-            "Soft/Sodas"
+            "Softs"
           ]
       }]
     }

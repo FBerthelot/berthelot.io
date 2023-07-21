@@ -4,14 +4,12 @@
       "blocks": [{
         "title": "Boissons",
         "list": [
-          "**Whisky Tourbé (A acheter nous-même 3 bouteilles)",
-          "Vodka pour John",
-          "Rhum",
-          "Bières",
-          "Soupe angevine",
-          "Atelier Mojito + Virgin Mojito ?",
+          "Mojitos",
+          "Virgin Mojito",
+          "Bière",
           "Softs",
-          "Eau"
+          "Eau",
+          "**Whisky Tourbé (A acheter nous-même 3 bouteilles) à partir de 4h + Cigares"
         ]
       }, {
         "title": "Ravitaillement",
@@ -27,14 +25,12 @@
       "blocks": [{
         "title": "Boissons",
         "list": [
-          "**Whisky Tourbé (A acheter nous-même 3 bouteilles)",
-          "Vodka pour John",
-          "Rhum",
-          "Bières",
-          "Soupe angevine",
-          "Atelier Mojito + Virgin Mojito ?",
+          "Mojitos",
+          "Virgin Mojito",
+          "Bière",
           "Softs",
-          "Eau"
+          "Eau",
+          "**Whisky Tourbé (A acheter nous-même 3 bouteilles)"
         ]
       }, {
         "title": "Ravitaillement",

@@ -1,84 +1,33 @@
-import { allPeoplesMock, invitationsMock } from './sample.data'
+import { invitations } from './finalInvitations.data'
 
-const TEST_INVITE_ID = 'futursmaries'
-
-export const getTheInvitation = async (SHEETDB_URL, inviteId) => {
-  const invitations =
-    inviteId === TEST_INVITE_ID
-      ? invitationsMock
-      : await fetch(SHEETDB_URL + '?sheet=Invitations').then((res) =>
-          res.json()
-        )
-
-  const allPeoples =
-    inviteId === TEST_INVITE_ID
-      ? allPeoplesMock
-      : await fetch(SHEETDB_URL + '?sheet=Liste des invités').then((res) =>
-          res.json()
-        )
-
-  const rawInvitation = invitations.filter(
-    (invitation) => invitation["Id de l'invitation"] === inviteId
-  )?.[0]
-
-  if (!rawInvitation) {
-    return undefined
-  }
-
-  const people = [
-    rawInvitation['Personne 1'],
-    rawInvitation['Personne 2'],
-    rawInvitation['Personne 3'],
-    rawInvitation['Personne 4'],
-    rawInvitation['Personne 5'],
-  ].filter(Boolean)
-
-  const plus1Invited = rawInvitation['Question sur +1'] === 'Oui'
-  const plus1Name = rawInvitation['Nom du +1']
-  const questionOnChildren = rawInvitation['Question sur Enfant'] === 'Oui'
-  const peopleInfos = people.map((name) => {
-    const matchingPeople = allPeoples.find((p) => p.Nom === name)
-    return {
-      age: matchingPeople?.["Tranche d'age"],
-      name,
-      isChildren: ['0 - 3 ans', '4 - 12 ans', '13 - 17 ans'].includes(
-        matchingPeople?.["Tranche d'age"]
-      ),
-    }
-  })
-
-  return {
-    id: rawInvitation["Id de l'invitation"],
-    name: rawInvitation["Nom de l'invitation (Web)"],
-    people,
-    ages: peopleInfos.reduce((acc, peopleInfos) => {
-      return {
-        ...acc,
-        [peopleInfos.name]: peopleInfos.age,
-      }
-    }, {}),
-    nbOfPeople: plus1Name ? people.length - 1 : people.length,
-    plus1Invited,
-    plus1Name,
-    questionOnChildren,
-    children: peopleInfos
-      .filter((peopleInfo) => peopleInfo.isChildren)
-      .map((peopleInfo) => peopleInfo.name),
-    placeholderComment: rawInvitation['Placeholder commentaire'],
-    placeholderAllergies: rawInvitation['Placeholder allergies'],
-    isAnswered: rawInvitation['A répondu'] === 'Oui',
-    invitedTo: {
-      cityHall: rawInvitation['Invités pour mairie'] === 'Oui',
-      church: rawInvitation['Invités pour église'] === 'Oui',
-      wineReception: rawInvitation["Invités pour vin d'honneur"] === 'Oui',
-      party: rawInvitation['Invités pour soirée'] === 'Oui',
-      after: rawInvitation['Invités pour retour'] === 'Oui',
-    },
-  }
+/**
+ * @param {string} idOfTheInvitation
+ * @returns {{
+ * id: string
+ * name: string
+ * people: string[]
+ * ages: Record<string, string>[]
+ * plus1Invited: boolean
+ * plus1Name?: string
+ * questionOnChildren: boolean
+ * children: string[]
+ * placeholderComment: string
+ * placeholderAllergies: string
+ * isAnswered: boolean
+ * invitedTo: {
+ *  cityHall: boolean
+ *  church: boolean
+ *  wineReception: boolean
+ *  party: boolean
+ *  after: boolean
+ *  }
+ * } | undefined}
+ */
+export const getTheInvitation = (inviteId) => {
+  return invitations.find((invitation) => invitation.id === inviteId)
 }
 
 /**
- * @param {string} SLACK_URL
  * @param {string} idOfTheInvitation
  * @param {string[]} peoples
  * @param {string[]} attending
@@ -92,8 +41,7 @@ export const getTheInvitation = async (SHEETDB_URL, inviteId) => {
  * comment: string
  * }} formValues
  */
-export const saveInvitationAnswer = async (
-  SLACK_URL,
+export const saveInvitationAnswer = (
   idOfTheInvitation,
   peoples,
   formValues,
@@ -105,12 +53,11 @@ export const saveInvitationAnswer = async (
     child: 'le menu enfant.',
   }
 
-  await fetch(SLACK_URL, {
-    method: 'POST',
-    body: JSON.stringify({
-      text: `:tada: Quelqu’un a répondu au formulaire d’invitation ! :tada:
+  const text = `
 
-:love_letter: L’invitation **${idOfTheInvitation}** a eu comme réponse :
+🎉 Quelqu’un a répondu au formulaire d’invitation ! 🎉
+
+💌 L’invitation **${idOfTheInvitation}** a eu comme réponse :
 
 ${
   formValues.attending.includes('cant')
@@ -136,11 +83,14 @@ ${
         .join('\n')
 }
 
-${formValues.mealComment ? `:poultry_leg: : "${formValues.mealComment}"` : ''}
+${formValues.mealComment ? `🍗 : "${formValues.mealComment}"` : ''}
 
-:speech_balloon: : "${formValues.comment}"
+💬 : "${formValues.comment}"
 
-<!here> il faut mettre à jour l’excel avant l’autodestruction de ce message !`,
-    }),
-  })
+<!here> il faut mettre à jour l’excel avant l’autodestruction de ce message !`
+
+  // eslint-disable-next-line no-console
+  console.log(text)
+
+  window.alert('Trop tard pour répondre !')
 }

@@ -8,8 +8,6 @@ export default {
   target: 'static',
 
   publicRuntimeConfig: {
-    SHEETDB_URL: process.env.NEXT_ENV_SHEETDB_URL,
-    SLACK_URL: process.env.NUXT_ENV_SLACK_URL,
     MAPS_URL: process.env.NUXT_ENV_MAPS_URL,
   },
 

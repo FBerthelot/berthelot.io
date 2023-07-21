@@ -129,12 +129,9 @@ export default {
       title: this.$t('title'),
     }
   },
-  async mounted() {
+  mounted() {
     try {
-      this.invitation = await getTheInvitation(
-        this.$config.SHEETDB_URL,
-        this.$route.params.invite
-      )
+      this.invitation = getTheInvitation(this.$route.params.invite)
     } catch (err) {
       // eslint-disable-next-line no-console
       console.error(err)
