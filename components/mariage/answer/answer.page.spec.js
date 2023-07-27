@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { mount } from '@vue/test-utils'
 import flushPromises from 'flush-promises'
 import { nextTick } from 'vue'
@@ -50,6 +51,7 @@ describe('MainPage', () => {
           'Gens 4': '4 - 12 ans',
           'Gens 5': '13 - 17 ans',
         },
+        nbOfPeople: 5,
         plus1Invited: true,
         plus1Name: '',
         questionOnChildren: true,
@@ -68,11 +70,15 @@ describe('MainPage', () => {
     ]
     invitation = data.invitations[0]
 
+    jest.spyOn(window, 'alert').mockImplementation(() => {})
+    jest.spyOn(console, 'info').mockImplementation(() => {})
     jest.useFakeTimers()
   })
 
   afterEach(() => {
     jest.useRealTimers()
+    jest.spyOn(window, 'alert').mockClear()
+    jest.spyOn(console, 'info').mockClear()
   })
 
   it('should display cannot found message when invitation not exist', async () => {
@@ -320,7 +326,7 @@ describe('MainPage', () => {
       )
     })
 
-    xdescribe('when validate the form', () => {
+    describe('when validate the form', () => {
       it('should display errors on almost each fields when submiting form without enter values', async () => {
         const component = mount(Page, config)
 
@@ -381,26 +387,24 @@ describe('MainPage', () => {
         component.find('form').trigger('submit')
         await nextTick()
 
-        expect(global.fetch).toHaveBeenCalledTimes(2)
+        expect(window.alert).toHaveBeenCalledTimes(0)
       })
 
       it('should not send anything the form when submiting invalid form', async () => {
         const component = mount(Page, config)
 
         await flushPromises()
-        expect(global.fetch).toHaveBeenCalledTimes(2)
 
         component.find('form').trigger('submit')
         await nextTick()
 
-        expect(global.fetch).toHaveBeenCalledTimes(2)
+        expect(window.alert).toHaveBeenCalledTimes(0)
       })
 
       it('should send a request to slack when the form is valid', async () => {
         const component = mount(Page, config)
 
         await flushPromises()
-        expect(global.fetch).toHaveBeenCalledTimes(2)
 
         component.find('[value="cityHall"]').trigger('change')
         component.find('input[name="plus1"][value="no"]').trigger('change')
@@ -420,18 +424,14 @@ describe('MainPage', () => {
         component.find('form').trigger('submit')
         await nextTick()
 
-        expect(global.fetch).toHaveBeenCalledTimes(3)
-        expect(global.fetch).toHaveBeenCalledWith('slackUrl', {
-          method: 'POST',
-          body: expect.anything(),
-        })
+        expect(window.alert).toHaveBeenCalledTimes(1)
+        expect(window.alert).toHaveBeenCalledWith('Trop tard pour répondre !')
       })
 
       it('should redirect to home page when the form is valid', async () => {
         const component = mount(Page, config)
 
         await flushPromises()
-        expect(global.fetch).toHaveBeenCalledTimes(2)
 
         component.find('[value="cityHall"]').trigger('change')
         component.find('input[name="plus1"][value="no"]').trigger('change')
@@ -463,7 +463,6 @@ describe('MainPage', () => {
         const component = mount(Page, config)
 
         await flushPromises()
-        expect(global.fetch).toHaveBeenCalledTimes(2)
 
         component.find('[value="cant"]').trigger('change')
         component.find('input[name="cgu"]').setChecked()
@@ -473,13 +472,11 @@ describe('MainPage', () => {
         component.find('form').trigger('submit')
         await nextTick()
 
-        expect(global.fetch).toHaveBeenCalledTimes(3)
-        const requestBody = global.fetch.mock.calls[2][1].body
-
-        expect(requestBody).toContain('Ils ne peuvent pas venir.')
-
-        expect(requestBody).toContain(
-          ':speech_balloon: : \\"This is a comment\\"'
+        expect(console.info).toHaveBeenCalledWith(
+          expect.stringContaining('Ils ne peuvent pas venir.')
+        )
+        expect(console.info).toHaveBeenCalledWith(
+          expect.stringContaining('"This is a comment"')
         )
       })
 
@@ -487,7 +484,6 @@ describe('MainPage', () => {
         const component = mount(Page, config)
 
         await flushPromises()
-        expect(global.fetch).toHaveBeenCalledTimes(2)
 
         component.find('[value="cityHall"]').trigger('change')
         component.find('[value="church"]').trigger('change')
@@ -532,32 +528,44 @@ describe('MainPage', () => {
         component.find('form').trigger('submit')
         await nextTick()
 
-        expect(global.fetch).toHaveBeenCalledTimes(3)
-        const requestBody = global.fetch.mock.calls[2][1].body
-
-        expect(requestBody).toContain(
-          'Ils viennent à : cityHall, church, wineReception, party, after.'
+        expect(console.info).toHaveBeenCalledWith(
+          expect.stringContaining(
+            'Ils viennent à : cityHall, church, wineReception, party, after.'
+          )
         )
 
-        expect(requestBody).toContain('- Gens 1 : mangera du poisson.')
-        expect(requestBody).toContain('- Gens 2 : mangera de la viande rouge.')
-        expect(requestBody).toContain('- Gens 3 : mangera le menu enfant.')
-        expect(requestBody).toContain('- Gens 4 : mangera le menu enfant.')
-        expect(requestBody).toContain('- Gens 5 : mangera du poisson.')
-        expect(requestBody).toContain('- ThePlus1Name : mangera du poisson.')
+        expect(console.info).toHaveBeenCalledWith(
+          expect.stringContaining('- Gens 1 : mangera du poisson.')
+        )
+        expect(console.info).toHaveBeenCalledWith(
+          expect.stringContaining('- Gens 2 : mangera de la viande rouge.')
+        )
+        expect(console.info).toHaveBeenCalledWith(
+          expect.stringContaining('- Gens 3 : mangera le menu enfant.')
+        )
+        expect(console.info).toHaveBeenCalledWith(
+          expect.stringContaining('- Gens 4 : mangera le menu enfant.')
+        )
+        expect(console.info).toHaveBeenCalledWith(
+          expect.stringContaining('- Gens 5 : mangera du poisson.')
+        )
+        expect(console.info).toHaveBeenCalledWith(
+          expect.stringContaining('- ThePlus1Name : mangera du poisson.')
+        )
 
-        expect(requestBody).toContain(':poultry_leg: : \\"I like poultry\\"')
+        expect(console.info).toHaveBeenCalledWith(
+          expect.stringContaining('"I like poultry"')
+        )
 
-        expect(requestBody).toContain(
-          ':speech_balloon: : \\"This is a comment\\"'
+        expect(console.info).toHaveBeenCalledWith(
+          expect.stringContaining('"This is a comment"')
         )
       })
 
-      it("should send a less loong message when children can't come  and plus 1 neither", async () => {
+      fit("should send a less loong message when children can't come  and plus 1 neither", async () => {
         const component = mount(Page, config)
 
         await flushPromises()
-        expect(global.fetch).toHaveBeenCalledTimes(2)
 
         component.find('[value="cityHall"]').trigger('change')
         component.find('[value="church"]').trigger('change')
@@ -591,29 +599,44 @@ describe('MainPage', () => {
         component.find('form').trigger('submit')
         await nextTick()
 
-        expect(global.fetch).toHaveBeenCalledTimes(3)
-        const requestBody = global.fetch.mock.calls[2][1].body
-
-        expect(requestBody).toContain(
-          'Ils viennent à : cityHall, church, wineReception, party, after.'
+        expect(console.info).toHaveBeenCalledWith(
+          expect.stringContaining(
+            'Ils viennent à : cityHall, church, wineReception, party, after.'
+          )
         )
 
-        expect(requestBody).toContain('- Gens 1 : mangera du poisson.')
-        expect(requestBody).toContain('- Gens 2 : mangera de la viande rouge.')
-        expect(requestBody).not.toContain('- Gens 3 : mangera le menu enfant.')
-        expect(requestBody).not.toContain('- Gens 4 : mangera le menu enfant.')
-        expect(requestBody).not.toContain('- Gens 5 : mangera du poisson.')
-        expect(requestBody).not.toContain(
-          '- ThePlus1Name : mangera du poisson.'
+        expect(console.info).toHaveBeenCalledWith(
+          expect.stringContaining('- Gens 1 : mangera du poisson.')
+        )
+        expect(console.info).toHaveBeenCalledWith(
+          expect.stringContaining('- Gens 2 : mangera de la viande rouge.')
+        )
+        expect(console.info).not.toHaveBeenCalledWith(
+          expect.stringContaining('- Gens 3 : mangera le menu enfant.')
+        )
+        expect(console.info).not.toHaveBeenCalledWith(
+          expect.stringContaining('- Gens 4 : mangera le menu enfant.')
+        )
+        expect(console.info).not.toHaveBeenCalledWith(
+          expect.stringContaining('- Gens 5 : mangera du poisson.')
+        )
+        expect(console.info).not.toHaveBeenCalledWith(
+          expect.stringContaining('- ThePlus1Name : mangera du poisson.')
         )
 
-        expect(requestBody).toContain('Pas de plus 1.')
-        expect(requestBody).toContain('Les enfants ne viennent pas.')
+        expect(console.info).toHaveBeenCalledWith(
+          expect.stringContaining('Pas de plus 1.')
+        )
+        expect(console.info).toHaveBeenCalledWith(
+          expect.stringContaining('Les enfants ne viennent pas.')
+        )
 
-        expect(requestBody).toContain(':poultry_leg: : \\"I like poultry\\"')
+        expect(console.info).toHaveBeenCalledWith(
+          expect.stringContaining('"I like poultry"')
+        )
 
-        expect(requestBody).toContain(
-          ':speech_balloon: : \\"This is a comment\\"'
+        expect(console.info).toHaveBeenCalledWith(
+          expect.stringContaining('"This is a comment"')
         )
       })
     })

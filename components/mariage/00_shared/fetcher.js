@@ -90,7 +90,7 @@ ${formValues.mealComment ? `🍗 : "${formValues.mealComment}"` : ''}
 <!here> il faut mettre à jour l’excel avant l’autodestruction de ce message !`
 
   // eslint-disable-next-line no-console
-  console.log(text)
+  console.info(text)
 
   window.alert('Trop tard pour répondre !')
 }

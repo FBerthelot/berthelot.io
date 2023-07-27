@@ -775,7 +775,7 @@ export default {
 
         window.document
           .querySelector(`#${firstError}`)
-          .scrollIntoView({ behavior: 'smooth' })
+          ?.scrollIntoView({ behavior: 'smooth' })
         return
       }
 
