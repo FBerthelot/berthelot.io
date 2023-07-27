@@ -7,17 +7,16 @@
           "Mojitos",
           "Virgin Mojito",
           "Bière",
-          "Softs",
-          "Eau",
-          "**Whisky Tourbé (A acheter nous-même 3 bouteilles) à partir de 4h + Cigares"
+          "Softs"
         ]
       }, {
-        "title": "Ravitaillement",
+        "title": "Ravitaillement de 4h",
         "list": [
           "Pain",
-          "Rilette",
+          "Rillette",
           "Fromage",
-          "Cornichons"
+          "Cornichons",
+          "Whisky Tourbé"
         ]
       }]
     },
@@ -28,17 +27,16 @@
           "Mojitos",
           "Virgin Mojito",
           "Bière",
-          "Softs",
-          "Eau",
-          "**Whisky Tourbé (A acheter nous-même 3 bouteilles)"
+          "Softs"
         ]
       }, {
-        "title": "Ravitaillement",
+        "title": "Ravitaillement de 4h",
         "list": [
           "Pain",
           "Rilette",
           "Fromage",
-          "Cornichons"
+          "Cornichons",
+          "Whisky Tourbé"
         ]
       }]
     }

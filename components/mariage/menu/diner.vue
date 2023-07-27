@@ -16,7 +16,7 @@
           "list": [
             "Tournedos de bœuf sauce bordelaise --- tatin de tomate rouge et pomme Anna.",
             "ou",
-            "Filet de bar rôti et sa crème de yuzu --- corolle de légumes de saison Risotto (ou le risotto verde aux pointes d'asperges) ---",
+            "Filet de bar rôti et sa crème de yuzu --- corolle de légumes de saison et risotto verde aux pointes d'asperge.",
             "ou",
             "Lasagnes de légumes de saison confits au pistou"
           ]
@@ -43,7 +43,7 @@
           "list": [
             "Vin Rouge",
             "Vin Blanc",
-            "Softs",
+            "Eaux",
             "Champagne pour le dessert"
           ]
         },
@@ -77,7 +77,7 @@
         }, {
           "title": "Boissons",
           "paragraph": [
-            "Softs (Eau plate, Eau Gazeuse, Sodas, Jus de Fruits)"
+            "Softs"
           ]
         }
       ]
@@ -98,7 +98,7 @@
           "list": [
             "Tournedos de bœuf sauce bordelaise --- tatin de tomate rouge et pomme Anna.",
             "ou",
-            "Filet de bar rôti et sa crème de yuzu --- corolle de légumes de saison Risotto (ou le risotto verde aux pointes d'asperges) ---",
+            "Filet de bar rôti et sa crème de yuzu --- corolle de légumes de saison et risotto verde aux pointes d'asperge",
             "ou",
             "Lasagnes de légumes de saison confits au pistou"
           ]
@@ -123,9 +123,9 @@
         }, {
           "title": "Les boissons durant le repas",
           "list": [
-            "Softs (Eau plate, Eau Gazeuse, Coca)",
             "Vin Rouge",
             "Vin Blanc",
+            "Eaux",
             "Champagne pour le dessert"
           ]
         },
@@ -159,7 +159,7 @@
         }, {
           "title": "Boissons",
           "paragraph": [
-            "Softs (Eau plate, Eau Gazeuse, Sodas, Jus de Fruits)"
+            "Softs"
           ]
         }
       ]

@@ -2,43 +2,85 @@
   {
     "fr": {
       "blocks": [{
-        "title": "Repas",
+        "superTitle": "Food-Truck"
+      },
+      {
+        "title": "Les Pâtes",
         "list": [
-          "Pâtes fourée au choix",
-          "**Salade",
-          "**Dessert"
+          "Aubergines",
+          "Speck et fontina",
+          "Burrata et citron",
+          "Taglierini ail et basilic"
         ]
       }, {
-        "title": "Boisson",
+        "title": "Les sauces",
         "list": [
-          "Eau Plate",
-          "Eau Gazeuse",
-          "Sodas (Ice-Tea, Coca, Orangina)",
-          "Jus de Fruits",
-          "Bières (tireuse ?)",
+          "Pesto rouge",
+          "Pesto vert"
+        ]
+      }, {
+        "title": "Les fromages",
+        "list": [
+          "Parmesan",
+          "Mozzarella fumée"
+        ]
+      }, {
+        "title": "Les desserts",
+        "list": [
+          "Panna cotta",
+          "Muffin's",
+          "Cheese cake Ricotta et citron"
+        ]
+      }, {
+        "superTitle": "Les boissons",
+        "list": [
           "Cidre",
-          "Poiré"
+          "Poiré",
+          "Bières",
+          "Eaux",
+          "Sodas"
         ]
       }]
     },
     "en": {
       "blocks": [{
-        "title": "Repas",
+        "superTitle": "Food-Truck"
+      },
+      {
+        "title": "Les Pâtes",
         "list": [
-          "Pâtes fourée au choix",
-          "**Salade",
-          "**Dessert"
+          "Aubergines",
+          "Speck et fontina",
+          "Burrata et citron",
+          "Taglierini ail et basilic"
         ]
       }, {
-        "title": "Boisson",
+        "title": "Les sauces",
         "list": [
-          "Eau Plate",
-          "Eau Gazeuse",
-          "Sodas (Ice-Tea, Coca, Orangina)",
-          "Jus de Fruits",
-          "Bières (tireuse ?)",
+          "Pesto rouge",
+          "Pesto vert"
+        ]
+      }, {
+        "title": "Les fromages",
+        "list": [
+          "Parmesan",
+          "Mozzarella fumée"
+        ]
+      }, {
+        "title": "Les desserts",
+        "list": [
+          "Panna cotta",
+          "Muffin's",
+          "Cheese cake Ricotta et citron"
+        ]
+      }, {
+        "superTitle": "Les boissons",
+        "list": [
           "Cidre",
-          "Poiré"
+          "Poiré",
+          "Bières",
+          "Eaux",
+          "Sodas"
         ]
       }]
     }
@@ -54,7 +96,13 @@
         todo: $t(`blocks[${i}].title`).startsWith('**'),
       }"
     >
-      <h3 class="typography-title-3">{{ $t(`blocks[${i}].title`) }}</h3>
+      <hr v-if="block.separator" />
+      <h2 v-if="block.superTitle" class="typography-title-2">
+        {{ $t(`blocks[${i}].superTitle`) }}
+      </h2>
+      <h3 v-if="block.title" class="typography-title-3">
+        {{ $t(`blocks[${i}].title`) }}
+      </h3>
       <ul v-if="'list' in block">
         <li
           v-for="(item, j) in block.list"

@@ -11,9 +11,7 @@
         "title": "Boissons",
         "list": [
           "Citronnade",
-          "Jus de fruits",
-          "Sodas",
-          "Eaux"
+          "Jus de fruits"
         ]
       }]
     },
@@ -28,9 +26,7 @@
         "title": "Boissons",
         "list": [
           "Citronnade",
-          "Jus de fruits",
-          "Sodas",
-          "Eaux"
+          "Jus de fruits"
         ]
       }]
     }
