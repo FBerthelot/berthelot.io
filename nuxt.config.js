@@ -1,4 +1,3 @@
-import axios from 'axios'
 import Prism from 'prismjs'
 import loadLanguages from 'prismjs/components/'
 import { invitations } from './components/mariage/00_shared/finalInvitations.data'
