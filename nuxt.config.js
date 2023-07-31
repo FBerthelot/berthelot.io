@@ -1,6 +1,7 @@
 import axios from 'axios'
 import Prism from 'prismjs'
 import loadLanguages from 'prismjs/components/'
+import { invitations } from './components/mariage/00_shared/finalInvitations.data'
 loadLanguages(['jsx'])
 
 export default {
@@ -88,22 +89,14 @@ export default {
   build: {},
 
   generate: {
-    routes: async () => {
-      const { data: invitations } = await axios.get(
-        'https://sheetdb.io/api/v1/yd2k17v9irxae?sheet=Invitations'
-      )
-
+    routes: () => {
       return [
         '/articles/react-test-refactoring-snapshot',
-        '/mariage/testdata',
-        'en/mariage/testdata',
-        'mariage/testdata/answer',
-        'en/mariage/testdata/answer',
         ...invitations.flatMap((invitation) => [
-          `/mariage/${invitation["Id de l'invitation"]}`,
-          `en/mariage/${invitation["Id de l'invitation"]}`,
-          `/mariage/${invitation["Id de l'invitation"]}/answer`,
-          `en/mariage/${invitation["Id de l'invitation"]}/answer`,
+          `/mariage/${invitation.id}`,
+          `en/mariage/${invitation.id}`,
+          `/mariage/${invitation.id}/answer`,
+          `en/mariage/${invitation.id}/answer`,
         ]),
       ]
     },
