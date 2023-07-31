@@ -59,7 +59,7 @@
   <main id="wedding-menu">
     <header class="header">
       <nav class="header-nav">
-        <nuxt-link to="go(-1)" class="typography-link">{{
+        <nuxt-link :to="prevUrl" class="typography-link">{{
           $t('back-button')
         }}</nuxt-link>
       </nav>
@@ -167,7 +167,7 @@ export default {
     return {
       selectedTab: currentPeriod,
       tabs,
-      prevUrl: '/mariage',
+      prevUrl: this.$route.query.prevUrl ?? '/mariage',
     }
   },
   head() {
