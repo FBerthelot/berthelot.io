@@ -80,9 +80,9 @@
           <h3 class="typography-title-3">
             Blanc sur fond transparent avec date
           </h3>
-          <img alt="" :src="logoVT2SVG" />
+          <img alt="" :src="logoWT2SVG" />
           <a
-            :href="logoVTPNG"
+            :href="logoWT2SVG"
             class="typography-link"
             download="logo_transparent_date-agnes_florent.svg"
             >Télécharger la version SVG</a
@@ -93,7 +93,7 @@
           <h3 class="typography-title-3">Blanc sur fond violet avec date</h3>
           <img alt="" :src="logoVT6SVG" />
           <a
-            :href="logoVTPNG"
+            :href="logoVT6SVG"
             class="typography-link"
             download="logo_white_date-agnes_florent.svg"
             >Télécharger la version SVG</a
@@ -115,7 +115,7 @@ import logoVTPNG from '~/components/mariage/00_shared/logo/logo-04.png'
 import logoVT400PNG from '~/components/mariage/00_shared/logo/logo-04-400x.png'
 import logoVTSVG from '~/components/mariage/00_shared/logo/logo-04.svg'
 
-import logoVT2SVG from '~/components/mariage/00_shared/logo/logo-03.svg'
+import logoWT2SVG from '~/components/mariage/00_shared/logo/logo-03.svg'
 import logoVT6SVG from '~/components/mariage/00_shared/logo/logo-06.svg'
 
 export default {
@@ -130,7 +130,7 @@ export default {
       logoVT400PNG,
       logoVTSVG,
 
-      logoVT2SVG,
+      logoWT2SVG,
       logoVT6SVG,
     }
   },
