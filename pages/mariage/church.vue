@@ -533,7 +533,7 @@
   <main id="wedding-church">
     <header class="header">
       <nav class="header-nav">
-        <nuxt-link to="/mariage" class="typography-link">{{
+        <nuxt-link :to="prevUrl" class="typography-link">{{
           $t('back-button')
         }}</nuxt-link>
       </nav>
@@ -602,6 +602,11 @@
 <script>
 export default {
   layout: 'mariage',
+  data() {
+    return {
+      prevUrl: this.$route.query.prevUrl ?? '/mariage',
+    }
+  },
   head() {
     return {
       htmlAttrs: {

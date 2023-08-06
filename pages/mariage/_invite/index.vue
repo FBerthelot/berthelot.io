@@ -59,17 +59,21 @@
         <a href="mailto:florent@berthelot.io">{{ $t('not_found.mail') }}</a>
       </div>
 
-      <LoveLetter
-        v-if="!error && invitation && !loading"
-        :invitation="invitation"
-      />
+      <Map v-if="!error && invitation && !loading" :invitation="invitation" />
+
+      <Photos v-if="!error && invitation && !loading" />
+
+      <Gifts v-if="!error && invitation && !loading" :invitation="invitation" />
 
       <Countdown
         v-if="!error && invitation && !loading"
         :invitation="invitation"
       />
 
-      <Map v-if="!error && invitation && !loading" :invitation="invitation" />
+      <LoveLetter
+        v-if="!error && invitation && !loading"
+        :invitation="invitation"
+      />
 
       <NeedAnwser
         v-if="!error && invitation && !loading"
@@ -79,10 +83,6 @@
       <Infos
         v-if="!error && invitation && !loading && invitation.invitedTo.after"
       />
-
-      <Gifts v-if="!error && invitation && !loading" :invitation="invitation" />
-
-      <Photos v-if="!error && invitation && !loading" />
     </main>
   </div>
 </template>

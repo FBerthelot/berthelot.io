@@ -2,11 +2,13 @@
 {
   "fr": {
     "title": "Partage de photos et vidéos",
-    "paragraph": "Vous allez pouvoir nous partager vos photos et vidéos du mariage via ce site. Restez à l'affût !"
+    "paragraph": "Partagez nous vos photos et vidéos du mariage via ce site, les photos seront projetées en live pendant la soirée ! 🤩",
+    "share": "Partager maintenant"
   },
   "en": {
     "title": "Photos and videos sharing",
-    "paragraph": "You will be able to share with us your photos and videos of the wedding via this website. Stay tuned!"
+    "paragraph": "Share your photos and videos of the wedding through this website, the photos will be shown live during the evening ! 🤩",
+    "share": "Share now"
   }
 }
 </i18n>
@@ -17,9 +19,16 @@
 
     <div class="ask-photo-content">
       <img class="illustration" src="./assets/patchwork.png" alt="" />
-      <p>
-        {{ $t('paragraph') }}
-      </p>
+      <div class="rightContainer">
+        <p>{{ $t('paragraph') }}</p>
+        <nuxt-link
+          v-if="!isAnswered"
+          :to="localePath(`/mariage/photo`)"
+          class="button"
+        >
+          {{ $t('share') }}
+        </nuxt-link>
+      </div>
     </div>
   </section>
 </template>
@@ -49,18 +58,23 @@
 .ask-photo-content {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 2.5rem;
 }
 
 .ask-photo-content p {
-  width: 40%;
-
   font-family: 'Open Sans', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 1.125rem;
   line-height: 1.6rem;
+}
+
+.rightContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
 
 .illustration {
@@ -86,10 +100,6 @@
 
     flex-direction: column;
     margin-top: 1rem;
-  }
-
-  .ask-photo-content p {
-    width: 100%;
   }
 
   .illustration {

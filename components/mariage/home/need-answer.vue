@@ -8,7 +8,10 @@
       "title": "Merci pour la réponse&nbsp;!",
       "subtitle": "★ Tu peux garder ce site dans tes favoris ! ★ | ★ Vous pouvez garder ce site dans vos favoris ! ★",
       "addToCalendar": "Ajouter au calendrier"
-    }
+    },
+    "moreInfo": "Plus d'info ?",
+    "menu": "Le menu",
+    "church": "Le livret de messe"
   },
   "en": {
     "title": "Will you be joining us?",
@@ -18,7 +21,10 @@
       "title": "Thank you for your answer!",
       "subtitle": "★ You can keep this website among your bookmarks! ★",
       "addToCalendar": "Add to calendar"
-    }
+    },
+    "moreInfo": "More info?",
+    "menu": "Menu",
+    "church": "Church service booklet"
   }
 }
 </i18n>
@@ -30,7 +36,7 @@
   <section id="need-answer" class="need-answer">
     <div class="firework-container"></div>
 
-    <div class="container">
+    <div v-if="!ANSWER_PERIOD_IS_DONE" class="container">
       <h3
         class="title"
         v-html="
@@ -48,13 +54,13 @@
       <nuxt-link
         v-if="!isAnswered"
         :to="localePath(`/mariage/${$route.params.invite}/answer`)"
-        class="wedding-button"
+        class="button"
       >
         {{ $t('answer') }}
       </nuxt-link>
       <a
         v-if="isAnswered"
-        class="wedding-button"
+        class="button"
         :href="
           !invitation.invitedTo.cityHall
             ? 'https://calendar.google.com/calendar/render?action=TEMPLATE&dates=20230819T120000Z%2F20230819T170000Z&location=Granville&text=Mariage%20Agn%C3%A8s%20Florent'
@@ -63,6 +69,34 @@
         target="_blank"
         v-html="$t('answered.addToCalendar')"
       ></a>
+    </div>
+
+    <div v-if="ANSWER_PERIOD_IS_DONE" class="container">
+      <h3 class="title">{{ $t('moreInfo') }}</h3>
+      <div class="moreInfoLinkContainer">
+        <nuxt-link
+          :to="
+            localePath(
+              `/mariage/church?prevUrl=${localePath(
+                `/mariage/${invitation.id}`
+              )}`
+            )
+          "
+          class="button"
+        >
+          {{ $t('church') }}
+        </nuxt-link>
+        <nuxt-link
+          :to="
+            localePath(
+              `/mariage/menu?prevUrl=${localePath(`/mariage/${invitation.id}`)}`
+            )
+          "
+          class="button"
+        >
+          {{ $t('menu') }}
+        </nuxt-link>
+      </div>
     </div>
   </section>
 </template>
@@ -79,6 +113,7 @@ export default {
     return {
       isAnswered: this.invitation.isAnswered,
       fireworks: null,
+      ANSWER_PERIOD_IS_DONE: true,
     }
   },
   async mounted() {
@@ -216,46 +251,18 @@ export default {
   margin-bottom: 2.5rem;
 }
 
-.wedding-button {
-  font-family: 'Open Sans ', sans-serif;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 1.5rem;
-  line-height: 2rem;
-
-  padding: 0.75rem 1rem;
-
-  border-radius: 0.5rem;
-
-  text-decoration: none;
-  display: block;
-
-  color: #2e3f4b;
-  background-color: #fffbf8;
-
-  transition: all 0.5s ease;
+.moreInfoLinkContainer {
+  display: flex;
+  align-items: center;
+  margin-top: 3rem;
+  gap: 2rem;
+  justify-content: space-between;
+  width: 100%;
 }
 
-.wedding-button:hover,
-.wedding-button:focus {
-  box-shadow: 0 0 0.5rem #fffbf8;
-  transform: scale(1.1);
-  outline: none;
-
-  background-color: #f1e8ff;
-  animation: blink 1s infinite alternate;
-}
-
-.wedding-button:active {
-  box-shadow: 0 0 1rem #9b61a7;
-}
-
-@keyframes blink {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1.2);
+@media (max-width: 600px) {
+  .moreInfoLinkContainer {
+    flex-direction: column;
   }
 }
 </style>

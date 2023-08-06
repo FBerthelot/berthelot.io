@@ -35,6 +35,7 @@ export default {
 #wedding {
   --color-background-light: #faf8ff;
   --color-background-strong: #f1e8ff;
+  --color-background-dark: #2e3f4b;
   --color-primary: #8d4b9a;
   --color-gray: #f7f7f7;
   --color-black: #000000;
@@ -101,6 +102,51 @@ export default {
 #wedding .typography-link:focus {
   outline: none;
   color: var(--color-primary);
+}
+
+/** Button **/
+#wedding .button {
+  font-family: 'Open Sans ', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 2rem;
+
+  padding: 0.75rem 1rem;
+
+  border-radius: 0.5rem;
+  border: none;
+
+  text-decoration: none;
+  display: block;
+
+  color: #2e3f4b;
+  background-color: #fffbf8;
+
+  transition: all 0.5s ease;
+}
+
+#wedding .button:hover,
+#wedding .button:focus {
+  box-shadow: 0 0 0.5rem #fffbf8;
+  transform: scale(1.1);
+  outline: none;
+
+  background-color: #f1e8ff;
+  animation: blink 1s infinite alternate;
+}
+
+#wedding .button:active {
+  box-shadow: 0 0 1rem #9b61a7;
+}
+
+@keyframes blink {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.2);
+  }
 }
 
 /** Tabs system **/
