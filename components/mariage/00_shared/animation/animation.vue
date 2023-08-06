@@ -166,6 +166,8 @@ export default {
       setTimeout(() => {
         this.$emit('animationOver')
       }, 10000)
+    } else {
+      this.$emit('animationOver')
     }
 
     const isImageLoaded = (src) => {
