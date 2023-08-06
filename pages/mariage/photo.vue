@@ -6,7 +6,11 @@
     <form @submit.prevent="handleUploadingPhoto">
       <img v-if="!assets.length" class="background-img" :src="Logo" alt="" />
       <section v-if="!!assets.length" class="preview-container">
-        <article v-for="asset in assets" :key="asset.id" class="preview-item">
+        <article
+          v-for="asset in assets"
+          :key="asset.firestoreUrl"
+          class="preview-item"
+        >
           <img class="preview-img" :src="asset.objectUrl" alt="" />
           <div
             v-if="['starting', 'running', 'paused'].includes(asset.status)"
@@ -32,7 +36,7 @@
             v-if="asset.status === 'success'"
             class="preview-progression-container"
           >
-            ✅ Cela s'affichera bientôt sur le projecteur ✅
+            Chargé ! 🎉
           </div>
         </article>
       </section>
@@ -45,7 +49,10 @@
         multiple
         @change="handleImageChange"
       />
-      <label for="imageInput" class="button">Prendre une photo</label>
+      <label for="imageInput" class="button">
+        <img alt="" :src="PhotoIcon" />
+        Prendre une photo
+      </label>
     </form>
   </main>
 </template>
@@ -54,6 +61,7 @@
 import { initializeApp } from 'firebase/app'
 import { getStorage, uploadBytesResumable, ref } from 'firebase/storage'
 import Logo from '~/components/mariage/00_shared/logo/logo-06.svg'
+import PhotoIcon from '~/components/mariage/00_shared/assets/photo.svg'
 
 export default {
   layout: 'mariage',
@@ -63,6 +71,8 @@ export default {
       Logo,
       firebaseApp: null,
       firebaseStorage: null,
+
+      PhotoIcon,
     }
   },
   head() {
@@ -75,12 +85,12 @@ export default {
   },
   mounted() {
     const firebaseConfig = {
-      apiKey: 'AIzaSyDd9LsguBACesKqNbIXaYCV9CDVY2TIga8',
-      authDomain: 'mariage-88c97.firebaseapp.com',
-      projectId: 'mariage-88c97',
-      storageBucket: 'mariage-88c97.appspot.com',
-      messagingSenderId: '590464781182',
-      appId: '1:590464781182:web:662160725231da84e4412f',
+      apiKey: this.$config.FIREBASE_API_KEY,
+      authDomain: this.$config.FIREBASE_AUTH_DOMAIN,
+      projectId: this.$config.FIREBASE_PROJECT_ID,
+      storageBucket: this.$config.FIREBASE_STORAGE_BUCKET,
+      messagingSenderId: this.$config.FIREBASE_MESSAGING_SENDER_ID,
+      appId: this.$config.FIREBASE_APP_ID,
     }
     this.firebaseApp = initializeApp(firebaseConfig)
     this.firebaseStorage = getStorage(this.firebaseApp)
@@ -88,26 +98,26 @@ export default {
   methods: {
     handleImageChange(e) {
       this.assets = [
+        ...this.assets,
         ...Array.from(e.target.files)
-          .map((file, _i, currentArray) => {
+          .map((file) => {
             const firestoreUrl = `/photos/${file.lastModified}-${file.name}`
 
             if (
-              currentArray.find((asset) => asset.firestoreUrl === firestoreUrl)
+              this.assets.find((asset) => asset.firestoreUrl === firestoreUrl)
             ) {
               return null
             }
 
             return {
               firestoreUrl,
-              objectUrl: URL.createObjectURL(e.target.files[0]),
+              objectUrl: URL.createObjectURL(file),
               rawFile: file,
               status: 'starting',
               uploadPct: 0,
             }
           })
           .filter(Boolean),
-        ...this.assets,
       ]
 
       this.assets
@@ -118,7 +128,14 @@ export default {
     },
     uploadOnePhoto(asset) {
       const storageRef = ref(this.firebaseStorage, asset.firestoreUrl)
-      const uploadTask = uploadBytesResumable(storageRef, asset.rawFile)
+      const uploadTask = uploadBytesResumable(storageRef, asset.rawFile, {
+        customMetadata: {
+          userAgent: window.navigator.userAgent,
+          lastModified: asset.rawFile.lastModified,
+          lastModifiedDate: asset.rawFile.lastModifiedDate?.toISOString(),
+          originalName: asset.rawFile.name,
+        },
+      })
 
       this.assets = this.assets.map((a) => {
         if (asset.firestoreUrl === a.firestoreUrl) {
@@ -211,8 +228,27 @@ form {
 }
 
 #imageInput + label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
   cursor: pointer;
   animation: blink 1s infinite alternate;
+}
+
+#imageInput + label:hover,
+#imageInput + label:focus {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+#imageInput + label img {
+  height: 4rem;
+}
+
+#imageInput + label:hover img,
+#imageInput + label:focus img {
+  filter: invert(1);
 }
 
 .preview-container {
@@ -269,5 +305,12 @@ form {
   background-color: var(--color-primary);
   border-radius: 0.5rem;
   transition: all 0.3s ease;
+}
+
+@media (orientation: landscape) {
+  .background-img {
+    height: 50%;
+    width: auto;
+  }
 }
 </style>
