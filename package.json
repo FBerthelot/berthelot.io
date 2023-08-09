@@ -46,7 +46,7 @@
     "babel-jest": "^29.6.0",
     "cpr": "^3.0.1",
     "eslint": "^8.45.0",
-    "eslint-config-prettier": "^8.8.0",
+    "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-nuxt": "^4.0.0",
     "eslint-plugin-vue": "^8.2.0",
     "flush-promises": "^1.0.2",
