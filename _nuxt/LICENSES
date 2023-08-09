@@ -1,11 +1,4 @@
 /*!
- * fireworks-js 1.4.1 by Vitalij Ryndin (https://crashmax.ru)
- * https://fireworks.js.org
- * License MIT
- */
-
-
-/*!
  * vue-client-only v0.0.0-semantic-release
  * (c) 2021-present egoist <0x142857@gmail.com>
  * Released under the MIT License.
@@ -123,4 +116,11 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ */
+
+
+/*!
+ * fireworks-js 1.4.1 by Vitalij Ryndin (https://crashmax.ru)
+ * https://fireworks.js.org
+ * License MIT
  */
