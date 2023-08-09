@@ -207,6 +207,12 @@ export default {
       )
     },
   },
+  mounted() {
+    this.config = configMapper[this.$route.query.id]
+    this.schedule = CalendarEvents.filter((event) =>
+      event.who.includes(this.config?.who)
+    )
+  },
 }
 </script>
 
