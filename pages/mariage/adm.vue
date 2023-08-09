@@ -181,14 +181,9 @@ export default {
   components: { GuestList, Calendar },
   layout: 'mariage',
   data() {
-    const config = configMapper[this.$route.query.id]
     return {
-      config,
+      config: null,
       configMapper,
-
-      schedule: CalendarEvents.filter((event) =>
-        event.who.includes(config?.who)
-      ),
     }
   },
   head() {
@@ -198,6 +193,13 @@ export default {
       },
       title: `Mariage Agnès et Florent - 19 Août 2022`,
     }
+  },
+  computed: {
+    schedule() {
+      return CalendarEvents.filter((event) =>
+        event.who.includes(this.config?.who)
+      )
+    },
   },
   watch: {
     '$route.query'() {
