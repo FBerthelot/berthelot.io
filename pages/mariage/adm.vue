@@ -218,11 +218,11 @@ const configMapper = {
     displayGuestList: false,
     displayOtherInfos: false,
     message: `
-      A voir ensemble :
-        - Quand chercher boutonière
+      A voir ensemble :<br/>
+        - Quand chercher boutonière<br/>
         - Quand chercher bouquet de la mariée & bracelets des filles
     `,
-    messagePlanDeTable: ``,
+    messagePlanDeTable: ` `,
   },
   traiteur: {
     title: 'Espace traiteur',
@@ -247,6 +247,13 @@ const configMapper = {
     who: Calendars.dj,
     displayGuestList: false,
     displayOtherInfos: false,
+    slidesSkiped: [
+      0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
+      22,
+    ],
+    messagePlanDeTable: `
+
+    `,
   },
   groupeMusic: {
     title: "Espace Swingin' Easy",

@@ -53,7 +53,12 @@ export const Addresses = {
 
 export const CalendarEvents = [
   {
-    who: [Calendars.agnès, Calendars.temouines],
+    who: [
+      Calendars.agnès,
+      Calendars.temouines,
+      Calendars.dj,
+      Calendars.fleuriste,
+    ],
     startDate: new Date('2023/08/19 10:00'),
     endDate: new Date('2023/08/19 11:30'),
     title: 'Coiffeur',
@@ -67,10 +72,16 @@ export const CalendarEvents = [
     `,
   },
   {
-    who: [Calendars.florent, Calendars.temoins, Calendars.florentFamilly],
+    who: [
+      Calendars.florent,
+      Calendars.temoins,
+      Calendars.florentFamilly,
+      Calendars.dj,
+      Calendars.fleuriste,
+    ],
     startDate: new Date('2023/08/19 11:00'),
     endDate: new Date('2023/08/19 12:15'),
-    title: 'Collation et préparation',
+    title: 'Collation et préparation Florent',
     location: Addresses.chateau,
     detail: `
     <br/>
@@ -78,15 +89,30 @@ export const CalendarEvents = [
       Présents : <br/>
       - Florent<br/>
       - Marie-Ange<br/>
-      - Marie-Ange<br/>
+      - Lucile<br/>
+      - Nina<br/>
+      - Rosa<br/>
+      - Gwen<br/>
+      - Jordane<br/>
+      - John<br/>
+      - Boris<br/>
+      - Val ?<br/>
+      - Laura ?<br/>
+      - Cailloux ?<br/>
+      - Romain<br/>
     `,
   },
 
   {
-    who: [Calendars.agnès, Calendars.temouines, Calendars.agnèsFamilly],
+    who: [
+      Calendars.agnès,
+      Calendars.temouines,
+      Calendars.agnèsFamilly,
+      Calendars.dj,
+    ],
     startDate: new Date('2023/08/19 11:30'),
     endDate: new Date('2023/08/19 12:30'),
-    title: 'Collation et préparation',
+    title: 'Collation et préparation Agnès',
     location: Addresses.mamanAgnès,
     detail: `
     <br/>
@@ -126,13 +152,13 @@ export const CalendarEvents = [
     title: 'Cérémonie Religieuse',
     location: Addresses.eglise,
     detail: `
-    <br/><br/>
+      <br/><br/>
       Placements des gens et livrets de messe : Finlay et Stewart<br/>
       DJ église : Romain<br/>
-      Récupération des bouts de banc et placement au Château : ?<br/>
+      Récupération des bouts de banc et placement au Château : Eva<br/>
       Récupération de la gerbe du pupitre et placement au Château : ?<br/>
-      Distribution des paniers de pétales et bubules : ?<br/>
-      Fermeture des portes derrière nous et balayage des pétales : 3 personnes?<br/>
+      Distribution des paniers de pétales et bubules : Marie-Ange et Mary<br/>
+      Fermeture des portes derrière nous et balayage des pétales : 3 personnes ?<br/>
 
     `,
   },
@@ -202,6 +228,14 @@ export const CalendarEvents = [
     startDate: new Date('2023/08/19 17:00'),
     endDate: new Date('2023/08/19 18:15'),
     title: 'Concert part 1',
+    location: Addresses.chateau,
+  },
+
+  {
+    who: [...Invites, Calendars.dj],
+    startDate: new Date('2023/08/19 18:15'),
+    endDate: new Date('2023/08/19 18:30'),
+    title: 'Lancer du bouquet de la mariée.',
     location: Addresses.chateau,
   },
 
