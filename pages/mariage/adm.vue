@@ -26,6 +26,8 @@
   }
 }
 </i18n>
+
+<!-- eslint-disable vue/no-v-html -->
 <template>
   <main id="wedding-admin-page">
     <p v-if="!config" class="typography-paragraph">{{ $t('not_found') }}</p>
@@ -40,7 +42,6 @@
       <div v-if="config.message">
         <hr />
 
-        <!-- eslint-disable-next-line vue/no-v-html -->
         <p class="typography-title-3" v-html="config.message"></p>
       </div>
 
@@ -49,8 +50,10 @@
 
         <h2 class="typography-title-2">{{ $t('Plan et déco') }}</h2>
 
-        <!-- eslint-disable-next-line vue/no-v-html -->
-        <p class="typography-paragraph" v-html="config.messagePlanDeTable"></p>
+        <p
+          class="slide-message typography-paragraph"
+          v-html="config.messagePlanDeTable"
+        ></p>
 
         <div class="slide-container">
           <p class="slide-info typography-paragraph">
@@ -221,8 +224,9 @@ const configMapper = {
       A voir ensemble :<br/>
         - Quand chercher boutonière<br/>
         - Quand chercher bouquet de la mariée & bracelets des filles
+      <br/>
     `,
-    messagePlanDeTable: ` `,
+    messagePlanDeTable: `Vous pouvez ignorer les éléments en jaune fluo. Ce sont des éléments pour nous, à préciser. Ils seront mis à jour.`,
   },
   traiteur: {
     title: 'Espace traiteur',
@@ -234,11 +238,11 @@ const configMapper = {
     `,
     messagePlanDeTable: `
       <br />
-      Chaque post-it représente un invité :<br />
-      &nbsp;- Post-it noir = Viande en plat principal.<br />
-      &nbsp;- Post-it blanc = Poisson en plat principal.<br />
-      &nbsp;- Post-it vert = Végétalien.<br />
-      &nbsp;- Post-it rose = Femme enceinte (entrée végétaliens, en plat filet de bar).<br />
+      Chaque post-it représente un invité :<br /><br />
+      Post-it noir = Viande en plat principal.<br />
+      Post-it blanc = Poisson en plat principal.<br />
+      Post-it vert = Végétalien.<br />
+      Post-it rose = Femme enceinte (entrée végétaliens, en plat filet de bar).<br />
     `,
     slidesSkiped: [0, 1, 2, 3, 4, 5, 6, 7, 9, 22],
   },
@@ -251,8 +255,9 @@ const configMapper = {
       0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
       22,
     ],
+    message: ``,
     messagePlanDeTable: `
-
+      Le A, F et Public dans le salon Chausey, seront nos positions lors de l'ouverture de bal.
     `,
   },
   groupeMusic: {
@@ -363,6 +368,12 @@ export default {
 
 .slide-info {
   display: none;
+}
+.slide-message {
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  margin: 2rem 0 0.5rem 0;
 }
 
 @media (orientation: portrait) {

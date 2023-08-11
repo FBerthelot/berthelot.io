@@ -4,10 +4,12 @@
       "title": "Église",
       "back-button": "⬅ Retour",
       "blocks": [{
-        "superTitle": "Ouverture",
+        "superTitle": "Ouverture de la célébration"
+      },{
+        "title": "Entrée des mariés",
         "centered": "true",
+        "reader": "🎶A Million Dreams' Taylor Davis 🎶",
         "paragraph": [
-          "🎶A Million Dreams' Taylor Davis 🎶",
           " ",
           "Marie-Ange et Florent",
           "Rosa et Nina",
@@ -25,7 +27,7 @@
         "superTitle": "Dieu nous parle"
       },
       {
-        "title": "Saint Paul, Apôtre, aux Corinthiens",
+        "title": "Lecture de la première lettre de Saint Paul, Apôtre, aux Corinthiens",
         "reader": "Lu par Richard",
         "paragraph": [
           "Frères, recherchez avec ardeur les dons les plus grands. Et maintenant, je vais vous indiquer le chemin par excellence.",
@@ -79,7 +81,7 @@
         ]
       }, {
         "title": "Évangile de Jésus Christ selon Saint Matthieu",
-        "reader": "lu par Lucile",
+        "reader": "Lu par Lucile",
         "paragraph": [
           "En ce temps-là, Jésus disait à ses disciples :",
           " ",
@@ -94,7 +96,7 @@
         ]
       }, {
         "title": "Évangile de Jésus Christ selon Saint Matthieu",
-        "reader": "lu par Maya en Anglais"
+        "reader": "Lu par Maya en anglais"
       }, {
         "title": "Homélie par le Prêtre"
       }, {
@@ -164,25 +166,25 @@
           "Et par le firmament, Ton manteau étoilé,",
           "Et par frère Soleil…",
           " ",
-          "Refrain :",
+          "🎶 Refrain :",
           "Je veux crier mon Dieu ! Tu es grand, Tu es beau,",
           "Dieu vivant, Dieu très haut, Tu es le Dieu d'amour !",
           "Mon Dieu, Tu es grand, Tu es beau, Dieu vivant,",
           "Dieu très haut, Dieu présent en toute création.",
           " ",
-          "2. Par tous les océans et par toutes les mers,",
+          "🎶 2. Par tous les océans et par toutes les mers,",
           "Par tous les continents et par l'eau des rivières,",
           "Par le feu qui Te dit comme un buisson ardent",
           "Et par l'aile du vent…",
           " ",
-          "Refrain",
+          "🎶 Refrain",
           " ",
-          "5. Par cette main tendue qui invite à la danse,",
+          "🎶 5. Par cette main tendue qui invite à la danse,",
           "Par ce baiser jailli d'un élan d'espérance,",
           "Par ce regard d'amour qui relève et réchauffe,",
           "Par le pain et le vin...",
           " ",
-          "Refrain 🎶"
+          "🎶 Refrain"
         ]
       }, {
         "supertitle": "Prière de l’Eglise"
@@ -195,17 +197,17 @@
           " ",
           "Florent : Après tant d’incertitudes et de timidité, merci de nous avoir montré le chemin de nos retrouvailles à Lannion.",
           " ",
-          "Agnès : Merci aussi pour ton accompagnement et ton soutien de tout instant.",
+          "Agnès : Merci aussi pour ton accompagnement et ton soutien constant.",
           " ",
           "Florent : Nous l’avons ressenti très fortement lors de la demande en mariage. Nous t’en remercions.",
           " ",
           "Agnès : Tu nous as confiés l’un à l’autre et tu nous aides à fortifier notre amour chaque jour afin qu’il nous rende toujours plus heureux.",
           " ",
-          "Florent : Maintenant, ensemble, nous voulons te confier notre avenir, nos projets, nos joies, nos peines.",
+          "Florent : Maintenant, ensemble, nous voulons te confier notre avenir, nos projets, nos joies et nos peines.",
           " ",
           "Agnès : Puisses-tu nous guider pour que notre amour continue à grandir par notre mariage.",
           " ",
-          "Florent : Gardes-nous dans la paix, tiens-nous unis et fidèles",
+          "Florent : Gardes-nous dans la paix, tiens-nous unis et fidèles,",
           " ",
           "Agnès : Que nous puissions continuer à partager notre joie.",
           " ",
@@ -215,7 +217,7 @@
         "title": "Prière universelle",
         "reader": "lue par John, chantée par le père Jean-Luc Lefrançois",
         "paragraph": [
-          "Pour ces nouveaux époux et pour le bonheur de leur foyer, prions le Seigneur.",
+          "Pour Agnès et Florent et pour le bonheur de leur foyer, prions le Seigneur.",
           " ",
           "🎶Entends nos prières, entends nos voix, Entends nos prières monter vers toi. 🎶",
           " ",
@@ -257,7 +259,7 @@
       }, {
         "superTitle": "Allez dans la paix du Christ"
       }, {
-        "title": "Bénédiction Finale (129)",
+        "title": "Bénédiction Finale",
         "paragraph": [
           "Que le Seigneur votre Dieu",
           "vous garde unis dans un même amour",
@@ -293,17 +295,20 @@
         ]
       }, {
         "title": "Quête",
-        "reader": "par Lucile, Richard et Mathilde"
+        "centered": true,
+        "reader": "par Lucile, Richard et Mathilde",
+        "paragraph": [
+          "🎶Ave Maria - Beyoncé 🎶"
+        ]
       }, {
-        "title": "Signature de l'acte de mariage",
-        "reader": "🎶Ave Maria - Beyoncé 🎶",
+        "title": "Signature des registres",
+        "centered": true,
         "paragraph": [
           "Par les époux et les témoins :",
-          " ",
-          "- Pauline Pays",
-          "- Maya McCutcheon",
-          "- Jordane Grenat",
-          "- Johnathan Flores"
+          "Pauline Pays",
+          "Maya McCutcheon",
+          "Jordane Grenat",
+          "Johnathan Flores"
         ]
       }, {
         "title": "Sortie de l'église",
