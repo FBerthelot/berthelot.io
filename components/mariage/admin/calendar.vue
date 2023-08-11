@@ -241,6 +241,9 @@
           {{ eventToShowInDetail.location.name }} <br />
           {{ eventToShowInDetail.location.address }}
         </address>
+
+        <!--eslint-disable-next-line vue/no-v-html -->
+        <p class="typography-paragraph" v-html="eventToShowInDetail.detail"></p>
         <button class="button" @click="closeEventModal">{{ $t('ok') }}</button>
       </div>
     </div>

@@ -1,6 +1,7 @@
 <i18n>
 {
   "fr": {
+    "Plan et déco": "Plan et déco",
     "Feuille de route -": "Feuille de route -",
     "Photo": "Photo",
     "Afficheur photo": "Afficheur photo",
@@ -11,6 +12,7 @@
     "no_stress": "⚠️ Pas besoin de stresser si nous avons 5-10min de retard. La feuille de route n'est qu'indicative ⚠️"
   },
   "en": {
+    "Plan et déco": "Plan et déco",
     "Feuille de route -": "Feuille de route - ",
     "Photo": "Photo",
     "Afficheur photo": "Afficheur photo",
@@ -33,7 +35,31 @@
 
       <Calendar v-if="config" :schedule="schedule" title="Feuille de route" />
 
-      <p class="typography-title-3">{{ $t('no_stress') }}</p>
+      <div v-if="config.message">
+        <hr />
+
+        <!-- eslint-disable-next-line vue/no-v-html -->
+        <p class="typography-title-3" v-html="config.message"></p>
+      </div>
+
+      <div v-if="config.messagePlanDeTable">
+        <hr />
+
+        <h2 class="typography-title-2">{{ $t('Plan et déco') }}</h2>
+
+        <!-- eslint-disable-next-line vue/no-v-html -->
+        <p class="typography-paragraph" v-html="config.messagePlanDeTable"></p>
+
+        <img
+          v-for="(slide, i) in slides"
+          :key="slide"
+          :src="slide"
+          class="slide"
+          :title="`slide ${i}`"
+          alt="déso, pas d'alternative à l'image"
+        />
+      </div>
+
       <hr />
 
       <section v-if="config.displayOtherInfos">
@@ -102,6 +128,58 @@ import {
   Calendars,
 } from '~/components/mariage/00_shared/calendar.data'
 
+import img1 from '~/components/mariage/00_shared/assets/tableMap/1.png'
+import img2 from '~/components/mariage/00_shared/assets/tableMap/2.png'
+import img3 from '~/components/mariage/00_shared/assets/tableMap/3.png'
+import img4 from '~/components/mariage/00_shared/assets/tableMap/4.png'
+import img5 from '~/components/mariage/00_shared/assets/tableMap/5.png'
+import img6 from '~/components/mariage/00_shared/assets/tableMap/6.png'
+import img7 from '~/components/mariage/00_shared/assets/tableMap/7.png'
+import img8 from '~/components/mariage/00_shared/assets/tableMap/8.png'
+import img9 from '~/components/mariage/00_shared/assets/tableMap/9.png'
+import img10 from '~/components/mariage/00_shared/assets/tableMap/10.png'
+import img11 from '~/components/mariage/00_shared/assets/tableMap/11.png'
+import img12 from '~/components/mariage/00_shared/assets/tableMap/12.png'
+import img13 from '~/components/mariage/00_shared/assets/tableMap/13.png'
+import img14 from '~/components/mariage/00_shared/assets/tableMap/14.png'
+import img15 from '~/components/mariage/00_shared/assets/tableMap/15.png'
+import img16 from '~/components/mariage/00_shared/assets/tableMap/16.png'
+import img17 from '~/components/mariage/00_shared/assets/tableMap/17.png'
+import img18 from '~/components/mariage/00_shared/assets/tableMap/18.png'
+import img19 from '~/components/mariage/00_shared/assets/tableMap/19.png'
+import img20 from '~/components/mariage/00_shared/assets/tableMap/20.png'
+import img21 from '~/components/mariage/00_shared/assets/tableMap/21.png'
+import img22 from '~/components/mariage/00_shared/assets/tableMap/22.png'
+import img23 from '~/components/mariage/00_shared/assets/tableMap/23.png'
+import img24 from '~/components/mariage/00_shared/assets/tableMap/24.png'
+
+const slides = [
+  img1,
+  img2,
+  img3,
+  img4,
+  img5,
+  img6,
+  img7,
+  img8,
+  img9,
+  img10,
+  img11,
+  img12,
+  img13,
+  img14,
+  img15,
+  img16,
+  img17,
+  img18,
+  img19,
+  img20,
+  img21,
+  img22,
+  img23,
+  img24,
+]
+
 const configMapper = {
   fbe: {
     title: 'Admin de Florent',
@@ -132,12 +210,27 @@ const configMapper = {
     who: Calendars.fleuriste,
     displayGuestList: false,
     displayOtherInfos: false,
+    messagePlanDeTable: `
+      TODO :
+        - Quand chercher boutonière
+        - Quand chercher bouquet de la mariée & bracelets des filles
+    `,
   },
   traiteur: {
     title: 'Espace traiteur',
     who: Calendars.traiteur,
     displayGuestList: false,
     displayOtherInfos: false,
+    message: '',
+    messagePlanDeTable: `
+      <br />
+      Chaque post-it représente un invité :<br /><br />
+      &nbsp;- Post-it noir = Viande en plat principal.<br />
+      &nbsp;- Post-it blanc = Poisson en plat principal.<br />
+      &nbsp;- Post-it vert = Végétalien.<br />
+      &nbsp;- Post-it rose = Femme enceinte (Juste entrée comme les végétaliens).<br />
+    `,
+    slidesSkiped: [0, 1, 2, 3, 4, 6, 7, 9, 22],
   },
   dj: {
     title: 'Espace Sonofactory',
@@ -200,6 +293,11 @@ export default {
         event.who.includes(this.config?.who)
       )
     },
+    slides() {
+      return slides.filter((_, i) => {
+        return !(this.config?.slidesSkiped ?? []).includes(i)
+      })
+    },
   },
   watch: {
     '$route.query'() {
@@ -233,5 +331,11 @@ export default {
   width: 100%;
 
   margin-bottom: 1rem;
+}
+
+.slide {
+  width: 80%;
+
+  margin: 1rem 10%;
 }
 </style>

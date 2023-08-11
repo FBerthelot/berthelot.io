@@ -26,7 +26,7 @@ const MainPresta = [Calendars.dj, Calendars.traiteur, Calendars.fleuriste]
 
 export const Addresses = {
   chateau: {
-    name: 'Château de la crète',
+    name: 'Château de la Crête',
     address: '476 Rue de la Crète, 50400 Granville',
   },
   eglise: {
@@ -38,11 +38,11 @@ export const Addresses = {
     address: '25 Av. des Vendéens, 50400 Granville',
   },
   mamanAgnès: {
-    name: 'Chez Agnès',
+    name: "Chez Mary, la mère d'Agnès",
     address: "1 rue des rondes de l'ouest, 50350 Donville-les-bains",
   },
   mamanFlorent: {
-    name: 'Chez Florent',
+    name: 'Chez Marie-Ange, la mère de Flo',
     address: '5 route de genêts, 50300 Vains',
   },
   mairieDonville: {
@@ -54,32 +54,52 @@ export const Addresses = {
 export const CalendarEvents = [
   {
     who: [Calendars.agnès, Calendars.temouines],
-    startDate: new Date('2023/08/19 10:30'),
+    startDate: new Date('2023/08/19 10:00'),
     endDate: new Date('2023/08/19 11:30'),
     title: 'Coiffeur',
     location: Addresses.coiffeurAgnès,
+    detail: `
+      <br/><br/>
+      Eva : 9h30 - 10h<br/>
+      Agnès : 10h - 11h30<br/>
+      Maya : 10h30 - 11h<br/>
+      Mathou et Pau : 11h - 11h30<br/>
+    `,
   },
   {
-    who: [Calendars.florent, Calendars.temoins],
+    who: [Calendars.florent, Calendars.temoins, Calendars.florentFamilly],
     startDate: new Date('2023/08/19 11:00'),
     endDate: new Date('2023/08/19 12:15'),
-    title: 'Colation et préparation',
+    title: 'Collation et préparation',
     location: Addresses.chateau,
+    detail: `
+    <br/>
+    <br/>
+      Présents : <br/>
+      - Florent<br/>
+      - Marie-Ange<br/>
+      - Marie-Ange<br/>
+    `,
   },
 
   {
-    who: [Calendars.agnès, Calendars.temouines],
+    who: [Calendars.agnès, Calendars.temouines, Calendars.agnèsFamilly],
     startDate: new Date('2023/08/19 11:30'),
     endDate: new Date('2023/08/19 12:30'),
-    title: 'Colation et préparation',
+    title: 'Collation et préparation',
     location: Addresses.mamanAgnès,
+    detail: `
+    <br/>
+    <br/>
+    Présents : Agnès, Mary, Pascal, Richard, Nathalie, François, Andrée, Pauline, Mathilde, Maya, Eva
+    `,
   },
 
   {
     who: [Calendars.dj],
     startDate: new Date('2023/08/19 12:30'),
     endDate: new Date('2023/08/19 13:00'),
-    title: 'Arrivé DJ',
+    title: 'Arrivée DJ',
     location: Addresses.chateau,
   },
 
@@ -87,7 +107,7 @@ export const CalendarEvents = [
     who: [...Invites, ...MainPresta],
     startDate: new Date('2023/08/19 13:00'),
     endDate: new Date('2023/08/19 13:30'),
-    title: 'Cérémonie Civil',
+    title: 'Cérémonie Civile',
     location: Addresses.mairieDonville,
   },
 
@@ -95,7 +115,7 @@ export const CalendarEvents = [
     who: [Calendars.traiteur],
     startDate: new Date('2023/08/19 13:00'),
     endDate: new Date('2023/08/19 13:30'),
-    title: 'Arrivé Traiteur',
+    title: 'Arrivée Traiteur',
     location: Addresses.chateau,
   },
 
@@ -105,13 +125,23 @@ export const CalendarEvents = [
     endDate: new Date('2023/08/19 15:00'),
     title: 'Cérémonie Religieuse',
     location: Addresses.eglise,
+    detail: `
+    <br/><br/>
+      Placements des gens et livrets de messe : Finlay et Stewart<br/>
+      DJ église : Romain<br/>
+      Récupération des bouts de banc et placement au Château : ?<br/>
+      Récupération de la gerbe du pupitre et placement au Château : ?<br/>
+      Distribution des paniers de pétales et bubules : ?<br/>
+      Fermeture des portes derrière nous et balayage des pétales : 3 personnes?<br/>
+
+    `,
   },
 
   {
     who: Invites,
     startDate: new Date('2023/08/19 15:00'),
     endDate: new Date('2023/08/19 15:15'),
-    title: 'Photo de groupe',
+    title: "Photos autour de l'église",
     location: Addresses.eglise,
   },
 
@@ -119,8 +149,13 @@ export const CalendarEvents = [
     who: [...Invites, ...MainPresta],
     startDate: new Date('2023/08/19 15:30'),
     endDate: new Date('2023/08/19 16:00'),
-    title: 'Cortège vers le château',
+    title: 'Cortège vers le Château',
     location: Addresses.eglise,
+    detail: `
+    <br/><br/>
+      - Conducteur voiture des mariés : Richard<br/>
+      - Voiture balai : Lucile
+    `,
   },
 
   {
@@ -140,9 +175,9 @@ export const CalendarEvents = [
 
   {
     who: Invites,
-    startDate: new Date('2023/08/19 16:00'),
-    endDate: new Date('2023/08/19 16:15'),
-    title: 'Photo de groupe',
+    startDate: new Date('2023/08/19 17:00'),
+    endDate: new Date('2023/08/19 17:15'),
+    title: 'Photo du groupe au Château',
     location: Addresses.chateau,
   },
 
@@ -150,7 +185,7 @@ export const CalendarEvents = [
     who: [Calendars.traiteur, Calendars.fleuriste],
     startDate: new Date('2023/08/19 15:00'),
     endDate: new Date('2023/08/19 16:00'),
-    title: 'Dressage des tables et déco',
+    title: 'Tables dressées. Ok pour fleuriste.',
     location: Addresses.chateau,
   },
 
@@ -158,7 +193,7 @@ export const CalendarEvents = [
     who: [Calendars.groupeMusic, Calendars.dj],
     startDate: new Date('2023/08/19 16:30'),
     endDate: new Date('2023/08/19 17:00'),
-    title: "Arrivé et mise en place Swingin' Easy",
+    title: "Arrivée et mise en place Swingin' Easy",
     location: Addresses.chateau,
   },
 
@@ -190,8 +225,10 @@ export const CalendarEvents = [
     who: [...Invites, Calendars.traiteur, Calendars.dj],
     startDate: new Date('2023/08/19 20:00'),
     endDate: new Date('2023/08/19 23:00'),
-    title: 'Diner',
+    title: 'Dîner',
     location: Addresses.chateau,
+    detail:
+      'Plus d\'infos sur <a href="https://berthelot.io/mariage/menu" target="__blank" >la page dédiée</a>.',
   },
 
   {
@@ -212,11 +249,12 @@ export const CalendarEvents = [
   // Dimanche 20 août 2023
 
   {
-    who: [...Invites, Calendars.traiteur, Calendars.dj],
+    who: [...Invites, Calendars.traiteur],
     startDate: new Date('2023/08/20 4:00'),
     endDate: new Date('2023/08/20 4:45'),
-    title: 'Casse-croûte, cigare et Whisky.',
+    title: 'Casse-croûte, Cigares et Whisky.',
     location: Addresses.chateau,
+    detail: 'Fourni et servi par les mariés.',
   },
 
   {
