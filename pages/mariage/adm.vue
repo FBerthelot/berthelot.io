@@ -229,7 +229,9 @@ const configMapper = {
     who: Calendars.traiteur,
     displayGuestList: false,
     displayOtherInfos: false,
-    message: '',
+    message: `
+      Vous pouvez retrouver <a href="https://berthelot.io/mariage/menu/" target="__blank">plus de détail sur la nourriture ici.</a>
+    `,
     messagePlanDeTable: `
       <br />
       Chaque post-it représente un invité :<br />
