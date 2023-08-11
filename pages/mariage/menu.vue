@@ -142,31 +142,8 @@ export default {
   },
   layout: 'mariage',
   data() {
-    const now = new Date()
-    const currentDay = now.getDay()
-    const currentHour = now.getHours()
-    const currentMinutes = now.getMinutes()
-
-    const currentPeriod =
-      currentDay === 7 && currentHour > 5
-        ? 'after'
-        : currentDay === 7 && currentHour <= 5
-        ? 'after'
-        : currentHour >= 23 && currentMinutes >= 30
-        ? 'after'
-        : currentHour >= 20
-        ? 'diner'
-        : currentHour >= 17 && currentMinutes >= 30
-        ? 'cocktail'
-        : 'reception'
-
-    const tabs = ['party', 'after'].includes(currentPeriod)
-      ? ['party', 'after']
-      : ['reception', 'cocktail', 'diner']
-
     return {
-      selectedTab: currentPeriod,
-      tabs,
+      selectedTab: this.getCurrentPeriod(),
       prevUrl: this.$route.query.prevUrl ?? '/mariage',
     }
   },
@@ -178,17 +155,43 @@ export default {
       title: `Mariage Agnès et Florent - 19 Août 2022`,
     }
   },
+  computed: {
+    tabs() {
+      return ['party', 'after'].includes(this.selectedTab)
+        ? ['party', 'after']
+        : ['reception', 'cocktail', 'diner']
+    },
+  },
+  mounted() {
+    this.selectedTab = this.getCurrentPeriod()
+  },
   methods: {
+    getCurrentPeriod() {
+      const now = new Date()
+      const currentDay = now.getDay()
+      const currentHour = now.getHours()
+      const currentMinutes = now.getMinutes()
+
+      return currentDay === 7 && currentHour > 5
+        ? 'after'
+        : currentDay === 7 && currentHour <= 5
+        ? 'party'
+        : currentHour >= 23 && currentMinutes >= 30
+        ? 'party'
+        : currentHour >= 20
+        ? 'diner'
+        : currentHour >= 17 && currentMinutes >= 30
+        ? 'cocktail'
+        : 'reception'
+    },
     handleSelectTab(newSelectedTab) {
       this.selectedTab = newSelectedTab
     },
     handleSelectNextDay() {
       this.selectedTab = 'after'
-      this.tabs = ['party', 'after']
     },
     handleSelectPrevDay() {
       this.selectedTab = 'cocktail'
-      this.tabs = ['reception', 'cocktail', 'diner']
     },
   },
 }

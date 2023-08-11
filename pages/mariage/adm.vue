@@ -1,6 +1,7 @@
 <i18n>
 {
   "fr": {
+    "💡 Vous pouvez bouger les slides de gauche à droite": "💡 Vous pouvez bouger les slides de gauche à droite.",
     "Plan et déco": "Plan et déco",
     "Feuille de route -": "Feuille de route -",
     "Photo": "Photo",
@@ -12,6 +13,7 @@
     "no_stress": "⚠️ Pas besoin de stresser si nous avons 5-10min de retard. La feuille de route n'est qu'indicative ⚠️"
   },
   "en": {
+    "💡 Vous pouvez bouger les slides de gauche à droite": "💡 Vous pouvez bouger les slides de gauche à droite.",
     "Plan et déco": "Plan et déco",
     "Feuille de route -": "Feuille de route - ",
     "Photo": "Photo",
@@ -42,7 +44,7 @@
         <p class="typography-title-3" v-html="config.message"></p>
       </div>
 
-      <div v-if="config.messagePlanDeTable">
+      <section v-if="config.messagePlanDeTable">
         <hr />
 
         <h2 class="typography-title-2">{{ $t('Plan et déco') }}</h2>
@@ -50,15 +52,20 @@
         <!-- eslint-disable-next-line vue/no-v-html -->
         <p class="typography-paragraph" v-html="config.messagePlanDeTable"></p>
 
-        <img
-          v-for="(slide, i) in slides"
-          :key="slide"
-          :src="slide"
-          class="slide"
-          :title="`slide ${i}`"
-          alt="déso, pas d'alternative à l'image"
-        />
-      </div>
+        <div class="slide-container">
+          <p class="slide-info typography-paragraph">
+            {{ $t('💡 Vous pouvez bouger les slides de gauche à droite') }}
+          </p>
+          <img
+            v-for="(slide, i) in slides"
+            :key="slide"
+            :src="slide"
+            class="slide"
+            :title="`slide ${i}`"
+            alt="déso, pas d'alternative à l'image"
+          />
+        </div>
+      </section>
 
       <hr />
 
@@ -210,11 +217,12 @@ const configMapper = {
     who: Calendars.fleuriste,
     displayGuestList: false,
     displayOtherInfos: false,
-    messagePlanDeTable: `
-      TODO :
+    message: `
+      A voir ensemble :
         - Quand chercher boutonière
         - Quand chercher bouquet de la mariée & bracelets des filles
     `,
+    messagePlanDeTable: ``,
   },
   traiteur: {
     title: 'Espace traiteur',
@@ -224,13 +232,13 @@ const configMapper = {
     message: '',
     messagePlanDeTable: `
       <br />
-      Chaque post-it représente un invité :<br /><br />
+      Chaque post-it représente un invité :<br />
       &nbsp;- Post-it noir = Viande en plat principal.<br />
       &nbsp;- Post-it blanc = Poisson en plat principal.<br />
       &nbsp;- Post-it vert = Végétalien.<br />
-      &nbsp;- Post-it rose = Femme enceinte (Juste entrée comme les végétaliens).<br />
+      &nbsp;- Post-it rose = Femme enceinte (entrée végétaliens, en plat filet de bar).<br />
     `,
-    slidesSkiped: [0, 1, 2, 3, 4, 6, 7, 9, 22],
+    slidesSkiped: [0, 1, 2, 3, 4, 5, 6, 7, 9, 22],
   },
   dj: {
     title: 'Espace Sonofactory',
@@ -333,9 +341,33 @@ export default {
   margin-bottom: 1rem;
 }
 
+.slide-container {
+  width: 100%;
+  overflow: auto;
+}
+
 .slide {
   width: 80%;
 
   margin: 1rem 10%;
+}
+
+.slide-info {
+  display: none;
+}
+
+@media (orientation: portrait) {
+  .slide {
+    width: 200%;
+
+    margin: 1rem 5%;
+  }
+
+  .slide-info {
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    margin: 2rem 0 0.5rem 0;
+  }
 }
 </style>

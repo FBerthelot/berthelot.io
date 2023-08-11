@@ -24,7 +24,7 @@
           "title": "Pause Normande"
         }, {
           "title": "Fromage",
-          "paragraph": [
+          "list": [
             "Plateau 4 fromages affinés (Camembert, pont l’évêque, bûche de chèvre, comté)",
             "Service d’une mesclun & noix, vinaigrette de cidre"
           ]
@@ -76,7 +76,7 @@
           ]
         }, {
           "title": "Boissons",
-          "paragraph": [
+          "list": [
             "Softs"
           ]
         }
@@ -106,7 +106,7 @@
           "title": "Pause Normande"
         }, {
           "title": "Fromage",
-          "paragraph": [
+          "list": [
             "Plateau 4 fromages affinés (Camembert, pont l’évêque, bûche de chèvre, comté)",
             "Service d’une mesclun & noix, vinaigrette de cidre"
           ]
@@ -158,7 +158,7 @@
           ]
         }, {
           "title": "Boissons",
-          "paragraph": [
+          "list": [
             "Softs"
           ]
         }

@@ -71,6 +71,7 @@
   }
 </i18n>
 
+<!-- eslint-disable vue/no-v-html -->
 <template>
   <section class="schedule">
     <h2 class="typography-title-2">{{ title }}</h2>
@@ -242,8 +243,10 @@
           {{ eventToShowInDetail.location.address }}
         </address>
 
-        <!--eslint-disable-next-line vue/no-v-html -->
-        <p class="typography-paragraph" v-html="eventToShowInDetail.detail"></p>
+        <p
+          class="typography-paragraph modal-content-detail"
+          v-html="eventToShowInDetail.detail"
+        ></p>
         <button class="button" @click="closeEventModal">{{ $t('ok') }}</button>
       </div>
     </div>
@@ -454,5 +457,10 @@ export default {
 .modal-content button {
   margin-top: 3rem;
   width: 5rem;
+}
+
+.modal-content-detail {
+  text-align: left;
+  width: 100%;
 }
 </style>
