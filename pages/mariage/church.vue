@@ -134,7 +134,10 @@
           "qu'ils demeurent dans la paix en faisant ta volonté,",
           "qu'ils vivent toujours dans l'amout mutuel.",
           " ",
-          "Amen."
+          "Amen.",
+          " ",
+          "Florent : Agnès, reçois cette alliance, Signe de mon amour et de ma fidélité. (Au nom du Père, du Fils, et du Saint-Esprit.)",
+          "Agnès : Florent, reçois cette alliance, Signe de mon amour et de ma fidélité. (Au nom du Père, du Fils, et du Saint-Esprit.)"
         ]
       }, {
         "title": "Bénédiction nuptiale",
@@ -191,7 +194,7 @@
       }, {
         "title": "Prière des époux",
         "paragraph": [
-          "Florent : Seigneur, tu nous as conduis ici, devant toi, pour notre mariage :",
+          "Florent : Seigneur, tu nous as conduits ici, devant toi, pour notre mariage :",
           " ",
           "Agnès : Après tant d’années à nous croiser, merci pour notre rencontre rennaise.",
           " ",

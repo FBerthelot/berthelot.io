@@ -3,6 +3,7 @@
   "fr": {
     "💡 Vous pouvez bouger les slides de gauche à droite": "💡 Vous pouvez bouger les slides de gauche à droite.",
     "Plan et déco": "Plan et déco",
+    "calendarTitle": "Feuille de route",
     "Feuille de route -": "Feuille de route -",
     "Photo": "Photo",
     "Afficheur photo": "Afficheur photo",
@@ -14,8 +15,9 @@
   },
   "en": {
     "💡 Vous pouvez bouger les slides de gauche à droite": "💡 Vous pouvez bouger les slides de gauche à droite.",
-    "Plan et déco": "Plan et déco",
-    "Feuille de route -": "Feuille de route - ",
+    "Plan et déco": "Map and decoration",
+    "calendarTitle": "Schedule",
+    "Feuille de route -": "Schedule - ",
     "Photo": "Photo",
     "Afficheur photo": "Afficheur photo",
     "Menu": "Menu",
@@ -37,7 +39,11 @@
         <h1 class="typography-title">{{ config.title }}</h1>
       </header>
 
-      <Calendar v-if="config" :schedule="schedule" title="Feuille de route" />
+      <Calendar
+        v-if="config"
+        :schedule="schedule"
+        :title="$t('calendarTitle')"
+      />
 
       <div v-if="config.message">
         <hr />
@@ -45,34 +51,9 @@
         <p class="typography-title-3" v-html="config.message"></p>
       </div>
 
-      <section v-if="config.messagePlanDeTable">
+      <section v-if="config.displayOtherInfos">
         <hr />
 
-        <h2 class="typography-title-2">{{ $t('Plan et déco') }}</h2>
-
-        <p
-          class="slide-message typography-paragraph"
-          v-html="config.messagePlanDeTable"
-        ></p>
-
-        <div class="slide-container">
-          <p class="slide-info typography-paragraph">
-            {{ $t('💡 Vous pouvez bouger les slides de gauche à droite') }}
-          </p>
-          <img
-            v-for="(slide, i) in slides"
-            :key="slide"
-            :src="slide"
-            class="slide"
-            :title="`slide ${i}`"
-            alt="déso, pas d'alternative à l'image"
-          />
-        </div>
-      </section>
-
-      <hr />
-
-      <section v-if="config.displayOtherInfos">
         <h2 class="typography-title-2">{{ $t('Les autres infos') }}</h2>
 
         <ul>
@@ -123,9 +104,36 @@
         </ul>
       </section>
 
-      <hr />
+      <section v-if="config.messagePlanDeTable">
+        <hr />
 
-      <guest-list v-if="config.displayGuestList"></guest-list>
+        <h2 class="typography-title-2">{{ $t('Plan et déco') }}</h2>
+
+        <p
+          class="slide-message typography-paragraph"
+          v-html="config.messagePlanDeTable"
+        ></p>
+
+        <div class="slide-container">
+          <p class="slide-info typography-paragraph">
+            {{ $t('💡 Vous pouvez bouger les slides de gauche à droite') }}
+          </p>
+          <img
+            v-for="(slide, i) in slides"
+            :key="slide"
+            :src="slide"
+            class="slide"
+            :title="`slide ${i}`"
+            alt="déso, pas d'alternative à l'image"
+          />
+        </div>
+      </section>
+
+      <div v-if="config.displayGuestList">
+        <hr />
+
+        <guest-list></guest-list>
+      </div>
     </div>
   </main>
 </template>
@@ -208,12 +216,52 @@ const configMapper = {
     who: Calendars.temoins,
     displayGuestList: false,
     displayOtherInfos: false,
+    message: `
+      Coucou les gars,<br/>
+      Le calendrier ci-dessus est informatif. Nous ne sommes pas à la minute près, pas besoin de stresser donc 😇<br/>
+      <br/><br/>
+      Le seul petit truc à savoir en terme de timing, c'est qu'il y a un mariage à 16h après nous à l'église.<br/>
+      On a grave de la marge pour ne pas les gêner. 😅<br/><br/>
+
+      Let's gooooo ! 🎉
+    `,
+    messagePlanDeTable: `
+      J'ai mis ici quelques infos sur comment se passe la déco et le plan du château, nottement pour toi Jo' et surtout Eva.
+    `,
+    slidesSkiped: [
+      0, 1, 2, 4, 5, 7, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22,
+      23,
+    ],
   },
   temouines: {
     title: 'Admin des témouines',
     who: Calendars.temouines,
     displayGuestList: false,
     displayOtherInfos: false,
+    message: `
+      Hello Girls,<br/>
+      Le calendrier ci-dessus est informatif. Nous ne sommes pas à la minute près, pas besoin de stresser donc 😇<br/>
+      The calendar above is informative, so no need to stress. 😇<br/>
+      <br/><br/>
+      Le seul petit truc à savoir en terme de timing, c'est qu'il y a un mariage à 16h après nous à l'église.<br/>
+      On a grave de la marge pour ne pas les gêner. 😅<br/>
+      --<br/>
+      The only timing thing to know : There is another wedding in the church after our, at 4:00pm.<br/>
+      So we have plenty of time to not bother them. 😅<br/>
+
+      <br/><br/>
+
+      Let's gooooo ! 🎉
+    `,
+    messagePlanDeTable: `
+      Une tite' carte du château, au cas où ça peut vous servir. 🤷‍♀️<br/>
+      Here is a map of the castle. Maybe it can help you. 🤷‍♀️<br/>
+      PS: Sorry, Maya, I can't tranlate images.
+    `,
+    slidesSkiped: [
+      0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
+      22, 23,
+    ],
   },
   fleurs: {
     title: 'Espace fleurs',
@@ -256,8 +304,7 @@ const configMapper = {
       22,
     ],
     message: ``,
-    messagePlanDeTable: `
-      Le A, F et Public dans le salon Chausey, seront nos positions lors de l'ouverture de bal.
+    messagePlanDeTable: `Le A, F et Public dans le salon Chausey, seront nos positions lors de l'ouverture de bal.
     `,
   },
   groupeMusic: {
@@ -271,12 +318,34 @@ const configMapper = {
     who: Calendars.agnèsFamilly,
     displayGuestList: false,
     displayOtherInfos: false,
+    message: `
+      Hello familly,<br/>
+      The calendar above is informative, so no need to stress. 😇<br/>
+      <br/><br/>
+      If you want more details on the menu,<a href="https://berthelot.io/mariage/menu/" target="__blank"> click here.</a><br/>
+      If you want more details on the church,,<a href="https://berthelot.io/mariage/church/" target="__blank"> click here.</a><br/>
+
+      If something is still blurry, ask me! <br/><br/>
+
+      XoXoXoXoXoXoXoXo 🎉🎉🎉
+    `,
   },
   florentFamilly: {
     title: 'Espace famille de Florent',
     who: Calendars.florentFamilly,
     displayGuestList: false,
     displayOtherInfos: false,
+    message: `
+      Coucou la famille,<br/>
+      Le calendrier ci-dessus est informatif. Nous ne sommes pas à la minute près, pas besoin de stresser donc 😇<br/>
+      <br/><br/>
+      Si vous voulez plus de détail sur le menu,<a href="https://berthelot.io/mariage/menu/" target="__blank"> cliquez-ici</a><br/>
+      Si vous voulez plus de détail sur l'église,<a href="https://berthelot.io/mariage/church/" target="__blank"> cliquez-ici</a><br/>
+
+      Sinon, n'hésitez pas à me poser des questions s'il y a un truc qu'est pas clair.<br/><br/>
+
+      Bisous 🎉🎉🎉
+    `,
   },
   taxi: {
     title: 'Espace Taxi',
@@ -324,16 +393,10 @@ export default {
   watch: {
     '$route.query'() {
       this.config = configMapper[this.$route.query.id]
-      this.schedule = CalendarEvents.filter((event) =>
-        event.who.includes(this.config?.who)
-      )
     },
   },
   mounted() {
     this.config = configMapper[this.$route.query.id]
-    this.schedule = CalendarEvents.filter((event) =>
-      event.who.includes(this.config?.who)
-    )
   },
 }
 </script>

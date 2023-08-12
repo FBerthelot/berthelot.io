@@ -39,10 +39,12 @@ export const Addresses = {
   },
   mamanAgnès: {
     name: "Chez Mary, la mère d'Agnès",
+    nameEn: "At Mary's, Agnès's mother",
     address: "1 rue des rondes de l'ouest, 50350 Donville-les-bains",
   },
   mamanFlorent: {
     name: 'Chez Marie-Ange, la mère de Flo',
+    nameEn: "At Marie-Ange's, Florent's mother",
     address: '5 route de genêts, 50300 Vains',
   },
   mairieDonville: {
@@ -62,6 +64,7 @@ export const CalendarEvents = [
     startDate: new Date('2023/08/19 10:00'),
     endDate: new Date('2023/08/19 11:30'),
     title: 'Coiffeur',
+    titleEn: 'Haircut',
     location: Addresses.coiffeurAgnès,
     detail: `
       <br/><br/>
@@ -113,6 +116,7 @@ export const CalendarEvents = [
     startDate: new Date('2023/08/19 11:30'),
     endDate: new Date('2023/08/19 12:30'),
     title: 'Collation et préparation Agnès',
+    titleEn: 'Snack and Preparation Agnès',
     location: Addresses.mamanAgnès,
     detail: `
     <br/>
@@ -134,6 +138,7 @@ export const CalendarEvents = [
     startDate: new Date('2023/08/19 13:00'),
     endDate: new Date('2023/08/19 13:30'),
     title: 'Cérémonie Civile',
+    titleEn: 'Civilian Ceremony',
     location: Addresses.mairieDonville,
   },
 
@@ -150,6 +155,7 @@ export const CalendarEvents = [
     startDate: new Date('2023/08/19 14:00'),
     endDate: new Date('2023/08/19 15:00'),
     title: 'Cérémonie Religieuse',
+    titleEn: 'Religious Ceremony',
     location: Addresses.eglise,
     detail: `
       <br/><br/>
@@ -168,6 +174,7 @@ export const CalendarEvents = [
     startDate: new Date('2023/08/19 15:00'),
     endDate: new Date('2023/08/19 15:15'),
     title: "Photos autour de l'église",
+    titleEn: 'Photos around the church',
     location: Addresses.eglise,
   },
 
@@ -176,6 +183,7 @@ export const CalendarEvents = [
     startDate: new Date('2023/08/19 15:30'),
     endDate: new Date('2023/08/19 16:00'),
     title: 'Cortège vers le Château',
+    titleEn: 'Procession to the Castle',
     location: Addresses.eglise,
     detail: `
     <br/><br/>
@@ -189,6 +197,7 @@ export const CalendarEvents = [
     startDate: new Date('2023/08/19 16:00'),
     endDate: new Date('2023/08/19 17:30'),
     title: "Vin d'honneur",
+    titleEn: 'Reception',
     location: Addresses.chateau,
   },
   {
@@ -204,6 +213,7 @@ export const CalendarEvents = [
     startDate: new Date('2023/08/19 17:00'),
     endDate: new Date('2023/08/19 17:15'),
     title: 'Photo du groupe au Château',
+    titleEn: 'Group photo at the Castle',
     location: Addresses.chateau,
   },
 
@@ -236,6 +246,7 @@ export const CalendarEvents = [
     startDate: new Date('2023/08/19 18:15'),
     endDate: new Date('2023/08/19 18:30'),
     title: 'Lancer du bouquet de la mariée.',
+    titleEn: 'Bouquet toss by the Bride',
     location: Addresses.chateau,
   },
 
@@ -260,6 +271,7 @@ export const CalendarEvents = [
     startDate: new Date('2023/08/19 20:00'),
     endDate: new Date('2023/08/19 23:00'),
     title: 'Dîner',
+    titleEn: 'Diner',
     location: Addresses.chateau,
     detail:
       'Plus d\'infos sur <a href="https://berthelot.io/mariage/menu" target="__blank" >la page dédiée</a>.',
@@ -270,6 +282,7 @@ export const CalendarEvents = [
     startDate: new Date('2023/08/19 23:00'),
     endDate: new Date('2023/08/19 23:15'),
     title: 'Ouverture du Bal',
+    titleEn: 'Bal openning',
     location: Addresses.chateau,
   },
 
@@ -278,6 +291,7 @@ export const CalendarEvents = [
     startDate: new Date('2023/08/19 23:00'),
     endDate: new Date('2023/08/20 4:00'),
     title: 'Soirée dansante',
+    titleEn: 'Dancing evening',
     location: Addresses.chateau,
   },
   // Dimanche 20 août 2023
@@ -287,6 +301,7 @@ export const CalendarEvents = [
     startDate: new Date('2023/08/20 4:00'),
     endDate: new Date('2023/08/20 4:45'),
     title: 'Casse-croûte, Cigares et Whisky.',
+    titleEn: 'Snack, Cigares and Whisky.',
     location: Addresses.chateau,
     detail: 'Fourni et servi par les mariés.',
   },
@@ -296,15 +311,17 @@ export const CalendarEvents = [
     startDate: new Date('2023/08/20 1:00'),
     endDate: new Date('2023/08/20 5:00'),
     title: 'Service de Taxi',
+    titleEn: 'Taxi service.',
     location: Addresses.chateau,
   },
 
   {
     who: [Calendars.florentFamilly],
     startDate: new Date('2023/08/20 10:45'),
-    endDate: new Date('2023/08/19 11:00'),
+    endDate: new Date('2023/08/20 11:00'),
     title: 'Récupération des vienoisseries et baguettes',
     location: Addresses.chateau,
+    detail: 'Merci Maman',
   },
 
   {
@@ -312,6 +329,7 @@ export const CalendarEvents = [
     startDate: new Date('2023/08/20 11:00'),
     endDate: new Date('2023/08/20 18:00'),
     title: 'Retour des mariés',
+    titleEn: 'Post-Wedding Brunch',
     location: Addresses.chateau,
   },
 
@@ -320,6 +338,7 @@ export const CalendarEvents = [
     startDate: new Date('2023/08/20 11:00'),
     endDate: new Date('2023/08/20 12:00'),
     title: 'Taxi, récupération des conducteurs',
+    titleEn: 'Taxi bring back driver to Castle.',
     location: Addresses.chateau,
   },
 
@@ -336,6 +355,7 @@ export const CalendarEvents = [
     startDate: new Date('2023/08/20 12:30'),
     endDate: new Date('2023/08/20 14:00'),
     title: 'Repas',
+    titleEn: 'Lunch',
     location: Addresses.chateau,
   },
 

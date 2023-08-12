@@ -35,7 +35,7 @@
       "24:00": "24:00"
     },
     "en": {
-      "subtitle": "💡 You can click on event for mor details.",
+      "subtitle": "💡 You can click on event for more details.",
       "ok": "ok",
       "Sam": "Sat",
       "Dim": "Sun",
@@ -146,9 +146,19 @@
               :title="event.title"
               @click="showEventInDetails(event)"
             >
-              <p class="title">{{ event.title }}</p>
+              <p class="title">
+                {{
+                  $i18n.locale === 'en' && event.titleEn
+                    ? event.titleEn
+                    : event.title
+                }}
+              </p>
               <address>
-                {{ event.location.name }}
+                {{
+                  $i18n.locale === 'en' && event.location.nameEn
+                    ? event.location.nameEn
+                    : event.location.name
+                }}
               </address>
               <time class="time">
                 {{
@@ -195,9 +205,19 @@
               :title="event.title"
               @click="showEventInDetails(event)"
             >
-              <p class="title">{{ event.title }}</p>
+              <p class="title">
+                {{
+                  $i18n.locale === 'en' && event.titleEn
+                    ? event.titleEn
+                    : event.title
+                }}
+              </p>
               <address>
-                {{ event.location.name }}
+                {{
+                  $i18n.locale === 'en' && event.location.nameEn
+                    ? event.location.nameEn
+                    : event.location.name
+                }}
               </address>
               <time class="time">
                 {{
@@ -239,7 +259,12 @@
           }}
         </time>
         <address class="typography-paragraph">
-          {{ eventToShowInDetail.location.name }} <br />
+          {{
+            $i18n.locale === 'en' && eventToShowInDetail.location.nameEn
+              ? eventToShowInDetail.location.nameEn
+              : eventToShowInDetail.location.name
+          }}
+          <br />
           {{ eventToShowInDetail.location.address }}
         </address>
 
