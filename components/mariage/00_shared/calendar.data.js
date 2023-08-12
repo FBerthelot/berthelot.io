@@ -7,8 +7,8 @@ export const Calendars = {
   groupeMusic: 'groupeMusic',
   temoins: 'temoins',
   temouines: 'temouines',
-  agnèsFamilly: 'agnèsFamilly',
-  florentFamilly: 'florentFamilly',
+  agnèsFamily: 'agnèsFamilly',
+  florentFamily: 'florentFamilly',
   taxi: 'taxi',
   foodTruck: 'foodTruck',
 }
@@ -16,8 +16,8 @@ export const Calendars = {
 const Invites = [
   Calendars.agnès,
   Calendars.florent,
-  Calendars.agnèsFamilly,
-  Calendars.florentFamilly,
+  Calendars.agnèsFamily,
+  Calendars.florentFamily,
   Calendars.temoins,
   Calendars.temouines,
 ]
@@ -78,7 +78,7 @@ export const CalendarEvents = [
     who: [
       Calendars.florent,
       Calendars.temoins,
-      Calendars.florentFamilly,
+      Calendars.florentFamily,
       Calendars.dj,
       Calendars.fleuriste,
     ],
@@ -110,7 +110,7 @@ export const CalendarEvents = [
     who: [
       Calendars.agnès,
       Calendars.temouines,
-      Calendars.agnèsFamilly,
+      Calendars.agnèsFamily,
       Calendars.dj,
     ],
     startDate: new Date('2023/08/19 11:30'),
@@ -140,6 +140,14 @@ export const CalendarEvents = [
     title: 'Cérémonie Civile',
     titleEn: 'Civilian Ceremony',
     location: Addresses.mairieDonville,
+    detail: `
+      <br/><br/>
+      Témoins qui signent:<br/>
+      - Mathilde<br/>
+      - Pauline<br/>
+      - Boris<br/>
+      - Jonathan
+    `,
   },
 
   {
@@ -282,7 +290,7 @@ export const CalendarEvents = [
     startDate: new Date('2023/08/19 23:00'),
     endDate: new Date('2023/08/19 23:15'),
     title: 'Ouverture du Bal',
-    titleEn: 'Bal openning',
+    titleEn: 'Openning dance',
     location: Addresses.chateau,
   },
 
@@ -291,7 +299,7 @@ export const CalendarEvents = [
     startDate: new Date('2023/08/19 23:00'),
     endDate: new Date('2023/08/20 4:00'),
     title: 'Soirée dansante',
-    titleEn: 'Dancing evening',
+    titleEn: 'Dancing party',
     location: Addresses.chateau,
   },
   // Dimanche 20 août 2023
@@ -316,7 +324,7 @@ export const CalendarEvents = [
   },
 
   {
-    who: [Calendars.florentFamilly],
+    who: [Calendars.florentFamily],
     startDate: new Date('2023/08/20 10:45'),
     endDate: new Date('2023/08/20 11:00'),
     title: 'Récupération des vienoisseries et baguettes',
@@ -338,7 +346,7 @@ export const CalendarEvents = [
     startDate: new Date('2023/08/20 11:00'),
     endDate: new Date('2023/08/20 12:00'),
     title: 'Taxi, récupération des conducteurs',
-    titleEn: 'Taxi bring back driver to Castle.',
+    titleEn: 'The Taxi brings back the drivers only.',
     location: Addresses.chateau,
   },
 
@@ -379,12 +387,13 @@ export const CalendarEvents = [
     who: [
       Calendars.agnès,
       Calendars.florent,
-      Calendars.agnèsFamilly,
-      Calendars.florentFamilly,
+      Calendars.agnèsFamily,
+      Calendars.florentFamily,
     ],
     startDate: new Date('2023/08/20 18:30'),
     endDate: new Date('2023/08/20 23:45'),
     title: 'Repas famillial',
+    titleEn: 'Family diner',
     location: Addresses.mamanFlorent,
   },
 ]

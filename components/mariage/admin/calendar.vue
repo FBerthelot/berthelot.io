@@ -35,7 +35,7 @@
       "24:00": "24:00"
     },
     "en": {
-      "subtitle": "💡 You can click on event for more details.",
+      "subtitle": "💡 You can click on each event for more details.",
       "ok": "ok",
       "Sam": "Sat",
       "Dim": "Sun",
@@ -372,6 +372,7 @@ export default {
 
 .timeline {
   display: grid;
+  margin-top: -1rem;
   grid-template-rows: repeat(var(--numHours), var(--timeHeight));
 }
 

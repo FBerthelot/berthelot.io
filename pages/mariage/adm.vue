@@ -15,7 +15,7 @@
   },
   "en": {
     "💡 Vous pouvez bouger les slides de gauche à droite": "💡 Vous pouvez bouger les slides de gauche à droite.",
-    "Plan et déco": "Map and decoration",
+    "Plan et déco": "Plan and decoration",
     "calendarTitle": "Schedule",
     "Feuille de route -": "Schedule - ",
     "Photo": "Photo",
@@ -246,8 +246,8 @@ const configMapper = {
       Le seul petit truc à savoir en terme de timing, c'est qu'il y a un mariage à 16h après nous à l'église.<br/>
       On a grave de la marge pour ne pas les gêner. 😅<br/>
       --<br/>
-      The only timing thing to know : There is another wedding in the church after our, at 4:00pm.<br/>
-      So we have plenty of time to not bother them. 😅<br/>
+      The only time constraint to know is that there is another wedding in the church after ours, at 4:00pm.<br/>
+      We still have plenty of time to not bother them. 😅<br/>
 
       <br/><br/>
 
@@ -255,8 +255,8 @@ const configMapper = {
     `,
     messagePlanDeTable: `
       Une tite' carte du château, au cas où ça peut vous servir. 🤷‍♀️<br/>
-      Here is a map of the castle. Maybe it can help you. 🤷‍♀️<br/>
-      PS: Sorry, Maya, I can't tranlate images.
+      Here is a plan of the castle. Maybe it can help you. 🤷‍♀️<br/>
+      PS: Sorry, Maya, I can't tranlate images. Ask us if something is not clear.
     `,
     slidesSkiped: [
       0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
@@ -313,26 +313,27 @@ const configMapper = {
     displayGuestList: false,
     displayOtherInfos: false,
   },
-  agnèsFamilly: {
-    title: "Agnès' Familly Space",
-    who: Calendars.agnèsFamilly,
+  agnèsFamily: {
+    title: "Agnès' Family Space",
+    who: Calendars.agnèsFamily,
     displayGuestList: false,
     displayOtherInfos: false,
     message: `
-      Hello familly,<br/>
-      The calendar above is informative, so no need to stress. 😇<br/>
+      Hello dear family members,<br/><br/>
+      The calendar above gives you all the timing information needed so that there is no need to stress. 😇<br/><br/>
+
+
+      If you want more details on the menu, <a href="https://berthelot.io/mariage/menu/" target="__blank"> click here</a>.<br/>
+      If you want more details on the church service, <a href="https://berthelot.io/mariage/church/" target="__blank"> click here</a>.<br/>
       <br/><br/>
-      If you want more details on the menu,<a href="https://berthelot.io/mariage/menu/" target="__blank"> click here.</a><br/>
-      If you want more details on the church,,<a href="https://berthelot.io/mariage/church/" target="__blank"> click here.</a><br/>
-
-      If something is still blurry, ask me! <br/><br/>
-
+      If something is still unclear, ask me!
+<br/><br/>
       XoXoXoXoXoXoXoXo 🎉🎉🎉
     `,
   },
   florentFamilly: {
     title: 'Espace famille de Florent',
-    who: Calendars.florentFamilly,
+    who: Calendars.florentFamily,
     displayGuestList: false,
     displayOtherInfos: false,
     message: `
