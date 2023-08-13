@@ -211,6 +211,7 @@ export default {
                 : currentAnimationNbOfView,
           }
         )
+        console.log(this.viewList)
         localStorage.setItem(
           'wedding-asset-displayer',
           JSON.stringify(this.viewList)

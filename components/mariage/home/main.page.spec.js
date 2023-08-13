@@ -36,9 +36,6 @@ describe('MainPage', () => {
         },
         switchLocalePath: jest.fn(),
         localePath: jest.fn(),
-        $config: {
-          SHEETDB_URL: 'teeest',
-        },
       },
     }
 
