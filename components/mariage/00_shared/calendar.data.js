@@ -4,6 +4,7 @@ export const Calendars = {
   fleuriste: 'fleuriste',
   traiteur: 'traiteur',
   dj: 'dj',
+  photograph: 'photograph',
   groupeMusic: 'groupeMusic',
   temoins: 'temoins',
   temouines: 'temouines',
@@ -20,6 +21,7 @@ const Invites = [
   Calendars.florentFamily,
   Calendars.temoins,
   Calendars.temouines,
+  Calendars.photograph,
 ]
 
 const MainPresta = [Calendars.dj, Calendars.traiteur, Calendars.fleuriste]
@@ -60,6 +62,7 @@ export const CalendarEvents = [
       Calendars.temouines,
       Calendars.dj,
       Calendars.fleuriste,
+      Calendars.photograph,
     ],
     startDate: new Date('2023/08/19 10:00'),
     endDate: new Date('2023/08/19 11:30'),
@@ -81,6 +84,7 @@ export const CalendarEvents = [
       Calendars.florentFamily,
       Calendars.dj,
       Calendars.fleuriste,
+      Calendars.photograph,
     ],
     startDate: new Date('2023/08/19 11:00'),
     endDate: new Date('2023/08/19 12:15'),
@@ -112,6 +116,7 @@ export const CalendarEvents = [
       Calendars.temouines,
       Calendars.agnèsFamily,
       Calendars.dj,
+      Calendars.photograph,
     ],
     startDate: new Date('2023/08/19 11:30'),
     endDate: new Date('2023/08/19 12:30'),
@@ -389,6 +394,7 @@ export const CalendarEvents = [
       Calendars.florent,
       Calendars.agnèsFamily,
       Calendars.florentFamily,
+      Calendars.photograph,
     ],
     startDate: new Date('2023/08/20 18:30'),
     endDate: new Date('2023/08/20 23:45'),

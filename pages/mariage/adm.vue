@@ -204,12 +204,16 @@ const configMapper = {
     who: Calendars.florent,
     displayGuestList: true,
     displayOtherInfos: true,
+    message: "Let's gooo 🎉",
+    messagePlanDeTable: ' ',
   },
   ava: {
     title: "Admin d'Agnès",
     who: Calendars.agnès,
     displayGuestList: true,
     displayOtherInfos: true,
+    message: "Je t'aime mon amour ❤️",
+    messagePlanDeTable: ' ',
   },
   temoins: {
     title: 'Admin des témoins',
@@ -329,6 +333,15 @@ const configMapper = {
       If something is still unclear, ask me!
 <br/><br/>
       XoXoXoXoXoXoXoXo 🎉🎉🎉
+
+      --
+
+      Hello la famille,
+      Le calendrier ci-dessus vous donne toutes les informations nécessaires sur le timing pour qu'il n'y ait pas besoin de stress. 😇
+      Si vous voulez plus de détails sur le menu, cliquez ici.
+      Si vous voulez plus de détails sur la messe, cliquez ici.
+
+      Si quelque chose n'est toujours pas clair, demandez moi !
     `,
   },
   florentFamilly: {
@@ -344,6 +357,24 @@ const configMapper = {
       Si vous voulez plus de détail sur l'église,<a href="https://berthelot.io/mariage/church/" target="__blank"> cliquez-ici</a><br/>
 
       Sinon, n'hésitez pas à me poser des questions s'il y a un truc qu'est pas clair.<br/><br/>
+
+      Bisous 🎉🎉🎉
+    `,
+  },
+  pascal: {
+    title: 'Espace Pascal 📸',
+    who: Calendars.photograph,
+    displayGuestList: false,
+    displayOtherInfos: false,
+    message: `
+      Coucou Pascal,
+
+      Le calendrier ci-dessus est informatif. Nous ne sommes pas à la minute près, pas besoin de stresser donc 😇<br/>
+      <br/><br/>
+      Si tu veux plus de détails sur le menu,<a href="https://berthelot.io/mariage/menu/" target="__blank"> clique-ici</a><br/>
+      Si tu veux plus de détails sur l'église,<a href="https://berthelot.io/mariage/church/" target="__blank"> clique-ici</a><br/>
+
+      Sinon, n'hésites pas à nous poser des questions s'il y a un truc qu'est pas clair.<br/><br/>
 
       Bisous 🎉🎉🎉
     `,
