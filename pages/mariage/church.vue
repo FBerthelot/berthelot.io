@@ -8,7 +8,7 @@
       },{
         "title": "Entrée des mariés",
         "centered": "true",
-        "reader": "🎶A Million Dreams' Taylor Davis 🎶",
+        "reader": "🎶'A Million Dreams' Taylor Davis 🎶",
         "paragraph": [
           " ",
           "Marie-Ange et Florent",
@@ -98,7 +98,7 @@
         "title": "Évangile de Jésus Christ selon Saint Matthieu",
         "reader": "Lu par Maya en anglais"
       }, {
-        "title": "Homélie par le Prêtre"
+        "title": "Homélie par le Père Jean-Luc Lefrançois"
       }, {
         "superTitle": "Dieu nous unit"
       }, {
@@ -126,7 +126,7 @@
         "title": "Réception des consentements"
       }, {
         "title": "Bénédiction et remise des alliances",
-        "reader": "par Rosa et Nina",
+        "reader": "Alliances apportées par Rosa et Nina",
         "paragraph": [
           "Seigneur, bénis les alliances que nous bénissons en ton nom.",
           " ",
@@ -136,8 +136,8 @@
           " ",
           "Amen.",
           " ",
-          "Florent : Agnès, reçois cette alliance, Signe de mon amour et de ma fidélité. (Au nom du Père, du Fils, et du Saint-Esprit.)",
-          "Agnès : Florent, reçois cette alliance, Signe de mon amour et de ma fidélité. (Au nom du Père, du Fils, et du Saint-Esprit.)"
+          "Florent : Agnès, reçois cette alliance, Signe de mon amour et de ma fidélité.",
+          "Agnès : Florent, reçois cette alliance, Signe de mon amour et de ma fidélité."
         ]
       }, {
         "title": "Bénédiction nuptiale",
@@ -196,7 +196,7 @@
         "paragraph": [
           "Florent : Seigneur, tu nous as conduits ici, devant toi, pour notre mariage :",
           " ",
-          "Agnès : Après tant d’années à nous croiser, merci pour notre rencontre rennaise.",
+          "Agnès : Après tant d’années à nous croiser sans le savoir, merci pour notre rencontre rennaise.",
           " ",
           "Florent : Après tant d’incertitudes et de timidité, merci de nous avoir montré le chemin de nos retrouvailles à Lannion.",
           " ",
@@ -218,7 +218,7 @@
         ]
       }, {
         "title": "Prière universelle",
-        "reader": "lue par John, chantée par le père Jean-Luc Lefrançois",
+        "reader": "lue par Jonathan",
         "paragraph": [
           "Pour Agnès et Florent et pour le bonheur de leur foyer, prions le Seigneur.",
           " ",
@@ -322,7 +322,7 @@
       },{
         "title": "Entrance of the bride and groom",
         "centered": "true",
-        "reader": "🎶A Million Dreams' Taylor Davis 🎶",
+        "reader": "🎶'A Million Dreams' Taylor Davis 🎶",
         "paragraph": [
           " ",
           "Marie-Ange and Florent",
@@ -333,7 +333,7 @@
           "Mary and Lucile",
           "Agnès and Richard",
           " ",
-          "🎶Fly - Ludovico Enaudi, arr. par Camille and Julie Berthollet 🎶",
+          "🎶Fly - Ludovico Enaudi, arr. by Camille and Julie Berthollet 🎶",
           " ",
           "Welcoming speech by Father Jean-Luc Le François"
         ]
@@ -395,22 +395,22 @@
         ]
       }, {
         "title": "Gospel according to Saint Matthew in French",
-        "reader": "Read by Lucile in french",
-        "paragraph": [
-          "At that time, Jesus said to his disciples :",
-          " ",
-          "«You are the salt of the earth.",
-          "But if the salt loses its saltiness, how can it be made salty again?",
-          "It is no longer good for anything, except to be thrown out and trampled underfoot.",
-          " ",
-          "You are the light of the world.",
-          "A town built on a hill cannot be hidden. Neither do people light a lamp and put it under a bowl. Instead they put it on its stand, and it gives light to everyone in the house.",
-          " ",
-          "In the same way, let your light shine before others, so that they may see your good deeds and glorify your Father in heaven.»"
-        ]
+        "reader": "Read by Lucile in French",
       }, {
-        "title": "Gospel according to Saint Matthew in French",
-        "reader": "Read by Maya in english"
+        "title": "Gospel according to Saint Matthew in English",
+        "reader": "Read by Maya in English"
+        "paragraph": [
+        "At that time, Jesus said to his disciples :",
+        " ",
+        "«You are the salt of the earth.",
+        "But if the salt loses its saltiness, how can it be made salty again?",
+        "It is no longer good for anything, except to be thrown out and trampled underfoot.",
+        " ",
+        "You are the light of the world.",
+        "A town built on a hill cannot be hidden. Neither do people light a lamp and put it under a bowl. Instead they put it on its stand, and it gives light to everyone in the house.",
+        " ",
+        "In the same way, let your light shine before others, so that they may see your good deeds and glorify your Father in heaven.»"
+        ]
       }, {
         "title": "Sermon preached by Father Jean-Luc Le François"
       }, {
@@ -555,9 +555,9 @@
           "🎶Hear our prayers, hear our voices, hear our prayers rising up to You. 🎶"
         ]
       }, {
-        "title": "Lord’s Prayere",
+        "title": "Lord’s Prayer",
         "paragraph": [
-          "Notre Père, qui es aux cieux,",
+          "Our Father, who art in heaven,",
           "Hallowed be thy name.",
           "Thy Kingdom come.",
           "Thy will be done on earth as it is in heaven.",
