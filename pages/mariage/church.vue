@@ -396,9 +396,6 @@
       }, {
         "title": "Gospel according to Saint Matthew in French",
         "reader": "Read by Lucile in French",
-      }, {
-        "title": "Gospel according to Saint Matthew in English",
-        "reader": "Read by Maya in English"
         "paragraph": [
         "At that time, Jesus said to his disciples :",
         " ",
@@ -411,6 +408,9 @@
         " ",
         "In the same way, let your light shine before others, so that they may see your good deeds and glorify your Father in heaven.»"
         ]
+      }, {
+        "title": "Gospel according to Saint Matthew in English",
+        "reader": "Read by Maya in English"
       }, {
         "title": "Sermon preached by Father Jean-Luc Le François"
       }, {
