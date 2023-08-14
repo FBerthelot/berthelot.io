@@ -218,7 +218,7 @@
         ]
       }, {
         "title": "Prière universelle",
-        "reader": "lue par Jonathan",
+        "reader": "lue par Jonathan, chantée par le père Jean-Luc Lefrançois",
         "paragraph": [
           "Pour Agnès et Florent et pour le bonheur de leur foyer, prions le Seigneur.",
           " ",
