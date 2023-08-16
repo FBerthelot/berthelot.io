@@ -12,6 +12,7 @@ export const Calendars = {
   florentFamily: 'florentFamilly',
   taxi: 'taxi',
   foodTruck: 'foodTruck',
+  castle: 'castle',
 }
 
 const Invites = [
@@ -85,6 +86,7 @@ export const CalendarEvents = [
       Calendars.dj,
       Calendars.fleuriste,
       Calendars.photograph,
+      Calendars.castle,
     ],
     startDate: new Date('2023/08/19 11:00'),
     endDate: new Date('2023/08/19 12:15'),
@@ -103,9 +105,7 @@ export const CalendarEvents = [
       - Jordane<br/>
       - John<br/>
       - Boris<br/>
-      - Val ?<br/>
-      - Laura ?<br/>
-      - Cailloux ?<br/>
+      - Val<br/>
       - Romain<br/>
     `,
   },
@@ -131,7 +131,7 @@ export const CalendarEvents = [
   },
 
   {
-    who: [Calendars.dj],
+    who: [Calendars.dj, Calendars.castle],
     startDate: new Date('2023/08/19 12:30'),
     endDate: new Date('2023/08/19 13:00'),
     title: 'Arrivée DJ',
@@ -139,7 +139,7 @@ export const CalendarEvents = [
   },
 
   {
-    who: [...Invites, ...MainPresta],
+    who: [...Invites, ...MainPresta, Calendars.castle],
     startDate: new Date('2023/08/19 13:00'),
     endDate: new Date('2023/08/19 13:30'),
     title: 'Cérémonie Civile',
@@ -156,7 +156,7 @@ export const CalendarEvents = [
   },
 
   {
-    who: [Calendars.traiteur],
+    who: [Calendars.traiteur, Calendars.castle],
     startDate: new Date('2023/08/19 13:00'),
     endDate: new Date('2023/08/19 13:30'),
     title: 'Arrivée Traiteur',
@@ -164,7 +164,7 @@ export const CalendarEvents = [
   },
 
   {
-    who: [...Invites, ...MainPresta],
+    who: [...Invites, ...MainPresta, Calendars.castle],
     startDate: new Date('2023/08/19 14:00'),
     endDate: new Date('2023/08/19 15:00'),
     title: 'Cérémonie Religieuse',
@@ -175,15 +175,14 @@ export const CalendarEvents = [
       Placements des gens et livrets de messe : Finlay et Stewart<br/>
       DJ église : Romain<br/>
       Récupération des bouts de banc et placement au Château : Eva<br/>
-      Récupération de la gerbe du pupitre et placement au Château : ?<br/>
+      Récupération de la gerbe du pupitre et placement au Château : Nathalie<br/>
       Distribution des paniers de pétales et bubules : Marie-Ange et Mary<br/>
-      Fermeture des portes derrière nous et balayage des pétales : 3 personnes ?<br/>
-
+      Fermeture des portes derrière nous et balayage des pétales : René 🧹, Christine 🧹, Finlay 🚪 et Stewart🚪<br/>
     `,
   },
 
   {
-    who: Invites,
+    who: [Invites, Calendars.castle],
     startDate: new Date('2023/08/19 15:00'),
     endDate: new Date('2023/08/19 15:15'),
     title: "Photos autour de l'église",
@@ -192,7 +191,7 @@ export const CalendarEvents = [
   },
 
   {
-    who: [...Invites, ...MainPresta],
+    who: [...Invites, ...MainPresta, Calendars.castle],
     startDate: new Date('2023/08/19 15:30'),
     endDate: new Date('2023/08/19 16:00'),
     title: 'Cortège vers le Château',
@@ -206,7 +205,7 @@ export const CalendarEvents = [
   },
 
   {
-    who: [...Invites, ...MainPresta, Calendars.groupeMusic],
+    who: [...Invites, ...MainPresta, Calendars.groupeMusic, Calendars.castle],
     startDate: new Date('2023/08/19 16:00'),
     endDate: new Date('2023/08/19 17:30'),
     title: "Vin d'honneur",
@@ -214,7 +213,7 @@ export const CalendarEvents = [
     location: Addresses.chateau,
   },
   {
-    who: [...Invites, ...MainPresta, Calendars.groupeMusic],
+    who: [...Invites, ...MainPresta, Calendars.groupeMusic, Calendars.castle],
     startDate: new Date('2023/08/19 17:30'),
     endDate: new Date('2023/08/19 20:00'),
     title: 'Cocktail',
@@ -222,7 +221,7 @@ export const CalendarEvents = [
   },
 
   {
-    who: Invites,
+    who: [Invites, Calendars.castle],
     startDate: new Date('2023/08/19 17:00'),
     endDate: new Date('2023/08/19 17:15'),
     title: 'Photo du groupe au Château',
@@ -231,7 +230,7 @@ export const CalendarEvents = [
   },
 
   {
-    who: [Calendars.traiteur, Calendars.fleuriste],
+    who: [Calendars.traiteur, Calendars.fleuriste, Calendars.castle],
     startDate: new Date('2023/08/19 15:00'),
     endDate: new Date('2023/08/19 16:00'),
     title: 'Tables dressées. Ok pour fleuriste.',
@@ -239,7 +238,7 @@ export const CalendarEvents = [
   },
 
   {
-    who: [Calendars.groupeMusic, Calendars.dj],
+    who: [Calendars.groupeMusic, Calendars.dj, Calendars.castle],
     startDate: new Date('2023/08/19 16:30'),
     endDate: new Date('2023/08/19 17:00'),
     title: "Arrivée et mise en place Swingin' Easy",
@@ -247,7 +246,7 @@ export const CalendarEvents = [
   },
 
   {
-    who: [Calendars.groupeMusic, Calendars.dj],
+    who: [Calendars.groupeMusic, Calendars.dj, Calendars.castle],
     startDate: new Date('2023/08/19 17:00'),
     endDate: new Date('2023/08/19 18:15'),
     title: 'Concert part 1',
@@ -255,7 +254,7 @@ export const CalendarEvents = [
   },
 
   {
-    who: [...Invites, Calendars.dj],
+    who: [...Invites, Calendars.dj, Calendars.castle],
     startDate: new Date('2023/08/19 18:15'),
     endDate: new Date('2023/08/19 18:30'),
     title: 'Lancer du bouquet de la mariée.',
@@ -264,7 +263,7 @@ export const CalendarEvents = [
   },
 
   {
-    who: [Calendars.groupeMusic, Calendars.dj],
+    who: [Calendars.groupeMusic, Calendars.dj, Calendars.castle],
     startDate: new Date('2023/08/19 18:30'),
     endDate: new Date('2023/08/19 19:30'),
     title: 'Concert part 2',
@@ -280,7 +279,7 @@ export const CalendarEvents = [
   },
 
   {
-    who: [...Invites, Calendars.traiteur, Calendars.dj],
+    who: [...Invites, Calendars.traiteur, Calendars.dj, Calendars.castle],
     startDate: new Date('2023/08/19 20:00'),
     endDate: new Date('2023/08/19 23:00'),
     title: 'Dîner',
@@ -300,7 +299,7 @@ export const CalendarEvents = [
   },
 
   {
-    who: [...Invites, Calendars.traiteur, Calendars.dj],
+    who: [...Invites, Calendars.traiteur, Calendars.dj, Calendars.castle],
     startDate: new Date('2023/08/19 23:00'),
     endDate: new Date('2023/08/20 4:00'),
     title: 'Soirée dansante',
@@ -338,7 +337,7 @@ export const CalendarEvents = [
   },
 
   {
-    who: [...Invites, Calendars.foodTruck],
+    who: [...Invites, Calendars.foodTruck, Calendars.castle],
     startDate: new Date('2023/08/20 11:00'),
     endDate: new Date('2023/08/20 18:00'),
     title: 'Retour des mariés',
@@ -347,7 +346,7 @@ export const CalendarEvents = [
   },
 
   {
-    who: [...Invites, Calendars.taxi],
+    who: [...Invites, Calendars.taxi, Calendars.castle],
     startDate: new Date('2023/08/20 11:00'),
     endDate: new Date('2023/08/20 12:00'),
     title: 'Taxi, récupération des conducteurs',
@@ -356,15 +355,15 @@ export const CalendarEvents = [
   },
 
   {
-    who: Calendars.foodTruck,
+    who: [Calendars.foodTruck, Calendars.castle],
     startDate: new Date('2023/08/20 11:30'),
     endDate: new Date('2023/08/20 12:30'),
-    title: 'Arrivé et mise en place FoodTruck',
+    title: 'Arrivée et mise en place FoodTruck',
     location: Addresses.chateau,
   },
 
   {
-    who: [...Invites, Calendars.foodTruck],
+    who: [...Invites, Calendars.foodTruck, Calendars.castle],
     startDate: new Date('2023/08/20 12:30'),
     endDate: new Date('2023/08/20 14:00'),
     title: 'Repas',

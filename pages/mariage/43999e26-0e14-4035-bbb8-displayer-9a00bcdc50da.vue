@@ -32,6 +32,16 @@
       :animate="currentAssetDisplayer === 2"
       :reduce-at-the-end="false"
     />
+
+    <div class="error-displayer">
+      <img
+        v-show="listAllInError"
+        id="error-img"
+        :src="NoNetworkImg"
+        alt="Impossible to list with Firebase"
+        title="Impossible to list with Firebase"
+      />
+    </div>
   </main>
 </template>
 
@@ -39,6 +49,8 @@
 import { initializeApp } from 'firebase/app'
 import { getStorage, ref, listAll, getDownloadURL } from 'firebase/storage'
 import Animation from '~/components/mariage/00_shared/animation/animation.vue'
+import { isImageLoaded } from '~/components/mariage/00_shared/images.utils'
+import NoNetworkImg from '~/components/mariage/00_shared/assets/no_network.png'
 
 /**
  * @typedef {Object} AssetAnnimation
@@ -93,6 +105,9 @@ export default {
       firebaseApp: null,
       firebaseStorage: null,
       listRef: null,
+
+      NoNetworkImg,
+      listAllInError: false,
 
       transitionTimeout: null,
       switchingAssetTimeout: null,
@@ -151,7 +166,6 @@ export default {
   },
   methods: {
     switchingAsset() {
-      console.log('switching')
       if (this.switchingAssetTimeout) {
         clearTimeout(this.switchingAssetTimeout)
       }
@@ -181,12 +195,25 @@ export default {
       }, 20000)
     },
 
+    extractViewListFromLocalStorage() {
+      let viewList
+      try {
+        viewList = JSON.parse(
+          localStorage.getItem('wedding-asset-displayer') ?? '{animation: 0}'
+        )
+      } catch {
+        viewList = {
+          animation: 0,
+        }
+      }
+      return viewList
+    },
+
     async updateViewListFromFirestore() {
       try {
         const fileList = await listAll(this.listRef)
-        const oldViewList = JSON.parse(
-          localStorage.getItem('wedding-asset-displayer') ?? '{}'
-        )
+
+        const oldViewList = this.extractViewListFromLocalStorage()
         const currentAnimationNbOfView = oldViewList.animation ?? 0
 
         this.viewList = fileList.items.reduce(
@@ -211,22 +238,29 @@ export default {
                 : currentAnimationNbOfView,
           }
         )
-        console.log(this.viewList)
         localStorage.setItem(
           'wedding-asset-displayer',
           JSON.stringify(this.viewList)
         )
-        return this.viewList
+
+        this.listAllInError = false
       } catch (err) {
+        // eslint-disable-next-line no-console
         console.error(err)
+        this.listAllInError = true
+        if (!this.viewList) {
+          this.viewList = this.extractViewListFromLocalStorage()
+        }
       }
     },
+
     selectNextAssetToDisplay() {
       const viewListWithExcludedCurrentElement = Object.fromEntries(
         Object.entries(this.viewList).filter(
           ([key]) => key !== this.currentAssetDisplayed.firebaseLocation
         )
       )
+
       const lowestNbOfViewValue = Math.min(
         ...Object.values(viewListWithExcludedCurrentElement)
       )
@@ -239,7 +273,7 @@ export default {
       const nextItemPath =
         assetWithTheLowestNbOfView[
           Math.floor(Math.random() * assetWithTheLowestNbOfView.length)
-        ]
+        ] ?? this.currentAssetDisplayed.firebaseLocation
 
       this[`assetOfDisplayer${this.currentAssetDisplayer === 1 ? 2 : 1}`] =
         nextItemPath === 'animation'
@@ -256,39 +290,14 @@ export default {
               firebaseLocation: nextItemPath,
             }
     },
-    isImageLoaded(src) {
-      return new Promise((resolve, reject) => {
-        let isTimeouted = false
-        const timeout = setTimeout(() => {
-          isTimeouted = true
-          resolve()
-        }, 20000)
-        const image = document.createElement('img')
-        image.onload = () => {
-          if (!isTimeouted) {
-            resolve()
-            clearTimeout(timeout)
-          }
-        }
-        image.onerror = (err) => {
-          reject(err)
-        }
-        image.src = src
-      })
-    },
     async preloadNextAssetToDisplay() {
-      console.log(
-        'preloadNextAssetToDisplay',
-        this.nextAssetToDisplay.type,
-        this.nextAssetToDisplay.firebaseLocation
-      )
       if (this.nextAssetToDisplay.type === 'animation') {
         return
       }
 
       let assetSrc
       try {
-        const assetRef = await ref(
+        const assetRef = ref(
           this.firebaseStorage,
           this.nextAssetToDisplay.firebaseLocation
         )
@@ -297,7 +306,7 @@ export default {
         console.error(err)
       }
 
-      this.isImageLoaded(assetSrc)
+      isImageLoaded(assetSrc)
         .then(() => {
           this[`assetOfDisplayer${this.currentAssetDisplayer === 1 ? 2 : 1}`] =
             {

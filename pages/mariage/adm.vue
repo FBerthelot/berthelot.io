@@ -272,12 +272,7 @@ const configMapper = {
     who: Calendars.fleuriste,
     displayGuestList: false,
     displayOtherInfos: false,
-    message: `
-      A voir ensemble :<br/>
-        - Quand chercher boutonière<br/>
-        - Quand chercher bouquet de la mariée & bracelets des filles
-      <br/>
-    `,
+    message: ``,
     messagePlanDeTable: `Vous pouvez ignorer les éléments en jaune fluo. Ce sont des éléments pour nous, à préciser. Ils seront mis à jour.`,
   },
   traiteur: {
@@ -390,6 +385,14 @@ const configMapper = {
     who: Calendars.foodTruck,
     displayGuestList: false,
     displayOtherInfos: false,
+  },
+  castle: {
+    title: 'Espace pour Mme Drye',
+    who: Calendars.castle,
+    displayGuestList: false,
+    displayOtherInfos: false,
+    messagePlanDeTable: ` `,
+    slidesSkiped: [],
   },
 }
 
