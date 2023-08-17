@@ -41,6 +41,31 @@
         alt="Impossible to list with Firebase"
         title="Impossible to list with Firebase"
       />
+      <img
+        v-show="getImageUrlError"
+        id="error-img-2"
+        :src="NoNetworkImg"
+        alt="Impossible to get img url with Firebase"
+        title="Impossible to get img url with Firebase"
+      />
+      <img
+        v-show="preloadImageError"
+        id="error-img-3"
+        :src="NoNetworkImg"
+        alt="Impossible to load img url"
+        title="Impossible to load img url"
+      />
+    </div>
+
+    <div class="share">
+      <img
+        :src="sharePhoto"
+        alt="Go to https://berthelot.io/mariage/photo/ to share your photos"
+        class="share-qr-code"
+      />
+      <p class="typography-paragraph">
+        👈 Prends une photo et montre la ici ! 📸
+      </p>
     </div>
   </main>
 </template>
@@ -51,6 +76,7 @@ import { getStorage, ref, listAll, getDownloadURL } from 'firebase/storage'
 import Animation from '~/components/mariage/00_shared/animation/animation.vue'
 import { isImageLoaded } from '~/components/mariage/00_shared/images.utils'
 import NoNetworkImg from '~/components/mariage/00_shared/assets/no_network.png'
+import sharePhoto from '~/components/mariage/00_shared/assets/share-photos.png'
 
 /**
  * @typedef {Object} AssetAnnimation
@@ -108,6 +134,11 @@ export default {
 
       NoNetworkImg,
       listAllInError: false,
+      getImageUrlError: false,
+      preloadImageError: false,
+      nbOfPreloadTries: 0,
+
+      sharePhoto,
 
       transitionTimeout: null,
       switchingAssetTimeout: null,
@@ -151,7 +182,7 @@ export default {
     this.onEndOfTransitionBetweenAsset()
 
     document.onkeydown = (e) => {
-      if (e.key === ' ') {
+      if (e.key === ' ' && this.transitionTimeout) {
         this.switchingAsset()
       }
     }
@@ -292,6 +323,7 @@ export default {
     },
     async preloadNextAssetToDisplay() {
       if (this.nextAssetToDisplay.type === 'animation') {
+        this.nbOfPreloadTries = 0
         return
       }
 
@@ -302,22 +334,58 @@ export default {
           this.nextAssetToDisplay.firebaseLocation
         )
         assetSrc = await getDownloadURL(assetRef)
+        this.getImageUrlError = false
       } catch (err) {
+        // eslint-disable-next-line no-console
         console.error(err)
+
+        this.getImageUrlError = true
+        this[`assetOfDisplayer${this.currentAssetDisplayer === 1 ? 2 : 1}`] = {
+          type: 'animation',
+          firebaseLocation: 'animation',
+          loaded: true,
+          viewedTimes: this.viewList.animation.viewedTimes,
+        }
+        return
       }
 
-      isImageLoaded(assetSrc)
-        .then(() => {
+      try {
+        await isImageLoaded(assetSrc)
+        this[`assetOfDisplayer${this.currentAssetDisplayer === 1 ? 2 : 1}`] = {
+          ...this[
+            `assetOfDisplayer${this.currentAssetDisplayer === 1 ? 2 : 1}`
+          ],
+          src: assetSrc,
+          loaded: true,
+        }
+        this.nbOfPreloadTries = 0
+        this.preloadImageError = false
+      } catch (err) {
+        // eslint-disable-next-line no-console
+        console.error(err)
+        this.preloadImageError = true
+        this.nbOfPreloadTries = this.nbOfPreloadTries + 1
+
+        if (this.nbOfPreloadTries < 3) {
+          await this.wait(5000)
+          await this.preloadNextAssetToDisplay()
+        } else {
           this[`assetOfDisplayer${this.currentAssetDisplayer === 1 ? 2 : 1}`] =
             {
-              ...this[
-                `assetOfDisplayer${this.currentAssetDisplayer === 1 ? 2 : 1}`
-              ],
-              src: assetSrc,
+              type: 'animation',
+              firebaseLocation: 'animation',
               loaded: true,
+              viewedTimes: this.viewList.animation.viewedTimes,
             }
-        })
-        .catch(console.error)
+        }
+      }
+    },
+    wait(delay) {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve()
+        }, delay)
+      })
     },
   },
 }
@@ -358,5 +426,38 @@ export default {
 
 .anime {
   transform: rotate(360deg);
+}
+
+.error-displayer {
+  display: block;
+  position: fixed;
+  z-index: 50;
+  right: 1rem;
+  top: 1rem;
+}
+
+.error-displayer img {
+  height: 3rem;
+}
+
+.share {
+  display: flex;
+  position: fixed;
+  z-index: 50;
+  left: 1rem;
+  top: 1rem;
+  align-items: center;
+  gap: 1rem;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 0.5rem;
+  padding-right: 1rem;
+}
+
+.share img {
+  height: 10vh;
+}
+
+#wedding .share p.typography-paragraph {
+  font-weight: bold;
 }
 </style>

@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import { listAll } from 'firebase/storage'
+import { listAll, getDownloadURL } from 'firebase/storage'
 import { nextTick } from 'vue'
 import PhotoDisplayer from '~/pages/mariage/43999e26-0e14-4035-bbb8-displayer-9a00bcdc50da.vue'
 import * as ImageUtils from '~/components/mariage/00_shared/images.utils'
@@ -87,8 +87,6 @@ describe('Photo displayer', () => {
       expect(listAll).toHaveBeenCalledWith('storage/photos')
       expect(listAll).toHaveBeenCalledTimes(1)
     })
-
-    it.todo('should do what when firestore list image fail to load image ?')
 
     it('should insert the asset list in localstorage with a view counter', async () => {
       await mount(PhotoDisplayer, config)
@@ -466,6 +464,8 @@ describe('Photo displayer', () => {
     })
 
     afterEach(() => {
+      listAll.mockImplementation(() => {})
+
       // eslint-disable-next-line no-console
       console.error.mockClear()
     })
@@ -545,13 +545,30 @@ describe('Photo displayer', () => {
     })
   })
 
-  xdescribe('when firebase download url is unavailable', () => {
+  describe('when firebase download url is unavailable', () => {
+    beforeEach(() => {
+      getDownloadURL.mockImplementation(() =>
+        Promise.reject(new Error("Bouuh tu l'aura pas"))
+      )
+
+      jest.spyOn(console, 'error').mockImplementation()
+    })
+
+    afterEach(() => {
+      getDownloadURL.mockImplementation((a) => Promise.resolve(a))
+
+      // eslint-disable-next-line no-console
+      console.error.mockClear()
+    })
+
     it('should display a little icon', async () => {
       const component = mount(PhotoDisplayer, config)
 
       await nextTick()
+      await nextTick()
+      await nextTick()
 
-      expect(component.get('#error-img').isVisible()).toBe(true)
+      expect(component.get('#error-img-2').isVisible()).toBe(true)
     })
 
     it('should make icon disapear when firebase is available again', async () => {
@@ -559,45 +576,162 @@ describe('Photo displayer', () => {
 
       await nextTick()
       await nextTick()
+      await nextTick()
+
+      expect(component.get('#error-img-2').isVisible()).toBe(true)
+
+      getDownloadURL.mockImplementation((a) => Promise.resolve(a))
 
       jest.advanceTimersByTime(20000)
       await nextTick()
-
-      expect(component.get('#error-img').isVisible()).toBe(true)
-
-      listAll.mockImplementation(() =>
-        Promise.resolve({
-          items: [
-            {
-              _location: {
-                path_: 'photos/p1.png',
-              },
-            },
-          ],
-        })
-      )
 
       jest.advanceTimersByTime(5000)
       await nextTick()
       await nextTick()
       await nextTick()
+      await nextTick()
 
-      expect(component.get('#error-img').isVisible()).toBe(false)
-      expect(component.find('img').html()).toContain('storagephotos/p1.png')
+      expect(component.get('#error-img-2').isVisible()).toBe(false)
+      expect(component.find('img').html()).toContain('storagephotos/p2.png')
     })
 
-    it('should try to select another image', () => {})
+    it('should select another asset (animation)', async () => {
+      const component = mount(PhotoDisplayer, config)
+
+      await nextTick()
+      await nextTick()
+      await nextTick()
+
+      expect(component.get('#error-img-2').isVisible()).toBe(true)
+    })
   })
 
   describe('when download image fail', () => {
-    it('should display a little icon', () => {})
+    beforeEach(() => {
+      jest
+        .spyOn(ImageUtils, 'isImageLoaded')
+        .mockImplementation(() => Promise.reject(new Error('bouuh')))
 
-    it('should make icon disapear when firebase is available again', () => {})
+      jest.spyOn(console, 'error').mockImplementation()
+    })
 
-    it('should wait 10 secondes and retry to download the image it', () => {})
+    afterEach(() => {
+      // eslint-disable-next-line no-console
+      console.error.mockClear()
+    })
 
-    it('should wait 20 secondes and retry to download the image it when fail a 2nd time', () => {})
+    it('should display a little icon', async () => {
+      const component = mount(PhotoDisplayer, config)
 
-    it('should select another asset when already tries 3 times', () => {})
+      await nextTick()
+      await nextTick()
+      await nextTick()
+      await nextTick()
+
+      expect(component.get('#error-img-3').isVisible()).toBe(true)
+    })
+
+    it('should make icon disapear when firebase is available again', async () => {
+      const component = mount(PhotoDisplayer, config)
+
+      await nextTick()
+      await nextTick()
+      await nextTick()
+      await nextTick()
+
+      expect(component.get('#error-img-3').isVisible()).toBe(true)
+
+      jest
+        .spyOn(ImageUtils, 'isImageLoaded')
+        .mockImplementation(() => Promise.resolve())
+
+      jest.advanceTimersByTime(20000)
+      await nextTick()
+
+      jest.advanceTimersByTime(5000)
+      await nextTick()
+      await nextTick()
+      await nextTick()
+      await nextTick()
+
+      expect(component.get('#error-img-3').isVisible()).toBe(false)
+      expect(component.find('img').html()).toContain('storagephotos/p2.png')
+    })
+
+    it('should wait 5 secondes and retry to download the image it', async () => {
+      mount(PhotoDisplayer, config)
+
+      await nextTick()
+      await nextTick()
+      await nextTick()
+      await nextTick()
+
+      expect(ImageUtils.isImageLoaded).toHaveBeenCalledTimes(1)
+
+      jest.advanceTimersByTime(5000)
+      await nextTick()
+      expect(ImageUtils.isImageLoaded).toHaveBeenCalledTimes(2)
+    })
+
+    it('should wait 5 secondes and retry to download the image it when fail a 2nd time', async () => {
+      mount(PhotoDisplayer, config)
+
+      await nextTick()
+      await nextTick()
+      await nextTick()
+      await nextTick()
+
+      expect(ImageUtils.isImageLoaded).toHaveBeenCalledTimes(1)
+
+      jest.advanceTimersByTime(5000)
+      await nextTick()
+      expect(ImageUtils.isImageLoaded).toHaveBeenCalledTimes(2)
+
+      await nextTick()
+      jest.advanceTimersByTime(5000)
+      await nextTick()
+      expect(ImageUtils.isImageLoaded).toHaveBeenCalledTimes(3)
+    })
+
+    it('should select animation asset when 3rd try fail', async () => {
+      const component = mount(PhotoDisplayer, config)
+
+      await nextTick()
+      await nextTick()
+      await nextTick()
+      await nextTick()
+
+      expect(ImageUtils.isImageLoaded).toHaveBeenCalledTimes(1)
+      expect(component.findAll('animation-stub').length).toBe(1)
+      expect(
+        component.findAll('animation-stub').at(0).attributes().class
+      ).toContain('current-asset')
+
+      jest.advanceTimersByTime(5000)
+      await nextTick()
+      expect(ImageUtils.isImageLoaded).toHaveBeenCalledTimes(2)
+      expect(component.findAll('animation-stub').length).toBe(1)
+      expect(
+        component.findAll('animation-stub').at(0).attributes().class
+      ).toContain('current-asset')
+
+      await nextTick()
+      jest.advanceTimersByTime(5000)
+      await nextTick()
+      expect(ImageUtils.isImageLoaded).toHaveBeenCalledTimes(3)
+      expect(component.findAll('animation-stub').length).toBe(1)
+      expect(
+        component.findAll('animation-stub').at(0).attributes().class
+      ).toContain('current-asset')
+
+      await nextTick()
+      await nextTick()
+      jest.advanceTimersByTime(20000)
+      await nextTick()
+      expect(component.findAll('animation-stub').length).toBe(2)
+      expect(
+        component.findAll('animation-stub').at(1).attributes().class
+      ).toContain('current-asset')
+    })
   })
 })
