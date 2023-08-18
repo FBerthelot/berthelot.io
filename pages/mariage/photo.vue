@@ -118,7 +118,7 @@ export default {
     this.firebaseStorage = getStorage(this.firebaseApp)
 
     const el = document.createElement('input')
-    this.isCaptureSupported = el.capture === undefined
+    this.isCaptureSupported = el.capture !== undefined
   },
   methods: {
     handleImageChange(e) {
