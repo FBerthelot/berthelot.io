@@ -41,18 +41,36 @@
         </article>
       </section>
 
-      <input
-        id="imageInput"
-        type="file"
-        accept="image/*"
-        capture="user"
-        multiple
-        @change="handleImageChange"
-      />
-      <label for="imageInput" class="button">
-        <img alt="" :src="PhotoIcon" />
-        Prendre une photo
-      </label>
+      <div class="action">
+        <input
+          id="imageUpload"
+          type="file"
+          accept="video/*,image/*"
+          multiple
+          @change="handleImageChange"
+        />
+        <label
+          for="imageUpload"
+          :class="{ noAnimate: isCaptureSupported, button: true }"
+        >
+          <img alt="" :src="UploadIcon" />
+          Partager photos &amp; vidéos
+        </label>
+
+        <input
+          v-if="isCaptureSupported"
+          id="imageInput"
+          type="file"
+          accept="image/*,video/*"
+          capture="user"
+          multiple
+          @change="handleImageChange"
+        />
+        <label v-if="isCaptureSupported" for="imageInput" class="button">
+          <img alt="" :src="PhotoIcon" />
+          Prendre une photo
+        </label>
+      </div>
     </form>
   </main>
 </template>
@@ -62,6 +80,7 @@ import { initializeApp } from 'firebase/app'
 import { getStorage, uploadBytesResumable, ref } from 'firebase/storage'
 import Logo from '~/components/mariage/00_shared/logo/logo-06.svg'
 import PhotoIcon from '~/components/mariage/00_shared/assets/photo.svg'
+import UploadIcon from '~/components/mariage/00_shared/assets/telecharger.png'
 
 export default {
   layout: 'mariage',
@@ -73,6 +92,9 @@ export default {
       firebaseStorage: null,
 
       PhotoIcon,
+      UploadIcon,
+
+      isCaptureSupported: false,
     }
   },
   head() {
@@ -94,6 +116,9 @@ export default {
     }
     this.firebaseApp = initializeApp(firebaseConfig)
     this.firebaseStorage = getStorage(this.firebaseApp)
+
+    const el = document.createElement('input')
+    this.isCaptureSupported = el.capture === undefined
   },
   methods: {
     handleImageChange(e) {
@@ -200,14 +225,14 @@ export default {
 }
 
 .title {
-  height: 15%;
+  height: 10vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 form {
-  height: 85%;
+  height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -216,9 +241,25 @@ form {
 
 .background-img {
   width: 75%;
+  margin-bottom: 1rem;
 }
 
-#imageInput {
+.action {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: center;
+  justify-content: space-around;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+}
+
+#imageUpload + label.noAnimate {
+  animation: none;
+}
+
+#imageInput,
+#imageUpload {
   width: 0.1px;
   height: 0.1px;
   opacity: 0;
@@ -227,7 +268,8 @@ form {
   z-index: -1;
 }
 
-#imageInput + label {
+#imageInput + label,
+#imageUpload + label {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -235,17 +277,25 @@ form {
   cursor: pointer;
   animation: blink 1s infinite alternate;
 }
+#imageInput + label {
+  animation-delay: 0.5s;
+}
 
 #imageInput + label:hover,
-#imageInput + label:focus {
+#imageInput + label:focus,
+#imageUpload + label:hover,
+#imageUpload + label:focus {
   background-color: var(--color-primary);
   color: var(--color-white);
 }
 
+#imageUpload + label img,
 #imageInput + label img {
   height: 4rem;
 }
 
+#imageUpload + label:hover img,
+#imageUpload + label:focus img,
 #imageInput + label:hover img,
 #imageInput + label:focus img {
   filter: invert(1);
