@@ -43,6 +43,7 @@
 
       <div class="action">
         <input
+          v-if="!isCaptureSupported"
           id="imageUpload"
           type="file"
           accept="video/*,image/*"
@@ -50,6 +51,7 @@
           @change="handleImageChange"
         />
         <label
+          v-if="!isCaptureSupported"
           for="imageUpload"
           :class="{ noAnimate: isCaptureSupported, button: true }"
         >
@@ -61,9 +63,8 @@
           v-if="isCaptureSupported"
           id="imageInput"
           type="file"
-          accept="image/*,video/*"
+          accept="image/*"
           capture="user"
-          multiple
           @change="handleImageChange"
         />
         <label v-if="isCaptureSupported" for="imageInput" class="button">
