@@ -9,6 +9,11 @@ jest.mock(
   () => 'no_network_img.png'
 )
 
+jest.mock(
+  '~/components/mariage/00_shared/assets/share-photos.png',
+  () => 'share-photo.png'
+)
+
 jest.mock('firebase/storage', () => {
   return {
     getStorage: jest.fn(() => 'storage'),
