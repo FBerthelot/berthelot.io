@@ -94,7 +94,7 @@ export default {
      */
     hours() {
       const hours = Math.floor(
-        (this.totalMilliseconds % MILLISECONDS_DAY) / MILLISECONDS_HOUR
+        (this.totalMilliseconds % MILLISECONDS_DAY) / MILLISECONDS_HOUR,
       )
 
       return hours < 10 ? `0${hours}` : hours
@@ -106,7 +106,7 @@ export default {
      */
     minutes() {
       const minutes = Math.floor(
-        (this.totalMilliseconds % MILLISECONDS_HOUR) / MILLISECONDS_MINUTE
+        (this.totalMilliseconds % MILLISECONDS_HOUR) / MILLISECONDS_MINUTE,
       )
       return minutes < 10 ? `0${minutes}` : minutes
     },
@@ -117,7 +117,7 @@ export default {
      */
     seconds() {
       const seconds = Math.floor(
-        (this.totalMilliseconds % MILLISECONDS_MINUTE) / MILLISECONDS_SECOND
+        (this.totalMilliseconds % MILLISECONDS_MINUTE) / MILLISECONDS_SECOND,
       )
 
       return seconds < 10 ? `0${seconds}` : seconds

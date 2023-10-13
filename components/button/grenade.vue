@@ -38,7 +38,7 @@ export default {
           component: this.component,
         },
       },
-      this.$slots.default
+      this.$slots.default,
     )
   },
 }
@@ -104,7 +104,8 @@ export default {
 }
 
 .grenade--throwed {
-  animation: bounceInDown 1.4s ease 0s 1 forwards,
+  animation:
+    bounceInDown 1.4s ease 0s 1 forwards,
     deployButton 0.6s ease 2s 1 forwards;
 }
 

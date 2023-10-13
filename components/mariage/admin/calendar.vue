@@ -122,7 +122,7 @@
           <div class="events">
             <button
               v-for="(event, index) in schedule.filter(
-                (event) => event.startDate < new Date('2023/08/20 00:00')
+                (event) => event.startDate < new Date('2023/08/20 00:00'),
               )"
               :key="event.title + index"
               :style="{
@@ -186,7 +186,7 @@
           <div class="events">
             <button
               v-for="(event, index) in schedule.filter(
-                (event) => event.endDate >= new Date('2023/08/20 00:00')
+                (event) => event.endDate >= new Date('2023/08/20 00:00'),
               )"
               :key="event.title + index"
               :style="{

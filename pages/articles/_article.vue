@@ -33,7 +33,7 @@ export default {
   data() {
     return {
       article: articles.find(
-        (article) => article.slug === this.$route.params.article
+        (article) => article.slug === this.$route.params.article,
       ),
     }
   },

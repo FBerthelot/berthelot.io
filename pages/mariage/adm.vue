@@ -416,7 +416,7 @@ export default {
   computed: {
     schedule() {
       return CalendarEvents.filter((event) =>
-        event.who.includes(this.config?.who)
+        event.who.includes(this.config?.who),
       )
     },
     slides() {

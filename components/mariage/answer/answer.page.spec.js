@@ -259,7 +259,7 @@ describe('MainPage', () => {
       await flushPromises()
 
       expect(
-        component.find('input[name="children"][value="true"]').exists()
+        component.find('input[name="children"][value="true"]').exists(),
       ).toBe(false)
     })
 
@@ -322,7 +322,7 @@ describe('MainPage', () => {
       await nextTick()
 
       expect(component.find('.meal-people').html()).not.toContain(
-        'ThePlus1Name'
+        'ThePlus1Name',
       )
     })
 
@@ -455,7 +455,7 @@ describe('MainPage', () => {
 
         expect(config.mocks.$router.push).toHaveBeenCalledTimes(1)
         expect(config.mocks.$router.push).toHaveBeenCalledWith(
-          '/mariage/idOfTheInvitation?noAnimation=true'
+          '/mariage/idOfTheInvitation?noAnimation=true',
         )
       })
 
@@ -473,10 +473,10 @@ describe('MainPage', () => {
         await nextTick()
 
         expect(console.info).toHaveBeenCalledWith(
-          expect.stringContaining('Ils ne peuvent pas venir.')
+          expect.stringContaining('Ils ne peuvent pas venir.'),
         )
         expect(console.info).toHaveBeenCalledWith(
-          expect.stringContaining('"This is a comment"')
+          expect.stringContaining('"This is a comment"'),
         )
       })
 
@@ -530,35 +530,35 @@ describe('MainPage', () => {
 
         expect(console.info).toHaveBeenCalledWith(
           expect.stringContaining(
-            'Ils viennent à : cityHall, church, wineReception, party, after.'
-          )
+            'Ils viennent à : cityHall, church, wineReception, party, after.',
+          ),
         )
 
         expect(console.info).toHaveBeenCalledWith(
-          expect.stringContaining('- Gens 1 : mangera du poisson.')
+          expect.stringContaining('- Gens 1 : mangera du poisson.'),
         )
         expect(console.info).toHaveBeenCalledWith(
-          expect.stringContaining('- Gens 2 : mangera de la viande rouge.')
+          expect.stringContaining('- Gens 2 : mangera de la viande rouge.'),
         )
         expect(console.info).toHaveBeenCalledWith(
-          expect.stringContaining('- Gens 3 : mangera le menu enfant.')
+          expect.stringContaining('- Gens 3 : mangera le menu enfant.'),
         )
         expect(console.info).toHaveBeenCalledWith(
-          expect.stringContaining('- Gens 4 : mangera le menu enfant.')
+          expect.stringContaining('- Gens 4 : mangera le menu enfant.'),
         )
         expect(console.info).toHaveBeenCalledWith(
-          expect.stringContaining('- Gens 5 : mangera du poisson.')
+          expect.stringContaining('- Gens 5 : mangera du poisson.'),
         )
         expect(console.info).toHaveBeenCalledWith(
-          expect.stringContaining('- ThePlus1Name : mangera du poisson.')
-        )
-
-        expect(console.info).toHaveBeenCalledWith(
-          expect.stringContaining('"I like poultry"')
+          expect.stringContaining('- ThePlus1Name : mangera du poisson.'),
         )
 
         expect(console.info).toHaveBeenCalledWith(
-          expect.stringContaining('"This is a comment"')
+          expect.stringContaining('"I like poultry"'),
+        )
+
+        expect(console.info).toHaveBeenCalledWith(
+          expect.stringContaining('"This is a comment"'),
         )
       })
 
@@ -601,42 +601,42 @@ describe('MainPage', () => {
 
         expect(console.info).toHaveBeenCalledWith(
           expect.stringContaining(
-            'Ils viennent à : cityHall, church, wineReception, party, after.'
-          )
+            'Ils viennent à : cityHall, church, wineReception, party, after.',
+          ),
         )
 
         expect(console.info).toHaveBeenCalledWith(
-          expect.stringContaining('- Gens 1 : mangera du poisson.')
+          expect.stringContaining('- Gens 1 : mangera du poisson.'),
         )
         expect(console.info).toHaveBeenCalledWith(
-          expect.stringContaining('- Gens 2 : mangera de la viande rouge.')
+          expect.stringContaining('- Gens 2 : mangera de la viande rouge.'),
         )
         expect(console.info).not.toHaveBeenCalledWith(
-          expect.stringContaining('- Gens 3 : mangera le menu enfant.')
+          expect.stringContaining('- Gens 3 : mangera le menu enfant.'),
         )
         expect(console.info).not.toHaveBeenCalledWith(
-          expect.stringContaining('- Gens 4 : mangera le menu enfant.')
+          expect.stringContaining('- Gens 4 : mangera le menu enfant.'),
         )
         expect(console.info).not.toHaveBeenCalledWith(
-          expect.stringContaining('- Gens 5 : mangera du poisson.')
+          expect.stringContaining('- Gens 5 : mangera du poisson.'),
         )
         expect(console.info).not.toHaveBeenCalledWith(
-          expect.stringContaining('- ThePlus1Name : mangera du poisson.')
+          expect.stringContaining('- ThePlus1Name : mangera du poisson.'),
         )
 
         expect(console.info).toHaveBeenCalledWith(
-          expect.stringContaining('Pas de plus 1.')
+          expect.stringContaining('Pas de plus 1.'),
         )
         expect(console.info).toHaveBeenCalledWith(
-          expect.stringContaining('Les enfants ne viennent pas.')
-        )
-
-        expect(console.info).toHaveBeenCalledWith(
-          expect.stringContaining('"I like poultry"')
+          expect.stringContaining('Les enfants ne viennent pas.'),
         )
 
         expect(console.info).toHaveBeenCalledWith(
-          expect.stringContaining('"This is a comment"')
+          expect.stringContaining('"I like poultry"'),
+        )
+
+        expect(console.info).toHaveBeenCalledWith(
+          expect.stringContaining('"This is a comment"'),
         )
       })
     })

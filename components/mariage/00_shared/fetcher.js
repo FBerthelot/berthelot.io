@@ -45,7 +45,7 @@ export const saveInvitationAnswer = (
   idOfTheInvitation,
   peoples,
   formValues,
-  invitation
+  invitation,
 ) => {
   const MealMapper = {
     fish: 'du poisson',

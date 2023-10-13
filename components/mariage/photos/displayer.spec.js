@@ -6,12 +6,12 @@ import * as ImageUtils from '~/components/mariage/00_shared/images.utils'
 
 jest.mock(
   '~/components/mariage/00_shared/assets/no_network.png',
-  () => 'no_network_img.png'
+  () => 'no_network_img.png',
 )
 
 jest.mock(
   '~/components/mariage/00_shared/assets/share-photos.png',
-  () => 'share-photo.png'
+  () => 'share-photo.png',
 )
 
 jest.mock('firebase/storage', () => {
@@ -61,7 +61,7 @@ describe('Photo displayer', () => {
             },
           },
         ],
-      })
+      }),
     )
 
     jest
@@ -97,7 +97,7 @@ describe('Photo displayer', () => {
       await mount(PhotoDisplayer, config)
 
       expect(
-        JSON.parse(localStorage.getItem('wedding-asset-displayer'))
+        JSON.parse(localStorage.getItem('wedding-asset-displayer')),
       ).toEqual({
         animation: 1,
         'photos/p1.png': 0,
@@ -115,7 +115,7 @@ describe('Photo displayer', () => {
 
       expect(ImageUtils.isImageLoaded).toHaveBeenCalledTimes(1)
       expect(ImageUtils.isImageLoaded).toHaveBeenCalledWith(
-        'storagephotos/p2.png'
+        'storagephotos/p2.png',
       )
     })
 
@@ -130,7 +130,7 @@ describe('Photo displayer', () => {
 
       expect(ImageUtils.isImageLoaded).toHaveBeenCalledTimes(1)
       expect(ImageUtils.isImageLoaded).toHaveBeenCalledWith(
-        'storagephotos/p1.png'
+        'storagephotos/p1.png',
       )
     })
 
@@ -176,7 +176,7 @@ describe('Photo displayer', () => {
 
       expect(component.find('img').html()).toContain('current-asset')
       expect(component.find('animation-stub').html()).not.toContain(
-        'current-asset'
+        'current-asset',
       )
     })
   })
@@ -203,7 +203,7 @@ describe('Photo displayer', () => {
 
     it('should display the P2 img as current asset', () => {
       expect(component.findAll('img').at(1).html()).toContain(
-        'storagephotos/p2.png'
+        'storagephotos/p2.png',
       )
       expect(component.findAll('img').at(1).html()).toContain('current-asset')
     })
@@ -215,7 +215,7 @@ describe('Photo displayer', () => {
 
     it('should insert the asset list in localstorage with a view counter', () => {
       expect(
-        JSON.parse(localStorage.getItem('wedding-asset-displayer'))
+        JSON.parse(localStorage.getItem('wedding-asset-displayer')),
       ).toEqual({
         animation: 1,
         'photos/p1.png': 0,
@@ -231,7 +231,7 @@ describe('Photo displayer', () => {
 
       expect(ImageUtils.isImageLoaded).toHaveBeenCalledTimes(2)
       expect(ImageUtils.isImageLoaded).toHaveBeenLastCalledWith(
-        'storagephotos/p1.png'
+        'storagephotos/p1.png',
       )
     })
 
@@ -245,7 +245,7 @@ describe('Photo displayer', () => {
 
       expect(ImageUtils.isImageLoaded).toHaveBeenCalledTimes(2)
       expect(ImageUtils.isImageLoaded).toHaveBeenLastCalledWith(
-        'storagephotos/p1.png'
+        'storagephotos/p1.png',
       )
     })
 
@@ -258,7 +258,7 @@ describe('Photo displayer', () => {
       await nextTick()
 
       expect(component.findAll('img').at(0).html()).toContain(
-        'storagephotos/p1.png'
+        'storagephotos/p1.png',
       )
     })
 
@@ -271,15 +271,15 @@ describe('Photo displayer', () => {
       await nextTick()
 
       expect(component.findAll('img').at(0).html()).not.toContain(
-        'current-asset'
+        'current-asset',
       )
       expect(component.findAll('img').at(0).html()).toContain(
-        'storagephotos/p1.png'
+        'storagephotos/p1.png',
       )
 
       expect(component.findAll('img').at(1).html()).toContain('current-asset')
       expect(component.findAll('img').at(1).html()).toContain(
-        'storagephotos/p2.png'
+        'storagephotos/p2.png',
       )
     })
 
@@ -296,7 +296,7 @@ describe('Photo displayer', () => {
 
       expect(component.findAll('img').at(0).html()).toContain('current-asset')
       expect(component.findAll('img').at(1).html()).not.toContain(
-        'current-asset'
+        'current-asset',
       )
     })
   })
@@ -309,7 +309,7 @@ describe('Photo displayer', () => {
           animation: 59,
           'photos/p1.png': 40,
           'photos/p2.png': 60,
-        })
+        }),
       )
     })
 
@@ -337,7 +337,7 @@ describe('Photo displayer', () => {
       await nextTick()
 
       expect(component.findAll('img').at(0).html()).toContain(
-        'storagephotos/p1.png'
+        'storagephotos/p1.png',
       )
       expect(component.findAll('img').at(0).html()).toContain('current-asset')
     })
@@ -375,7 +375,7 @@ describe('Photo displayer', () => {
       await nextTick()
 
       expect(component.findAll('img').at(0).html()).toContain(
-        'storagephotos/p2.png'
+        'storagephotos/p2.png',
       )
       expect(component.findAll('img').at(0).html()).toContain('current-asset')
     })
@@ -398,7 +398,7 @@ describe('Photo displayer', () => {
       await nextTick()
 
       expect(component.findAll('img').at(0).html()).toContain(
-        'storagephotos/p1.png'
+        'storagephotos/p1.png',
       )
       expect(component.findAll('img').at(0).html()).toContain('current-asset')
 
@@ -418,7 +418,7 @@ describe('Photo displayer', () => {
       await nextTick()
 
       expect(component.findAll('img').at(0).html()).toContain(
-        'storagephotos/p2.png'
+        'storagephotos/p2.png',
       )
       expect(component.findAll('img').at(0).html()).toContain('current-asset')
 
@@ -438,7 +438,7 @@ describe('Photo displayer', () => {
       await nextTick()
 
       expect(component.findAll('img').at(1).html()).toContain(
-        'storagephotos/p1.png'
+        'storagephotos/p1.png',
       )
       expect(component.findAll('img').at(1).html()).toContain('current-asset')
 
@@ -503,7 +503,7 @@ describe('Photo displayer', () => {
               },
             },
           ],
-        })
+        }),
       )
 
       jest.advanceTimersByTime(5000)
@@ -522,7 +522,7 @@ describe('Photo displayer', () => {
           animation: 0,
           'photos/p1.png': 0,
           'photos/p2.png': 0,
-        })
+        }),
       )
       const component = mount(PhotoDisplayer, config)
 
@@ -553,7 +553,7 @@ describe('Photo displayer', () => {
   describe('when firebase download url is unavailable', () => {
     beforeEach(() => {
       getDownloadURL.mockImplementation(() =>
-        Promise.reject(new Error("Bouuh tu l'aura pas"))
+        Promise.reject(new Error("Bouuh tu l'aura pas")),
       )
 
       jest.spyOn(console, 'error').mockImplementation()
@@ -709,7 +709,7 @@ describe('Photo displayer', () => {
       expect(ImageUtils.isImageLoaded).toHaveBeenCalledTimes(1)
       expect(component.findAll('animation-stub').length).toBe(1)
       expect(
-        component.findAll('animation-stub').at(0).attributes().class
+        component.findAll('animation-stub').at(0).attributes().class,
       ).toContain('current-asset')
 
       jest.advanceTimersByTime(5000)
@@ -717,7 +717,7 @@ describe('Photo displayer', () => {
       expect(ImageUtils.isImageLoaded).toHaveBeenCalledTimes(2)
       expect(component.findAll('animation-stub').length).toBe(1)
       expect(
-        component.findAll('animation-stub').at(0).attributes().class
+        component.findAll('animation-stub').at(0).attributes().class,
       ).toContain('current-asset')
 
       await nextTick()
@@ -726,7 +726,7 @@ describe('Photo displayer', () => {
       expect(ImageUtils.isImageLoaded).toHaveBeenCalledTimes(3)
       expect(component.findAll('animation-stub').length).toBe(1)
       expect(
-        component.findAll('animation-stub').at(0).attributes().class
+        component.findAll('animation-stub').at(0).attributes().class,
       ).toContain('current-asset')
 
       await nextTick()
@@ -735,7 +735,7 @@ describe('Photo displayer', () => {
       await nextTick()
       expect(component.findAll('animation-stub').length).toBe(2)
       expect(
-        component.findAll('animation-stub').at(1).attributes().class
+        component.findAll('animation-stub').at(1).attributes().class,
       ).toContain('current-asset')
     })
   })

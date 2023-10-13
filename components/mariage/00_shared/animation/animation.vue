@@ -326,7 +326,9 @@ export default {
   top: 12vh;
   left: 20vw;
   border-radius: 50%;
-  box-shadow: 30vw 0.5vh 0 -1vh currentcolor, -25vw 0 0 -0.6vh currentcolor;
+  box-shadow:
+    30vw 0.5vh 0 -1vh currentcolor,
+    -25vw 0 0 -0.6vh currentcolor;
   opacity: 0.3;
 }
 .cloud-1 {

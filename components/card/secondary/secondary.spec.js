@@ -7,7 +7,7 @@ describe('Card Secondary', () => {
     const component = shallowMount(CardSecondary)
 
     expect(component.find('.alternatives').classes()).not.toContain(
-      'alternatives--displayed'
+      'alternatives--displayed',
     )
   })
 
@@ -20,7 +20,7 @@ describe('Card Secondary', () => {
     component.find('morebutton-stub').trigger('click')
     await nextTick()
     expect(component.find('.alternatives').classes()).toContain(
-      'alternatives--displayed'
+      'alternatives--displayed',
     )
   })
 

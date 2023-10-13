@@ -125,7 +125,7 @@ Reveal.initialize({
 Reveal.addEventListener('slidechanged', (event) => {
   setTimeout(
     () => (window.location.hash = `/${event.indexh}/${event.indexv}`),
-    0
+    0,
   )
 })
 

@@ -309,7 +309,7 @@
             formState.errors.attending
               ? $tc(
                   'attending.error.' + formState.errors.attending,
-                  invitation.nbOfPeople
+                  invitation.nbOfPeople,
                 )
               : ''
           }}
@@ -419,7 +419,7 @@
             formState.errors.children
               ? $tc(
                   'children.error.' + formState.errors.children,
-                  invitation.children.length
+                  invitation.children.length,
                 )
               : ''
           }}
@@ -457,7 +457,7 @@
               <label
                 v-if="
                   !['0 - 3 ans', '4 - 12 ans'].includes(
-                    invitation.ages[peopleName]
+                    invitation.ages[peopleName],
                   )
                 "
               >
@@ -474,7 +474,7 @@
               <label
                 v-if="
                   !['0 - 3 ans', '4 - 12 ans'].includes(
-                    invitation.ages[peopleName]
+                    invitation.ages[peopleName],
                   )
                 "
               >
@@ -573,7 +573,7 @@
             formState.errors.comment
               ? $tc(
                   'comment.error.' + formState.errors.comment,
-                  invitation.nbOfPeople
+                  invitation.nbOfPeople,
                 )
               : ''
           }}
@@ -656,7 +656,7 @@ export default {
           return {
             ...acc,
             [`meal-${peopleName}`]: ['0 - 3 ans', '4 - 12 ans'].includes(
-              this.invitation.ages[peopleName]
+              this.invitation.ages[peopleName],
             )
               ? 'child'
               : null,
@@ -747,7 +747,7 @@ export default {
         this.formValues.attending = [e.target.value]
       } else if (this.formValues.attending.includes(e.target.value)) {
         this.formValues.attending = this.formValues.attending.filter(
-          (val) => val !== e.target.value
+          (val) => val !== e.target.value,
         )
       } else {
         this.formValues.attending = [
@@ -786,15 +786,15 @@ export default {
           this.invitation.id,
           this.peopleThatCome,
           this.formValues,
-          this.invitation
+          this.invitation,
         )
 
         window.localStorage.setItem('answered', 'true')
 
         this.$router.push(
           this.localePath(
-            `/mariage/${this.$route.params.invite}?noAnimation=true`
-          )
+            `/mariage/${this.$route.params.invite}?noAnimation=true`,
+          ),
         )
       } catch (err) {
         // eslint-disable-next-line no-console

@@ -172,7 +172,7 @@
                 $t(
                   invitation.invitedTo.party
                     ? 'day1.allParty.title'
-                    : 'day1.wineReceptionOnly.title'
+                    : 'day1.wineReceptionOnly.title',
                 )
               }}
             </h4>
@@ -181,7 +181,7 @@
                 $t(
                   invitation.invitedTo.party
                     ? 'day1.allParty.duration'
-                    : 'day1.wineReceptionOnly.duration'
+                    : 'day1.wineReceptionOnly.duration',
                 )
               }}
             </div>
@@ -190,14 +190,14 @@
                 $t(
                   invitation.invitedTo.party
                     ? 'day1.allParty.address.line1'
-                    : 'day1.wineReceptionOnly.address.line1'
+                    : 'day1.wineReceptionOnly.address.line1',
                 )
               }}<br />
               {{
                 $t(
                   invitation.invitedTo.party
                     ? 'day1.allParty.address.line2'
-                    : 'day1.wineReceptionOnly.address.line2'
+                    : 'day1.wineReceptionOnly.address.line2',
                 )
               }}
               <br />
@@ -205,7 +205,7 @@
                 $t(
                   invitation.invitedTo.party
                     ? 'day1.allParty.address.line3'
-                    : 'day1.wineReceptionOnly.address.line3'
+                    : 'day1.wineReceptionOnly.address.line3',
                 )
               }}
             </address>
@@ -488,7 +488,7 @@ export default {
               url: this.markers[place].icon.url,
               scaledSize: new window.google.maps.Size(
                 this.markers[place].icon.w,
-                this.markers[place].icon.h
+                this.markers[place].icon.h,
               ),
             },
             map: this.map,
@@ -502,7 +502,7 @@ export default {
               infoWindow.setContent(this.markers[place].marker.getTitle())
               infoWindow.open(
                 this.markers[place].marker.getMap(),
-                this.markers[place].marker
+                this.markers[place].marker,
               )
               this.onSelect({ preventDefault: () => {} }, place)
             })

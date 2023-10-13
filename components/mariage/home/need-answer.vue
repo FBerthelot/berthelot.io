@@ -47,7 +47,7 @@
         {{
           $tc(
             isAnswered ? 'answered.subtitle' : 'subtitle',
-            invitation.nbOfPeople
+            invitation.nbOfPeople,
           )
         }}
       </h4>
@@ -78,8 +78,8 @@
           :to="
             localePath(
               `/mariage/church?prevUrl=${localePath(
-                `/mariage/${invitation.id}`
-              )}`
+                `/mariage/${invitation.id}`,
+              )}`,
             )
           "
           class="button"
@@ -89,7 +89,9 @@
         <nuxt-link
           :to="
             localePath(
-              `/mariage/menu?prevUrl=${localePath(`/mariage/${invitation.id}`)}`
+              `/mariage/menu?prevUrl=${localePath(
+                `/mariage/${invitation.id}`,
+              )}`,
             )
           "
           class="button"

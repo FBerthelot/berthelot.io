@@ -230,7 +230,7 @@ export default {
       let viewList
       try {
         viewList = JSON.parse(
-          localStorage.getItem('wedding-asset-displayer') ?? '{animation: 0}'
+          localStorage.getItem('wedding-asset-displayer') ?? '{animation: 0}',
         )
       } catch {
         viewList = {
@@ -267,11 +267,11 @@ export default {
               this.currentAssetDisplayed.type === 'animation'
                 ? currentAnimationNbOfView + 1
                 : currentAnimationNbOfView,
-          }
+          },
         )
         localStorage.setItem(
           'wedding-asset-displayer',
-          JSON.stringify(this.viewList)
+          JSON.stringify(this.viewList),
         )
 
         this.listAllInError = false
@@ -288,15 +288,15 @@ export default {
     selectNextAssetToDisplay() {
       const viewListWithExcludedCurrentElement = Object.fromEntries(
         Object.entries(this.viewList).filter(
-          ([key]) => key !== this.currentAssetDisplayed.firebaseLocation
-        )
+          ([key]) => key !== this.currentAssetDisplayed.firebaseLocation,
+        ),
       )
 
       const lowestNbOfViewValue = Math.min(
-        ...Object.values(viewListWithExcludedCurrentElement)
+        ...Object.values(viewListWithExcludedCurrentElement),
       )
       const assetWithTheLowestNbOfView = Object.entries(
-        viewListWithExcludedCurrentElement
+        viewListWithExcludedCurrentElement,
       )
         .filter(([, value]) => value === lowestNbOfViewValue)
         .map(([key]) => key)
@@ -331,7 +331,7 @@ export default {
       try {
         const assetRef = ref(
           this.firebaseStorage,
-          this.nextAssetToDisplay.firebaseLocation
+          this.nextAssetToDisplay.firebaseLocation,
         )
         assetSrc = await getDownloadURL(assetRef)
         this.getImageUrlError = false

@@ -24,7 +24,7 @@ export default {
       {
         class: `typographyBase ${this.variant} ${this.color}`,
       },
-      this.$slots.default
+      this.$slots.default,
     )
   },
 }

@@ -208,7 +208,7 @@ export default {
             }
             return a
           })
-        }
+        },
       )
     },
     handleUploadingPhoto() {},

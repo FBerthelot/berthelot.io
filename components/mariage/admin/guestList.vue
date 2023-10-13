@@ -49,7 +49,7 @@ export default {
       return this.invitations.filter((invitation) =>
         invitation.name
           .toLowerCase()
-          .includes(this.invitationsSearch.toLowerCase())
+          .includes(this.invitationsSearch.toLowerCase()),
       )
     },
   },
