@@ -23,7 +23,7 @@
     "@nuxtjs/i18n": "^7.3.1",
     "@nuxtjs/markdownit": "^2.0.0",
     "core-js": "^3.32.0",
-    "firebase": "^10.1.0",
+    "firebase": "^10.5.2",
     "fireworks-js": "1.*.*",
     "nuxt": "^2.15.8",
     "remove": "^0.1.5",
