@@ -39,7 +39,7 @@
       <img
         v-if="!assets.length"
         class="background-img"
-        src="/assets/mariage/Agnes & Florent 19-08-2023-violet.svg"
+        src="/assets/mariage/agnes_et_florent_19-08-2023-violet.svg"
         alt=""
       />
       <section v-if="!!assets.length" class="preview-container">

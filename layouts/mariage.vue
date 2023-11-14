@@ -43,8 +43,8 @@ const head = useLocaleHead({
 })
 
 useSeoMeta({
-  ogImage: '/assets/mariage/Agnes & Florent-violet-400x.png',
-  twitterImage: '/assets/mariage/Agnes & Florent-violet-400x.png',
+  ogImage: '/assets/mariage/agnes_et_florent-violet-400x.png',
+  twitterImage: '/assets/mariage/agnes_et_florent-violet-400x.png',
 })
 </script>
 

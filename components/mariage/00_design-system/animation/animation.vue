@@ -104,7 +104,7 @@
     </header>
 
     <img
-      src="/assets/mariage/Agnes & Florent-transparent.svg"
+      src="/assets/mariage/agnes_et_florent-transparent.svg"
       class="logo"
       alt=""
     />
