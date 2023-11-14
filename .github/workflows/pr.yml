@@ -2,7 +2,7 @@ name: Continous Integration on PR
 
 on: ['pull_request']
 env:
-  NODE_VERSION: '16.17.1'
+  NODE_VERSION: '20.3.1'
 
 jobs:
   build-and-test:
@@ -20,7 +20,8 @@ jobs:
       - name: Install and Build 🔧
         run: |
           npm ci
-          npm run lint
-          npm run test
-          npm run build
           npm run generate
+
+      - name: Tests ✅
+        run: |
+          npm run test

@@ -1,11 +1,18 @@
-<i18n>
-  {
-    "fr": {
-      "title": "Église",
-      "back-button": "⬅ Retour",
-      "blocks": [{
+<!-- eslint-disable @intlify/vue-i18n/no-unused-keys -->
+<i18n lang="json">
+{
+  "fr": {
+    "meta": {
+      "title": "Livret de messe - Mariage Agnès et Florent",
+      "description": "Liberty !"
+    },
+    "title": "Église",
+    "back-button": "⬅ Retour",
+    "blocks": [
+      {
         "superTitle": "Ouverture de la célébration"
-      },{
+      },
+      {
         "title": "Entrée des mariés",
         "centered": "true",
         "reader": "🎶'A Million Dreams' Taylor Davis 🎶",
@@ -23,7 +30,8 @@
           " ",
           "Mot d’accueil par le père Jean-Luc Le François"
         ]
-      },{
+      },
+      {
         "superTitle": "Dieu nous parle"
       },
       {
@@ -48,7 +56,8 @@
           "il supporte tout, il fait confiance en tout, il espère tout, il endure tout.",
           "L’amour ne passera jamais."
         ]
-      }, {
+      },
+      {
         "title": "Psaume",
         "reader": "Lu par Pauline P.",
         "paragraph": [
@@ -73,13 +82,13 @@
           " ",
           "Béni soit-tu, Seigneur : Dieu de tendresse et d'amour !"
         ]
-      }, {
+      },
+      {
         "title": "Alléluia",
         "centered": true,
-        "paragraph": [
-          "🎶Alléluia (dit de Taizé) 🎶"
-        ]
-      }, {
+        "paragraph": ["🎶Alléluia (dit de Taizé) 🎶"]
+      },
+      {
         "title": "Évangile de Jésus Christ selon Saint Matthieu",
         "reader": "Lu par Lucile",
         "paragraph": [
@@ -94,14 +103,18 @@
           " ",
           "De la même manière, que votre lumière brille devant les hommes : alors, voyant ce que vous faites de bien, ils rendront gloire à votre Père qui est aux cieux. »"
         ]
-      }, {
+      },
+      {
         "title": "Évangile de Jésus Christ selon Saint Matthieu",
         "reader": "Lu par Maya en anglais"
-      }, {
+      },
+      {
         "title": "Homélie par le Père Jean-Luc Lefrançois"
-      }, {
+      },
+      {
         "superTitle": "Dieu nous unit"
-      }, {
+      },
+      {
         "title": "Dialogue Initial",
         "paragraph": [
           "Avec Agnès et Florent nous avons écouté la parole de Dieu qui révèle la grandeur de l'amour humain et du mariage.",
@@ -112,9 +125,11 @@
           " ",
           "Agnès et Florent : Oui !"
         ]
-      }, {
+      },
+      {
         "title": "Invitation à l'échange des consentements"
-      }, {
+      },
+      {
         "title": "Échange des consentements",
         "paragraph": [
           "Florent : Agnès, veux-tu être mon épouse ?",
@@ -122,9 +137,11 @@
           "Florent : Oui je le veux. Moi, Florent, je te reçois Agnès, comme épouse et je serai ton époux. Je promets de t’aimer fidèlement dans le bonheur et dans les épreuves tout au long de notre vie.",
           "Agnès : Oui je le veux. Moi, Agnès, je te reçois Florent, comme époux et je serai ton épouse. Je promets de t’aimer fidèlement dans le bonheur et dans les épreuves tout au long de notre vie."
         ]
-      }, {
+      },
+      {
         "title": "Réception des consentements"
-      }, {
+      },
+      {
         "title": "Bénédiction et remise des alliances",
         "reader": "Alliances apportées par Rosa et Nina",
         "paragraph": [
@@ -139,7 +156,8 @@
           "Florent : Agnès, reçois cette alliance, Signe de mon amour et de ma fidélité.",
           "Agnès : Florent, reçois cette alliance, Signe de mon amour et de ma fidélité."
         ]
-      }, {
+      },
+      {
         "title": "Bénédiction nuptiale",
         "paragraph": [
           "Seigneur notre Dieu,",
@@ -160,7 +178,8 @@
           "Par Jésus, le Christ, notre Seigneur",
           "Tous: Amen"
         ]
-      }, {
+      },
+      {
         "title": "Chant de louage",
         "reader": "🎶Psaume de la création 🎶",
         "paragraph": [
@@ -189,9 +208,11 @@
           " ",
           "🎶 Refrain"
         ]
-      }, {
+      },
+      {
         "supertitle": "Prière de l’Eglise"
-      }, {
+      },
+      {
         "title": "Prière des époux",
         "paragraph": [
           "Florent : Seigneur, tu nous as conduits ici, devant toi, pour notre mariage :",
@@ -216,7 +237,8 @@
           " ",
           "Amen."
         ]
-      }, {
+      },
+      {
         "title": "Prière universelle",
         "reader": "lue par Jonathan, chantée par le père Jean-Luc Lefrançois",
         "paragraph": [
@@ -240,7 +262,8 @@
           " ",
           "🎶Entends nos prières, entends nos voix, Entends nos prières monter vers toi. 🎶"
         ]
-      }, {
+      },
+      {
         "title": "Prière du Notre Père",
         "paragraph": [
           "Notre Père, qui es aux cieux,",
@@ -255,9 +278,11 @@
           " ",
           "Amen"
         ]
-      }, {
+      },
+      {
         "superTitle": "Allez dans la paix du Christ"
-      }, {
+      },
+      {
         "title": "Bénédiction Finale",
         "paragraph": [
           "Que le Seigneur votre Dieu",
@@ -292,14 +317,14 @@
           " ",
           "Amen."
         ]
-      }, {
+      },
+      {
         "title": "Quête",
         "centered": true,
         "reader": "par Lucile, Richard et Mathilde",
-        "paragraph": [
-          "🎶Ave Maria - Beyoncé 🎶"
-        ]
-      }, {
+        "paragraph": ["🎶Ave Maria - Beyoncé 🎶"]
+      },
+      {
         "title": "Signature des registres",
         "centered": true,
         "paragraph": [
@@ -309,17 +334,25 @@
           "Jordane Grenat",
           "Johnathan Flores"
         ]
-      }, {
+      },
+      {
         "title": "Sortie de l'église",
         "reader": "🎶I’m feeling good - Nina Simmons 🎶"
-      }]
+      }
+    ]
+  },
+  "en": {
+    "meta": {
+      "title": "Mass booklet - Agnès and Florent wedding",
+      "description": "Liberty !"
     },
-    "en": {
-      "title": "Church",
-      "back-button": "⬅ Back",
-      "blocks": [{
+    "title": "Church",
+    "back-button": "⬅ Back",
+    "blocks": [
+      {
         "superTitle": "Opening of the celebration"
-      },{
+      },
+      {
         "title": "Entrance of the bride and groom",
         "centered": "true",
         "reader": "🎶'A Million Dreams' Taylor Davis 🎶",
@@ -337,7 +370,8 @@
           " ",
           "Welcoming speech by Father Jean-Luc Le François"
         ]
-      },{
+      },
+      {
         "superTitle": "God speaks to us"
       },
       {
@@ -362,7 +396,8 @@
           "It bears everything, it trusts in everything, it hopes for everything, it endures everything.",
           "Love does not come to an end."
         ]
-      }, {
+      },
+      {
         "title": "Psalm",
         "reader": "Read by Pauline P.",
         "paragraph": [
@@ -387,35 +422,39 @@
           " ",
           "Blessed be you, Lord : God of kindness and of love!"
         ]
-      }, {
+      },
+      {
         "title": "Hallelujah",
         "centered": true,
-        "paragraph": [
-          "🎶Hallelujah (Taizé version) 🎶"
-        ]
-      }, {
+        "paragraph": ["🎶Hallelujah (Taizé version) 🎶"]
+      },
+      {
         "title": "Gospel according to Saint Matthew in French",
         "reader": "Read by Lucile in French",
         "paragraph": [
-        "At that time, Jesus said to his disciples :",
-        " ",
-        "«You are the salt of the earth.",
-        "But if the salt loses its saltiness, how can it be made salty again?",
-        "It is no longer good for anything, except to be thrown out and trampled underfoot.",
-        " ",
-        "You are the light of the world.",
-        "A town built on a hill cannot be hidden. Neither do people light a lamp and put it under a bowl. Instead they put it on its stand, and it gives light to everyone in the house.",
-        " ",
-        "In the same way, let your light shine before others, so that they may see your good deeds and glorify your Father in heaven.»"
+          "At that time, Jesus said to his disciples :",
+          " ",
+          "«You are the salt of the earth.",
+          "But if the salt loses its saltiness, how can it be made salty again?",
+          "It is no longer good for anything, except to be thrown out and trampled underfoot.",
+          " ",
+          "You are the light of the world.",
+          "A town built on a hill cannot be hidden. Neither do people light a lamp and put it under a bowl. Instead they put it on its stand, and it gives light to everyone in the house.",
+          " ",
+          "In the same way, let your light shine before others, so that they may see your good deeds and glorify your Father in heaven.»"
         ]
-      }, {
+      },
+      {
         "title": "Gospel according to Saint Matthew in English",
         "reader": "Read by Maya in English"
-      }, {
+      },
+      {
         "title": "Sermon preached by Father Jean-Luc Le François"
-      }, {
+      },
+      {
         "superTitle": "God unites us"
-      }, {
+      },
+      {
         "title": "Initial dialogue",
         "paragraph": [
           "Together with Agnès and Florent we have listened to the word of God that reveals the depth of human love and of marriage.",
@@ -426,9 +465,11 @@
           " ",
           "Agnès and Florent : Yes!"
         ]
-      }, {
+      },
+      {
         "title": "Invitation to exchange consent"
-      }, {
+      },
+      {
         "title": "Exchange of consent",
         "paragraph": [
           "Florent : Agnès, do you want to be my wife?",
@@ -436,9 +477,11 @@
           "Florent : Yes, I do. I, Florent, receive you Agnès, as my wife and I will be your husband. I promise to love you faithfully in happiness and in hardship for all our life.",
           "Agnès : Yes, I do. I, Agnès, receive you Florent, as my husband and I will be your wife. I promise to love you faithfully in happiness and in hardship for all our life."
         ]
-      }, {
+      },
+      {
         "title": "Receiving consent"
-      }, {
+      },
+      {
         "title": "Blessing and exchange of wedding rings",
         "reader": "By Rosa and Nina",
         "paragraph": [
@@ -453,7 +496,8 @@
           "Florent : Agnès, receive this wedding ring, Proof of my love and of my faithfulness.",
           "Agnès : Florent, receive this wedding ring, Proof of my love and of my faithfulness."
         ]
-      }, {
+      },
+      {
         "title": "Nuptial blessing",
         "paragraph": [
           "Our Lord God,",
@@ -474,7 +518,8 @@
           "By Jesus, the Christ, our Lord",
           "Tous: Amen"
         ]
-      }, {
+      },
+      {
         "title": "Psalm of the Creation",
         "reader": "🎶Psalm of the Creation 🎶",
         "paragraph": [
@@ -503,9 +548,11 @@
           " ",
           "🎶 Refrain"
         ]
-      }, {
+      },
+      {
         "supertitle": "Prayer of the Church"
-      }, {
+      },
+      {
         "title": "Prayer of the spouses",
         "paragraph": [
           "Florent: Lord, you led us here, before You, for our wedding:",
@@ -530,7 +577,8 @@
           " ",
           "Everyone: Amen."
         ]
-      }, {
+      },
+      {
         "title": "Universal prayer",
         "reader": "Read by Jonathan, sing by Jean-Luc Lefrançois",
         "paragraph": [
@@ -554,7 +602,8 @@
           " ",
           "🎶Hear our prayers, hear our voices, hear our prayers rising up to You. 🎶"
         ]
-      }, {
+      },
+      {
         "title": "Lord’s Prayer",
         "paragraph": [
           "Our Father, who art in heaven,",
@@ -569,9 +618,11 @@
           " ",
           "Amen"
         ]
-      }, {
+      },
+      {
         "superTitle": "Go in the peace of Christ"
-      }, {
+      },
+      {
         "title": "Final blessing",
         "paragraph": [
           "May the Lord your God",
@@ -606,14 +657,14 @@
           " ",
           "Amen."
         ]
-      }, {
+      },
+      {
         "title": "Collection",
         "centered": true,
         "reader": "By Lucile, Richard and Mathilde",
-        "paragraph": [
-          "🎶Ave Maria - Beyoncé 🎶"
-        ]
-      }, {
+        "paragraph": ["🎶Ave Maria - Beyoncé 🎶"]
+      },
+      {
         "title": "Signing of the register",
         "centered": true,
         "paragraph": [
@@ -623,63 +674,53 @@
           "Jordane Grenat",
           "Johnathan Flores"
         ]
-      }, {
+      },
+      {
         "title": "Leaving the church",
         "reader": "🎶I’m feeling good - Nina Simmons 🎶"
-      }]
-    }
+      }
+    ]
   }
+}
 </i18n>
 
-<!-- eslint-disable vue/no-v-html @intlify/vue-i18n/no-v-html -->
 <template>
   <main id="wedding-church">
     <header class="header">
       <nav class="header-nav">
         <nuxt-link :to="prevUrl" class="typography-link">{{
-          $t('back-button')
+          t('back-button')
         }}</nuxt-link>
       </nav>
-      <h1 class="typography-title">{{ $t('title') }}</h1>
+      <h1 class="typography-title">{{ t('title') }}</h1>
     </header>
 
     <section class="typography-paragraph infos">
       <div class="detail">
-        <div
-          v-for="(block, i) in $i18n.messages.fr.blocks"
-          :key="block.title"
-          :class="{
-            todo: $t(`blocks[${i}].title`).startsWith('**'),
-          }"
-        >
+        <div v-for="(block, i) in messages.fr.blocks" :key="block.title">
           <hr v-if="block.separator" />
           <h2 v-if="block.superTitle" class="typography-title">
-            {{ $t(`blocks[${i}].superTitle`) }}
+            {{ t(`blocks[${i}].superTitle`) }}
           </h2>
           <h3 v-if="block.title" class="typography-title-3">
-            {{ $t(`blocks[${i}].title`) }}
+            {{ t(`blocks[${i}].title`) }}
           </h3>
           <em v-if="'reader' in block" class="reader">
-            {{ $t(`blocks[${i}].reader`) }}
+            {{ t(`blocks[${i}].reader`) }}
           </em>
           <p
             v-if="'paragraph' in block"
             :class="{ centered: !!block.centered }"
           >
             <span v-for="(item, j) in block.paragraph" :key="j">
-              {{ $t(`blocks[${i}].paragraph[${j}]`) }}
+              {{ t(`blocks[${i}].paragraph[${j}]`) }}
               <br />
             </span>
           </p>
           <ul v-if="'list' in block">
-            <li
-              v-for="(item, j) in block.list"
-              :key="j"
-              :class="{
-                todo: $t(`blocks[${i}].list[${j}]`).startsWith('**'),
-              }"
-              v-html="$t(`blocks[${i}].list[${j}]`)"
-            ></li>
+            <li v-for="(item, j) in block.list" :key="j">
+              {{ t(`blocks[${i}].list[${j}]`) }}
+            </li>
           </ul>
           <section v-if="'cards' in block" class="cards">
             <article
@@ -688,14 +729,14 @@
               class="tabpanel-card"
             >
               <h4 class="typography-title-4">
-                {{ $t(`blocks[${i}].cards[${j}].title`) }}
+                {{ t(`blocks[${i}].cards[${j}].title`) }}
               </h4>
               <p>
                 <span
                   v-for="(description, k) in block.cards[j].description"
                   :key="k"
                 >
-                  {{ $t(`blocks[${i}].cards[${j}].description[${k}]`) }}
+                  {{ t(`blocks[${i}].cards[${j}].description[${k}]`) }}
                   <br />
                 </span>
               </p>
@@ -707,23 +748,30 @@
   </main>
 </template>
 
-<script>
-export default {
+<script setup lang="js">
+import { ref } from 'vue'
+
+definePageMeta({
   layout: 'mariage',
-  data() {
-    return {
-      prevUrl: this.$route.query.prevUrl ?? '/mariage',
-    }
-  },
-  head() {
-    return {
-      htmlAttrs: {
-        lang: this.$i18n.locale,
-      },
-      title: `Mariage Agnès et Florent - 19 Août 2022`,
-    }
-  },
-}
+})
+
+const { t, messages } = useI18n({
+  useScope: 'local',
+})
+const route = useRoute()
+const prevUrl = ref(route.query.prevUrl ?? '/mariage')
+
+useSeoMeta({
+  ogType: 'website',
+  title: t('meta.title'),
+  ogTitle: t('meta.title'),
+  twitterTitle: t('meta.title'),
+  description: t('meta.description'),
+  ogDescription: t('meta.description'),
+  twitterDescription: t('meta.description'),
+  twitterCard: 'summary',
+  ogUrl: 'https://berthelot.io/mariage/church',
+})
 </script>
 
 <style scoped>

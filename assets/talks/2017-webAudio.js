@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   name: 'Réconcilions web et audio (feat B. Plouzennec)',
   metaInfo: 'Riviera Dev - mai 2017',
   slides: 'http://slides.com/benjaminplouzennec/reconcilions-web-et-audio#/',

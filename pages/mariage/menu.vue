@@ -1,58 +1,67 @@
-<i18n>
-  {
-    "fr": {
-      "title": "Menu",
-      "back-button": "⬅ Retour",
-      "next-day-button": "Demain ➡️",
-      "prev-day-button": "⬅️ Hier",
-      "reception": {
-        "title": "Vin d’honneur",
-        "hours": "16h - 17h30"
-      },
-      "cocktail": {
-        "title": "Cocktail",
-        "hours": "17h30 - 19h30"
-      },
-      "diner": {
-        "title": "Dîner",
-        "hours": "20h - 23h00"
-      },
-      "party": {
-        "title": "Soirée",
-        "hours": "23h - 4h00"
-      },
-      "after": {
-        "title": "Retour des mariés",
-        "hours": "11h - 17h00"
-      }
+<!-- eslint-disable @intlify/vue-i18n/no-unused-keys -->
+<i18n lang="json">
+{
+  "fr": {
+    "meta": {
+      "title": "Menu - Mariage Agnès et Florent",
+      "description": "Qu'est qu'on a mangé déjà ?"
     },
-    "en": {
-      "title": "Menu",
-      "back-button": "⬅ Retour",
-      "next-day-button": "Demain ➡️",
-      "prev-day-button": "⬅️ Hier",
-      "reception": {
-        "title": "Vin d’honneur",
-        "hours": "16h - 17h30"
-      },
-      "cocktail": {
-        "title": "Cocktail",
-        "hours": "17h30 - 19h30"
-      },
-      "diner": {
-        "title": "Diner",
-        "hours": "20h - 23h00"
-      },
-      "party": {
-        "title": "Soirée",
-        "hours": "23h - 4h00"
-      },
-      "after": {
-        "title": "Retour des mariés",
-        "hours": "11h - 17h00"
-      }
+    "title": "Menu",
+    "back-button": "⬅ Retour",
+    "next-day-button": "Demain ➡️",
+    "prev-day-button": "⬅️ Hier",
+    "reception": {
+      "title": "Vin d’honneur",
+      "hours": "16h - 17h30"
+    },
+    "cocktail": {
+      "title": "Cocktail",
+      "hours": "17h30 - 19h30"
+    },
+    "diner": {
+      "title": "Dîner",
+      "hours": "20h - 23h00"
+    },
+    "party": {
+      "title": "Soirée",
+      "hours": "23h - 4h00"
+    },
+    "after": {
+      "title": "Retour des mariés",
+      "hours": "11h - 17h00"
+    }
+  },
+  "en": {
+    "meta": {
+      "title": "Menu - Agnès and Florent wedding",
+      "description": "Do you remember what we ate?"
+    },
+    "title": "Menu",
+    "back-button": "⬅ Retour",
+    "next-day-button": "Demain ➡️",
+    "prev-day-button": "⬅️ Hier",
+    "reception": {
+      "title": "Vin d’honneur",
+      "hours": "16h - 17h30"
+    },
+    "cocktail": {
+      "title": "Cocktail",
+      "hours": "17h30 - 19h30"
+    },
+    "diner": {
+      "title": "Diner",
+      "hours": "20h - 23h00"
+    },
+    "party": {
+      "title": "Soirée",
+      "hours": "23h - 4h00"
+    },
+    "after": {
+      "title": "Retour des mariés",
+      "hours": "11h - 17h00"
     }
   }
+}
 </i18n>
 
 <template>
@@ -60,10 +69,10 @@
     <header class="header">
       <nav class="header-nav">
         <nuxt-link :to="prevUrl" class="typography-link">{{
-          $t('back-button')
+          t('back-button')
         }}</nuxt-link>
       </nav>
-      <h1 class="typography-title">{{ $t('title') }}</h1>
+      <h1 class="typography-title">{{ t('title') }}</h1>
     </header>
 
     <section class="typography-paragraph infos">
@@ -79,7 +88,7 @@
           aria-controls="tabpanel-1"
           @click="handleSelectTab(tab)"
         >
-          {{ $t(`${tab}.title`) }}
+          {{ t(`${tab}.title`) }}
         </button>
       </div>
 
@@ -95,14 +104,14 @@
         aria-labelledby="`${tab}-tab`"
       >
         <h2 class="typography-title-3 tab-hour">
-          {{ $t(`${tab}.hours`) }}
+          {{ t(`${tab}.hours`) }}
         </h2>
 
-        <Reception v-if="tab === 'reception'" />
-        <Cocktail v-if="tab === 'cocktail'" />
-        <Diner v-if="tab === 'diner'" />
-        <Party v-if="tab === 'party'" />
-        <After v-if="tab === 'after'" />
+        <MariageMenuReception v-if="tab === 'reception'" />
+        <MariageMenuCocktail v-if="tab === 'cocktail'" />
+        <MariageMenuDiner v-if="tab === 'diner'" />
+        <MariageMenuParty v-if="tab === 'party'" />
+        <MariageMenuAfter v-if="tab === 'after'" />
       </article>
     </section>
 
@@ -112,7 +121,7 @@
       class="typography-link move-day-button"
       @click="handleSelectNextDay()"
     >
-      {{ $t(`next-day-button`) }}
+      {{ t(`next-day-button`) }}
     </button>
     <button
       v-if="tabs.includes('after')"
@@ -120,81 +129,75 @@
       class="typography-link move-day-button"
       @click="handleSelectPrevDay()"
     >
-      {{ $t(`prev-day-button`) }}
+      {{ t(`prev-day-button`) }}
     </button>
   </main>
 </template>
 
-<script>
-import Reception from '~/components/mariage/menu/reception.vue'
-import Cocktail from '~/components/mariage/menu/cocktail.vue'
-import Diner from '~/components/mariage/menu/diner.vue'
-import Party from '~/components/mariage/menu/party.vue'
-import After from '~/components/mariage/menu/after.vue'
+<script setup lang="js">
+import { computed, onMounted } from 'vue'
 
-export default {
-  components: {
-    Cocktail,
-    Reception,
-    Diner,
-    Party,
-    After,
-  },
+definePageMeta({
   layout: 'mariage',
-  data() {
-    return {
-      selectedTab: this.getCurrentPeriod(),
-      prevUrl: this.$route.query.prevUrl ?? '/mariage',
-    }
-  },
-  head() {
-    return {
-      htmlAttrs: {
-        lang: this.$i18n.locale,
-      },
-      title: `Mariage Agnès et Florent - 19 Août 2022`,
-    }
-  },
-  computed: {
-    tabs() {
-      return ['party', 'after'].includes(this.selectedTab)
-        ? ['party', 'after']
-        : ['reception', 'cocktail', 'diner']
-    },
-  },
-  mounted() {
-    this.selectedTab = this.getCurrentPeriod()
-  },
-  methods: {
-    getCurrentPeriod() {
-      const now = new Date()
-      const currentDay = now.getDay()
-      const currentHour = now.getHours()
-      const currentMinutes = now.getMinutes()
+})
 
-      return currentDay === 7 && currentHour > 5
-        ? 'after'
-        : currentDay === 7 && currentHour <= 5
-        ? 'party'
-        : currentHour >= 23 && currentMinutes >= 30
-        ? 'party'
-        : currentHour >= 20
-        ? 'diner'
-        : currentHour >= 17 && currentMinutes >= 30
-        ? 'cocktail'
-        : 'reception'
-    },
-    handleSelectTab(newSelectedTab) {
-      this.selectedTab = newSelectedTab
-    },
-    handleSelectNextDay() {
-      this.selectedTab = 'after'
-    },
-    handleSelectPrevDay() {
-      this.selectedTab = 'cocktail'
-    },
-  },
+const { t } = useI18n({
+  useScope: 'local',
+})
+const route = useRoute()
+useSeoMeta({
+  ogType: 'website',
+  title: t('meta.title'),
+  ogTitle: t('meta.title'),
+  twitterTitle: t('meta.title'),
+  description: t('meta.description'),
+  ogDescription: t('meta.description'),
+  twitterDescription: t('meta.description'),
+  twitterCard: 'summary',
+  ogUrl: 'https://berthelot.io/mariage/menu',
+})
+
+const getCurrentPeriod = () => {
+  const now = new Date()
+  const currentDay = now.getDay()
+  const currentHour = now.getHours()
+  const currentMinutes = now.getMinutes()
+
+  return currentDay === 7 && currentHour > 5
+    ? 'after'
+    : currentDay === 7 && currentHour <= 5
+    ? 'party'
+    : currentHour >= 23 && currentMinutes >= 30
+    ? 'party'
+    : currentHour >= 20
+    ? 'diner'
+    : currentHour >= 17 && currentMinutes >= 30
+    ? 'cocktail'
+    : 'reception'
 }
+
+const selectedTab = ref(getCurrentPeriod())
+const prevUrl = ref(route.query.prevUrl ?? '/mariage')
+const tabs = computed(() => {
+  return ['party', 'after'].includes(selectedTab.value)
+    ? ['party', 'after']
+    : ['reception', 'cocktail', 'diner']
+})
+
+const handleSelectTab = (newSelectedTab) => {
+  selectedTab.value = newSelectedTab
+}
+
+const handleSelectNextDay = () => {
+  selectedTab.value = 'after'
+}
+const handleSelectPrevDay = () => {
+  selectedTab.value = 'cocktail'
+}
+
+onMounted(() => {
+  selectedTab.value = getCurrentPeriod()
+})
 </script>
 
 <style scoped>

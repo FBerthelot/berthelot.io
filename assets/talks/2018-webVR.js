@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   name: 'La toile en VR (feat B. Jonathan)',
   metaInfo: 'Devoxx France - Avril 2018',
   video: 'https://www.youtube.com/embed/JLhugL7Hvgc',

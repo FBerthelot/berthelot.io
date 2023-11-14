@@ -1,0 +1,54 @@
+/** Typography **/
+#wedding .typography-title {
+  font-family: var(--typography-serif-font);
+  font-weight: 400;
+  font-size: 3.25rem;
+  line-height: 4.5rem;
+  text-align: center;
+}
+
+#wedding .typography-title-2 {
+  font-family: var(--typography-sans-serif-font);
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 2.4rem;
+  text-align: center;
+}
+
+#wedding .typography-title-3 {
+  font-family: var(--typography-sans-serif-font);
+  font-size: 1.75rem;
+  font-weight: 500;
+  line-height: 2.4rem;
+  text-align: center;
+}
+
+#wedding .typography-title-4 {
+  font-family: var(--typography-sans-serif-font);
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+}
+
+#wedding .typography-paragraph {
+  font-family: var(--typography-sans-serif-font);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.6rem;
+}
+
+#wedding .typography-link {
+  color: var(--color-black);
+  text-decoration: underline;
+
+  font-family: var(--typography-sans-serif-font);
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+}
+
+#wedding .typography-link:hover,
+#wedding .typography-link:focus {
+  outline: none;
+  color: var(--color-primary);
+}

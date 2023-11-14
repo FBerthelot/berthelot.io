@@ -1,9 +1,31 @@
-<!-- eslint-disable @intlify/vue-i18n/no-raw-text -->
+<i18n lang="json">
+{
+  "fr": {
+    "title": "Liste des invités",
+    "loading": "Chargement...",
+    "error": "Erreur : {error}",
+    "no-invite": "Aucun invité ne correspond à la recherche.",
+    "inviteButton": "🌎",
+    "inviteAnswerButton": "📝"
+  },
+  "en": {
+    "title": "Guest list",
+    "loading": "Loading...",
+    "error": "Error : {error}",
+    "no-invite": "No invite matches the search.",
+    "inviteButton": "🌎",
+    "inviteAnswerButton": "📝"
+  }
+}
+</i18n>
+
 <template>
   <section class="invitations">
-    <h2 class="typography-title-2">Liste des invités</h2>
-    <span v-if="loading" class="typography-paragraph">Chargement...</span>
-    <span v-if="error" class="typography-paragraph">Erreur : {{ error }}</span>
+    <h2 class="typography-title-2">{{ t('title') }}</h2>
+    <span v-if="loading" class="typography-paragraph">{{ t('loading') }}</span>
+    <span v-if="error" class="typography-paragraph">{{
+      t('error', { error })
+    }}</span>
     <div v-if="!loading" class="invites">
       <input
         v-model="invitationsSearch"
@@ -11,7 +33,7 @@
         placeholder="Recherche"
       />
       <span v-if="!invitationsFiltered.length" class="typography-paragraph">
-        Aucun invité ne correspond à la recherche.
+        {{ t('no-invite') }}
       </span>
       <ul class="invites-list">
         <li v-for="invitation in invitationsFiltered" :key="invitation.id">
@@ -24,7 +46,14 @@
             class="icon"
             :to="`/mariage/${invitation.id}`"
           >
-            🌎
+            {{ t('inviteButton') }}
+          </nuxt-link>
+          <nuxt-link
+            title="Accéder à l'espace réponse invité"
+            class="icon"
+            :to="`/mariage/${invitation.id}/answer`"
+          >
+            {{ t('inviteAnswerButton') }}
           </nuxt-link>
         </li>
       </ul>
@@ -32,28 +61,24 @@
   </section>
 </template>
 
-<script>
-import { invitations } from '~/components/mariage/00_shared/finalInvitations.data'
+<script setup lang="js">
+import { invitations } from '~/components/mariage/01_shared/finalInvitations.data'
 
-export default {
-  data() {
-    return {
-      invitations,
-      invitationsSearch: '',
-      loading: false,
-      error: null,
-    }
-  },
-  computed: {
-    invitationsFiltered() {
-      return this.invitations.filter((invitation) =>
-        invitation.name
-          .toLowerCase()
-          .includes(this.invitationsSearch.toLowerCase()),
-      )
-    },
-  },
-}
+const { t } = useI18n({
+  useScope: 'local',
+})
+
+const invitationsSearch = ref('')
+const loading = ref(false)
+const error = ref(null)
+
+const invitationsFiltered = computed(() =>
+  invitations.filter((invitation) =>
+    invitation.name
+      .toLowerCase()
+      .includes(invitationsSearch.value.toLowerCase()),
+  ),
+)
 </script>
 
 <style scoped>

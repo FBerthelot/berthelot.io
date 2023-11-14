@@ -1,41 +1,50 @@
+<i18n lang="json">
+{
+  "fr": {
+    "meta": {
+      "title": "Mariage de Agnès et Florent",
+      "description": "Nous nous sommes dit oui, voici une animation qui représente notre mariage."
+    }
+  },
+  "en": {
+    "meta": {
+      "title": "Agnès and Florent wedding",
+      "description": "We said yes, here is an animation that represents our wedding."
+    }
+  }
+}
+</i18n>
+
 <template>
   <div id="wedding-page">
-    <Animation
-      :animate="animate"
-      :mode="mode"
-      :reduce-at-the-end="reduceAtTheEnd"
+    <Mariage00DesignSystemAnimation
+      :animate="true"
+      :mode="'sunset'"
+      :reduce-at-the-end="false"
     />
-    <!-- <button @click="animate = !animate">animate {{ !animate }}</button>
-    <button @click="mode = mode === 'sunset' ? 'zenith' : 'sunset'">
-      mode {{ mode === 'sunset' ? 'zenith' : 'sunset' }}
-    </button> -->
   </div>
 </template>
 
-<script>
-import Animation from '~/components/mariage/00_shared/animation/animation.vue'
-
-export default {
-  components: {
-    Animation,
-  },
+<script setup lang="js">
+definePageMeta({
   layout: 'mariage',
-  data() {
-    return {
-      animate: true,
-      reduceAtTheEnd: false,
-      mode: 'sunset',
-    }
-  },
-  head() {
-    return {
-      htmlAttrs: {
-        lang: this.$i18n.locale,
-      },
-      title: `Mariage Agnès et Florent`,
-    }
-  },
-}
+})
+
+const { t } = useI18n({
+  useScope: 'locale',
+})
+
+useSeoMeta({
+  ogType: 'website',
+  title: t('meta.title'),
+  ogTitle: t('meta.title'),
+  twitterTitle: t('meta.title'),
+  description: t('meta.description'),
+  ogDescription: t('meta.description'),
+  twitterDescription: t('meta.description'),
+  twitterCard: 'summary',
+  ogUrl: 'https://berthelot.io/mariage/',
+})
 </script>
 
 <style scoped>

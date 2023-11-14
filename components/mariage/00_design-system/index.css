@@ -1,0 +1,5 @@
+@import url('../../berthelot-system/reset.css');
+@import url('./colors/colors.css');
+@import url('./typography/typography.css');
+@import url('./button/button.css');
+@import url('./tabs/tabs.css');

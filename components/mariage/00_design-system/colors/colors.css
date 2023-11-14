@@ -1,0 +1,13 @@
+#wedding {
+  --color-background-light: #faf8ff;
+  --color-background-strong: #f1e8ff;
+  --color-background-dark: #2e3f4b;
+  --color-primary: #8d4b9a;
+  --color-gray: #f7f7f7;
+  --color-black: #000000;
+  --color-black-shadow: #0000000d;
+  --color-white: #ffffff;
+
+  --typography-sans-serif-font: 'Open Sans', sans-serif;
+  --typography-serif-font: 'DM Serif Display', serif;
+}

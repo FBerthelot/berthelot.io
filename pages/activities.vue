@@ -1,10 +1,11 @@
-<i18n>
+<i18n lang="json">
 {
   "fr": {
-    "activities": {
-      "title": "Activités",
-      "meta_description": "Mes travails passés, actuel et futur."
+    "meta": {
+      "title": "Mes activités - Florent Berthelot",
+      "description": "Je ne suis passioné et je travaille sur ces projets en parallèle."
     },
+    "title": "Activités",
     "now": "Mes occupations du moment",
     "paused": "En pause",
     "abandonned": "Ça n'a pas marché 🥲",
@@ -17,7 +18,8 @@
     "component-test-utils": {
       "name": "Component-test-utils",
       "p1": "J'ai développé un outil entre enzyme et test-utils qui permet de tester des composants quelque soit le framework.",
-      "p2": "Malheureusement, n'étant pas très doué en communication, j'ai échoué à l'étape de le faire connaitre."
+      "p2": "Malheureusement, n'étant pas très doué en communication, j'ai échoué à l'étape de le faire connaitre.",
+      "status": ""
     },
     "hero": {
       "name": "Hero",
@@ -31,28 +33,25 @@
       "p2": "J'interviens pour des audits et des formations autour de l'univers JavaScript.",
       "status": "Ouvert pour des audits et des formations"
     },
-    "wedding": {
-      "title": "Mariage",
-      "p1": "❤️ Je me marie avec l'amour de ma vie dans l'année ❤️",
-      "status": "💍 En préparation 💍"
-    },
     "aqua-compose": {
       "name": "Aqua-Compose",
       "p1": "Passioné d'aquariophilie, j'ai développé une application pour peupler sereinnement son aquarium.",
+      "p2": "",
       "status": "MVP développé, en pause."
     },
     "afterworks": {
       "name": "Afterworks",
-      "p1": " J'ai pour habitude d'organiser des afterworks entre collègues environ une fois par mois.",
-      "p2": "Le Covid étant passé par là, c'est en pause pour le moment.",
-      "status": "A venir 🍻"
+      "p1": "J'ai pour habitude d'organiser des afterworks entre collègues environ une fois par mois.",
+      "p2": "Intéressé ? Inscrivez-vous via le formulaire !",
+      "status": "🍻"
     }
   },
   "en": {
-    "activities": {
-      "title": "Activities",
-      "meta_description": "I'm not only a contractor, I also work on these side-projects."
+    "meta": {
+      "title": "My activities - Florent Berthelot",
+      "description": "I'm passionated and I work on all these projects."
     },
+    "title": "Activities",
     "now": "What I do now",
     "paused": "Paused",
     "abandonned": "It didn't work 🥲",
@@ -65,7 +64,8 @@
     "component-test-utils": {
       "name": "Component-test-utils",
       "p1": "I've coded a tool between Enzyme and Test-Utils to test components.",
-      "p2": "Unfortunatly, I didn't done any marketing so I failed to get the project known."
+      "p2": "Unfortunatly, I didn't done any marketing so I failed to get the project known.",
+      "status": ""
     },
     "hero": {
       "name": "Hero",
@@ -79,21 +79,17 @@
       "p2": "I give audits and training in the JavaScript universe.",
       "status": "Open to make audits et give training"
     },
-    "wedding": {
-      "title": "Wedding",
-      "p1": "❤️ I'm going to get married with the love of my life ❤️",
-      "status": "💍 Preparations ongoing 💍"
-    },
     "aqua-compose": {
       "name": "Aqua-Compose",
       "p1": "I'm passionated of aquarium, so I've developped an app to help populate a fish tank.",
+      "p2": "",
       "status": "MVP developped, paused."
     },
     "afterworks": {
       "name": "Afterworks",
       "p1": "I've always organised afterworks with colleagues about one per month.",
-      "p2": "Due to covid, it's paused.",
-      "status": "Stay tuned 🍻"
+      "p2": "Interested ? Register with the form !",
+      "status": "🍻"
     }
   }
 }
@@ -101,158 +97,117 @@
 
 <template>
   <div id="activities-page">
-    <Header :title="$t('activities.title')" />
+    <FlorentHeader :title="t('title')" />
 
     <main class="main">
-      <section>
-        <Typography component="h2" variant="title--small" class="section-title">
-          {{ $t('now') }}
-        </Typography>
+      <section v-for="activity in activities" :key="activity.title">
+        <h2 class="typo_title--small section-title">
+          {{ activity.title }}
+        </h2>
         <div class="subjects">
-          <Card class="subject" link="https://www.wefacto.com">
-            <CardTitle>{{ $t('wefacto.name') }}</CardTitle>
-            <Typography component="div">
-              <p>{{ $t('wefacto.p1') }}</p>
-              <p>{{ $t('wefacto.p2') }}</p>
-            </Typography>
-            <CardMeta>{{ $t('wefacto.status') }}</CardMeta>
-          </Card>
-
-          <Card class="subject" link="https://www.coachadaptative.com">
-            <CardTitle>{{ $t('coacha.name') }}</CardTitle>
-            <Typography component="div">
-              <p>{{ $t('coacha.p1') }}</p>
-              <p>{{ $t('coacha.p2') }}</p>
-            </Typography>
-            <CardMeta>{{ $t('coacha.status') }}</CardMeta>
-          </Card>
-
-          <Card class="subject" link="https://www.hero.fr/">
-            <CardTitle>{{ $t('hero.name') }}</CardTitle>
-            <Typography component="div">
-              <p>{{ $t('hero.p1') }}</p>
-              <p>{{ $t('hero.p2') }}</p>
-            </Typography>
-            <CardMeta>{{ $t('hero.status') }}</CardMeta>
-          </Card>
-
-          <Card class="subject">
-            <CardTitle>{{ $t('wedding.title') }}</CardTitle>
-            <Typography component="div">
-              {{ $t('wedding.p1') }}
-            </Typography>
-            <CardMeta>{{ $t('wedding.status') }}</CardMeta>
-          </Card>
-        </div>
-      </section>
-
-      <section>
-        <Typography component="h2" variant="title--small" class="section-title">
-          {{ $t('paused') }}
-        </Typography>
-        <div class="subjects">
-          <Card class="subject" link="https://aqua-compose.berthelot.io/">
-            <CardTitle>{{ $t('aqua-compose.name') }}</CardTitle>
-            <Typography component="div">
-              {{ $t('aqua-compose.p1') }}
-            </Typography>
-            <CardMeta>{{ $t('aqua-compose.status') }}</CardMeta>
-          </Card>
-
-          <Card class="subject" link="/afterwork.html">
-            <CardTitle>{{ $t('afterworks.name') }}</CardTitle>
-            <Typography component="div">
-              <p>{{ $t('afterworks.p1') }}</p>
-              <p>
-                {{ $t('afterworks.p2') }}
-              </p>
-            </Typography>
-            <CardMeta>{{ $t('afterworks.status') }}</CardMeta>
-          </Card>
-        </div>
-      </section>
-
-      <section>
-        <Typography component="h2" variant="title--small" class="section-title">
-          {{ $t('abandonned') }}
-        </Typography>
-        <div class="subjects">
-          <Card
+          <BerthelotSystemCard
+            v-for="item in activity.items"
+            :key="item.name"
+            :link="item.link"
+            :internal-link="item.link.startsWith('/')"
             class="subject"
-            link="https://component-test-utils.berthelot.io/"
           >
-            <CardTitle>{{ $t('component-test-utils.name') }}</CardTitle>
-            <Typography component="div">
-              <p>{{ $t('component-test-utils.p1') }}</p>
-              <p>
-                {{ $t('component-test-utils.p2') }}
-              </p>
-            </Typography>
-          </Card>
+            <h3 class="typo_title--small typo_light subject-title">
+              {{ item.name }}
+            </h3>
+            <div class="typo_default typo_white">
+              <p>{{ item.p1 }}</p>
+              <p>{{ item.p2 }}</p>
+            </div>
+            <div class="card_meta typo_white typo_meta-info">
+              {{ item.status }}
+            </div>
+          </BerthelotSystemCard>
         </div>
       </section>
     </main>
-
-    <Footer />
+    <FlorentFooter />
   </div>
 </template>
 
-<script>
-import { Card, CardTitle, CardMeta } from '~/components/card'
-import { Typography } from '~/components/typography'
-import Header from '~/components/header'
-import Footer from '~/components/footer'
+<script setup lang="js">
+import { ref } from 'vue'
 
-export default {
-  components: {
-    Card,
-    CardTitle,
-    CardMeta,
-    Typography,
-    Header,
-    Footer,
-  },
-  head() {
-    return {
-      htmlAttrs: {
-        lang: this.$i18n.locale,
+const { t } = useI18n({
+  useScope: 'local',
+})
+useSeoMeta({
+  ogType: 'website',
+  title: t('meta.title'),
+  ogTitle: t('meta.title'),
+  twitterTitle: t('meta.title'),
+  description: t('meta.description'),
+  ogDescription: t('meta.description'),
+  twitterDescription: t('meta.description'),
+  twitterCard: 'summary',
+  ogUrl: 'https://berthelot.io/activities',
+})
+
+const activities = ref([
+  {
+    title: t('now'),
+    items: [
+      {
+        name: t('wefacto.name'),
+        p1: t('wefacto.p1'),
+        p2: t('wefacto.p2'),
+        status: t('wefacto.status'),
+        link: 'https://wefacto.com',
       },
-      title: `Florent Berthelot - ${this.$t('activities.title')}`,
-      meta: [
-        {
-          hid: 'twitter:title',
-          name: 'twitter:title',
-          content: `Florent Berthelot - ${this.$t('activities.title')}`,
-        },
-        {
-          hid: 'og:title',
-          property: 'og:title',
-          content: `Florent Berthelot - ${this.$t('activities.title')}`,
-        },
-        {
-          hid: 'description',
-          name: 'description',
-          content: this.$t('activities.meta_description'),
-        },
-        {
-          hid: 'twitter:description',
-          name: 'twitter:description',
-          content: this.$t('activities.meta_description'),
-        },
-        {
-          hid: 'og:description',
-          property: 'og:description',
-          content: this.$t('activities.meta_description'),
-        },
-        {
-          hid: 'og:url',
-          property: 'og:url',
-          content: 'https://berthelot.io/activities',
-        },
-      ],
-    }
+
+      {
+        name: t('hero.name'),
+        p1: t('hero.p1'),
+        p2: t('hero.p2'),
+        status: t('hero.status'),
+        link: 'https://www.heropay.eu/',
+      },
+      {
+        name: t('afterworks.name'),
+        p1: t('afterworks.p1'),
+        p2: t('afterworks.p2'),
+        status: t('afterworks.status'),
+        link: '/afterworks',
+      },
+    ],
   },
-}
+  {
+    title: t('paused'),
+    items: [
+      {
+        name: t('coacha.name'),
+        p1: t('coacha.p1'),
+        p2: t('coacha.p2'),
+        status: t('coacha.status'),
+        link: 'https://www.coachadaptative.com',
+      },
+      {
+        name: t('aqua-compose.name'),
+        p1: t('aqua-compose.p1'),
+        p2: t('aqua-compose.p2'),
+        status: t('aqua-compose.status'),
+        link: 'https://aqua-compose.berthelot.io/',
+      },
+    ],
+  },
+  {
+    title: t('abandonned'),
+    items: [
+      {
+        name: t('component-test-utils.name'),
+        p1: t('component-test-utils.p1'),
+        p2: t('component-test-utils.p2'),
+        status: t('component-test-utils.status'),
+        link: 'https://component-test-utils.berthelot.io/',
+      },
+    ],
+  },
+])
 </script>
 
 <style scoped>

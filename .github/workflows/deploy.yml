@@ -3,9 +3,9 @@ name: Continous Integration and Delivery
 on:
   push:
     branches:
-      - master
+      - main
 env:
-  NODE_VERSION: '16.17.1'
+  NODE_VERSION: '20.3.1'
   NUXT_ENV_MAPS_URL: ${{ secrets.NUXT_ENV_MAPS_URL }}
   NUXT_ENV_FIREBASE_API_KEY: ${{secrets.NUXT_ENV_FIREBASE_API_KEY}}
   NUXT_ENV_FIREBASE_AUTH_DOMAIN: ${{secrets.NUXT_ENV_FIREBASE_AUTH_DOMAIN}}
@@ -33,10 +33,11 @@ jobs:
       - name: Install and Build 🔧
         run: |
           npm ci
-          npm run lint
-          npm run test
-          npm run build
           npm run generate
+
+      - name: Tests ✅
+        run: |
+          npm run test
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4

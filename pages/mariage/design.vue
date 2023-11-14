@@ -1,298 +1,234 @@
-<!-- eslint-disable @intlify/vue-i18n/no-raw-text -->
+<i18n lang="json">
+{
+  "fr": {
+    "meta": {
+      "title": "Agnès & Florent design system",
+      "description": "Voici le design system de notre mariage."
+    },
+    "title": "Agnès & Florent design system",
+    "intro": {
+      "p1": "Le thème de notre mariage est \"couché de soleil\" sur la mer, c'est là que tout à commencé pour nous.",
+      "p2Animation": "Cette animation",
+      "p2": "est la colonne vertébrale de notre thème de mariage. Elle a d'abort inspiré le ruban sur les invitations, qui a inspiré les robes des témoins d'Agnès, de la couleurs des fleurs, ...",
+      "p3": "De plus, pour décorer le château, nous somme parti sur une décoration marine car c'est une passion qui nous réuni tout les deux : Plongée, Bateau, Aquariums, ..."
+    },
+    "logo": {
+      "title": "Logo",
+      "whiteOnTransparent": {
+        "title": "Blanc sur fond transparent",
+        "downloadPng": "Télécharger la version PNG",
+        "downloadPng400x": "Télécharger la version PNG 400x",
+        "downloadSvg": "Télécharger la version SVG"
+      },
+      "whiteOnViolet": {
+        "title": "Blanc sur fond violet",
+        "downloadPng": "Télécharger la version PNG",
+        "downloadPng400x": "Télécharger la version PNG 400x",
+        "downloadSvg": "Télécharger la version SVG"
+      },
+      "whiteOnTransparentWithDate": {
+        "title": "Blanc sur fond transparent avec date",
+        "downloadSvg": "Télécharger la version SVG"
+      },
+      "whiteOnVioletWithDate": {
+        "title": "Blanc sur fond violet avec date",
+        "downloadSvg": "Télécharger la version SVG"
+      }
+    }
+  },
+  "en": {
+    "meta": {
+      "title": "Agnès & Florent design system",
+      "description": "This is the design system of our wedding."
+    },
+    "title": "Agnès & Florent design system",
+    "intro": {
+      "p1": "The theme of our wedding is \"sunset\" on the sea, this is where it all started for us.",
+      "p2Animation": "This animation",
+      "p2": "is the backbone of our wedding theme. It first inspired the ribbon on the invitations, which inspired Agnès' bridesmaids' dresses, the color of the flowers, ...",
+      "p3": "In addition, to decorate the castle, we went for a marine decoration because it is a passion that brings us both together: Diving, Boat, Aquariums, ..."
+    },
+    "logo": {
+      "title": "Logo",
+      "whiteOnTransparent": {
+        "title": "White on transparent background",
+        "downloadPng": "Download PNG version",
+        "downloadPng400x": "Download PNG version 400x",
+        "downloadSvg": "Download SVG version"
+      },
+      "whiteOnViolet": {
+        "title": "White on violet background",
+        "downloadPng": "Download PNG version",
+        "downloadPng400x": "Download PNG version 400x",
+        "downloadSvg": "Download SVG version"
+      },
+      "whiteOnTransparentWithDate": {
+        "title": "White on transparent background with date",
+        "downloadSvg": "Download SVG version"
+      },
+      "whiteOnVioletWithDate": {
+        "title": "White on violet background with date",
+        "downloadSvg": "Download SVG version"
+      }
+    }
+  }
+}
+</i18n>
+
 <template>
   <main id="wedding-design-system">
-    <h1 class="typography-title">Agnès &amp; Florent design system</h1>
+    <h1 class="typography-title">
+      {{ t('title') }}
+    </h1>
 
     <p class="typography-paragraph intro">
-      Le thème de notre mariage est "couché de soleil" sur la mer, c'est là que
-      tout à commencé pour nous.
+      {{ t(`intro.p1`) }}
       <br /><br />
 
       <a
         class="typography-link"
         href="https://berthelot.io/mariage"
         target="__blank"
-        >Cette animation</a
       >
-      est la colonne vertébrale de notre thème de mariage. Elle a d'abort
-      inspiré le ruban sur les invitations, qui a inspiré les robes des témoins
-      d'agnès, de la couleurs des fleurs, ...
+        {{ t('intro.p2Animation') }}
+      </a>
 
+      {{ t(`intro.p2`) }}
       <br /><br />
-      De plus, pour décorer le château, nous somme parti sur une décoration
-      marine car c'est une passion qui nous réuni tout les deux : Plongée,
-      Bateau, Aquariums, ...
+      {{ t(`intro.p3`) }}
     </p>
 
     <hr />
 
     <section>
-      <h1 class="typography-title-2">Logo</h1>
+      <h1 class="typography-title-2">{{ t('logo.title') }}</h1>
 
       <div class="logo-card-container">
         <article class="logo-card">
-          <h3 class="typography-title-3">Blanc sur fond transparent</h3>
-          <img alt="" :src="logoWTSVG" />
+          <h3 class="typography-title-3">
+            {{ t('logo.whiteOnTransparent.title') }}
+          </h3>
+          <img alt="" src="/assets/mariage/Agnes & Florent-transparent.svg" />
           <a
-            :href="logoWTPNG"
+            href="/assets/mariage/Agnes & Florent-transparent.png"
             class="typography-link"
             download="logo_transparent-agnes_florent.png"
-            >Télécharger la version PNG</a
+            >{{ t('logo.whiteOnTransparent.downloadPng') }}</a
           >
           <a
-            :href="logoWT400PNG"
+            href="/assets/mariage/Agnes & Florent-transparent-400x.png"
             class="typography-link"
             download="logo_transparent-agnes_florent.400x.png"
-            >Télécharger la version PNG 400x</a
+            >{{ t('logo.whiteOnTransparent.downloadPng400x') }}</a
           >
           <a
-            :href="logoWTSVG"
+            href="/assets/mariage/Agnes & Florent-transparent.svg"
             class="typography-link"
             download="logo_transparent-agnes_florent.svg"
-            >Télécharger la version SVG</a
-          >
-        </article>
-
-        <article class="logo-card">
-          <h3 class="typography-title-3">Blanc sur fond violet</h3>
-          <img alt="" :src="logoVTSVG" />
-          <a
-            :href="logoVTPNG"
-            class="typography-link"
-            download="logo_violet-agnes_florent.png"
-            >Télécharger la version PNG</a
-          >
-          <a
-            :href="logoVT400PNG"
-            class="typography-link"
-            download="logo_violet-agnes_florent.400x.png"
-            >Télécharger la version PNG 400x</a
-          >
-          <a
-            :href="logoVTSVG"
-            class="typography-link"
-            download="logo_violet-agnes_florent.svg"
-            >Télécharger la version SVG</a
+            >{{ t('logo.whiteOnTransparent.downloadSvg') }}</a
           >
         </article>
 
         <article class="logo-card">
           <h3 class="typography-title-3">
-            Blanc sur fond transparent avec date
+            {{ t('logo.whiteOnViolet.title') }}
           </h3>
-          <img alt="" :src="logoWT2SVG" />
+          <img alt="" src="/assets/mariage/Agnes & Florent-violet.svg" />
           <a
-            :href="logoWT2SVG"
+            href="/assets/mariage/Agnes & Florent-violet.png"
             class="typography-link"
-            download="logo_transparent_date-agnes_florent.svg"
-            >Télécharger la version SVG</a
+            download="logo_violet-agnes_florent.png"
+            >{{ t('logo.whiteOnViolet.downloadPng') }}</a
+          >
+          <a
+            href="/assets/mariage/Agnes & Florent-violet-400x.png"
+            class="typography-link"
+            download="logo_violet-agnes_florent.400x.png"
+            >{{ t('logo.whiteOnViolet.downloadPng400x') }}</a
+          >
+          <a
+            href="/assets/mariage/Agnes & Florent-violet.svg"
+            class="typography-link"
+            download="logo_violet-agnes_florent.svg"
+            >{{ t('logo.whiteOnViolet.downloadSvg') }}</a
           >
         </article>
 
         <article class="logo-card">
-          <h3 class="typography-title-3">Blanc sur fond violet avec date</h3>
-          <img alt="" :src="logoVT6SVG" />
+          <h3 class="typography-title-3">
+            {{ t('logo.whiteOnTransparentWithDate.title') }}
+          </h3>
+          <img
+            alt=""
+            src="/assets/mariage/Agnes & Florent 19-08-2023-transparent.svg"
+          />
           <a
-            :href="logoVT6SVG"
+            href="/assets/mariage/Agnes & Florent 19-08-2023-transparent.svg"
+            class="typography-link"
+            download="logo_transparent_date-agnes_florent.svg"
+            >{{ t('logo.whiteOnTransparentWithDate.downloadSvg') }}</a
+          >
+        </article>
+
+        <article class="logo-card">
+          <h3 class="typography-title-3">
+            {{ t('logo.whiteOnVioletWithDate.title') }}
+          </h3>
+          <img
+            alt=""
+            src="/assets/mariage/Agnes & Florent 19-08-2023-violet.svg"
+          />
+          <a
+            href="/assets/mariage/Agnes & Florent 19-08-2023-violet.svg"
             class="typography-link"
             download="logo_white_date-agnes_florent.svg"
-            >Télécharger la version SVG</a
+            >{{ t('logo.whiteOnVioletWithDate.downloadSvg') }}</a
           >
         </article>
       </div>
     </section>
-
     <hr />
 
-    <section>
-      <h1 class="typography-title-2">Couleurs</h1>
-
-      <article class="card card-flex">
-        <div class="color-card typography-paragraph color-background-light">
-          <span>color-background-light</span>
-        </div>
-        <div class="color-card typography-paragraph color-background-strong">
-          <span>color-background-strong</span>
-        </div>
-        <div class="color-card typography-paragraph color-background-dark">
-          <span>color-background-dark</span>
-        </div>
-        <div class="color-card typography-paragraph color-primary">
-          <span>color-primary</span>
-        </div>
-        <div class="color-card typography-paragraph color-gray">
-          <span>color-gray</span>
-        </div>
-        <div class="color-card typography-paragraph color-black">
-          <span>color-black</span>
-        </div>
-        <div class="color-card typography-paragraph color-black-shadow">
-          <span>color-black-shadow</span>
-        </div>
-        <div class="color-card typography-paragraph color-white">
-          <span>color-white</span>
-        </div>
-      </article>
-    </section>
-
+    <Mariage00DesignSystemColorsDoc />
     <hr />
 
-    <section>
-      <h1 class="typography-title-2">Typography</h1>
-
-      <article class="card">
-        <p class="typography-title">typography-title</p>
-        <p class="typography-title-2">typography-title-2</p>
-        <p class="typography-title-3">typography-title-3</p>
-        <p class="typography-title-4">typography-title-4</p>
-        <p class="typography-paragraph">typography-paragraph</p>
-        <p class="typography-link">typography-link</p>
-      </article>
-
-      <p class="typography-paragraph intro">
-        Les fonts utilisées sur le site web sont :<br />
-        - Open Sans, sans-serif<br />
-        - DM Serif Display, serif<br /><br />
-        Les fonts utilisées sur les papiers sont :<br />
-        - Western Princess<br />
-        - Mrs Eaves Italic<br />
-      </p>
-    </section>
-
+    <Mariage00DesignSystemTypographyDoc />
     <hr />
 
-    <section>
-      <h1 class="typography-title-2">Button</h1>
-
-      <article class="card color-background-dark">
-        <button class="button">Un boutton</button>
-      </article>
-    </section>
-
+    <Mariage00DesignSystemButtonDoc />
     <hr />
 
-    <section>
-      <h1 class="typography-title-2">Tabs</h1>
+    <Mariage00DesignSystemIconsDoc />
+    <hr />
 
-      <article class="card">
-        <div class="tablist" role="tablist" aria-labelledby="tablist-1">
-          <button
-            id="tab-1"
-            type="button"
-            class="tab"
-            role="tab"
-            :aria-selected="selectedTab === 1"
-            aria-controls="tabpanel-1"
-            @click="selectedTab = 1"
-          >
-            Tab 1
-          </button>
+    <Mariage00DesignSystemTabsDoc />
+    <hr />
 
-          <button
-            id="tab-2"
-            type="button"
-            class="tab"
-            role="tab"
-            :aria-selected="selectedTab === 2"
-            aria-controls="tabpanel-2"
-            @click="selectedTab = 2"
-          >
-            Tab 2
-          </button>
-        </div>
-
-        <article
-          :class="{
-            tabpanel: true,
-            tabpanel__open: selectedTab === 1,
-          }"
-          role="tabpanel"
-          tabindex="0"
-          aria-labelledby="tab-1"
-        >
-          <p class="typography-paragraph">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Pellentesque interdum ante non volutpat gravida. Nullam imperdiet
-            finibus suscipit. Integer ac mollis libero. Aliquam semper tristique
-            pharetra. Donec quis fringilla libero. Sed sit amet auctor lectus.
-            Ut interdum purus a ultrices varius. In semper enim et tempor
-            gravida. Sed tristique orci mi, porta scelerisque quam gravida
-            placerat. Vivamus massa neque, vestibulum vestibulum feugiat ut,
-            consectetur sed est. Suspendisse in mi sit amet lectus rutrum
-            venenatis sit amet eu lectus. Curabitur eu libero vulputate,
-            eleifend ligula et, auctor ipsum. Morbi egestas, libero vel
-            ullamcorper consectetur, nibh nisi mattis dolor, at dapibus leo
-            risus ut augue.
-          </p>
-        </article>
-
-        <article
-          :class="{
-            tabpanel: true,
-            tabpanel__open: selectedTab === 2,
-          }"
-          role="tabpanel"
-          tabindex="0"
-          aria-labelledby="tab-2"
-        >
-          <p class="typography-paragraph">
-            Duis mauris mauris, porttitor id tincidunt in, vehicula eget sem.
-            Vivamus nibh libero, tempus in lobortis quis, egestas at nisi.
-            Pellentesque habitant morbi tristique senectus et netus et malesuada
-            fames ac turpis egestas. Morbi vehicula mi urna, id luctus neque
-            lobortis sit amet. Integer sed felis feugiat, posuere ligula id,
-            ornare erat. Nulla suscipit ex ex, vel semper neque ullamcorper nec.
-            Aliquam porta lorem id tincidunt varius. Quisque viverra feugiat dui
-            non vehicula. Praesent eleifend nisi ligula, vitae maximus turpis
-            volutpat vitae.
-          </p>
-        </article>
-      </article>
-    </section>
-
+    <Mariage00DesignSystemAnimationDoc />
     <hr />
   </main>
 </template>
 
-<script>
-import logoWTPNG from '~/components/mariage/00_shared/logo/logo-02.png'
-import logoWT400PNG from '~/components/mariage/00_shared/logo/logo-02-400x.png'
-import logoWTSVG from '~/components/mariage/00_shared/logo/logo-02.svg'
-
-import logoVTPNG from '~/components/mariage/00_shared/logo/logo-04.png'
-import logoVT400PNG from '~/components/mariage/00_shared/logo/logo-04-400x.png'
-import logoVTSVG from '~/components/mariage/00_shared/logo/logo-04.svg'
-
-import logoWT2SVG from '~/components/mariage/00_shared/logo/logo-03.svg'
-import logoVT6SVG from '~/components/mariage/00_shared/logo/logo-06.svg'
-
-export default {
+<script setup lang="js">
+definePageMeta({
   layout: 'mariage',
-  data: () => {
-    return {
-      logoWTPNG,
-      logoWTSVG,
-      logoWT400PNG,
+})
 
-      logoVTPNG,
-      logoVT400PNG,
-      logoVTSVG,
+const { t } = useI18n({
+  useScope: 'locale',
+})
 
-      logoWT2SVG,
-      logoVT6SVG,
-
-      selectedTab: 1,
-    }
-  },
-  head() {
-    return {
-      htmlAttrs: {
-        lang: this.$i18n.locale,
-      },
-      title: `Design System - Mariage Agnès et Florent - 19 Août 2022`,
-    }
-  },
-}
+useSeoMeta({
+  ogType: 'website',
+  title: t('meta.title'),
+  ogTitle: t('meta.title'),
+  twitterTitle: t('meta.title'),
+  description: t('meta.description'),
+  ogDescription: t('meta.description'),
+  twitterDescription: t('meta.description'),
+  twitterCard: 'summary',
+  ogUrl: 'https://berthelot.io/mariage/design',
+})
 </script>
 
 <style scoped>
@@ -341,45 +277,5 @@ section {
   margin-left: 25vw;
   margin-top: 1rem;
   padding: 1rem;
-}
-
-.card-flex {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.color-card {
-  width: 7rem;
-  height: 7rem;
-  border: 1px solid black;
-}
-.color-card span {
-  color: cadetblue;
-}
-
-.color-background-light {
-  background-color: var(--color-background-light);
-}
-.color-background-strong {
-  background-color: var(--color-background-strong);
-}
-.color-background-dark {
-  background-color: var(--color-background-dark);
-}
-.color-primary {
-  background-color: var(--color-primary);
-}
-.color-gray {
-  background-color: var(--color-gray);
-}
-.color-black {
-  background-color: var(--color-black);
-}
-.color-black-shadow {
-  background-color: var(--color-black-shadow);
-}
-.color-white {
-  background-color: var(--color-white);
 }
 </style>

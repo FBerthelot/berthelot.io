@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   name: 'Package ? Tout compris !',
   metaInfo: 'Snowcamp - Février 2017',
   slides:

@@ -1,81 +1,78 @@
-<i18n>
-  {
-    "fr": {
-      "subtitle": "💡 Vous pouvez cliquer sur les évènements pour plus de détails.",
-      "ok": "ok",
-      "Sam": "Sam",
-      "Dim": "Dim",
-      "19": "19",
-      "20": "20",
-      "separator": "-",
-      "0:00": "0:00",
-      "1:00": "1:00",
-      "2:00": "2:00",
-      "3:00": "3:00",
-      "4:00": "4:00",
-      "5:00": "5:00",
-      "6:00": "6:00",
-      "7:00": "7:00",
-      "8:00": "8:00",
-      "9:00": "9:00",
-      "10:00": "10:00",
-      "11:00": "11:00",
-      "12:00": "12:00",
-      "13:00": "13:00",
-      "14:00": "14:00",
-      "15:00": "15:00",
-      "16:00": "16:00",
-      "17:00": "17:00",
-      "18:00": "18:00",
-      "19:00": "19:00",
-      "20:00": "20:00",
-      "21:00": "21:00",
-      "22:00": "22:00",
-      "23:00": "23:00",
-      "24:00": "24:00"
-    },
-    "en": {
-      "subtitle": "💡 You can click on each event for more details.",
-      "ok": "ok",
-      "Sam": "Sat",
-      "Dim": "Sun",
-      "19": "19",
-      "20": "20",
-      "separator": "-",
-      "0:00": "0:00",
-      "1:00": "1:00",
-      "2:00": "2:00",
-      "3:00": "3:00",
-      "4:00": "4:00",
-      "5:00": "5:00",
-      "6:00": "6:00",
-      "7:00": "7:00",
-      "8:00": "8:00",
-      "9:00": "9:00",
-      "10:00": "10:00",
-      "11:00": "11:00",
-      "12:00": "12:00",
-      "13:00": "13:00",
-      "14:00": "14:00",
-      "15:00": "15:00",
-      "16:00": "16:00",
-      "17:00": "17:00",
-      "18:00": "18:00",
-      "19:00": "19:00",
-      "20:00": "20:00",
-      "21:00": "21:00",
-      "22:00": "22:00",
-      "23:00": "23:00",
-      "24:00": "24:00"
-    }
+<i18n lang="json">
+{
+  "fr": {
+    "subtitle": "💡 Vous pouvez cliquer sur les évènements pour plus de détails.",
+    "ok": "ok",
+    "Sam": "Sam",
+    "Dim": "Dim",
+    "19": "19",
+    "20": "20",
+    "separator": "-",
+    "0:00": "0:00",
+    "1:00": "1:00",
+    "2:00": "2:00",
+    "3:00": "3:00",
+    "4:00": "4:00",
+    "5:00": "5:00",
+    "6:00": "6:00",
+    "7:00": "7:00",
+    "8:00": "8:00",
+    "9:00": "9:00",
+    "10:00": "10:00",
+    "11:00": "11:00",
+    "12:00": "12:00",
+    "13:00": "13:00",
+    "14:00": "14:00",
+    "15:00": "15:00",
+    "16:00": "16:00",
+    "17:00": "17:00",
+    "18:00": "18:00",
+    "19:00": "19:00",
+    "20:00": "20:00",
+    "21:00": "21:00",
+    "22:00": "22:00",
+    "23:00": "23:00"
+  },
+  "en": {
+    "subtitle": "💡 You can click on each event for more details.",
+    "ok": "ok",
+    "Sam": "Sat",
+    "Dim": "Sun",
+    "19": "19",
+    "20": "20",
+    "separator": "-",
+    "0:00": "0:00",
+    "1:00": "1:00",
+    "2:00": "2:00",
+    "3:00": "3:00",
+    "4:00": "4:00",
+    "5:00": "5:00",
+    "6:00": "6:00",
+    "7:00": "7:00",
+    "8:00": "8:00",
+    "9:00": "9:00",
+    "10:00": "10:00",
+    "11:00": "11:00",
+    "12:00": "12:00",
+    "13:00": "13:00",
+    "14:00": "14:00",
+    "15:00": "15:00",
+    "16:00": "16:00",
+    "17:00": "17:00",
+    "18:00": "18:00",
+    "19:00": "19:00",
+    "20:00": "20:00",
+    "21:00": "21:00",
+    "22:00": "22:00",
+    "23:00": "23:00"
   }
+}
 </i18n>
 
-<!-- eslint-disable vue/no-v-html -->
 <template>
   <section class="schedule">
     <h2 class="typography-title-2">{{ title }}</h2>
-    <p class="typography-paragraph">{{ $t('subtitle') }}</p>
+    <p class="typography-paragraph">{{ t('subtitle') }}</p>
     <div class="calendar">
       <div
         id="timeMarker"
@@ -88,36 +85,36 @@
       ></div>
       <div class="timeline">
         <div class="spacer"></div>
-        <div class="time-marker">{{ $t('0:00') }}</div>
-        <div class="time-marker">{{ $t('1:00') }}</div>
-        <div class="time-marker">{{ $t('2:00') }}</div>
-        <div class="time-marker">{{ $t('3:00') }}</div>
-        <div class="time-marker">{{ $t('4:00') }}</div>
-        <div class="time-marker">{{ $t('5:00') }}</div>
-        <div class="time-marker">{{ $t('6:00') }}</div>
-        <div class="time-marker">{{ $t('7:00') }}</div>
-        <div class="time-marker">{{ $t('8:00') }}</div>
-        <div class="time-marker">{{ $t('9:00') }}</div>
-        <div class="time-marker">{{ $t('10:00') }}</div>
-        <div class="time-marker">{{ $t('11:00') }}</div>
-        <div class="time-marker">{{ $t('12:00') }}</div>
-        <div class="time-marker">{{ $t('13:00') }}</div>
-        <div class="time-marker">{{ $t('14:00') }}</div>
-        <div class="time-marker">{{ $t('15:00') }}</div>
-        <div class="time-marker">{{ $t('16:00') }}</div>
-        <div class="time-marker">{{ $t('17:00') }}</div>
-        <div class="time-marker">{{ $t('18:00') }}</div>
-        <div class="time-marker">{{ $t('19:00') }}</div>
-        <div class="time-marker">{{ $t('20:00') }}</div>
-        <div class="time-marker">{{ $t('21:00') }}</div>
-        <div class="time-marker">{{ $t('22:00') }}</div>
-        <div class="time-marker">{{ $t('23:00') }}</div>
+        <div class="time-marker">{{ t('0:00') }}</div>
+        <div class="time-marker">{{ t('1:00') }}</div>
+        <div class="time-marker">{{ t('2:00') }}</div>
+        <div class="time-marker">{{ t('3:00') }}</div>
+        <div class="time-marker">{{ t('4:00') }}</div>
+        <div class="time-marker">{{ t('5:00') }}</div>
+        <div class="time-marker">{{ t('6:00') }}</div>
+        <div class="time-marker">{{ t('7:00') }}</div>
+        <div class="time-marker">{{ t('8:00') }}</div>
+        <div class="time-marker">{{ t('9:00') }}</div>
+        <div class="time-marker">{{ t('10:00') }}</div>
+        <div class="time-marker">{{ t('11:00') }}</div>
+        <div class="time-marker">{{ t('12:00') }}</div>
+        <div class="time-marker">{{ t('13:00') }}</div>
+        <div class="time-marker">{{ t('14:00') }}</div>
+        <div class="time-marker">{{ t('15:00') }}</div>
+        <div class="time-marker">{{ t('16:00') }}</div>
+        <div class="time-marker">{{ t('17:00') }}</div>
+        <div class="time-marker">{{ t('18:00') }}</div>
+        <div class="time-marker">{{ t('19:00') }}</div>
+        <div class="time-marker">{{ t('20:00') }}</div>
+        <div class="time-marker">{{ t('21:00') }}</div>
+        <div class="time-marker">{{ t('22:00') }}</div>
+        <div class="time-marker">{{ t('23:00') }}</div>
       </div>
       <div class="days">
         <div class="day mon">
           <div class="date">
-            <p class="date-num">{{ $t('19') }}</p>
-            <p class="date-day">{{ $t('Sam') }}</p>
+            <p class="date-num">{{ t('19') }}</p>
+            <p class="date-day">{{ t('Sam') }}</p>
           </div>
           <div class="events">
             <button
@@ -167,7 +164,7 @@
                     minute: '2-digit',
                   })
                 }}
-                {{ $t('separator') }}
+                {{ t('separator') }}
                 {{
                   event.endDate.toLocaleTimeString('fr-FR', {
                     hour: '2-digit',
@@ -180,8 +177,8 @@
         </div>
         <div class="day tues">
           <div class="date">
-            <p class="date-num">{{ $t('20') }}</p>
-            <p class="date-day">{{ $t('Dim') }}</p>
+            <p class="date-num">{{ t('20') }}</p>
+            <p class="date-day">{{ t('Dim') }}</p>
           </div>
           <div class="events">
             <button
@@ -226,7 +223,7 @@
                     minute: '2-digit',
                   })
                 }}
-                {{ $t('separator') }}
+                {{ t('separator') }}
                 {{
                   event.endDate.toLocaleTimeString('fr-FR', {
                     hour: '2-digit',
@@ -250,7 +247,7 @@
               minute: '2-digit',
             })
           }}
-          {{ $t('separator') }}
+          {{ t('separator') }}
           {{
             eventToShowInDetail.endDate.toLocaleTimeString('fr-FR', {
               hour: '2-digit',
@@ -268,74 +265,78 @@
           {{ eventToShowInDetail.location.address }}
         </address>
 
+        <!-- eslint-disable vue/no-v-html -->
         <p
           class="typography-paragraph modal-content-detail"
           v-html="eventToShowInDetail.detail"
         ></p>
-        <button class="button" @click="closeEventModal">{{ $t('ok') }}</button>
+        <!-- eslint-enable vue/no-v-html -->
+        <button class="button" @click="closeEventModal">{{ t('ok') }}</button>
       </div>
     </div>
   </section>
 </template>
 
-<script>
-export default {
-  props: {
-    schedule: {
-      type: Array,
-      required: true,
-    },
-    title: {
-      type: String,
-      required: true,
-    },
-  },
-  data() {
-    return {
-      currentDate: new Date(),
-      timerInterval: null,
+<script setup lang="js">
+import { onBeforeUnmount, onMounted } from 'vue'
 
-      eventToShowInDetail: null,
+const { t } = useI18n({
+  useScope: 'local',
+})
+
+const { schedule, title } = defineProps({
+  schedule: {
+    type: Array,
+    required: true,
+  },
+  title: {
+    type: String,
+    required: true,
+  },
+})
+
+const currentDate = ref(new Date())
+const timerInterval = ref(null)
+const eventToShowInDetail = ref(null)
+
+const startTimer = () => {
+  const now = new Date()
+  if (now < new Date('2023/08/19 1:00:00')) {
+    if (now.getHours() >= 0 && now.getHours() < 10) {
+      now.setFullYear(2023, 7, 20)
+    } else {
+      currentDate.value.setFullYear(2023, 7, 19)
     }
-  },
-  beforeDestroy() {
-    clearInterval(this.timerInterval)
-  },
-  mounted() {
-    this.startTimer()
-  },
-  methods: {
-    showEventInDetails(event) {
-      this.eventToShowInDetail = event
-    },
-    closeEventModal() {
-      this.eventToShowInDetail = null
-    },
-    startTimer() {
-      const now = new Date()
-      if (now < new Date('2023/08/19 1:00:00')) {
-        if (now.getHours() >= 0 && now.getHours() < 10) {
-          now.setFullYear(2023, 7, 20)
-        } else {
-          this.currentDate.setFullYear(2023, 7, 19)
-        }
-      }
-      this.currentDate = now
+  }
+  currentDate.value = now
 
-      this.timerInterval = setInterval(() => {
-        const now = new Date()
-        if (now < new Date('2023/08/19 1:00:00')) {
-          if (now.getHours() >= 0 && now.getHours() < 10) {
-            now.setFullYear(2023, 7, 20)
-          } else {
-            now.setFullYear(2023, 7, 19)
-          }
-        }
-        this.currentDate = now
-      }, 1000)
-    },
-  },
+  timerInterval.value = setInterval(() => {
+    const now = new Date()
+    if (now < new Date('2023/08/19 1:00:00')) {
+      if (now.getHours() >= 0 && now.getHours() < 10) {
+        now.setFullYear(2023, 7, 20)
+      } else {
+        now.setFullYear(2023, 7, 19)
+      }
+    }
+    currentDate.value = now
+  }, 1000)
 }
+
+const closeEventModal = () => {
+  eventToShowInDetail.value = null
+}
+const showEventInDetails = (event) => {
+  eventToShowInDetail.value = event
+}
+
+onBeforeUnmount(() => {
+  clearInterval(timerInterval.value)
+})
+
+onMounted(() => {
+  startTimer()
+})
 </script>
 
 <style>

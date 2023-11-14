@@ -1,15 +1,17 @@
-<i18n>
+<i18n lang="json">
 {
   "fr": {
-    "articles": {
-      "title": "Blog d'un artisan du web",
-      "meta_description": "J'écris sur le web, les tests, le JavaScript, les designs systems, ..."
+    "title": "Blog d'un artisan du web",
+    "meta": {
+      "title": "Blog d'un artisan du web - Florent Berthelot",
+      "description": "J'écris sur le web, les tests, le JavaScript, les designs systems, ..."
     }
   },
   "en": {
-    "articles": {
-      "title": "Blog",
-      "meta_description": "I write on Web, tests, JavaScript, Design Systems, ..."
+    "title": "Blog",
+    "meta": {
+      "title": "Blog of a web craftsman guy - Florent Berthelot",
+      "description": "I write on Web, tests, JavaScript, Design Systems, ..."
     }
   }
 }
@@ -17,98 +19,60 @@
 
 <template>
   <div id="articles-page">
-    <Header :title="$t('articles.title')" />
+    <FlorentHeader :title="t('title')" />
 
     <main class="subjects">
-      <Card
-        v-for="subject in subjects"
-        :key="subject.name"
-        :link="`/articles/${subject.slug}`"
-        internal-link
-        class="subject"
+      <ContentList
+        v-slot="{ list }"
+        :query="{
+          path: '/articles',
+          where: [{ locale }],
+          sort: [{ createdDate: -1 }],
+        }"
       >
-        <CardTitle>{{ subject.name }}</CardTitle>
-        <!-- eslint-disable-next-line vue/no-v-html -->
-        <Typography><span v-html="subject.description"></span></Typography>
-        <no-ssr>
-          <CardMeta>{{
-            subject.date.toLocaleString($i18n.locale, {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric',
-            })
-          }}</CardMeta>
-        </no-ssr>
-      </Card>
+        <BerthelotSystemCard
+          v-for="article in list"
+          :key="article.slug"
+          :link="`/articles/${article.slug}`"
+          internal-link
+          class="subject"
+        >
+          <h2 class="typo_title--small typo_light subject-title">
+            {{ article.title }}
+          </h2>
+          <span class="typo_default typo_white">{{ article.description }}</span>
+          <time class="card_meta typo_meta-info typo_white">
+            {{
+              new Date(article.date).toLocaleString($i18n.locale, {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              })
+            }}
+          </time>
+        </BerthelotSystemCard>
+      </ContentList>
     </main>
 
-    <Footer />
+    <FlorentFooter />
   </div>
 </template>
 
-<script>
-import { Card, CardTitle, CardMeta } from '~/components/card'
-import { Typography } from '~/components/typography'
-import Header from '~/components/header'
-import Footer from '~/components/footer'
-
-import { articles } from '~/assets/articles'
-
-export default {
-  components: {
-    Card,
-    CardTitle,
-    CardMeta,
-    Typography,
-    Header,
-    Footer,
-  },
-  data() {
-    return {
-      subjects: articles,
-    }
-  },
-  head() {
-    return {
-      htmlAttrs: {
-        lang: this.$i18n.locale,
-      },
-      title: `Florent Berthelot - ${this.$t('articles.title')}`,
-      meta: [
-        {
-          hid: 'twitter:title',
-          name: 'twitter:title',
-          content: `Florent Berthelot - ${this.$t('articles.title')}`,
-        },
-        {
-          hid: 'og:title',
-          property: 'og:title',
-          content: `Florent Berthelot - ${this.$t('articles.title')}`,
-        },
-        {
-          hid: 'description',
-          name: 'description',
-          content: this.$t('articles.meta_description'),
-        },
-        {
-          hid: 'twitter:description',
-          name: 'twitter:description',
-          content: this.$t('articles.meta_description'),
-        },
-        {
-          hid: 'og:description',
-          property: 'og:description',
-          content: this.$t('articles.meta_description'),
-        },
-        {
-          hid: 'og:url',
-          property: 'og:url',
-          content: 'https://berthelot.io/articles',
-        },
-      ],
-    }
-  },
-}
+<script setup lang="js">
+const { t, locale } = useI18n({
+  useScope: 'local',
+})
+useSeoMeta({
+  ogType: 'website',
+  title: t('meta.title'),
+  ogTitle: t('meta.title'),
+  twitterTitle: t('meta.title'),
+  description: t('meta.description'),
+  ogDescription: t('meta.description'),
+  twitterDescription: t('meta.description'),
+  twitterCard: 'summary',
+  ogUrl: 'https://berthelot.io/articles/',
+})
 </script>
 
 <style scoped>
@@ -129,6 +93,10 @@ export default {
 .subject {
   margin: 2rem;
   width: 55%;
+}
+
+.subject-title {
+  margin-bottom: 1rem;
 }
 
 @media screen and (max-width: 850px) {

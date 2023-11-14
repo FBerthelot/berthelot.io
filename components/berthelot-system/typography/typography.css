@@ -1,0 +1,67 @@
+@font-face {
+  font-family: 'suicide-squad';
+  src: url('/fonts/suicide-squad.ttf');
+  font-display: swap;
+}
+
+#layout_default {
+  --font-sans-serif: Verdana, Geneva, sans-serif;
+  --font-cursive: suicide-squad, 'Comic Sans MS', 'Comic Sans', cursive;
+}
+
+#layout_default .typo_default {
+  font-family: var(--font-sans-serif);
+  font-size: 1rem;
+  line-height: 1.3rem;
+}
+
+#layout_default .typo_meta-info {
+  font-family: var(--font-sans-serif);
+  font-size: 0.7rem;
+  line-height: 1rem;
+  font-style: italic;
+}
+#layout_default .typo_meta-info--link {
+  font-family: var(--font-sans-serif);
+  font-size: 0.7rem;
+  line-height: 1rem;
+  font-style: italic;
+  text-decoration: underline;
+}
+
+#layout_default .typo_title {
+  font-family: var(--font-cursive);
+  font-size: 3rem;
+  line-height: 3rem;
+}
+
+#layout_default .typo_title--small {
+  font-family: var(--font-cursive);
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+}
+
+#layout_default .typo_title--extra-small {
+  font-family: var(--font-cursive);
+  font-size: 1.1rem;
+  line-height: 1.5rem;
+}
+
+#layout_default .typo_white {
+  color: var(--color-white);
+}
+#layout_default .typo_light {
+  color: var(--color-light);
+}
+#layout_default .typo_bright {
+  color: var(--color-bright);
+}
+#layout_default .typo_medium {
+  color: var(--color-medium);
+}
+#layout_default .typo_dark {
+  color: var(--color-dark);
+}
+#layout_default .typo_black {
+  color: var(--color-black);
+}

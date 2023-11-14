@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   name: 'React Fiber : une innovation discrète, des implications retentissantes (feat M.Lux et M. Frachet)',
   metaInfo: 'Voxxed Days Luxembourg - Juin 2019',
   video: 'https://www.youtube.com/embed/VtBXexNtVhk',

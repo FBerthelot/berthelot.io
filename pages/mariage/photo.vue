@@ -1,10 +1,47 @@
-<!-- eslint-disable @intlify/vue-i18n/no-raw-text -->
+<i18n lang="json">
+{
+  "fr": {
+    "meta": {
+      "title": "Partage de photos et vidéos - Mariage Agnès et Florent",
+      "description": "Vous pouvez nous partager vos photos et vidéos ici."
+    },
+    "title": "Partage de photos et vidéos",
+    "takePictureButton": "Prendre une photo",
+    "shareAssetButton": "Partager photos & vidéos",
+    "uploading": "En cours",
+    "uploadingPaused": "En pause",
+    "uploadingError": "Une erreur est survenu.",
+    "uploadingSuccess": "Chargé ! 🎉"
+  },
+  "en": {
+    "meta": {
+      "title": "Sharing photos and videos - Agnès and Florent wedding",
+      "description": "You can share your photos and videos here."
+    },
+    "title": "Sharing photos and videos",
+    "takePictureButton": "Take a picture",
+    "shareAssetButton": "Share photos & videos",
+    "uploading": "Uploading",
+    "uploadingPaused": "Paused",
+    "uploadingError": "An error occurred.",
+    "uploadingSuccess": "Uploaded! 🎉"
+  }
+}
+</i18n>
+
 <template>
   <main id="wedding-design-system">
-    <h1 class="title typography-title-2">Partage de photos et vidéos</h1>
+    <h1 class="title typography-title-2">
+      {{ t('title') }}
+    </h1>
 
     <form @submit.prevent="handleUploadingPhoto">
-      <img v-if="!assets.length" class="background-img" :src="Logo" alt="" />
+      <img
+        v-if="!assets.length"
+        class="background-img"
+        src="/assets/mariage/Agnes & Florent 19-08-2023-violet.svg"
+        alt=""
+      />
       <section v-if="!!assets.length" class="preview-container">
         <article
           v-for="asset in assets"
@@ -17,7 +54,7 @@
             class="preview-progression-container"
           >
             <span class="typography-paragraph">{{
-              asset.status === 'paused' ? 'En pause' : 'En cours'
+              asset.status === 'paused' ? t('uploadingPaused') : t('uploading')
             }}</span>
             <progress
               class="preview-progression"
@@ -29,14 +66,13 @@
             v-if="asset.status === 'error'"
             class="preview-progression-container"
           >
-            Une erreur est survenu.
-            {{ asset.error.message }}
+            {{ t(`uploadingError`) }}{{ asset.error.message }}
           </div>
           <div
             v-if="asset.status === 'success'"
             class="preview-progression-container"
           >
-            Chargé ! 🎉
+            {{ t(`uploadingSuccess`) }}
           </div>
         </article>
       </section>
@@ -53,9 +89,11 @@
           for="imageUpload"
           :class="{ noAnimate: isCaptureSupported, button: true }"
         >
-          <img alt="" :src="UploadIcon" />
-          Partager photos &amp; vidéos
-        </label>
+          <img
+            alt=""
+            src="../../components/mariage/00_design-system/icons/telecharger.png"
+          />{{ t(`shareAssetButton`) }}</label
+        >
 
         <input
           v-if="isCaptureSupported"
@@ -66,154 +104,155 @@
           @change="handleImageChange"
         />
         <label v-if="isCaptureSupported" for="imageInput" class="button">
-          <img alt="" :src="PhotoIcon" />
-          Prendre une photo
-        </label>
+          <img
+            alt=""
+            src="../../components/mariage/00_design-system/icons/photo.svg"
+          />{{ t(`takePictureButton`) }}</label
+        >
       </div>
     </form>
   </main>
 </template>
 
-<script>
+<script setup lang="js">
+import { ref, onMounted } from 'vue'
 import { initializeApp } from 'firebase/app'
-import { getStorage, uploadBytesResumable, ref } from 'firebase/storage'
-import Logo from '~/components/mariage/00_shared/logo/logo-06.svg'
-import PhotoIcon from '~/components/mariage/00_shared/assets/photo.svg'
-import UploadIcon from '~/components/mariage/00_shared/assets/telecharger.png'
+import {
+  getStorage,
+  uploadBytesResumable,
+  ref as firebaseRef,
+} from 'firebase/storage'
+const appConfig = useAppConfig()
 
-export default {
+const { t } = useI18n({
+  useScope: 'local',
+})
+
+definePageMeta({
   layout: 'mariage',
-  data: () => {
-    return {
-      assets: [],
-      Logo,
-      firebaseApp: null,
-      firebaseStorage: null,
+})
+useSeoMeta({
+  ogType: 'website',
+  title: t('meta.title'),
+  ogTitle: t('meta.title'),
+  twitterTitle: t('meta.title'),
+  description: t('meta.description'),
+  ogDescription: t('meta.description'),
+  twitterDescription: t('meta.description'),
+  twitterCard: 'summary',
+  ogUrl: 'https://berthelot.io/mariage/photo',
+})
 
-      PhotoIcon,
-      UploadIcon,
+const assets = ref([])
+const firebaseApp = ref(null)
+const firebaseStorage = ref(null)
+const isCaptureSupported = ref(false)
 
-      isCaptureSupported: false,
-    }
-  },
-  head() {
-    return {
-      htmlAttrs: {
-        lang: this.$i18n.locale,
-      },
-      title: `Mariage Agnès et Florent - 19 Août 2022`,
-    }
-  },
-  mounted() {
-    const firebaseConfig = {
-      apiKey: this.$config.FIREBASE_API_KEY,
-      authDomain: this.$config.FIREBASE_AUTH_DOMAIN,
-      projectId: this.$config.FIREBASE_PROJECT_ID,
-      storageBucket: this.$config.FIREBASE_STORAGE_BUCKET,
-      messagingSenderId: this.$config.FIREBASE_MESSAGING_SENDER_ID,
-      appId: this.$config.FIREBASE_APP_ID,
-    }
-    this.firebaseApp = initializeApp(firebaseConfig)
-    this.firebaseStorage = getStorage(this.firebaseApp)
+const handleImageChange = (e) => {
+  assets.value = [
+    ...assets.value,
+    ...Array.from(e.target.files)
+      .map((file) => {
+        const firestoreUrl = `/photos/${file.lastModified}-${file.name}`
 
-    const el = document.createElement('input')
-    this.isCaptureSupported = el.capture !== undefined
-  },
-  methods: {
-    handleImageChange(e) {
-      this.assets = [
-        ...this.assets,
-        ...Array.from(e.target.files)
-          .map((file) => {
-            const firestoreUrl = `/photos/${file.lastModified}-${file.name}`
+        if (this.assets.find((asset) => asset.firestoreUrl === firestoreUrl)) {
+          return null
+        }
 
-            if (
-              this.assets.find((asset) => asset.firestoreUrl === firestoreUrl)
-            ) {
-              return null
-            }
-
-            return {
-              firestoreUrl,
-              objectUrl: URL.createObjectURL(file),
-              rawFile: file,
-              status: 'starting',
-              uploadPct: 0,
-            }
-          })
-          .filter(Boolean),
-      ]
-
-      this.assets
-        .filter((asset) => asset.status === 'starting')
-        .forEach((asset) => {
-          this.uploadOnePhoto(asset)
-        })
-    },
-    uploadOnePhoto(asset) {
-      const storageRef = ref(this.firebaseStorage, asset.firestoreUrl)
-      const uploadTask = uploadBytesResumable(storageRef, asset.rawFile, {
-        customMetadata: {
-          userAgent: window.navigator.userAgent,
-          lastModified: asset.rawFile.lastModified,
-          lastModifiedDate: asset.rawFile.lastModifiedDate?.toISOString(),
-          originalName: asset.rawFile.name,
-        },
+        return {
+          firestoreUrl,
+          objectUrl: URL.createObjectURL(file),
+          rawFile: file,
+          status: 'starting',
+          uploadPct: 0,
+        }
       })
+      .filter(Boolean),
+  ]
 
-      this.assets = this.assets.map((a) => {
+  assets.value
+    .filter((asset) => asset.status === 'starting')
+    .forEach((asset) => {
+      uploadOnePhoto(asset)
+    })
+}
+
+const uploadOnePhoto = (asset) => {
+  const storageRef = firebaseRef(firebaseStorage.value, asset.firestoreUrl)
+  const uploadTask = uploadBytesResumable(storageRef, asset.rawFile, {
+    customMetadata: {
+      userAgent: window.navigator.userAgent,
+      lastModified: asset.rawFile.lastModified,
+      lastModifiedDate: asset.rawFile.lastModifiedDate?.toISOString(),
+      originalName: asset.rawFile.name,
+    },
+  })
+
+  assets.value = assets.value.map((a) => {
+    if (asset.firestoreUrl === a.firestoreUrl) {
+      return {
+        ...a,
+        status: 'running',
+      }
+    }
+    return a
+  })
+
+  uploadTask.on(
+    'state_changed',
+    (snapshot) => {
+      assets.value = assets.value.map((a) => {
         if (asset.firestoreUrl === a.firestoreUrl) {
           return {
             ...a,
-            status: 'running',
+            status: snapshot.state, // "canceled" | "running" | "paused" | "success" | "error"
+            uploadPct: (snapshot.bytesTransferred / snapshot.totalBytes) * 100,
           }
         }
         return a
       })
-
-      uploadTask.on(
-        'state_changed',
-        (snapshot) => {
-          this.assets = this.assets.map((a) => {
-            if (asset.firestoreUrl === a.firestoreUrl) {
-              return {
-                ...a,
-                status: snapshot.state, // "canceled" | "running" | "paused" | "success" | "error"
-                uploadPct:
-                  (snapshot.bytesTransferred / snapshot.totalBytes) * 100,
-              }
-            }
-            return a
-          })
-        },
-        (error) => {
-          this.assets = this.assets.map((a) => {
-            if (asset.firestoreUrl === a.firestoreUrl) {
-              return {
-                ...a,
-                status: 'error',
-                error,
-              }
-            }
-            return a
-          })
-        },
-        () => {
-          this.assets = this.assets.map((a) => {
-            if (asset.firestoreUrl === a.firestoreUrl) {
-              return {
-                ...a,
-                status: 'success',
-              }
-            }
-            return a
-          })
-        },
-      )
     },
-    handleUploadingPhoto() {},
-  },
+    (error) => {
+      assets.value = assets.value.map((a) => {
+        if (asset.firestoreUrl === a.firestoreUrl) {
+          return {
+            ...a,
+            status: 'error',
+            error,
+          }
+        }
+        return a
+      })
+    },
+    () => {
+      assets.value = assets.value.map((a) => {
+        if (asset.firestoreUrl === a.firestoreUrl) {
+          return {
+            ...a,
+            status: 'success',
+          }
+        }
+        return a
+      })
+    },
+  )
 }
+
+onMounted(() => {
+  const firebaseConfig = {
+    apiKey: appConfig.FIREBASE_API_KEY,
+    authDomain: appConfig.FIREBASE_AUTH_DOMAIN,
+    projectId: appConfig.FIREBASE_PROJECT_ID,
+    storageBucket: appConfig.FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: appConfig.FIREBASE_MESSAGING_SENDER_ID,
+    appId: appConfig.FIREBASE_APP_ID,
+  }
+  firebaseApp.value = initializeApp(firebaseConfig)
+  firebaseStorage.value = getStorage(firebaseApp.value)
+
+  const el = document.createElement('input')
+  isCaptureSupported.value = el.capture !== undefined
+})
 </script>
 
 <style scoped>

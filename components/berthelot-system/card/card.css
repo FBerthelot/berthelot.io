@@ -1,0 +1,10 @@
+#layout_default .card_meta {
+  text-align: right;
+  display: block;
+  margin-top: 0.5rem;
+}
+
+#layout_default .card_video {
+  width: 100%;
+  margin: 3rem 0 2rem 0;
+}

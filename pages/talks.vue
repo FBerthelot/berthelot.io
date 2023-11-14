@@ -1,25 +1,37 @@
-<i18n>
+<i18n lang="json">
 {
   "fr": {
+    "meta": {
+      "title": "Sujets de conférences - Florent Berthelot",
+      "description": "Liste des conférences que j'ai eu la chance de donner."
+    },
+
     "talks": {
       "title": "Sujets de conférences",
-      "meta_description": "Liste des conférences que j'ai eu la chance de donner.",
       "video_title": "Vidéo de la conférence",
       "slide_link": "Lien vers les slides",
       "alternative": "L'ensemble des versions",
       "alternative_video": "Vidéo",
-      "alternative_slide": "Slides"
+      "alternative_slide": "Slides",
+      "alternative-name-separator": ":",
+      "alternative-date-separator": "-"
     }
   },
   "en": {
+    "meta": {
+      "title": "Conferences talks - Florent Berthelot",
+      "description": "List of conferences I had the chance to lead."
+    },
+
     "talks": {
       "title": "Conferences talks",
-      "meta_description": "List of conferences I had the chance to lead.",
       "video_title": "Video of the conference",
       "slide_link": "Slide link",
       "alternative": "Alternative versions",
       "alternative_video": "Video",
-      "alternative_slide": "Slides"
+      "alternative_slide": "Slides",
+      "alternative-name-separator": ":",
+      "alternative-date-separator": "-"
     }
   }
 }
@@ -27,138 +39,104 @@
 
 <template>
   <div id="talks-page">
-    <Header :title="$t('talks.title')" />
+    <FlorentHeader :title="t('talks.title')" />
 
     <main class="subjects">
-      <Card v-for="subject in subjects" :key="subject.name" class="subject">
-        <CardTitle>{{ subject.name }}</CardTitle>
+      <BerthelotSystemCard
+        v-for="subject in subjects"
+        :key="subject.name"
+        class="subject"
+      >
+        <h2 class="typo_title--small typo-light talk_title">
+          {{ subject.name }}
+        </h2>
         <!-- eslint-disable-next-line vue/no-v-html -->
-        <Typography><span v-html="subject.description"></span></Typography>
-        <CardMeta>{{ subject.metaData }}</CardMeta>
+        <span class="typo_default" v-html="subject.description"></span>
+        <span class="card_meta typo_meta-info">{{ subject.metaData }}</span>
 
-        <CardVideo
+        <iframe
           v-if="subject.video"
-          :video="subject.video"
-          :title="$t('talks.video_title')"
-        />
+          class="card_video"
+          width="560"
+          height="315"
+          :title="t('talks.video_title')"
+          :src="subject.video"
+          frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        >
+        </iframe>
 
-        <CardLink :href="subject.slides" target="_blank" rel="noopener">{{
-          $t('talks.slide_link')
-        }}</CardLink>
+        <a
+          class="typo_meta-info--link typo_white main_link"
+          :href="subject.slides"
+          target="_blank"
+          rel="noopener"
+          >{{ t('talks.slide_link') }}</a
+        >
 
-        <CardSecondary v-if="subject.alternatives">
-          <Typography variant="title--extra-small">
-            {{ $t('talks.alternative') }}
-          </Typography>
+        <BerthelotSystemCardSecondary v-if="subject.alternatives">
+          <h4 class="typo_title--extra-small">
+            {{ t('talks.alternative') }}
+          </h4>
           <ul>
-            <Typography
+            <li
               v-for="alternative in subject.alternatives"
               :key="alternative.name"
-              component="li"
+              class="typo_default typo_white"
             >
-              <!--eslint-disable-next-line @intlify/vue-i18n/no-raw-text-->
-              {{ alternative.name }}:
-              <Typography
+              {{ alternative.name }}{{ t('talks.alternative-name-separator') }}
+              <a
                 v-if="alternative.video"
-                component="a"
+                class="typo_default typo_white"
                 target="_blank"
                 rel="noopener"
                 :href="alternative.video"
-                >{{ $t('talks.alternative_video') }}</Typography
               >
-              <Typography
+                {{ t('talks.alternative_video') }}
+              </a>
+              &nbsp;
+              <a
                 v-if="alternative.slide"
-                component="a"
+                class="typo_default typo_white"
                 target="_blank"
                 rel="noopener"
                 :href="alternative.slide"
-                >{{ $t('talks.alternative_slide') }}</Typography
               >
-              <!--eslint-disable-next-line @intlify/vue-i18n/no-raw-text-->
-              {{ '-' }}
+                {{ t('talks.alternative_slide') }}
+              </a>
+              {{ t('talks.alternative-date-separator') }}
               {{ alternative.date }}
-            </Typography>
+            </li>
           </ul>
-        </CardSecondary>
-      </Card>
+        </BerthelotSystemCardSecondary>
+      </BerthelotSystemCard>
     </main>
 
-    <Footer />
+    <FlorentFooter />
   </div>
 </template>
 
-<script>
-import {
-  Card,
-  CardTitle,
-  CardMeta,
-  CardVideo,
-  CardLink,
-  CardSecondary,
-} from '~/components/card'
-import { Typography } from '~/components/typography'
-import Header from '~/components/header'
-import Footer from '~/components/footer'
+<script setup lang="js">
 import { talks } from '~/assets/talks'
 
-export default {
-  components: {
-    Card,
-    CardTitle,
-    CardMeta,
-    CardVideo,
-    CardLink,
-    CardSecondary,
-    Typography,
-    Header,
-    Footer,
-  },
-  data() {
-    return {
-      subjects: talks,
-    }
-  },
-  head() {
-    return {
-      htmlAttrs: {
-        lang: this.$i18n.locale,
-      },
-      title: `Florent Berthelot - ${this.$t('talks.title')}`,
-      meta: [
-        {
-          hid: 'twitter:title',
-          name: 'twitter:title',
-          content: `Florent Berthelot - ${this.$t('talks.title')}`,
-        },
-        {
-          hid: 'og:title',
-          property: 'og:title',
-          content: `Florent Berthelot - ${this.$t('talks.title')}`,
-        },
-        {
-          hid: 'description',
-          name: 'description',
-          content: this.$t('talks.meta_description'),
-        },
-        {
-          hid: 'twitter:description',
-          name: 'twitter:description',
-          content: this.$t('talks.meta_description'),
-        },
-        {
-          hid: 'og:description',
-          property: 'og:description',
-          content: this.$t('talks.meta_description'),
-        },
-        {
-          hid: 'og:url',
-          property: 'og:url',
-          content: 'https://berthelot.io/talks',
-        },
-      ],
-    }
-  },
-}
+const { t } = useI18n({
+  useScope: 'local',
+})
+
+const subjects = ref(talks)
+
+useSeoMeta({
+  ogType: 'website',
+  title: t('meta.title'),
+  ogTitle: t('meta.title'),
+  twitterTitle: t('meta.title'),
+  description: t('meta.description'),
+  ogDescription: t('meta.description'),
+  twitterDescription: t('meta.description'),
+  twitterCard: 'summary',
+  ogUrl: 'https://berthelot.io/talks',
+})
 </script>
 
 <style scoped>
@@ -180,6 +158,17 @@ export default {
 .subject {
   margin: 2rem;
   width: 55%;
+}
+
+.subject .main_link {
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.talk_title {
+  margin-bottom: 0.75rem;
 }
 
 @media screen and (max-width: 850px) {

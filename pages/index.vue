@@ -1,12 +1,18 @@
-<!-- eslint-disable @intlify/vue-i18n/no-html-messages -->
-<i18n>
+<i18n lang="json">
 {
   "fr": {
     "name": "Florent Berthelot",
+    "meta": {
+      "title": "Florent Berhtelot - Développeur Web",
+      "description": "Mon site où tu retrouvera mes articles, supports de cours, conférences, ..."
+    },
     "home": {
       "tagline": "Prêcheur des Design System et des programmes bien testés",
-      "presentation": "Je suis passionné du Web et des technologies qui gravitent autour. J'aime le W3C, le TC39 (quand il ne smoosh pas devant moi), le WhatWG, les frameworks JS (React, Vue.js, Node.js, Angular, ...) et la vanille.<br /><br />Transmettre ma passion pour l'artisanat web occupe une part importante de mon travail de développeur (meetups, formations, conférences, encadrement de stagiaires).<br /><br />Vive le web, Vive le JS et Vive l'artisanat!",
-      "meta_description": "Mon site où tu retrouvera mes articles, supports de cours, conférences, ..."
+      "presentation": {
+        "p1": "Je suis passionné du Web et des technologies qui gravitent autour. J'aime le W3C, le TC39 (quand il ne smoosh pas devant moi), le WhatWG, les frameworks JS (React, Vue.js, Node.js, Angular, ...) et la vanille.",
+        "p2": "Transmettre ma passion pour l'artisanat web occupe une part importante de mon travail de développeur (meetups, formations, conférences, encadrement de stagiaires).",
+        "p3": "Vive le web, Vive le JS et Vive l'artisanat&nbsp;!"
+      }
     },
     "nav": {
       "articles": "Articles",
@@ -17,10 +23,17 @@
   },
   "en": {
     "name": "Florent Berthelot",
+    "meta": {
+      "title": "Florent Berhtelot - Web Developer",
+      "description": "You will find here my articles, courses, conferences talks, ..."
+    },
     "home": {
       "tagline": "Design system and well-tested programs evangelist",
-      "presentation": "I love Web and all related technologies. I love the W3C, TC39, WhatWG, all JS frameworks (React, Vue.js, Node.js, Angular, ...) and vanilla because they allow me to learn everyday.<br /><br /> Sharing my passion for web craftsmanship is an important part of my developer job (Meetup, Courses, Conferences, training interns).<br /><br />Long live the Web, JS and Craftsmanship!",
-      "meta_description": "You will find here my articles, courses, conferences talks, ..."
+      "presentation": {
+        "p1": "I love Web and all related technologies. I love the W3C, TC39, WhatWG, all JS frameworks (React, Vue.js, Node.js, Angular, ...) and vanilla because they allow me to learn everyday.",
+        "p2": "Sharing my passion for web craftsmanship is an important part of my developer job (Meetup, Courses, Conferences, training interns).",
+        "p3": "Long live the Web, JS and Craftsmanship!"
+      }
     },
     "nav": {
       "articles": "Articles",
@@ -49,18 +62,28 @@
 
     <header class="header">
       <div class="header--1-level">
-        <nuxt-link to="/love" class="myPic"><Logo :face="0" /></nuxt-link>
-        <Typography component="h1" variant="title">
-          {{ $t('name') }}
-        </Typography>
-        <nuxt-link to="/love" class="avatar"><Logo :face="1" /></nuxt-link>
+        <BerthelotSystemAvatar
+          front-src="/assets/florent/avatar.jpg"
+          front-alt="Une photo de Florent avec des lunettes de soleil oranges."
+          back-src="/assets/florent/joker.jpg"
+          back-alt="Une photo du joker, un personnage que j'aime beaucoup car toujours souriant."
+        ></BerthelotSystemAvatar>
+        <h1 class="typo_title">
+          {{ t('name') }}
+        </h1>
+        <BerthelotSystemAvatar
+          front-src="/assets/florent/avatar2.gif"
+          front-alt="Une photo de Florent avec des lunettes de soleil oranges."
+          back-src="/assets/florent/joker.jpg"
+          back-alt="Une photo du joker, un personnage que j'aime beaucoup car toujours souriant."
+        ></BerthelotSystemAvatar>
       </div>
 
-      <Typography class="header--tagline" component="h2" variant="title--small">
-        {{ $t('home.tagline') }}
-      </Typography>
+      <h2 class="typo_title--small header--tagline">
+        {{ t('home.tagline') }}
+      </h2>
 
-      <LanguageSwitcher
+      <FlorentLanguageSwitcher
         :class="{ 'language-switcher__visible': !videoIsRunning }"
         class="language-switcher"
       />
@@ -73,120 +96,80 @@
       <nav v-if="!videoIsRunning" class="main-links">
         <ul>
           <li>
-            <nuxt-link :to="localePath('/articles')">
-              <GrenadeButton component="div">
-                {{ $t('nav.articles') }}
-              </GrenadeButton>
-            </nuxt-link>
+            <nuxtLink :to="localePath('/articles')">
+              <BerthelotSystemButtonGrenade component="span">
+                {{ t('nav.articles') }}
+              </BerthelotSystemButtonGrenade>
+            </nuxtLink>
           </li>
           <li>
-            <nuxt-link :to="localePath('/courses')">
-              <GrenadeButton :throw-in="200" component="div">
-                {{ $t('nav.courses') }}
-              </GrenadeButton>
-            </nuxt-link>
+            <nuxtLink :to="localePath('/courses')">
+              <BerthelotSystemButtonGrenade :throw-in="200" component="span">
+                {{ t('nav.courses') }}
+              </BerthelotSystemButtonGrenade>
+            </nuxtLink>
           </li>
           <li>
-            <nuxt-link :to="localePath('/talks')">
-              <GrenadeButton :throw-in="550" component="div">
-                {{ $t('nav.talks') }}
-              </GrenadeButton>
-            </nuxt-link>
+            <nuxtLink :to="localePath('/talks')">
+              <BerthelotSystemButtonGrenade :throw-in="550" component="span">
+                {{ t('nav.talks') }}
+              </BerthelotSystemButtonGrenade>
+            </nuxtLink>
           </li>
           <li>
-            <nuxt-link :to="localePath('/activities')">
-              <GrenadeButton component="div" :throw-in="300">
-                {{ $t('nav.activities') }}
-              </GrenadeButton>
-            </nuxt-link>
+            <nuxtLink :to="localePath('/activities')">
+              <BerthelotSystemButtonGrenade component="span" :throw-in="300">
+                {{ t('nav.activities') }}
+              </BerthelotSystemButtonGrenade>
+            </nuxtLink>
           </li>
         </ul>
       </nav>
-      <Card class="presentation">
-        <!-- eslint-disable-next-line vue/no-v-html, @intlify/vue-i18n/no-v-html -->
-        <Typography v-html="$t('home.presentation')"></Typography>
-      </Card>
+      <BerthelotSystemCard class="presentation">
+        <p class="typo_default paragraph">{{ t('home.presentation.p1') }}</p>
+        <p class="typo_default paragraph">{{ t('home.presentation.p2') }}</p>
+        <p class="typo_default paragraph">{{ t('home.presentation.p3') }}</p>
+      </BerthelotSystemCard>
     </main>
-    <Footer class="footer" :class="{ footer__visible: !videoIsRunning }" />
+    <FlorentFooter
+      class="footer"
+      :class="{ footer__visible: !videoIsRunning }"
+    />
   </div>
 </template>
 
-<script>
-import { GrenadeButton } from '~/components/button'
-import { Logo } from '~/components/logo'
-import { Card } from '~/components/card'
-import Footer from '~/components/footer'
-import { Typography } from '~/components/typography'
-import LanguageSwitcher from '~/components/languageSwitcher'
+<script setup lang="js">
+import { ref } from 'vue'
 
-export default {
-  components: {
-    GrenadeButton,
-    Typography,
-    Logo,
-    Card,
-    Footer,
-    LanguageSwitcher,
-  },
-  layout: 'default',
-  data() {
-    return {
-      videoIsRunning: true,
-    }
-  },
-  head() {
-    return {
-      htmlAttrs: {
-        lang: this.$i18n.locale,
-      },
-      title: `Florent Berthelot - ${this.$t('home.tagline')}`,
-      meta: [
-        {
-          hid: 'twitter:title',
-          name: 'twitter:title',
-          content: `Florent Berthelot - ${this.$t('home.tagline')}`,
-        },
-        {
-          hid: 'og:title',
-          property: 'og:title',
-          content: `Florent Berthelot - ${this.$t('home.tagline')}`,
-        },
-        {
-          hid: 'description',
-          name: 'description',
-          content: this.$t('home.meta_description'),
-        },
-        {
-          hid: 'twitter:description',
-          name: 'twitter:description',
-          content: this.$t('home.meta_description'),
-        },
-        {
-          hid: 'og:description',
-          property: 'og:description',
-          content: this.$t('home.meta_description'),
-        },
-        {
-          hid: 'og:url',
-          property: 'og:url',
-          content: 'https://berthelot.io/',
-        },
-      ],
-    }
-  },
-  methods: {
-    explosionEnd() {
-      this.videoIsRunning = false
-    },
-  },
-}
+const { t } = useI18n({
+  useScope: 'local',
+})
+const localePath = useLocalePath()
+
+const videoIsRunning = ref(true)
+const explosionEnd = () => (videoIsRunning.value = false)
+
+useSeoMeta({
+  ogType: 'profile',
+  ogProfileFirstName: 'Florent',
+  ogProfileLastName: 'Berthelot',
+  ogProgileGender: 'male',
+  title: t('meta.title'),
+  ogTitle: t('meta.title'),
+  twitterTitle: t('meta.title'),
+  description: t('meta.description'),
+  ogDescription: t('meta.description'),
+  twitterDescription: t('meta.description'),
+  twitterCard: 'summary',
+  ogUrl: 'https://berthelot.io/',
+})
 </script>
 
 <style scoped>
 .container {
   height: 100%;
   background-color: black;
-  transition: background 2s ease;
+  transition: all 2s ease;
   overflow-y: hidden;
 }
 .container__explision-ended {
@@ -233,6 +216,10 @@ export default {
 .language-switcher {
   opacity: 0;
   transition: all 4s linear;
+
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
 }
 
 .language-switcher__visible {
@@ -276,6 +263,13 @@ export default {
 }
 .main-links ul a:focus {
   outline: none;
+}
+
+.paragraph {
+  margin-top: 1rem;
+}
+.paragraph:first-child {
+  margin-top: 0;
 }
 
 .footer {
@@ -359,6 +353,13 @@ export default {
 
   .main-links ul a {
     margin: 1rem;
+  }
+}
+
+@media screen and (min-width: 850px) and (min-width: 650px) {
+  .container {
+    min-height: 675px;
+    overflow: auto;
   }
 }
 </style>
