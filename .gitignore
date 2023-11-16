@@ -3,8 +3,8 @@
 node_modules/
 
 .nuxt/
-dist/
 .output/
+dist
 
 .env
 components.d.ts

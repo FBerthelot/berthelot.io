@@ -1,10 +1,15 @@
 import { defineNuxtConfig } from 'nuxt/config'
+import { invitations } from './components/mariage/01_shared/finalInvitations.data'
 
 export default defineNuxtConfig({
   devServer: {
     port: 5000,
   },
   ssr: true,
+
+  site: {
+    url: 'https://berthelot.io',
+  },
 
   runtimeConfig: {
     public: {
@@ -19,7 +24,12 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ['@nuxtjs/i18n', '@nuxt/content'],
+  modules: [
+    '@nuxtjs/i18n',
+    '@nuxt/content',
+    'nuxt-simple-robots',
+    'nuxt-simple-sitemap',
+  ],
 
   i18n: {
     locales: [
@@ -35,8 +45,8 @@ export default defineNuxtConfig({
         name: 'EN',
       },
     ],
+    baseUrl: process.env.NUXT_ENV_BASE_URL,
     defaultLocale: 'fr',
-    baseUrl: process.env.BASE_URL,
     compilation: {
       strictMessage: false,
     },
@@ -47,54 +57,27 @@ export default defineNuxtConfig({
       theme: 'github-light',
     },
   },
+
+  robots: {
+    disallow: ['/mariage/', '/en/mariage/'],
+    allow: ['/mariage/design', '/en/mariage/design', '/mariage', '/en/mariage'],
+  },
+
+  routeRules: {
+    '/mariage/**': { index: false },
+    '/mariage/': { index: true },
+    '/mariage/design': { index: true },
+  },
+
+  generate: {
+    routes: [
+      '/articles/react-test-refactoring-snapshot',
+      ...invitations.flatMap((invitation) => [
+        `/mariage/${invitation.id}`,
+        `/en/mariage/${invitation.id}`,
+        `/mariage/${invitation.id}/answer`,
+        `/en/mariage/${invitation.id}/answer`,
+      ]),
+    ],
+  },
 })
-
-// export default defineNuxtConfig({
-
-//   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-//   buildModules: [
-//     // https://go.nuxtjs.dev/eslint
-//     '@nuxtjs/eslint-module',
-//   ],
-
-//   // Modules: https://go.nuxtjs.dev/config-modules
-//   modules: [
-//     '@nuxtjs/i18n',
-//     '@nuxtjs/markdownit',
-//     '@nuxtjs/robots',
-//     '@nuxtjs/sitemap',
-//   ],
-
-//   sitemap: {
-//     hostname: 'https://berthelot.io',
-//     gzip: true,
-
-//     exclude: ['/mariage/**/*', '/en/mariage/**/*'],
-//     i18n: true,
-//     locales: ['en', 'fr'],
-
-//     routes: ['/slides/javascript.html', '/slides/afterwork.html'],
-//   },
-//   robots: {
-//     UserAgent: '*',
-//     Disallow: ['mariage/*', 'en/mariage/*'],
-//     Sitemap: 'https://berthelot.io/sitemap.xml',
-//   },
-
-//   // Build Configuration: https://go.nuxtjs.dev/config-build
-//   build: {},
-
-//   generate: {
-//     routes: () => {
-//       return [
-//         '/articles/react-test-refactoring-snapshot',
-//         ...invitations.flatMap((invitation) => [
-//           `/mariage/${invitation.id}`,
-//           `en/mariage/${invitation.id}`,
-//           `/mariage/${invitation.id}/answer`,
-//           `en/mariage/${invitation.id}/answer`,
-//         ]),
-//       ]
-//     },
-//   },
-// })

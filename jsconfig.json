@@ -8,5 +8,5 @@
       "@@/*": ["./*"]
     }
   },
-  "exclude": ["node_modules", ".nuxt", ".output"]
+  "exclude": ["node_modules", ".nuxt", ".output", "dist"]
 }

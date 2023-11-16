@@ -2,7 +2,8 @@
 {
   "fr": {
     "meta": {
-      "title": "Mariage Agnès et Florent - 19 Août 2023"
+      "title": "Mariage Agnès et Florent - 19 Août 2023",
+      "description": "Voici une invitation pour notre mariage."
     },
     "loader_alt": "Chargement...",
     "fatal_error": {
@@ -15,7 +16,8 @@
   },
   "en": {
     "meta": {
-      "title": "Mariage Agnès et Florent - 19 Août 2023"
+      "title": "Mariage Agnès et Florent - 19 Août 2023",
+      "description": "Voici une invitation pour notre mariage."
     },
     "loader_alt": "Chargement...",
     "fatal_error": {
@@ -68,7 +70,16 @@ const { t } = useI18n({
 
 definePageMeta({
   layout: 'mariage',
-  title: () => t('meta.title'),
+})
+useSeoMeta({
+  ogType: 'website',
+  title: t('meta.title'),
+  ogTitle: t('meta.title'),
+  twitterTitle: t('meta.title'),
+  description: t('meta.description'),
+  ogDescription: t('meta.description'),
+  twitterDescription: t('meta.description'),
+  twitterCard: 'summary',
 })
 
 onMounted(() => {
