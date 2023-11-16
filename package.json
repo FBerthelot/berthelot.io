@@ -49,6 +49,6 @@
     "@nuxtjs/i18n": "^8.0.0-rc.5",
     "firebase": "^10.6.0",
     "fireworks-js": "^2.10.7",
-    "reveal.js": "^5.0.1"
+    "reveal.js": "^5.0.2"
   }
 }
