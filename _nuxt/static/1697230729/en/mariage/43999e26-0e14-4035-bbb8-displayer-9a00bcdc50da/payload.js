@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/en/mariage/43999e26-0e14-4035-bbb8-displayer-9a00bcdc50da", {data:[{}],fetch:{},mutations:void 0});

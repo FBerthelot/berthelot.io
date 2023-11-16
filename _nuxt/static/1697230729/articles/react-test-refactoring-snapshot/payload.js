@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/articles/react-test-refactoring-snapshot", {data:[{}],fetch:{},mutations:void 0});

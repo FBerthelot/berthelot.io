@@ -1,0 +1,12 @@
+# START nuxt-simple-robots (indexable)
+User-agent: *
+Allow: /mariage/design
+Allow: /en/mariage/design
+Allow: /mariage
+Allow: /en/mariage
+Disallow: /mariage/
+Disallow: /en/mariage/
+Disallow: /mariage/*
+
+Sitemap: https://berthelot.io/sitemap_index.xml
+# END nuxt-simple-robots
