@@ -34,7 +34,7 @@
           class="typo_default typo_white"
           rel="noopener"
           target="_blank"
-          href="https://www.linkedin.com/in/florent-berthelot-a2678861/"
+          href="https://www.linkedin.com/in/florent-berthelot-dev-web/"
         >
           <img src="/assets/linkedin.svg" alt="" />
           {{ t(`linkedin`) }}
