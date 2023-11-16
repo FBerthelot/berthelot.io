@@ -166,14 +166,14 @@ const getCurrentPeriod = () => {
   return currentDay === 7 && currentHour > 5
     ? 'after'
     : currentDay === 7 && currentHour <= 5
-    ? 'party'
-    : currentHour >= 23 && currentMinutes >= 30
-    ? 'party'
-    : currentHour >= 20
-    ? 'diner'
-    : currentHour >= 17 && currentMinutes >= 30
-    ? 'cocktail'
-    : 'reception'
+      ? 'party'
+      : currentHour >= 23 && currentMinutes >= 30
+        ? 'party'
+        : currentHour >= 20
+          ? 'diner'
+          : currentHour >= 17 && currentMinutes >= 30
+            ? 'cocktail'
+            : 'reception'
 }
 
 const selectedTab = ref(getCurrentPeriod())
