@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { beforeEach, describe, it, vi } from 'vitest'
-import Avatar from './Avatar.vue'
+import Avatar from './avatar.vue'
 
 describe('Avatar', () => {
   beforeEach(() => {
