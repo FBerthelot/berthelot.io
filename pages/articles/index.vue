@@ -43,7 +43,7 @@
           <span class="typo_default typo_white">{{ article.description }}</span>
           <time class="card_meta typo_meta-info typo_white">
             {{
-              new Date(article.date).toLocaleString($i18n.locale, {
+              new Date(article.createdDate).toLocaleString($i18n.locale, {
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric',

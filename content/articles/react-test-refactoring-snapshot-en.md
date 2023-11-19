@@ -5,8 +5,8 @@ slug: 'react-test-refactoring-snapshot'
 content: reactRefactoring
 image: '/illustrations/cowboy.jpg'
 locale: en
-createdDate: 2020-06-04
-modifiedDate: 2020-06-04
+createdDate: 2020/06/04
+modifiedDate: 2020/06/04
 ---
 
 <img alt="The refactoring cowboy" src="/illustrations/cowboy.jpg" class="main-image" />
@@ -28,7 +28,9 @@ While the first mistake is hard to fix, we will improve the cowboy developer's p
 
 ## Testing legacy code
 
-The first step to successfully refactor a piece of code is to add tests to the legacy code. But tests should always refer to a behavior while keeping in mind empathy with the user. It's impossible to do that when you don't know the behaviour!
+The first step to successfully refactor a piece of code is to add tests to the legacy code.
+But tests should always refer to a behavior while keeping in mind empathy with the user.
+It's impossible to do that when you don't know the behaviour!
 
 We have to find another way to achieve that. The first tool we will use is snapshot testing using Jest.
 

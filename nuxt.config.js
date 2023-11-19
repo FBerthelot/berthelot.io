@@ -69,9 +69,23 @@ export default defineNuxtConfig({
     '/mariage/design': { index: true },
   },
 
+  sitemap: {
+    urls: async () => {
+      return [
+        {
+          lastmod: new Date('2023/11/19'),
+          loc: '/articles/react-test-refactoring-snapshot',
+        },
+        {
+          lastmod: new Date('2020/06/04'),
+          loc: '/en/articles/react-test-refactoring-snapshot',
+        },
+      ]
+    },
+  },
+
   generate: {
     routes: [
-      '/articles/react-test-refactoring-snapshot',
       ...invitations.flatMap((invitation) => [
         `/mariage/${invitation.id}`,
         `/en/mariage/${invitation.id}`,
