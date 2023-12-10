@@ -122,7 +122,7 @@ import {
   uploadBytesResumable,
   ref as firebaseRef,
 } from 'firebase/storage'
-const appConfig = useAppConfig()
+const config = useRuntimeConfig()
 
 const { t } = useI18n({
   useScope: 'local',
@@ -155,7 +155,7 @@ const handleImageChange = (e) => {
       .map((file) => {
         const firestoreUrl = `/photos/${file.lastModified}-${file.name}`
 
-        if (this.assets.find((asset) => asset.firestoreUrl === firestoreUrl)) {
+        if (assets.value.find((asset) => asset.firestoreUrl === firestoreUrl)) {
           return null
         }
 
@@ -240,13 +240,14 @@ const uploadOnePhoto = (asset) => {
 
 onMounted(() => {
   const firebaseConfig = {
-    apiKey: appConfig.FIREBASE_API_KEY,
-    authDomain: appConfig.FIREBASE_AUTH_DOMAIN,
-    projectId: appConfig.FIREBASE_PROJECT_ID,
-    storageBucket: appConfig.FIREBASE_STORAGE_BUCKET,
-    messagingSenderId: appConfig.FIREBASE_MESSAGING_SENDER_ID,
-    appId: appConfig.FIREBASE_APP_ID,
+    apiKey: config.public.FIREBASE_API_KEY,
+    authDomain: config.public.FIREBASE_AUTH_DOMAIN,
+    projectId: config.public.FIREBASE_PROJECT_ID,
+    storageBucket: config.public.FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: config.public.FIREBASE_MESSAGING_SENDER_ID,
+    appId: config.public.FIREBASE_APP_ID,
   }
+
   firebaseApp.value = initializeApp(firebaseConfig)
   firebaseStorage.value = getStorage(firebaseApp.value)
 
