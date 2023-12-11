@@ -28,7 +28,7 @@
     "@vitejs/plugin-vue": "^4.5.0",
     "@vue/test-utils": "^2.4.3",
     "eslint": "8.55.0",
-    "eslint-config-prettier": "^9.0.0",
+    "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-nuxt": "^4.0.0",
     "eslint-plugin-vitest": "^0.3.10",
     "eslint-plugin-vitest-globals": "^1.4.0",
