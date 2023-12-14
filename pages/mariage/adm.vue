@@ -169,6 +169,7 @@ import img21 from '~/components/mariage/admin/slides/21.png'
 import img22 from '~/components/mariage/admin/slides/22.png'
 import img23 from '~/components/mariage/admin/slides/23.png'
 import img24 from '~/components/mariage/admin/slides/24.png'
+import { onMounted } from 'vue'
 
 const allSlides = [
   img1,
@@ -415,9 +416,6 @@ useSeoMeta({
 })
 
 const config = ref(configMapper[route.query.id])
-if (!config.value) {
-  await navigateTo('/404')
-}
 
 const schedule = computed(() => {
   return CalendarEvents.filter((event) => event.who.includes(config.value?.who))
@@ -433,6 +431,12 @@ watch(
     config.value = configMapper[route.query.id]
   },
 )
+
+onMounted(async () => {
+  if (!config.value) {
+    await navigateTo('/404')
+  }
+})
 </script>
 
 <style scoped>
