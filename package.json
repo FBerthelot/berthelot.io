@@ -45,7 +45,7 @@
   },
   "dependencies": {
     "@nuxt/content": "^2.9.0",
-    "@nuxtjs/i18n": "^8.0.0-rc.5",
+    "@nuxtjs/i18n": "^8.0.0-rc.11",
     "firebase": "^10.7.0",
     "fireworks-js": "^2.10.7",
     "reveal.js": "^5.0.2"
