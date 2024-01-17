@@ -431,7 +431,7 @@ console.log(marc.manger()); // Ravioli
 console.log(chloe.manger()); // Miam
 ```
 
-Notes: Le prototype d'un objet est utilisé pour fournir de façon dynamique des propriétés aux objets qui héritent du prototype
+note: Le prototype d'un objet est utilisé pour fournir de façon dynamique des propriétés aux objets qui héritent du prototype
 http://blog.xebia.fr/2013/06/10/javascript-retour-aux-bases-constructeur-prototype-et-heritage/
 
 
