@@ -22,18 +22,20 @@
 <template>
   <header class="header">
     <div class="first_row">
-      <div class="header__logo">
-        <nuxt-link :to="localePath(backLink)" aria-label="Back to home">
-          <BerthelotSystemAvatar
-            front-src="/assets/florent/avatar.jpg"
-            front-alt="Une photo de Florent avec des lunettes de soleil oranges."
-            back-src="/assets/florent/joker.jpg"
-            back-alt="Une photo du joker, un personnage que j'aime beaucoup car toujours souriant."
-          ></BerthelotSystemAvatar>
-        </nuxt-link>
-      </div>
+      <nuxt-link
+        :to="localePath(backLink)"
+        class="home_link"
+        aria-label="Back to home"
+      >
+        <BerthelotSystemAvatar
+          front-src="/assets/florent/avatar.jpg"
+          front-alt="Une photo de Florent avec des lunettes de soleil oranges."
+          back-src="/assets/florent/joker.jpg"
+          back-alt="Une photo du joker, un personnage que j'aime beaucoup car toujours souriant."
+        ></BerthelotSystemAvatar>
+      </nuxt-link>
 
-      <h1 variant="header__title" class="typo_title title">
+      <h1 class="typo_title title">
         {{ title }}
       </h1>
 
@@ -108,14 +110,10 @@ const { t } = useI18n({
   justify-content: space-between;
 }
 
-.header__logo {
+.home_link {
   margin: 0.5rem;
 }
-.header__title {
-  text-align: center;
-  flex: 1;
-  display: block;
-}
+
 .language-switcher {
   align-self: flex-start;
   margin: 0.5rem;
@@ -127,35 +125,40 @@ const { t } = useI18n({
 }
 
 @media screen and (max-width: 850px) {
-  /* .header {
+  .header {
+    height: auto;
+  }
+
+  .language-switcher {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+  .first_row {
     height: auto;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 2rem;
   }
 
-  .header__title,
-  .header__logo {
+  .title {
     width: auto;
-  }
-
-  .header__title {
+    text-align: center;
     margin-bottom: 1rem;
   }
 
-  .header__actions {
+  #layout_default .header .tabs {
     align-self: center;
-  } */
-
-  /* .tabs {
     justify-content: center;
     padding-right: 0;
+    margin-top: 0;
   }
 
-  .tabs .tab {
+  #layout_default .header .tabs .tab {
     padding: 0.5rem;
     margin: 0 0.5rem -1px 0.5rem;
     width: auto;
     font-size: 0.8rem;
-  } */
+  }
 }
 </style>
