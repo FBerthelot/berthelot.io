@@ -86,6 +86,7 @@ export default defineNuxtConfig({
 
   generate: {
     routes: [
+      '/slides/javascript',
       ...invitations.flatMap((invitation) => [
         `/mariage/${invitation.id}`,
         `/en/mariage/${invitation.id}`,

@@ -17,15 +17,12 @@
 
 - Au début : WWW était du print
 - 1995: Java (Sun), **JS** créé par Brendan Eich (Netscape)
+- Direction la Suisse et EcmaInternational
 - IE4 fait gagner la guerre des navigateurs
 - 2004: Mozaic Godzilla => **Mozilla**
 - 2008: **Chrome** : JavaScript enfin performant !
 - 2009: ES5, Chrome et **Node.JS**
 - Puis en 2015 => **ES6** !
-Notes:
-JS anciennement appelé LiveScript
-Netscape a remplacé appelé NCSA Mosaic
-A la mort de netscape JS passé à ECMA international
 
 
 
@@ -119,7 +116,7 @@ Un exemple avec Typescript
 ```javascript
 var a = 10;
 
-var b = a ;
+var b = a;
 
 b = 20;
 

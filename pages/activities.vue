@@ -9,6 +9,10 @@
     "now": "Mes occupations du moment",
     "paused": "En pause",
     "abandonned": "Ça n'a pas marché 🥲",
+    "statusPage": {
+      "title": "Je maintient tous ces sites",
+      "link": "https://status.berthelot.io/"
+    },
     "coacha": {
       "name": "Coach'A",
       "p1": "Avec des amis, on développe une application de sport qui s'adapte un maximum aux utilisateurs et à leur environnement.",
@@ -55,6 +59,10 @@
     "now": "What I do now",
     "paused": "Paused",
     "abandonned": "It didn't work 🥲",
+    "statusPage": {
+      "title": "All these sites are maintained by me",
+      "link": "https://status.berthelot.io/"
+    },
     "coacha": {
       "name": "Coach'A",
       "p1": "With friends, we are making a sport app that adapts itself to it's users and their environnement.",
@@ -124,6 +132,22 @@
             </div>
           </BerthelotSystemCard>
         </div>
+      </section>
+
+      <section>
+        <h2 class="typo_title--small section-title">
+          {{ t('statusPage.title') }}
+        </h2>
+        <iframe src="https://status.berthelot.io/" class="status_page_iframe">
+        </iframe>
+        <a
+          href="https://status.berthelot.io/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="typo_default typo_link status_page_link"
+        >
+          {{ t('statusPage.link') }}
+        </a>
       </section>
     </main>
     <FlorentFooter />
@@ -245,6 +269,22 @@ const activities = ref([
   text-align: center;
 
   margin-top: 2rem;
+}
+
+.status_page_iframe {
+  width: 100%;
+  height: 90vh;
+  border-radius: 1rem;
+
+  margin: 1rem 0;
+}
+
+.status_page_link {
+  text-align: center;
+  color: var(--color-white);
+  width: 100%;
+  display: inline-block;
+  margin-bottom: 2rem;
 }
 
 @media screen and (max-width: 850px) {
