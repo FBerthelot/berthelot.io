@@ -8,7 +8,9 @@
     "mariage-civil": "Mariage Civil",
     "no-network": "No network",
     "photo": "Photo",
-    "download": "Download"
+    "download": "Download",
+    "play": "play",
+    "externalLink": "External link"
   },
   "en": {
     "title": "Icons",
@@ -18,7 +20,9 @@
     "mariage-civil": "Mariage Civil",
     "no-network": "No network",
     "photo": "Photo",
-    "download": "Download"
+    "download": "Download",
+    "play": "play",
+    "externalLink": "External link"
   }
 }
 </i18n>
@@ -56,6 +60,14 @@
       <figure>
         <img alt="Download icon" src="./telecharger.png" />
         <figcaption>{{ t('download') }}</figcaption>
+      </figure>
+      <figure>
+        <img alt="Play icon" src="./play.png" />
+        <figcaption>{{ t('play') }}</figcaption>
+      </figure>
+      <figure>
+        <img alt="External Link icon" src="./external-link.png" />
+        <figcaption>{{ t('externalLink') }}</figcaption>
       </figure>
     </article>
   </section>
