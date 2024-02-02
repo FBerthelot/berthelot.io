@@ -13,7 +13,8 @@
     "Afficheur photo": "Afficheur photo",
     "Menu": "Menu",
     "Livret de messe": "Livret de messe",
-    "Les autres infos": "Les autres infos"
+    "Les autres infos": "Les autres infos",
+    "video et photos": "video et photos"
   },
   "en": {
     "meta": {
@@ -28,7 +29,8 @@
     "Afficheur photo": "Afficheur photo",
     "Menu": "Menu",
     "Livret de messe": "Livret de messe",
-    "Les autres infos": "Les autres infos"
+    "Les autres infos": "Les autres infos",
+    "video et photos": "Movie & Pictures"
   }
 }
 </i18n>
@@ -55,6 +57,14 @@
         <h2 class="typography-title-2">{{ t('Les autres infos') }}</h2>
 
         <ul>
+          <li>
+            <nuxt-link
+              title="Accéder à l'espace invité"
+              class="typography-link"
+              :to="`/mariage/merci`"
+              >{{ t(`video et photos`) }}</nuxt-link
+            >
+          </li>
           <li>
             <nuxt-link
               title="Accéder à l'espace invité"
