@@ -108,7 +108,7 @@
           {{ t('play_long_movie') }}
         </button>
         <a
-          href="https://www.jingoo.com/public/report/6019342/listAlbum/"
+          href="https://www.jingoo.com/client/key/5bd90e/40dcb86a/"
           target="_blank"
           rel="noopener noreferrer"
           class="button"
