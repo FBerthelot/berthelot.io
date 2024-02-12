@@ -34,7 +34,7 @@
     "eslint-plugin-vitest-globals": "^1.4.0",
     "eslint-plugin-vue": "^9.21.1",
     "jsdom": "^24.0.0",
-    "nuxt": "^3.9.3",
+    "nuxt": "^3.10.1",
     "nuxt-simple-robots": "^3.1.10",
     "nuxt-simple-sitemap": "^4.4.1",
     "prettier": "3.2.4",
