@@ -207,10 +207,12 @@ onMounted(async () => {
   })
 
   await import('https://www.googletagmanager.com/gtag/js?id=G-5P3NE4GV44')
-  window.dataLayer = window.dataLayer || [];
-  window.gtag = () => { dataLayer.push(arguments); }
-  gtag('js', new Date());
-  gtag('config', 'G-5P3NE4GV44');
+  window.dataLayer = window.dataLayer || []
+  window.gtag = () => {
+    dataLayer.push(arguments)
+  }
+  gtag('js', new Date())
+  gtag('config', 'G-5P3NE4GV44')
 })
 </script>
 
