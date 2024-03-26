@@ -185,7 +185,7 @@ useSeoMeta({
   ogUrl: 'https://berthelot.io/mariage/',
 })
 
-onMounted(() => {
+onMounted(async () => {
   longMovieButton.value.focus()
 
   window.addEventListener('keyup', (e) => {
@@ -205,6 +205,12 @@ onMounted(() => {
       }
     }
   })
+
+  await import('https://www.googletagmanager.com/gtag/js?id=G-5P3NE4GV44')
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = () => { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-5P3NE4GV44');
 })
 </script>
 
