@@ -39,7 +39,7 @@
     "nuxt-simple-sitemap": "^4.4.1",
     "prettier": "3.2.4",
     "unplugin-vue-components": "^0.26.0",
-    "vitest": "^1.4.0",
+    "vitest": "^1.5.0",
     "vue": "^3.4.15",
     "vue-router": "^4.3.0"
   },
