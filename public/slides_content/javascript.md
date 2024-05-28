@@ -1043,7 +1043,7 @@ Perso j'aime pas, trop verbeux...
 <!-- .slide: data-background="#98C9A3" -->
 ## ES2018
 
-Ajout de ce que tout le monde utilisais déjà
+Ajout de ce que tout le monde utilisait déjà.
 
 
 <!-- .slide: data-background="#98C9A3" -->
@@ -1656,6 +1656,138 @@ console.log(sample); // coca
 ```javascript
 const weak = new WeakMap();
 weak.set(Symbol('borne'), {followers: 49.3});
+```
+
+
+
+<!-- .slide: data-background="#20214F" -->
+# ES2024
+
+GroupBy et des trucs cools sur les Regexs !
+
+
+<!-- .slide: data-background="#20214F" -->
+## RegExp again
+
+```javascript
+// difference/subtraction
+// [A--B]
+
+// intersection
+//[A&&B]
+
+// Par exemple :
+'023370'.match(/([[0-9]--[89]])/v);
+```
+
+
+<!-- .slide: data-background="#20214F" -->
+## RegExp again
+
+```javascript
+'🎉 ☀︎'.match(/[\p{Emoji}--\p{ASCII}]/v);
+```
+
+
+<!-- .slide: data-background="#20214F" -->
+## Array GroupBy
+
+```javascript
+const array = [1, 2, 3, 4, 5];
+
+Object.groupBy(array, (num, index) => {
+  return num % 2 === 0 ? 'even': 'odd';
+});
+```
+
+
+<!-- .slide: data-background="#20214F" -->
+## Promise.withResolver()
+
+```javascript
+// Utile dans les tests ?
+const {resolve, reject} = Promise.withResolver();
+
+// Later...
+resolve('ok');
+```
+
+
+<!-- .slide: data-background="#20214F" -->
+## isWellFormed()
+
+```javascript
+const illFormed = "https://example.com/search?q=\uD800";
+// UTF-16 is between 0xDC00 and 0xDFFF
+
+console.log(illFormed.isWellFormed()); // false
+```
+
+
+<!-- .slide: data-background="#20214F" -->
+## Atomics.waitAsync()
+
+```javascript
+const bufferShared = new SharedArrayBuffer(1024);
+const arrayInt32 = new Int32Array(sab);
+
+Atomics.waitAsync(arrayInt32, 0, 0, 2000)
+  .then((result) => {
+    console.log(result); // 'ok'
+  });
+
+setTimeout(() => {
+  Atomics.notify(arrayInt32, 0);
+}, 1000);
+```
+
+
+<!-- .slide: data-background="#20214F" -->
+## Resizable ArrayBuffer
+
+```javascript
+const bufferResizable = new ArrayBuffer(8, { maxByteLength: 16 });
+const bufferNotResizable = new ArrayBuffer(8);
+
+bufferResizable.resize(12);
+```
+
+
+<!-- .slide: data-background="#20214F" -->
+## Buffer Transfer
+
+```javascript
+const buffer = new ArrayBuffer(8);
+const buffer2 = buffer.transfer();
+```
+
+
+
+<!-- .slide: data-background="#1E5945" -->
+# ES2025
+
+Fatigué des regex ?
+
+
+<!-- .slide: data-background="#1E5945" -->
+# Capturing Group V2
+
+```javascript
+'2025-01 ou 01-2025 ?'.match(/(?<year>[0-9]{4})-[0-9]{2}|[0-9]{2}-(?<year>[0-9]{4})/)
+```
+
+
+<!-- .slide: data-background="#1E5945" -->
+# Set improvments
+
+```javascript
+Set.prototype.intersection(other)
+Set.prototype.union(other)
+Set.prototype.difference(other)
+Set.prototype.symmetricDifference(other)
+Set.prototype.isSubsetOf(other)
+Set.prototype.isSupersetOf(other)
+Set.prototype.isDisjointFrom(other)
 ```
 
 
