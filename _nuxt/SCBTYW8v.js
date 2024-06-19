@@ -1,1 +1,0 @@
-import r from"./RMVNzrws.js";import{S as o,T as u,z as f,a4 as c}from"./D5ORYthD.js";const i=o({name:"Markdown",extends:r,setup(t){const{parent:e}=c(),{between:n,default:a}=u(),s=f(()=>typeof t.unwrap=="string"?t.unwrap.split(" "):["*"]);return{fallbackSlot:a,tags:s,between:n,parent:e}}});export{i as default};
