@@ -38,7 +38,7 @@
     "nuxt-simple-robots": "^3.1.10",
     "nuxt-simple-sitemap": "^4.4.1",
     "prettier": "3.2.4",
-    "unplugin-vue-components": "^0.27.2",
+    "unplugin-vue-components": "^0.27.3",
     "vitest": "^2.0.4",
     "vue": "^3.4.35",
     "vue-router": "^4.4.0"
