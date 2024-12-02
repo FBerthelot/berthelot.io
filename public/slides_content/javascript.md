@@ -1766,7 +1766,16 @@ const buffer2 = buffer.transfer();
 <!-- .slide: data-background="#1E5945" -->
 # ES2025
 
-Fatigué des regex ?
+JSON is back!
+
+
+<!-- .slide: data-background="#1E5945" -->
+# JSON Import
+
+```javascript
+import json from "./foo.json" with { type: "json" };
+import("foo.json", { with: { type: "json" } });
+```
 
 
 <!-- .slide: data-background="#1E5945" -->
@@ -1778,16 +1787,71 @@ Fatigué des regex ?
 
 
 <!-- .slide: data-background="#1E5945" -->
+# Promise.try
+
+```javascript
+Promise.try(signIn, 'florent', 'password')
+  .catch((err) => {
+    console.error(err);
+  });
+```
+
+
+<!-- .slide: data-background="#1E5945" -->
+# Un autre pattern ?
+
+```javascript
+function catchOnSentry(action) {
+  return Promise.try(action)
+    .then((result) => console.log(result))
+    .catch(sendErrorToSentry)
+    .finally(() => console.log("Done"));
+}
+
+catchOnSentry(() => "Sync result");
+
+catchOnSentry(() => {
+  throw new Error("Sync error");
+});
+
+catchOnSentry(async () => "Async result");
+
+catchOnSentry(async () => {
+  throw new Error("Async error");
+});
+```
+
+
+<!-- .slide: data-background="#1E5945" -->
 # Set improvments
 
 ```javascript
-Set.prototype.intersection(other)
-Set.prototype.union(other)
-Set.prototype.difference(other)
-Set.prototype.symmetricDifference(other)
-Set.prototype.isSubsetOf(other)
-Set.prototype.isSupersetOf(other)
-Set.prototype.isDisjointFrom(other)
+Set.prototype.intersection(fn)
+Set.prototype.union(fn)
+Set.prototype.difference(fn)
+Set.prototype.symmetricDifference(fn)
+Set.prototype.isSubsetOf(fn)
+Set.prototype.isSupersetOf(fn)
+Set.prototype.isDisjointFrom(fn)
+```
+
+
+<!-- .slide: data-background="#1E5945" -->
+# Iterator improvments
+
+```javascript
+Iterator.prototype.map(fn)
+Iterator.prototype.filter(fn)
+Iterator.prototype.take(fn)
+Iterator.prototype.drop(fn)
+Iterator.prototype.flatMap(fn)
+Iterator.prototype.reduce(fn)
+Iterator.prototype.toArray(fn)
+Iterator.prototype.forEach(fn)
+Iterator.prototype.some(fn)
+Iterator.prototype.every(fn)
+Iterator.prototype.find(fn)
+Iterator.prototype.from(fn)
 ```
 
 
