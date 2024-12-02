@@ -11,7 +11,7 @@
       "presentation": {
         "p1": "Je suis passionné du Web et des technologies qui gravitent autour. J'aime le W3C, le TC39 (quand il ne smoosh pas devant moi), le WhatWG, les frameworks JS (React, Vue.js, Node.js, Angular, ...) et la vanille.",
         "p2": "Transmettre ma passion pour l'artisanat web occupe une part importante de mon travail de développeur (meetups, formations, conférences, encadrement de stagiaires).",
-        "p3": "Vive le web, Vive le JS et Vive l'artisanat&nbsp;!"
+        "p3": "Vive le web, Vive le JS et Vive l'artisanat !"
       }
     },
     "nav": {
