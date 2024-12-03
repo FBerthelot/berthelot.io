@@ -806,7 +806,7 @@ console.log(iterator.next()); // { value: 42, done: true }
 
 
 <!-- .slide: data-background="#00a6ff" -->
-## Iteratérables
+## Itérables
 
 Les itérables implémente la fonction `[Symbol.iterator]`
 
