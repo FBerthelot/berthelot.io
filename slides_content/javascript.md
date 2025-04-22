@@ -15,14 +15,36 @@
 <!-- .slide: data-background="#273E47" -->
 ## Historique
 
-- Au début : WWW était du print
-- 1995: Java (Sun), **JS** créé par Brendan Eich (Netscape)
-- Direction la Suisse et EcmaInternational
-- IE4 fait gagner la guerre des navigateurs
-- 2004: Mozaic Godzilla => **Mozilla**
-- 2008: **Chrome** : JavaScript enfin performant !
-- 2009: ES5, Chrome et **Node.JS**
-- Puis en 2015 => **ES6** !
+<pre class="mermaid">
+    timeline
+        title L'histoire du JS
+        1989 : Naissance du Web
+        1991 : Naissance du HTML
+        1995 : Début de la guerre NetScape / IE
+             : JavaScript créé par Brendan Eich (Netscape)
+        1996 : Naissance du CSS
+        1997 : Direction la Suisse et EcmaInternational
+        2008 : Chrome, JavaScript enfin performant !
+        2009 : Naissance de **Node.JS**
+             : ES5 / HTML5 / CSS3
+        2015 : ES6
+        2016 : ES7 / ES2016
+</pre>
+
+
+<!-- .slide: data-background="#273E47" -->
+## La suisse
+
+EcmaInternation = Organisme suisse de standardisation de circuits imprimé
+
+Depuis 2015, chaque année (vers juin), une nouvelle version.
+
+
+<!-- .slide: data-background="#273E47" -->
+## Groupe de travail TC39
+
+- [Proposal](https://github.com/tc39/proposals)
+- [Finished Proposal](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
 
 
 
@@ -1854,6 +1876,22 @@ Iterator.prototype.find(fn)
 Iterator.prototype.from(fn)
 ```
 
+
+<!-- .slide: data-background="#1E5945" -->
+# ES2026
+
+Qu'est ce qu'ils nous cuisinent ?
+
+
+<!-- .slide: data-background="#1E5945" -->
+## Temporal
+
+Bye bye `new Date()`
+
+```javascript
+const now = Temporal.now.plainDateTimeISO();
+```
+Immutable, toutes timezones, etc.
 
 
 # Suivre l'actualité
