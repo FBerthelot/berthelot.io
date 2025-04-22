@@ -37,6 +37,12 @@ Les solutions sont toujours multiples.
 Posez-moi des questions.
 
 
+
+## Travaux pratiques
+
+Le sujet : Pokédex
+
+
 ## Informations pratique
 
 - Matin : 9h - 12h30
@@ -179,6 +185,8 @@ Puis mettez en place vos scripts
 }
 ```
 
+Challenge, votre projet doit être compilé dans un dossier nommé `build`.
+
 
 
 # Rappels TypeScript - Langue
@@ -315,7 +323,7 @@ ne retourne rien et affiche en console un jolie message avec les stats du pokemo
 
 ## ES5
 
-[Slide clases en JS](http://localhost:4040/slides/javascript#/3/21)
+[Slide classes en JS](http://localhost:4040/slides/javascript#/3/21)
 
 Voir ES5, ES6 et ES2022.
 
@@ -429,7 +437,7 @@ On valide notre code via notre index.ts.
 Niveau architecture, nous avons besoin, à minima :
  - repository :
     - une méthode pour ajouter un pokemon
-    - une méthode pour récupérer un pokemon tous les pokemons
+    - une méthode pour récupérer tous les pokemons
  - gateway avec :
     - une méthode pour récupérer tous les pokemons existants
     - on simule une API avec notre tableau de pokemons du TP 2
@@ -438,9 +446,21 @@ Niveau architecture, nous avons besoin, à minima :
 ## TP 3
 
 2 usecases qui :
-  - ajoute un pokemon dans notre pokedex :
+  - Ajoute un pokemon dans notre pokedex :
     Attention, on ne peut pas avoir 2 fois le même pokemon, notre pokemon gagne un niveau si on le possède déjà.
-  - liste l'ensemble des pokemons possédés et leurs niveaux
+  - Liste l'ensemble des pokemons possédés et leurs niveaux
+
+
+## La clean architecture
+
+```mermaid
+flowchart LR
+    Index.ts-->UseCase
+    UseCase-->Repository
+    UseCase-->Gateway
+    Repository-->DataBase
+    Gateway-->PokéAPI
+```
 
 
 
@@ -536,7 +556,6 @@ interface Bear extends Animal {
 ```
 
 ```typescript
-	
 type Animal = {
   name: string
 }
@@ -620,8 +639,7 @@ A un certain niveau de typing, un programme qui compile est un programme qui fon
 
 ```typescript
 type Dice = 1 | 2 | 3 | 4 | 5 | 6;
- 
- 
+
 const diceResult: Dice = 6;
 ```
 
@@ -850,7 +868,7 @@ Très utile pour déclancher l'autocomplétion de l'IDE.
 
 ## TP 6
 
-Lorsque l'on ajoute un pokemon de type "psy" à notre pokedex, il confère un bonus de 2 niveaux à tous les autres pokemon de notre pokedex.
+Lorsque l'on ajoute un pokemon de type "psy" à notre Pokédex, il confère un bonus de 2 niveaux à tous les autres pokemon de notre pokedex.
 Créez une fonction `isPsyPokemon`.
 
 
@@ -903,7 +921,7 @@ identityB(2).toFixed(); // KO
 ```
 
 
-### Les génériques - classes
+### Les génériques - classe
 
 ```typescript
 class List<T, Index=number> {
@@ -956,7 +974,6 @@ function loggingIdentity<Type extends Pokemon>(arg: Type): Type {
 
 Créez une méthode `getPokemonByType` à votre repository.
 Le type de retour est un pokemon du type demandé.
-
 
 
 
@@ -1148,7 +1165,7 @@ Crée un type d'objet avec des clés spécifiques et des valeurs associées.
 
 ## TP8
 
-TODO
+Ajoutez une fonction getPokemonByType dans votre gateway.
 
 
 
@@ -1229,21 +1246,488 @@ type PokemonReturnType = ReturnType<typeof getPokemon>;
 
 
 ## Interception avec une API
-Appel de l'API Pokemon pour récupérer les stats
-TP: Zod
+
+### Consommer une API avec TypeScript
+
+#### Exemple de base
+```typescript
+async function fetchData(url: string): Promise<any> {
+  const response = await fetch(url);
+  return response.json();
+}
+
+const data = await fetchData("https://pokeapi.co/api/v2/pokemon");
+console.log(data);
+```
+
+#### Limitation
+- Le typage `any` est trop permissif.
+- Risque d'erreurs à l'exécution si les données ne correspondent pas à ce qui est attendu.
+
+---
+
+### Validation des données avec Zod
+
+#### Introduction à Zod
+Zod est une bibliothèque de validation de schémas qui permet de :
+- Définir un schéma pour les données attendues.
+- Valider les données reçues d'une API.
+
+#### Installation
+```bash
+npm install zod
+```
+
+---
+
+### Exemple avec Zod
+
+#### Définir un schéma
+```typescript
+import { z } from "zod";
+
+const PokemonSchema = z.object({
+  name: z.string(),
+  id: z.number(),
+  types: z.array(z.object({
+    type: z.object({
+      name: z.string(),
+    }),
+  })),
+});
+```
+
+#### Valider les données
+```typescript
+async function fetchAndValidatePokemon(url: string) {
+  const response = await fetch(url);
+  const data = await response.json();
+
+  const parsedData = PokemonSchema.parse(data);
+  return parsedData;
+}
+
+const validatedPokemon = await fetchAndValidatePokemon("https://pokeapi.co/api/v2/pokemon/1");
+console.log(validatedPokemon);
+```
+
+#### Résultat
+- Si les données sont valides : elles sont retournées avec un typage fort.
+- Si les données sont invalides : une erreur est levée.
+
+---
+
+### Gestion des erreurs
+
+#### Exemple
+```typescript
+try {
+  const validatedPokemon = await fetchAndValidatePokemon("https://pokeapi.co/api/v2/pokemon/1");
+  console.log(validatedPokemon);
+} catch (error) {
+  console.error("Erreur de validation :", error);
+}
+```
+
+#### Avantages
+- Détection rapide des erreurs de structure.
+- Amélioration de la robustesse de l'application.
+
+---
+
+### Utilisation avancée avec Zod
+
+#### Validation partielle
+```typescript
+const PartialPokemonSchema = PokemonSchema.partial();
+```
+
+#### Validation d'un tableau
+```typescript
+const PokemonListSchema = z.array(PokemonSchema);
+```
+
+#### Validation avec des valeurs par défaut
+```typescript
+const DefaultPokemonSchema = z.object({
+  name: z.string().default("Unknown"),
+  id: z.number(),
+});
+```
+
+---
+
+### TP : Intégration avec une API
+
+1. Récupérez des données depuis l'API PokéAPI.
+2. Définissez un schéma Zod pour valider les données des Pokémon.
+3. Implémentez une fonction TypeScript qui :
+   - Fait un appel à l'API.
+   - Valide les données avec Zod.
+   - Affiche les données validées dans la console.
+
+4. Bonus : Gérez les erreurs de validation et affichez un message utilisateur.
+
+---
+
+### Pourquoi utiliser Zod ?
+
+- **Sécurité** : Valide les données avant de les utiliser.
+- **Typage fort** : Génère automatiquement des types TypeScript.
+- **Simplicité** : Syntaxe intuitive et facile à intégrer.
+
+---
+
+### Ressources
+
+- [Documentation Zod](https://zod.dev)
+- [PokéAPI](https://pokeapi.co)
+- [TypeScript Handbook](https://www.typescriptlang.org/docs/)
 
 
 
-## Typescript et les Frameworks Web
 
-TP: On code un projet avec un framework JS (React, Vue, Angular, Svelte, etc.)
-Fournir le HTML / CSS dans un IDE en ligne
+## TypeScript et Vue.js
+
+### Introduction à Vue.js avec TypeScript
+- Vue.js supporte TypeScript nativement via la CLI Vue.
+### Vue.js et TypeScript
+
+Vue 3 introduit une API Composition qui facilite l'utilisation de TypeScript.
+
+---
+
+### Configuration de TypeScript dans un projet Vue.js
+1. Créez un projet Vue avec TypeScript :
+  ```bash
+  vue create my-vue-app
+  ```
+  Sélectionnez l'option TypeScript.
+2. Exemple de fichier `tsconfig.json` :
+  ```json
+  {
+    "compilerOptions": {
+     "strict": true,
+     "esModuleInterop": true,
+     "module": "esnext",
+     "target": "esnext"
+    }
+  }
+  ```
+
+---
+
+### Typage des Props
+Avec Vue 3, les props peuvent être typées directement dans la fonction `defineComponent` :
+```typescript
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  props: {
+   message: {
+    type: String,
+    required: true
+   }
+  },
+  setup(props) {
+   console.log(props.message); // Typé comme string
+  }
+});
+</script>
+```
+
+---
+
+### Typage des Événements
+Avec Vue 3, les événements peuvent être typés pour garantir la sécurité :
+```typescript
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  emits: {
+   update: (value: number) => typeof value === 'number'
+  },
+  setup(_, { emit }) {
+   emit('update', 42); // Type vérifié
+  }
+});
+</script>
+```
+
+---
+
+### Typage des Refs
+Les `ref` peuvent être typées pour garantir leur contenu :
+```typescript
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+
+export default defineComponent({
+  setup() {
+   const count = ref<number>(0);
+
+   const increment = () => {
+    count.value++;
+   };
+
+   return { count, increment };
+  }
+});
+</script>
+```
+
+---
+
+### TP Vue.js
+1. Créez une application Vue.js avec TypeScript.
+2. Implémentez un composant `TodoList` :
+  - Props : `todos` (tableau de chaînes).
+  - Événement : `addTodo` (ajoute un nouvel élément).
+3. Bonus : Ajoutez des tests unitaires avec Vue Test Utils.
+4. Bonus avancé : Ajoutez un slot nommé `todo-item` pour personnaliser l'affichage des éléments de la liste.
+
+---
+
+### React et TypeScript
+
+React s'intègre parfaitement avec TypeScript pour un typage fort des composants et des hooks.
+
+---
+
+### Typage des Props
+Les props peuvent être typées avec une interface ou un type :
+```typescript
+import React from 'react';
+
+interface ButtonProps {
+  label: string;
+  onClick: () => void;
+}
+
+const Button: React.FC<ButtonProps> = ({ label, onClick }) => (
+  <button onClick={onClick}>{label}</button>
+);
+
+export default Button;
+```
+
+---
+
+### Typage des Hooks
+Les hooks comme `useState` et `useReducer` peuvent être typés :
+```typescript
+import React, { useState } from 'react';
+
+const Counter: React.FC = () => {
+  const [count, setCount] = useState<number>(0);
+
+  return (
+   <div>
+    <p>Count: {count}</p>
+    <button onClick={() => setCount(count + 1)}>Increment</button>
+   </div>
+  );
+};
+
+export default Counter;
+```
+
+---
+
+### Typage des Contexts
+Les contextes peuvent être typés pour une meilleure sécurité :
+```typescript
+import React, { createContext, useContext } from 'react';
+
+interface User {
+  name: string;
+  age: number;
+}
+
+const UserContext = createContext<User | null>(null);
+
+const UserProvider: React.FC = ({ children }) => {
+  const user = { name: 'John', age: 30 };
+  return <UserContext.Provider value={user}>{children}</UserContext.Provider>;
+};
+
+const UserProfile: React.FC = () => {
+  const user = useContext(UserContext);
+  if (!user) return null;
+
+  return <p>{user.name}</p>;
+};
+
+export { UserProvider, UserProfile };
+```
+
+---
+
+### TP React
+1. Créez une application React avec TypeScript.
+2. Implémentez un composant `TodoList` :
+  - Props : `todos` (tableau de chaînes).
+  - Événement : `onAddTodo` (ajoute un nouvel élément).
+3. Bonus : Ajoutez des tests unitaires avec React Testing Library.
+4. Bonus avancé : Utilisez un contexte pour gérer l'état global des todos.
+
+---
+
+### Angular et TypeScript
+
+Angular est conçu pour fonctionner avec TypeScript dès le départ, offrant un typage fort et des outils puissants.
+
+---
+
+### Typage des Services
+Les services Angular peuvent être typés pour garantir la sécurité des données :
+```typescript
+import { Injectable } from '@angular/core';
+
+export interface Todo {
+  id: number;
+  text: string;
+}
+
+@Injectable({
+  providedIn: 'root'
+})
+export class TodoService {
+  private todos: Todo[] = [];
+
+  addTodo(todo: Todo): void {
+   this.todos.push(todo);
+  }
+
+  getTodos(): Todo[] {
+   return this.todos;
+  }
+}
+```
+
+---
+
+### Typage des Composants
+Les composants Angular utilisent des interfaces pour typer leurs entrées et sorties :
+```typescript
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+
+@Component({
+  selector: 'app-todo-list',
+  template: `
+   <ul>
+    <li *ngFor="let todo of todos">{{ todo }}</li>
+   </ul>
+   <button (click)="addTodo()">Add Todo</button>
+  `
+})
+export class TodoListComponent {
+  @Input() todos: string[] = [];
+  @Output() addTodoEvent = new EventEmitter<string>();
+
+  addTodo(): void {
+   this.addTodoEvent.emit('New Todo');
+  }
+}
+```
+
+---
+
+### TP Angular
+1. Créez une application Angular avec TypeScript.
+2. Implémentez un composant `TodoList` :
+  - Input : `todos` (tableau de chaînes).
+  - Output : `addTodo` (ajoute un nouvel élément).
+3. Bonus : Ajoutez des tests unitaires avec Jasmine et Karma.
+4. Bonus avancé : Utilisez un service pour gérer l'état global des todos.
+
 
 
 
 ## Une librairie écrite en TypeScript
 
-TP: ?
+### Intégrer une librairie JavaScript dans un projet TypeScript
+
+#### Étape 1 : Installer la librairie
+Commencez par installer la librairie JavaScript que vous souhaitez utiliser dans votre projet TypeScript :
+```bash
+npm install <nom-de-la-librairie>
+```
+
+#### Étape 2 : Vérifier les types
+Certaines librairies JavaScript incluent déjà des définitions de types TypeScript. Vérifiez si un fichier `index.d.ts` est présent dans le package. Si c'est le cas, vous pouvez directement utiliser la librairie.
+
+#### Étape 3 : Utiliser DefinitelyTyped
+Si la librairie ne fournit pas de types, vous pouvez vérifier si des types communautaires sont disponibles via le projet [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped). Ces types sont publiés sous le package `@types/<nom-de-la-librairie>`.
+
+Installez les types correspondants :
+```bash
+npm install --save-dev @types/<nom-de-la-librairie>
+```
+
+#### Étape 4 : Ajouter des types manuellement
+Si aucun type n'est disponible, vous pouvez créer vos propres définitions de types :
+1. Créez un fichier `types/<nom-de-la-librairie>.d.ts`.
+2. Ajoutez les définitions nécessaires :
+```typescript
+declare module '<nom-de-la-librairie>' {
+  export function exampleFunction(arg: string): void;
+}
+```
+
+#### Étape 5 : Configurer `tsconfig.json`
+Assurez-vous que TypeScript inclut vos fichiers de types personnalisés. Ajoutez le chemin dans la propriété `include` de votre `tsconfig.json` :
+```json
+{
+  "include": ["src/**/*", "types/**/*"]
+}
+```
+
+---
+
+### DefinitelyTyped : Une ressource essentielle
+- **Qu'est-ce que DefinitelyTyped ?**
+  DefinitelyTyped est un dépôt communautaire qui contient des définitions de types pour des milliers de librairies JavaScript.
+
+- **Pourquoi l'utiliser ?**
+  - Fournit des types pour des librairies qui n'en ont pas nativement.
+  - Maintenu par la communauté, il est régulièrement mis à jour.
+
+- **Comment contribuer ?**
+  Si vous créez des types pour une librairie et souhaitez les partager, vous pouvez soumettre une PR au dépôt DefinitelyTyped.
+
+---
+
+### Exemple : Intégrer Lodash dans un projet TypeScript
+1. Installez Lodash et ses types :
+```bash
+npm install lodash
+npm install --save-dev @types/lodash
+```
+
+2. Utilisez Lodash dans votre code TypeScript :
+```typescript
+import _ from 'lodash';
+
+const numbers = [1, 2, 3, 4];
+const doubled = _.map(numbers, (n) => n * 2);
+console.log(doubled);
+```
+
+3. Les types fournis par `@types/lodash` garantissent une autocomplétion et une vérification des types dans votre IDE.
+
+---
+
+### TP : Intégrer une librairie JavaScript
+1. Choisissez une librairie JavaScript populaire (ex. `axios`, `moment`, etc.).
+2. Installez la librairie et ses types via DefinitelyTyped.
+3. Si les types ne sont pas disponibles, créez vos propres définitions.
+4. Utilisez la librairie dans un fichier TypeScript et testez son intégration.
+
+Bonus : Contribuez à DefinitelyTyped en ajoutant ou améliorant des types pour une librairie.
+
 
 
 

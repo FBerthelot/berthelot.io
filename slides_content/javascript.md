@@ -25,7 +25,7 @@
         1996 : Naissance du CSS
         1997 : Direction la Suisse et EcmaInternational
         2008 : Chrome, JavaScript enfin performant !
-        2009 : Naissance de **Node.JS**
+        2009 : Naissance de Node.JS
              : ES5 / HTML5 / CSS3
         2015 : ES6
         2016 : ES7 / ES2016
