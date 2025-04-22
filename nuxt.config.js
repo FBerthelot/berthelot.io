@@ -5,6 +5,7 @@ export default defineNuxtConfig({
   devServer: {
     port: 5000,
   },
+
   ssr: true,
 
   site: {
@@ -95,4 +96,6 @@ export default defineNuxtConfig({
       ]),
     ],
   },
+
+  compatibilityDate: '2025-04-16',
 })

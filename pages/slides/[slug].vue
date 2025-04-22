@@ -61,13 +61,16 @@ onMounted(async () => {
   const Highlight = (
     await import('reveal.js/plugin/highlight/highlight.esm.js')
   ).default
+  const MermaidPlugin = (await import('reveal.js-mermaid-plugin')).default
 
   const deck = new Reveal({
-    plugins: [Markdown, Highlight],
+    plugins: [Markdown, Highlight, MermaidPlugin],
 
     slideNumber: true,
     hash: true,
     autoAnimate: false,
+
+    markdown: {},
   })
 
   deck.initialize()
@@ -86,5 +89,9 @@ onMounted(async () => {
   text-align: center;
   color: #2c3e50;
   height: 100vh;
+}
+
+.mermaid {
+  background: white;
 }
 </style>

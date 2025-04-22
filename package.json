@@ -48,6 +48,7 @@
     "@nuxtjs/i18n": "^8.5.5",
     "firebase": "^11.0.2",
     "fireworks-js": "^2.10.7",
-    "reveal.js": "^5.1.0"
+    "reveal.js": "^5.1.0",
+    "reveal.js-mermaid-plugin": "^11.4.1"
   }
 }

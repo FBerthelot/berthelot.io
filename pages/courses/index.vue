@@ -199,6 +199,26 @@ const subjects = ref([
     type: 'course',
   },
   {
+    name: 'TypeScript Avancée',
+    description: {
+      fr: `
+                Typescript s'impose comme le langage de référence pour le développement d'application web.
+                Nous l'utilisons tous les jours, mais le maîtrisons nous vraiment ?
+                <br/><br/>
+                Découvrons ensemble les subtilités de ce langage et comment l'utiliser au mieux.
+              `,
+      en: `
+                TypeScript is becoming the reference language for web application development.
+                We use it every day, but do we really master it?
+                <br/><br/>
+                Let's discover together the subtleties of this language and how to use it at its best.
+              `,
+    },
+    url: '/slides/typescript_avancee.html',
+    external: true,
+    type: 'course',
+  },
+  {
     name: 'Nest.js',
     description: {
       fr: `
