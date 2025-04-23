@@ -527,7 +527,7 @@ Des exemples de cas d'utilisation d'interfaces ?
 ## TP4
 
 Ajoutez Jest ou Vitest à votre projet.
-Testez votre usecase en mockant la gateway mais pas le repository.
+Testez le usecase de collect en mockant la gateway mais pas le repository.
 
 
 
@@ -596,7 +596,7 @@ class SomePoint2 implements Point2 {
  
 type PartialPoint = { x: number; } | { y: number; };
  
-// FIXME: can not implement a union type
+// Non fonctionnel
 class SomePartialPoint implements PartialPoint {
   x = 1;
   y = 2;
@@ -669,6 +669,17 @@ const pokemonStats2: [string, number, string] = ["Pikachu", 42, "Electric"];
 ### Safe by pattern
 
 ```typescript
+type Pickachu {
+  name: string | null
+}
+ 
+type PokemonName =  Pickachu['name'];
+``` 
+
+
+### Safe by pattern
+
+```typescript
 const pickachu = {
   name: 'pika'
 }
@@ -691,7 +702,7 @@ type string = string | null | undefined;
 
 ## TP 5
 
-Contraintes suplémentaire. Lorsque l'on ajoute un pokemon pour la 1ère fois, on lui donne un nom.
+Lorsque l'on ajoute un pokemon pour la 1ère fois, on lui donne un nom.
 Ce nom contient forcément le type de pokemon.
 
 Exemple : "pik-elec".
@@ -728,7 +739,6 @@ if (stringOrStringArray instanceof String) {
  
 console.log(stringOrStringArray.toLowerCase()); //KO
  
- 
 let point: {x: string} | {y: string};
 /**...**/
 if('x' in point) {
@@ -746,7 +756,7 @@ function isString(x: any): boolean {
   return x instanceof String;
 }
 if (isString(stringOrStringArray)) {
-  console.log(stringOrStringArray.toLowerCase()); //OK
+  console.log(stringOrStringArray.toLowerCase()); // KO
 }
  
 /****/
@@ -755,7 +765,7 @@ function isString(x: any): x is string {
   return x instanceof String;
 }
 if (isString(stringOrStringArray)) {
-  console.log(stringOrStringArray.toLowerCase()); //OK
+  console.log(stringOrStringArray.toLowerCase()); // OK
 }
 ```
 
@@ -854,7 +864,6 @@ type posY = {
   y: number,
 }
 type PartialPosition = posX | posY
-
 
 const asExample = {x: 1} as PartialPosition
 // asExemple: PartialPosition
@@ -970,6 +979,7 @@ function loggingIdentity<Type extends Pokemon>(arg: Type): Type {
 ```
 
 
+
 ## TP 7
 
 Créez une méthode `getPokemonByType` à votre repository.
@@ -987,6 +997,7 @@ type Pokemon = {
   owner?: string;
 };
 ```
+
 
 ### Avant propos
 
@@ -1192,6 +1203,7 @@ const pokemonByType: Record<PokemonTypes, string[]> = {
 };
 ```
 
+
 ### Mapped Types
 
 ```typescript
@@ -1233,23 +1245,38 @@ type Test2 = IsString<number>; // false
 ### infer
 
 ```typescript
-type ReturnType<T> = T extends (...args: any[]) => infer R ? R : never;
-
-function getPokemon(): { name: string; type: string } {
-  return { name: "Pikachu", type: "Electric" };
+function describePokemon(poke: {
+  name: string;
+  evolutions: [string, string]; 
+}) {
+  return `${poke.name} evolue en ${poke.evolutions[0]} puis en ${poke.evolutions[1]}.`;
 }
 
-type PokemonReturnType = ReturnType<typeof getPokemon>; 
-// { name: string; type: string }
+const pichu = {
+  name: 'Pichu',
+  evolutions: ['Pikachu', 'raichu'],
+}
+
+describePokemon(pichu); // Fail ?
+
+type FirstArgumentOfAFunction<T> = T extends (arg1: infer FirstArgument, ...otherArgs: unknown[]) => unknown
+  ? FirstArgument
+  : never;
+
+const pichu2:FirstArgumentOfAFunction<describePokemon>  = {
+  name: 'Pichu',
+  evolutions: ['Pikachu', 'raichu'],
+}
+
+describePokemon(pichu2); // OK
 ```
 
 
 
-## Interception avec une API
+## Interraction avec une API
 
-### Consommer une API avec TypeScript
 
-#### Exemple de base
+#### Méthode naive
 ```typescript
 async function fetchData(url: string): Promise<any> {
   const response = await fetch(url);
@@ -1257,45 +1284,67 @@ async function fetchData(url: string): Promise<any> {
 }
 
 const data = await fetchData("https://pokeapi.co/api/v2/pokemon");
-console.log(data);
+console.log(data.results.pokemon[0].name); // pikachu
 ```
 
-#### Limitation
-- Le typage `any` est trop permissif.
-- Risque d'erreurs à l'exécution si les données ne correspondent pas à ce qui est attendu.
 
----
+#### Méthode manuel
+```typescript
+async function fetchData(url: string): Promise<unknown> {
+  const response = await fetch(url);
+  return response.json();
+}
 
-### Validation des données avec Zod
+const data = await fetchData("https://pokeapi.co/api/v2/pokemon");
+console.log(data.results.pokemon[0].name); // Fail
+```
 
-#### Introduction à Zod
-Zod est une bibliothèque de validation de schémas qui permet de :
-- Définir un schéma pour les données attendues.
-- Valider les données reçues d'une API.
+
+### Méthode manuel
+```typescript
+async function fetchData(url: string): Promise<unknown> {
+  const response = await fetch(url);
+  return response.json();
+}
+
+const data = await fetchData("https://pokeapi.co/api/v2/pokemon");
+console.log(
+  data && typeof data === 'object' &&
+  'results' in data && typeof data.results === 'object' && data.results
+  && 'pokemon' in data.results && Array.isArray(data.results.pokemon)
+  && typeof data.results.pokemon[0] === 'object' && 
+  data.results.pokemon[0].name);
+```
+
+
+#### Zod
+
+Concurent : io, Yup, Ajv, Joi, Superstruct, ...
+
+Mais c'est la plus intégrée avec TypeScript.
+
 
 #### Installation
 ```bash
 npm install zod
 ```
 
----
-
-### Exemple avec Zod
 
 #### Définir un schéma
 ```typescript
 import { z } from "zod";
 
 const PokemonSchema = z.object({
-  name: z.string(),
-  id: z.number(),
-  types: z.array(z.object({
-    type: z.object({
-      name: z.string(),
-    }),
-  })),
+  results: z.object({
+    pokemon: z.array(
+      z.object({
+        name: z.string(),
+      })
+    )
+  }),
 });
 ```
+
 
 #### Valider les données
 ```typescript
@@ -1308,82 +1357,38 @@ async function fetchAndValidatePokemon(url: string) {
 }
 
 const validatedPokemon = await fetchAndValidatePokemon("https://pokeapi.co/api/v2/pokemon/1");
-console.log(validatedPokemon);
+console.log(data.results.pokemon[0].name);
 ```
 
-#### Résultat
-- Si les données sont valides : elles sont retournées avec un typage fort.
-- Si les données sont invalides : une erreur est levée.
 
----
-
-### Gestion des erreurs
-
-#### Exemple
+#### Créer un type TypeScript
 ```typescript
-try {
-  const validatedPokemon = await fetchAndValidatePokemon("https://pokeapi.co/api/v2/pokemon/1");
-  console.log(validatedPokemon);
-} catch (error) {
-  console.error("Erreur de validation :", error);
-}
-```
+import { z } from "zod";
 
-#### Avantages
-- Détection rapide des erreurs de structure.
-- Amélioration de la robustesse de l'application.
-
----
-
-### Utilisation avancée avec Zod
-
-#### Validation partielle
-```typescript
-const PartialPokemonSchema = PokemonSchema.partial();
-```
-
-#### Validation d'un tableau
-```typescript
-const PokemonListSchema = z.array(PokemonSchema);
-```
-
-#### Validation avec des valeurs par défaut
-```typescript
-const DefaultPokemonSchema = z.object({
-  name: z.string().default("Unknown"),
-  id: z.number(),
+const PokemonSchema = z.object({
+  results: z.object({
+    pokemon: z.array(
+      z.object({
+        name: z.string(),
+      })
+    )
+  }),
 });
+
+type PokemonApiResponse = z.infer<typeof PokemonSchema>;
 ```
 
----
-
-### TP : Intégration avec une API
-
-1. Récupérez des données depuis l'API PokéAPI.
-2. Définissez un schéma Zod pour valider les données des Pokémon.
-3. Implémentez une fonction TypeScript qui :
-   - Fait un appel à l'API.
-   - Valide les données avec Zod.
-   - Affiche les données validées dans la console.
-
-4. Bonus : Gérez les erreurs de validation et affichez un message utilisateur.
-
----
-
-### Pourquoi utiliser Zod ?
-
-- **Sécurité** : Valide les données avant de les utiliser.
-- **Typage fort** : Génère automatiquement des types TypeScript.
-- **Simplicité** : Syntaxe intuitive et facile à intégrer.
-
----
 
 ### Ressources
 
 - [Documentation Zod](https://zod.dev)
-- [PokéAPI](https://pokeapi.co)
-- [TypeScript Handbook](https://www.typescriptlang.org/docs/)
+- [PokéAPI](https://pokeapi.co) (API en Hateoas)
 
+
+
+### TP
+
+Votre gateway appel l'API de PokéAPI.
 
 
 
@@ -1732,3 +1737,25 @@ Bonus : Contribuez à DefinitelyTyped en ajoutant ou améliorant des types pour 
 
 
 ## Fin
+
+
+
+# Formation TypeScript Avancée
+
+```
+src/
+├── 00_infra/
+│   ├── impot.gateways.ts
+├── Pokemon/
+│   ├── Pokemon.entities.ts
+│   ├── Pokemon.usecases.ts
+│   ├── Pokemon.usecases.test.ts
+│   ├── Pokemon.routes.ts
+├── Trainer/
+│   ├── Trainer.entities.ts
+│   ├── Trainer.usecases.ts
+│   ├── Trainer.usecases.test.ts
+│   ├── Trainer.repositories.ts
+│   ├── Trainer.controllers.ts
+│   ├── Trainer.routes.ts
+```
