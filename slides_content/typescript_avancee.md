@@ -1394,33 +1394,6 @@ Votre gateway appel l'API de PokéAPI.
 
 ## TypeScript et Vue.js
 
-### Introduction à Vue.js avec TypeScript
-- Vue.js supporte TypeScript nativement via la CLI Vue.
-### Vue.js et TypeScript
-
-Vue 3 introduit une API Composition qui facilite l'utilisation de TypeScript.
-
----
-
-### Configuration de TypeScript dans un projet Vue.js
-1. Créez un projet Vue avec TypeScript :
-  ```bash
-  vue create my-vue-app
-  ```
-  Sélectionnez l'option TypeScript.
-2. Exemple de fichier `tsconfig.json` :
-  ```json
-  {
-    "compilerOptions": {
-     "strict": true,
-     "esModuleInterop": true,
-     "module": "esnext",
-     "target": "esnext"
-    }
-  }
-  ```
-
----
 
 ### Typage des Props
 Avec Vue 3, les props peuvent être typées directement dans la fonction `defineComponent` :
@@ -1442,10 +1415,8 @@ export default defineComponent({
 </script>
 ```
 
----
 
 ### Typage des Événements
-Avec Vue 3, les événements peuvent être typés pour garantir la sécurité :
 ```typescript
 <script lang="ts">
 import { defineComponent } from 'vue';
@@ -1461,7 +1432,6 @@ export default defineComponent({
 </script>
 ```
 
----
 
 ### Typage des Refs
 Les `ref` peuvent être typées pour garantir leur contenu :
@@ -1483,23 +1453,12 @@ export default defineComponent({
 </script>
 ```
 
----
 
-### TP Vue.js
-1. Créez une application Vue.js avec TypeScript.
-2. Implémentez un composant `TodoList` :
-  - Props : `todos` (tableau de chaînes).
-  - Événement : `addTodo` (ajoute un nouvel élément).
-3. Bonus : Ajoutez des tests unitaires avec Vue Test Utils.
-4. Bonus avancé : Ajoutez un slot nommé `todo-item` pour personnaliser l'affichage des éléments de la liste.
-
----
 
 ### React et TypeScript
 
-React s'intègre parfaitement avec TypeScript pour un typage fort des composants et des hooks.
+React a l'avantage dee typer l'html (JSX)
 
----
 
 ### Typage des Props
 Les props peuvent être typées avec une interface ou un type :
@@ -1518,7 +1477,6 @@ const Button: React.FC<ButtonProps> = ({ label, onClick }) => (
 export default Button;
 ```
 
----
 
 ### Typage des Hooks
 Les hooks comme `useState` et `useReducer` peuvent être typés :
@@ -1539,7 +1497,6 @@ const Counter: React.FC = () => {
 export default Counter;
 ```
 
----
 
 ### Typage des Contexts
 Les contextes peuvent être typés pour une meilleure sécurité :
@@ -1568,25 +1525,14 @@ const UserProfile: React.FC = () => {
 export { UserProvider, UserProfile };
 ```
 
----
 
-### TP React
-1. Créez une application React avec TypeScript.
-2. Implémentez un composant `TodoList` :
-  - Props : `todos` (tableau de chaînes).
-  - Événement : `onAddTodo` (ajoute un nouvel élément).
-3. Bonus : Ajoutez des tests unitaires avec React Testing Library.
-4. Bonus avancé : Utilisez un contexte pour gérer l'état global des todos.
-
----
 
 ### Angular et TypeScript
 
-Angular est conçu pour fonctionner avec TypeScript dès le départ, offrant un typage fort et des outils puissants.
+Angular est conçu pour fonctionner avec TypeScript dès le départ et se base sur les decorators...
 
----
 
-### Typage des Services
+## Typage des Services
 Les services Angular peuvent être typés pour garantir la sécurité des données :
 ```typescript
 import { Injectable } from '@angular/core';
@@ -1612,7 +1558,6 @@ export class TodoService {
 }
 ```
 
----
 
 ### Typage des Composants
 Les composants Angular utilisent des interfaces pour typer leurs entrées et sorties :
@@ -1638,109 +1583,73 @@ export class TodoListComponent {
 }
 ```
 
----
-
-### TP Angular
-1. Créez une application Angular avec TypeScript.
-2. Implémentez un composant `TodoList` :
-  - Input : `todos` (tableau de chaînes).
-  - Output : `addTodo` (ajoute un nouvel élément).
-3. Bonus : Ajoutez des tests unitaires avec Jasmine et Karma.
-4. Bonus avancé : Utilisez un service pour gérer l'état global des todos.
 
 
+## Librairie & TypeScript
 
+Les librairies disponible sur NPM ne sont qu'en JavaScript.
 
-## Une librairie écrite en TypeScript
+Les Librairies exposent alors des fichiers d.ts en plus du JS.
 
-### Intégrer une librairie JavaScript dans un projet TypeScript
+Pour générer les fichiers .d.ts :
 
-#### Étape 1 : Installer la librairie
-Commencez par installer la librairie JavaScript que vous souhaitez utiliser dans votre projet TypeScript :
-```bash
-npm install <nom-de-la-librairie>
+```
+tsc --declaration
 ```
 
-#### Étape 2 : Vérifier les types
-Certaines librairies JavaScript incluent déjà des définitions de types TypeScript. Vérifiez si un fichier `index.d.ts` est présent dans le package. Si c'est le cas, vous pouvez directement utiliser la librairie.
 
-#### Étape 3 : Utiliser DefinitelyTyped
-Si la librairie ne fournit pas de types, vous pouvez vérifier si des types communautaires sont disponibles via le projet [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped). Ces types sont publiés sous le package `@types/<nom-de-la-librairie>`.
+## Librairie & TypeScript
 
-Installez les types correspondants :
 ```bash
-npm install --save-dev @types/<nom-de-la-librairie>
+ npm i -D babel-jest @babel/core @babel/preset-env @babel/preset-typescript @types/jest
 ```
 
-#### Étape 4 : Ajouter des types manuellement
-Si aucun type n'est disponible, vous pouvez créer vos propres définitions de types :
-1. Créez un fichier `types/<nom-de-la-librairie>.d.ts`.
-2. Ajoutez les définitions nécessaires :
+
+## Definitly Typed
+
+[https://github.com/DefinitelyTyped/DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped)
+
+
+## Un exemple
+
 ```typescript
-declare module '<nom-de-la-librairie>' {
-  export function exampleFunction(arg: string): void;
+declare var angular: angular.IAngularStatic;
+export as namespace angular;
+ 
+declare namespace angular {
+  interface IAngularStatic {
+    ...
+    bootstrap(
+      element: string|Element, modules?: Array<string|Function|any[]>,
+      config?: IAngularBootstrapConfig): auto.IInjectorService;
+  }
 }
 ```
 
-#### Étape 5 : Configurer `tsconfig.json`
-Assurez-vous que TypeScript inclut vos fichiers de types personnalisés. Ajoutez le chemin dans la propriété `include` de votre `tsconfig.json` :
-```json
-{
-  "include": ["src/**/*", "types/**/*"]
-}
-```
 
----
+## Pour aller plus loin
 
-### DefinitelyTyped : Une ressource essentielle
-- **Qu'est-ce que DefinitelyTyped ?**
-  DefinitelyTyped est un dépôt communautaire qui contient des définitions de types pour des milliers de librairies JavaScript.
-
-- **Pourquoi l'utiliser ?**
-  - Fournit des types pour des librairies qui n'en ont pas nativement.
-  - Maintenu par la communauté, il est régulièrement mis à jour.
-
-- **Comment contribuer ?**
-  Si vous créez des types pour une librairie et souhaitez les partager, vous pouvez soumettre une PR au dépôt DefinitelyTyped.
-
----
-
-### Exemple : Intégrer Lodash dans un projet TypeScript
-1. Installez Lodash et ses types :
-```bash
-npm install lodash
-npm install --save-dev @types/lodash
-```
-
-2. Utilisez Lodash dans votre code TypeScript :
-```typescript
-import _ from 'lodash';
-
-const numbers = [1, 2, 3, 4];
-const doubled = _.map(numbers, (n) => n * 2);
-console.log(doubled);
-```
-
-3. Les types fournis par `@types/lodash` garantissent une autocomplétion et une vérification des types dans votre IDE.
-
----
-
-### TP : Intégrer une librairie JavaScript
-1. Choisissez une librairie JavaScript populaire (ex. `axios`, `moment`, etc.).
-2. Installez la librairie et ses types via DefinitelyTyped.
-3. Si les types ne sont pas disponibles, créez vos propres définitions.
-4. Utilisez la librairie dans un fichier TypeScript et testez son intégration.
-
-Bonus : Contribuez à DefinitelyTyped en ajoutant ou améliorant des types pour une librairie.
-
+[https://github.com/cassiozen/TDungeon](https://github.com/cassiozen/TDungeon)
 
 
 
 ## Fin
 
+Florent Berthelot
+
+https://berthelot.io
+
+florent@berthelot.io
 
 
-# Formation TypeScript Avancée
+## Correction
+
+[https://github.com/FBerthelot/training-typescript-pokemon](https://github.com/FBerthelot/training-typescript-pokemon)
+
+
+
+## Bonus
+
 
 ```
 src/
