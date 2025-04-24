@@ -881,6 +881,26 @@ Lorsque l'on ajoute un pokemon de type "psy" à notre Pokédex, il confère un b
 Créez une fonction `isPsyPokemon`.
 
 
+## TP 6 - implication
+
+```TypeScript
+type PokemonBase = {
+    name: string
+}
+
+type PokemonPsy = PokemonBase & {
+    type: 'psy',
+    lvlBonusToOtherPokemon: 2
+}
+
+type PokemonElec = PokemonBase & {
+    type: 'elec'
+}
+
+type Pokemon = PokemonPsy | PokemonElec
+```
+
+
 
 ## Aparté, les enums
 
@@ -982,8 +1002,14 @@ function loggingIdentity<Type extends Pokemon>(arg: Type): Type {
 
 ## TP 7
 
-Créez une méthode `getPokemonByType` à votre repository.
+Créez une méthode `getPokemonByType` à votre gateway.
 Le type de retour est un pokemon du type demandé.
+
+Exemple d'utilisation :
+```typescript
+const result: PokemonPsy = repository.getPokemonByType<PokemonPsy>('psy');
+const result2: Pokemon = repository.getPokemonByType<Pokemon>('elec');
+```
 
 
 
@@ -1174,12 +1200,6 @@ Crée un type d'objet avec des clés spécifiques et des valeurs associées.
 
 
 
-## TP8
-
-Ajoutez une fonction getPokemonByType dans votre gateway.
-
-
-
 ## Encore plus loin
 
 
@@ -1263,12 +1283,21 @@ type FirstArgumentOfAFunction<T> = T extends (arg1: infer FirstArgument, ...othe
   ? FirstArgument
   : never;
 
-const pichu2:FirstArgumentOfAFunction<describePokemon>  = {
+const pichu2:FirstArgumentOfAFunction<typeof describePokemon>  = {
   name: 'Pichu',
   evolutions: ['Pikachu', 'raichu'],
 }
 
 describePokemon(pichu2); // OK
+```
+
+
+## Explications 
+
+
+```typescript
+type complexType<T extends Pokemon> =
+  T extends PokemonPsy ? Record<keyof typeof mewtwo, string> : Record<keyof typeof pikachu, number>;
 ```
 
 
@@ -1312,7 +1341,8 @@ console.log(
   data && typeof data === 'object' &&
   'results' in data && typeof data.results === 'object' && data.results
   && 'pokemon' in data.results && Array.isArray(data.results.pokemon)
-  && typeof data.results.pokemon[0] === 'object' && 
+  && typeof data.results.pokemon[0] === 'object' && typeof data.results.pokemon[0]
+  'name' in data.results.pokemon[0] &&
   data.results.pokemon[0].name);
 ```
 
@@ -1382,11 +1412,11 @@ type PokemonApiResponse = z.infer<typeof PokemonSchema>;
 ### Ressources
 
 - [Documentation Zod](https://zod.dev)
-- [PokéAPI](https://pokeapi.co) (API en Hateoas)
+- [PokéAPI](https://pokeapi.co)
 
 
 
-### TP
+### TP 8
 
 Votre gateway appel l'API de PokéAPI.
 
@@ -1394,41 +1424,26 @@ Votre gateway appel l'API de PokéAPI.
 
 ## TypeScript et Vue.js
 
+La meilleur DX pour démarrer un projet.
+
 
 ### Typage des Props
 Avec Vue 3, les props peuvent être typées directement dans la fonction `defineComponent` :
 ```typescript
-<script lang="ts">
-import { defineComponent } from 'vue';
-
-export default defineComponent({
-  props: {
-   message: {
+<script setup lang="ts">
+const props = defineProps({
+  foo: {
     type: String,
     required: true
-   }
   },
-  setup(props) {
-   console.log(props.message); // Typé comme string
+  bar: {
+    type: Number,
+    default: 42
   }
-});
-</script>
-```
+})
 
-
-### Typage des Événements
-```typescript
-<script lang="ts">
-import { defineComponent } from 'vue';
-
-export default defineComponent({
-  emits: {
-   update: (value: number) => typeof value === 'number'
-  },
-  setup(_, { emit }) {
-   emit('update', 42); // Type vérifié
-  }
-});
+props.foo // Type: string
+props.bar // Type: number
 </script>
 ```
 
@@ -1448,6 +1463,23 @@ export default defineComponent({
    };
 
    return { count, increment };
+  }
+});
+</script>
+```
+
+
+### Typage des Événements
+```typescript
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  emits: {
+   update: (value: number) => typeof value === 'number'
+  },
+  setup(_, { emit }) {
+   emit('update', 42); // Type vérifié
   }
 });
 </script>
@@ -1644,27 +1676,4 @@ florent@berthelot.io
 
 ## Correction
 
-[https://github.com/FBerthelot/training-typescript-pokemon](https://github.com/FBerthelot/training-typescript-pokemon)
-
-
-
-## Bonus
-
-
-```
-src/
-├── 00_infra/
-│   ├── impot.gateways.ts
-├── Pokemon/
-│   ├── Pokemon.entities.ts
-│   ├── Pokemon.usecases.ts
-│   ├── Pokemon.usecases.test.ts
-│   ├── Pokemon.routes.ts
-├── Trainer/
-│   ├── Trainer.entities.ts
-│   ├── Trainer.usecases.ts
-│   ├── Trainer.usecases.test.ts
-│   ├── Trainer.repositories.ts
-│   ├── Trainer.controllers.ts
-│   ├── Trainer.routes.ts
-```
+[https://github.com/FBerthelot/training-typescript-advanced](https://github.com/FBerthelot/training-typescript-advanced)
