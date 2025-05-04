@@ -161,6 +161,26 @@ const subjects = ref([
     type: 'course',
   },
   {
+    name: 'Node.js',
+    description: {
+      fr: `
+                Plongez dans l'écosystème JavaScript côté serveur avec Node.js.
+                Une formation immersive pour devenir autonome et productif avec Node.js.
+                <br></br>
+                Durée de la formation :  3 jours
+          `,
+      en: `
+                Dive into the JavaScript ecosystem on the server side with Node.js.
+                An immersive training to become autonomous and productive with Node.js.
+                <br/><br/>
+                Duration: 3 days.
+              `,
+    },
+    url: '/slides/nodejs.html',
+    external: true,
+    type: 'course',
+  },
+  {
     name: 'Node.js Tooling',
     description: {
       fr: `
