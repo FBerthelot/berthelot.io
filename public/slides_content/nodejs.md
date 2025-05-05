@@ -319,7 +319,7 @@ Récupérez via l'API de node.js le temps depuis lequel votre machine est lancé
 
 ## TP 4
 
-Passer de CommonJS à ES module
+Passer de CommonJS à ES Module
 
 
 
@@ -347,7 +347,7 @@ console.log(import.meta.url); // file:///home/florent/Dev/formation-nodejs/src/i
 ## Parlons Meta
 
 ```javascript
-console.log(import.meta.url); // ES module
+console.log(import.meta.url); // ESM
 ```
 
 ```javascript
@@ -359,7 +359,7 @@ console.log(__dirname); // CommonJS
 ## Et URL ?
 
 ```javascript
-const URL = new URL('./package.json', import.meta.url); // ES module
+const URL = new URL('./package.json', import.meta.url); // ESM
 ```
 
 ```javascript
