@@ -486,6 +486,9 @@ console.log(process.env.PORT);
 ```bash
 PORT=8080 npm start
 ```
+```powershell
+$env:PORT=8080; npm start
+```
 
 
 ## API Process
@@ -502,7 +505,7 @@ process.on('exit', (code) => {
 Le passage obligatoire !
 
 ```javascript
-process.on('exit', (code) => {
+process.on('SIGINT', (code) => {
   console.log('Process exit event with code: ', code);
 });
 process.on('unhandledRejection', (reason, promise) => {
@@ -518,7 +521,9 @@ process.on('uncaughtExceptionMonitor', (err, origin) => {
 ## TP 7
 
 Gérez les erreurs de promesses non gérées.
+
 Affichez un log quand vous faites un Ctrl + C.
+
 Mettez le chemin du fichier .json en variable d'environnement
 
 
@@ -555,13 +560,16 @@ server.listen(8000);
 ```
 
 
+
 ## TP 8
 
 Créez un serveur HTTP qui écoute sur le port defini en variable d'environnement.
-Créez cette route : 
+
+Créez cette route :
 ```
 GET /pokemon
 ```
+
 Le serveur doit répondre avec 404 pour toutes les autres routes.
 
 
@@ -655,6 +663,102 @@ GET /api/pokemon/25
 
 ## Les dépendances
 
+![https://slides.com/florentberthelot/outillage-node-js#/2/1](https://slides.com/florentberthelot/outillage-node-js#/2/1)
+
+
+## ESLint
+
+ESLint est un outil d'analyse statique pour JavaScript.
+
+
+### Installation d'ESLint
+
+```bash
+npm init @eslint/config@latest
+```
+
+
+### Exemple de configuration
+
+```javascript
+// eslint.config.js
+import { defineConfig } from "eslint/config";
+import js from "@eslint/js";
+
+export default defineConfig([
+    { files: ["**/*.js"], plugins: { js }, extends: ["js/recommended"] },
+	{
+		rules: {
+			semi: "error",
+			"prefer-const": "error",
+		},
+	},
+]);
+```
+
+### Utilisation d'ESLint
+
+```bash
+eslint <nom_du_fichier_ou_dossier>
+eslint <nom_du_fichier_ou_dossier> --fix
+```
+
+## ESLINT et npm script
+
+```json
+{
+    "scripts": {
+        "lint": "eslint .",
+        "lint:fix": "eslint . --fix"
+    }
+}
+```
+
+
+## AJV
+
+AJV est un validateur de schéma JSON rapide et performant.
+
+
+### Installation d'AJV
+
+```bash
+npm install ajv
+```
+
+### Exemple de validation avec AJV
+
+```javascript
+import Ajv from 'ajv';
+const ajv = new Ajv() // options can be passed, e.g. {allErrors: true}
+
+const schema = {
+  type: "object",
+  properties: {
+    foo: {type: "integer"},
+    bar: {type: "string"}
+  },
+  required: ["foo"],
+  additionalProperties: false
+}
+
+const validate = ajv.compile(schema)
+
+const data = {
+  foo: 1,
+  bar: "abc"
+}
+
+const valid = validate(data)
+if (!valid) {
+    console.log(validate.errors)
+}
+```
+
+
+## AJV pour TypeScript
+
+Le standard de validation côté TypeScript c'est Zod.
 
 
 
@@ -724,8 +828,8 @@ app.get('/users/:userId/books/:bookId', (req, res) => {
 Migrez votre serveur HTTP vers Express.js
 Créez ces routes : 
 ```
-GET /pokemon
-GET /pokemon/:id
+GET  /capturedPokemons
+POST /pokemon/:id/capture
 ```
 
 La liste initiale des pokémons est dans le fichier `src/data/pokedex.json` et doit être lue au démarrage du serveur uniquement.
