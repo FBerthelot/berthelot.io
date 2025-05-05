@@ -227,6 +227,13 @@ npm run start --port 8080 # L'argument est passé à npm
 
 
 
+## Alternatives à NPM
+
+- Yarn
+- PNPM
+- Bun
+
+
 ## TP 2
 
 - Créez un dossier (nom de votre choix)
@@ -258,7 +265,7 @@ npm run start --port 8080 # L'argument est passé à npm
 
 <img alt="Rayan Dahl" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Ryan_Dahl.jpg/500px-Ryan_Dahl.jpg" style="float: left;width: 10rem;" />
 
-Je doit faire un site web rapide mais c'est compliqué à écrire car beaucoup de traitements asynchrones.
+Je dois faire un site web rapide mais c'est compliqué à écrire car beaucoup de traitements asynchrones.
 Je vais faire un serveur HTTP en JavaScript, le langage est fait pour ça. (+V8)
 
 
@@ -276,6 +283,11 @@ Je vais faire un serveur HTTP en JavaScript, le langage est fait pour ça. (+V8)
             V8<-->API["API (V8 Plugins C++)"]
         end
 </pre>
+
+
+## Rythme de sortie
+
+<iframe src="https://nodejs.org/fr/about/previous-releases" width="100%" style="height:60vh;"></iframe>
 
 
 ## Les API de Node.js
@@ -373,6 +385,7 @@ try {
 Vous verrez peut-être ce genre de code parfois (CommonJS)
 ```javascript
 const fs = require('fs');
+const path = require('path');
 try {
   const contents = fs.readFileSync(path.resolve(__dirname, './package.json'), { encoding: 'utf8' });
   console.log(contents);
@@ -649,6 +662,18 @@ GET /api/pokemon/25
 
 
 
+## Les dépendances
+
+
+
+
+# TP 9
+
+Ajoutez ESLint à votre projet et créez les NPM scripts neccessaires.
+Ajoutez AJV pour valider le format JSON de votre fichier pokedex.json
+
+
+
 ## Les frameworks Node.js
 
 Il existe de nombreux frameworks pour Node.js :
@@ -703,7 +728,7 @@ app.get('/users/:userId/books/:bookId', (req, res) => {
 
 
 
-# TP 9
+# TP 10
 
 Migrez votre serveur HTTP vers Express.js
 Créez ces routes : 
@@ -765,7 +790,7 @@ Il y a 3 niveaux de middleware :
 
 
 
-## TP 10
+## TP 11
 
 Créez un middleware qui créer un id unique pour la requête.
 
