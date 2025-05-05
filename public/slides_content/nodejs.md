@@ -517,7 +517,9 @@ process.on('uncaughtExceptionMonitor', (err, origin) => {
 
 ## TP 7
 
-Gérez les erreurs de promesses non gérées et affichez le contenu du fichier dans la console.
+Gérez les erreurs de promesses non gérées.
+Affichez un log quand vous faites un Ctrl + C.
+Mettez le chemin du fichier .json en variable d'environnement
 
 
 
