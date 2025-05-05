@@ -370,10 +370,10 @@ const filePath = path.resolve(__dirname, './package.json'); // CommonJS
 
 ## File System API
 ```javascript
-import { readFile } from 'node:fs';
+import { readFileSync } from 'node:fs';
 try {
   const fileUrl = new URL('./package.json', import.meta.url);
-  const contents = readFile(filePath, { encoding: 'utf8' });
+  const contents = readFileSync(filePath, { encoding: 'utf8' });
   console.log(contents);
 } catch (err) {
   console.error(err.message);
@@ -412,10 +412,10 @@ Lisez ce fichier dans votre code et affichez le contenu dans la console
 ## Les API bloquantes
 
 ```javascript
-import { readFile } from 'node:fs';
+import { readFileSync } from 'node:fs';
 try {
-  const URL = new URL('./package.json', import.meta.url);
-  const contents = readFile(filePath, { encoding: 'utf8' });
+  const fileUrl = new URL('./package.json', import.meta.url);
+  const contents = readFileSync(fileUrl, { encoding: 'utf8' });
   console.log(contents);
 } catch (err) {
   console.error(err.message);
@@ -428,22 +428,8 @@ try {
 ```javascript
 import { readFile } from 'node:fs/promises';
 try {
-  const URL = new URL('./package.json', import.meta.url);
-  const contents = await readFile(filePath, { encoding: 'utf8' });
-  console.log(contents);
-} catch (err) {
-  console.error(err.message);
-}
-```
-
-
-## Les API non-bloquantes
-
-Ancienne API Bloquante
-```javascript
-const fs = require('fs');
-try {
-  const contents = fs.readFileSync(path.resolve(__dirname, './package.json'), { encoding: 'utf8' });
+  const fileUrl = new URL('./package.json', import.meta.url);
+  const contents = await readFile(fileUrl, { encoding: 'utf8' });
   console.log(contents);
 } catch (err) {
   console.error(err.message);
@@ -456,8 +442,10 @@ try {
 Ancienne API Non-Bloquante
 ```javascript
 const fs = require('fs');
+const path = require('path');
 
-fs.readFile(path.resolve(__dirname, './package.json'), { encoding: 'utf8' }, (err, content) => {
+const filePath = path.resolve(__dirname, './package.json');
+fs.readFile(filePath, { encoding: 'utf8' }, (err, content) => {
     if (err) {
         console.error(err.message);
     } else {
