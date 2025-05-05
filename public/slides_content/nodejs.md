@@ -328,7 +328,7 @@ Passer de CommonJS à ES Module
 ```javascript
 import { readFile } from 'node:fs';
 try {
-  const URL = new URL('file:///home/florent/Dev/formation-nodejs/package.js');
+  const URL = new URL('file:///home/florent/Dev/formation-nodejs/package.json');
   const contents = readFile(filePath, { encoding: 'utf8' });
   console.log(contents);
 } catch (err) {
@@ -359,12 +359,12 @@ console.log(__dirname); // CommonJS
 ## Et URL ?
 
 ```javascript
-const URL = new URL('./package.json', import.meta.url); // ESM
+const fileUrl = new URL('./package.json', import.meta.url); // ESM
 ```
 
 ```javascript
 const path = require('path');
-const URL = path.resolve(__dirname, './package.json'); // CommonJS
+const filePath = path.resolve(__dirname, './package.json'); // CommonJS
 ```
 
 
@@ -372,7 +372,7 @@ const URL = path.resolve(__dirname, './package.json'); // CommonJS
 ```javascript
 import { readFile } from 'node:fs';
 try {
-  const URL = new URL('./package.json', import.meta.url);
+  const fileUrl = new URL('./package.json', import.meta.url);
   const contents = readFile(filePath, { encoding: 'utf8' });
   console.log(contents);
 } catch (err) {
@@ -387,7 +387,8 @@ Vous verrez peut-être ce genre de code parfois (CommonJS)
 const fs = require('fs');
 const path = require('path');
 try {
-  const contents = fs.readFileSync(path.resolve(__dirname, './package.json'), { encoding: 'utf8' });
+  const filePath = path.resolve(__dirname, './package.json');
+  const contents = fs.readFileSync(filePath, { encoding: 'utf8' });
   console.log(contents);
 } catch (err) {
   console.error(err.message);
