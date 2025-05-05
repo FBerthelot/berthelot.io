@@ -831,6 +831,7 @@ app.get('/users/:userId/books/:bookId', (req, res) => {
 # TP 10
 
 Migrez votre serveur HTTP vers Express.js
+
 Créez ces routes : 
 ```
 GET  /capturedPokemons
@@ -841,6 +842,269 @@ La liste initiale des pokémons est dans le fichier `src/data/pokedex.json` et d
 
 
 
+## Comment tester sans postman ?
+
+
+## Open API
+
+OpenAPI est une spécification standardisée pour décrire les API REST.
+
+Et ça utilise la syntaxe JSON Schema !
+
+
+### Pourquoi OpenAPI ?
+
+- **Documentation automatique**
+- **Validation**
+- **Génération de code**
+- **Communication inter-équipes**
+
+
+### OpenAPI ou Swagger
+
+En 2015, la spécification Swagger a été renommée OpenAPI lorsqu'elle a été transférée à la Linux Foundation.
+
+
+### Exemple de spécification OpenAPI
+
+```yaml
+openapi: 3.0.4
+info:
+    version: 1.0.0
+    title: Node.js Formation
+paths:
+    /pokemon:
+        get:
+            summary: Get all existing pokemons
+            responses:
+                '200':
+                    description: Successful operation
+```
+
+
+#### Swagger-UI et Express
+
+```bash
+npm install swagger-ui-express
+```
+
+
+#### Exemple d'utilisation
+
+```javascript
+import express from 'express';
+import swaggerUi from 'swagger-ui-express';
+import swaggerDocument from './swagger.json' with { type: 'json' };
+
+const app = express();
+
+// Middleware Swagger-UI
+app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+app.listen(8080, () => {
+    console.log('Server is running on http://localhost:8080');
+    console.log('Swagger-UI is available at http://localhost:8080/doc');
+});
+```
+
+
+
+## TP 11
+
+Ajoutez Swagger-UI à votre projet.
+
+
+## Yaml
+
+```yaml
+openapi: 3.0.4
+info:
+  version: 1.0.0
+  title: Node.js Formation
+servers:
+  - url: https://localhost:8080
+tags:
+  - name: pokemon
+    description: Everything about your Pokemon infos
+  - name: capturedPokemon
+    description: the pokemon you own
+paths:
+  /pokemon:
+    get:
+      tags:
+        - pokemon
+      summary: Get all existing pokemons
+      responses:
+        '200':
+          description: Successful operation
+  /pokemon/:id/capture:
+    post:
+      tags:
+        - capturedPokemon
+        - pokemon
+      summary: Catpure a pokemon
+      responses:
+        '200':
+          description: Successful operation
+  /capturedPokemon:
+    get:
+      tags:
+        - capturedPokemon
+      summary: Get all captured pokemon
+      responses:
+        '200':
+          description: Successful operation
+  /capturedPokemon/:id/evolve:
+    post:
+      tags:
+        - capturedPokemon
+      summary: make the pokemon evolve
+      responses:
+        '200':
+          description: Successful operation
+  /capturedPokemon/:id:
+    patch:
+      tags:
+        - capturedPokemon
+      summary: release a pokemon in the wild
+      responses:
+        '200':
+          description: Successful operation
+    delete:
+      tags:
+        - capturedPokemon
+      summary: release a pokemon in the wild
+      responses:
+        '200':
+          description: Successful operation
+    get:
+      tags:
+        - capturedPokemon
+      summary: Get one captured pokemon
+      responses:
+        '200':
+          description: Successful operation
+```
+
+
+## JSON
+```json
+{
+  "openapi": "3.0.4",
+  "info": {
+    "version": "1.0.0",
+    "title": "Node.js Formation"
+  },
+  "servers": [
+    {
+      "url": "https://localhost:8080"
+    }
+  ],
+  "tags": [
+    {
+      "name": "pokemon",
+      "description": "Everything about your Pokemon infos"
+    },
+    {
+      "name": "capturedPokemon",
+      "description": "the pokemon you own"
+    }
+  ],
+  "paths": {
+    "/pokemon": {
+      "get": {
+        "tags": [
+          "pokemon"
+        ],
+        "summary": "Get all existing pokemons",
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      }
+    },
+    "/pokemon/:id/capture": {
+      "post": {
+        "tags": [
+          "capturedPokemon",
+          "pokemon"
+        ],
+        "summary": "Catpure a pokemon",
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      }
+    },
+    "/capturedPokemon": {
+      "get": {
+        "tags": [
+          "capturedPokemon"
+        ],
+        "summary": "Get all captured pokemon",
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      }
+    },
+    "/capturedPokemon/:id/evolve": {
+      "post": {
+        "tags": [
+          "capturedPokemon"
+        ],
+        "summary": "make the pokemon evolve",
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      }
+    },
+    "/capturedPokemon/:id": {
+      "patch": {
+        "tags": [
+          "capturedPokemon"
+        ],
+        "summary": "release a pokemon in the wild",
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "capturedPokemon"
+        ],
+        "summary": "release a pokemon in the wild",
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "capturedPokemon"
+        ],
+        "summary": "Get one captured pokemon",
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+
+
 ## Express Middleware
 
 ```javascript
@@ -848,27 +1112,19 @@ app.use((req, res, next) => {
   console.log('Middleware exécuté');
   next();
 });
-
-app.use((req, res, next) => {
-  console.log('Middleware 2 exécuté');
-  next();
-});
 ```
 
 
 ## Express Middleware
 
-```javascript
-app.use((req, res, next) => {
-  console.log('Middleware exécuté');
-  next();
-});
-
-app.use((req, res, next) => {
-  console.log('Middleware 2 exécuté');
-  next();
-});
-```
+<pre class="mermaid">
+graph LR
+    Client-->|Request| Middleware1
+    Middleware1-->Middleware2
+    Middleware2-->RouteHandler
+    RouteHandler-->Middleware3
+    Middleware3-->|Response| Client
+</pre>
 
 
 ## Middleware build-in
@@ -879,20 +1135,58 @@ app.use(express.static('public')); // Serve static files
 ```
 
 
-## Les niveaux de middleware
+## Middleware pour un path
 
-Les middlewares sont exécutés dans l'ordre où ils sont déclarés.
+```javascript
+app.use('/user/:id', (req, res, next) => {
+  console.log('Verb HTTP', req.method)
+  next()
+})
+```
 
-Il y a 3 niveaux de middleware :
-- app
-- router
-- route
+
+## Middleware pour une route
+
+```javascript
+app.get('/user/:id', (req, res, next) => {
+  res.send('USER')
+})
+```
+
+```javascript
+app.get('/user/:id', (req, res, next) => {
+  console.log('ID:', req.params.id)
+  next()
+}, (req, res, next) => {
+  res.send('User Info')
+})
+```
+
+
+### Middleware via routeur
+
+```javascript
+router.use((req, res, next) => {
+  next()
+})
+```
+
+
+### Middleware d'erreur
+
+```javascript
+app.use((err, req, res, next) => {
+  console.error(err.stack)
+  res.status(500).send('C\'est cassé !')
+})
+```
 
 
 
 ## TP 11
 
 Créez un middleware qui créer un id unique pour la requête.
+(correlation id)
 
 Créez un middleware qui log chaque requête entrante et l'id de la requête.
 
@@ -905,13 +1199,784 @@ DELETE /pokemon/:id
 
 
 
-## Les templates
 ## Debugger
-## Gestion des erreurs
+
+Node.js offre un outil de débogage intégré qui peut être utilisé avec Chrome DevTools pour analyser et corriger les erreurs dans votre code.
+
+
+### Lancer le Debugger
+
+Pour démarrer le débogueur, utilisez l'option `inspect` lors de l'exécution de votre script Node.js :
+
+```bash
+node --inspect src/index.js
+```
+
+
+### Accéder à Chrome DevTools
+
+1. Ouvrez Chrome.
+2. Dans la barre d'adresse, entrez `chrome://inspect`.
+3. Cliquez sur "Open dedicated DevTools for Node"
+
+
+### Points d'arrêt
+
+2 manières de créer des points d'arrêt :
+- En ajoutant `debugger;` dans votre code.
+- En cliquant sur le numéro de ligne dans les DevTools.
+
+
+
+### TP 12
+
+le serveur doit se mettre en pause à chaque requête quand il reçoit le paramètre ?debug dans l'url.
+
+
+
+## Les templates
+
+Express.js prend en charge plusieurs moteurs de templates pour générer des pages HTML.
+
+
+### EJS
+
+```bash
+npm install ejs
+```
+
+
+### EJS et Express
+
+```javascript
+import express from 'express';
+const app = express();
+
+// Définir le moteur de template
+app.set('view engine', 'ejs');
+
+// Définir le dossier contenant les templates
+app.set('views', './views');
+
+app.listen(8080, () => {
+    console.log('Server is running on http://localhost:8080');
+});
+```
+
+
+## EJS en action
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+</head>
+<body>
+    <h1>Liste des articles</h1>
+    <ul>
+        <% articles.forEach(article => { %>
+            <li>
+                <h2><%= article.title %></h2>
+                <p><%= article.content %></p>
+            </li>
+        <% }); %>
+    </ul>
+</body>
+</html>
+```
+
+
+#### Gestion de l'URL
+
+```javascript
+app.get('/blog', (req, res) => {
+    const articles = [
+        { title: 'Article 1', content: 'Contenu de l\'article 1' },
+        { title: 'Article 2', content: 'Contenu de l\'article 2' },
+    ];
+
+    res.render('blog', { articles });
+});
+```
+
+
+
+## TP 13
+
+A l'aide du moteur de template de votre choix, créez une page HTML qui affiche la liste des pokémons capturé.
+
+
+
 ## Base de données
+
+
+### Bases de données relationnelles
+- **Structure** : Basées sur des tables avec lignes et colonnes.
+- **Langage** : Utilisent SQL (Structured Query Language).
+- **Schéma** : Schéma rigide, les données doivent respecter une structure définie.
+
+
+### Bases de données NoSQL
+- **Structure** : Flexibles, peuvent être basées sur des documents, des colonnes, des graphes ou des clés-valeurs.
+- **Langage** : Pas de langage standard, souvent des API spécifiques.
+- **Schéma** : Schéma flexible, les données peuvent varier en structure.
+
+
+### Comparaison
+| Critère            | Relationnel         | NoSQL              |
+|--------------------|---------------------|--------------------|
+| **Schéma**         | Rigide              | Flexible           |
+| **Scalabilité**    | Verticale           | Horizontale        |
+| **Transactions**   | ACID                | BASE               |
+| **Performance**    | Optimisé pour relations | Optimisé pour scalabilité |
+
+
+
+## PostgreSQL
+
+
+### Driver
+
+```bash
+npm install pg
+```
+
+
+### Connexion à PostgreSQL
+
+```javascript
+import { Client } from 'pg'
+const client = new Client()
+await client.connect()
+ 
+try {
+   const res = await client.query('SELECT $1::text as message', ['Hello world!'])
+   console.log(res.rows[0].message) // Hello world!
+} catch (err) {
+   console.error(err);
+} finally {
+   await client.end()
+}
+```
+
+
+### Les pool de connexion
+
+```javascript
+import { Pool } from 'pg'
+const pool = new Pool()
+
+try {
+   const res = await pool.query('SELECT $1::text as message', ['Hello world!'])
+   console.log(res.rows[0].message) // Hello world!
+} catch (err) {
+   console.error(err);
+} finally {
+   await pool.end()
+}
+```
+
+
+## Mais comment il connait mon mot de passe ?
+
+```bash
+PGUSER=dbuser \
+PGPASSWORD=secretpassword \
+PGHOST=database.server.com \
+PGPORT=3211 \
+PGDATABASE=mydb \
+node src/index.js
+```
+
+
+## Pour aller plus loin
+
+- **Knex.js** : Un query builder pour simplifier les requêtes SQL.
+- Un ORM comme TypeORM ou Prisma. (Attention à la magie !)
+
+
+
+## MongoDB
+
+
+### Driver
+
+```bash
+npm install mongodb
+```
+
+
+### Connexion à MongoDB
+
+```javascript
+import { MongoClient } from 'mongodb';
+const client = new MongoClient('mongodb://localhost:27017');
+
+async function run() {
+  try {
+    const database = client.db('sample_mflix');
+    const movies = database.collection('movies');
+
+    const query = { title: 'Back to the Future' };
+    const movie = await movies.findOne(query);
+    console.log(movie);
+  } finally {
+    await client.close();
+  }
+}
+run()
+```
+
+
+### Pool de connexion
+
+C'est géré automatiquement par le driver via l'URI.
+
+
+
+### TP 14
+
+Sauvegardez les pokémons capturés dans une base de données PostgreSQL ou mongoDB si vous préférez.
+
+
+
 ## Les tests
+
+[https://slides.com/florentberthelot/javascript-craftmanship/](https://slides.com/florentberthelot/javascript-craftmanship/)
+
+
+## Supertest
+
+Supertest est une bibliothèque permettant de tester des applications HTTP en Node.js. Elle est souvent utilisée pour tester des API REST.
+
+
+### Installation de Supertest
+
+```bash
+npm install supertest --save-dev
+```
+
+
+### Exemple de test avec Supertest
+
+```javascript
+import request from 'supertest';
+import app from './app'; // Importez votre application Express
+
+describe('Test des routes de l\'API', () => {
+    it('GET /pokemon - devrait retourner une liste de pokémons', async () => {
+        const response = await request(app).get('/pokemon');
+        expect(response.status).toBe(200);
+        expect(response.body).toBeInstanceOf(Array);
+    });
+
+    it('POST /pokemon - devrait ajouter un nouveau pokémon', async () => {
+        const newPokemon = { name: 'Bulbasaur', type: 'Grass' };
+        const response = await request(app)
+            .post('/pokemon')
+            .send(newPokemon);
+        expect(response.status).toBe(201);
+        expect(response.body.name).toBe('Bulbasaur');
+    });
+});
+```
+
+
+### Intégration avec Jest
+
+Supertest s'intègre parfaitement avec Jest pour écrire des tests unitaires et d'intégration.
+
+```bash
+npm install jest --save-dev
+```
+
+Ajoutez un script dans votre `package.json` :
+
+```json
+{
+    "scripts": {
+        "test": "jest"
+    }
+}
+```
+
+
+### Exemple de test avec Jest et Supertest
+
+```javascript
+import request from 'supertest';
+import app from './app';
+
+describe('Blog', () => {
+    it('GET /capturedPokemon - devrait retourner une liste de pokémons capturés', async () => {
+        const response = await request(app).get('/capturedPokemon');
+        expect(response.status).toBe(200);
+        expect(response.body).toBeInstanceOf(Array);
+    });
+
+    it('POST /pokemon/:id/capture - devrait capturer un pokémon', async () => {
+        const response = await request(app).post('/pokemon/1/capture');
+        expect(response.status).toBe(200);
+        expect(response.body.message).toBe('Pokémon capturé avec succès');
+    });
+});
+```
+
+
+
+## TP 15
+
+Créez des tests pour votre API avec Supertest et Vitest.
+
+
+
 ## Event Loop
+
+L'Event Loop est un mécanisme central dans Node.js qui permet de gérer les opérations asynchrones.
+Elle est essentielle pour le fonctionnement du système mono-thread de Node.js, qui repose sur un seul thread pour exécuter le code JavaScript.
+
+
+### Node.js et le système mono-thread
+
+Node.js utilise un modèle mono-threadé pour exécuter du JavaScript,
+mais il est capable de gérer des opérations asynchrones grâce à l'Event Loop.
+Les tâches longues ou bloquantes, comme les opérations I/O ou les requêtes réseau,
+sont déléguées à des threads en arrière-plan via la bibliothèque libuv, permettant au thread principal de rester disponible pour d'autres tâches.
+
+
+### Fonctionnement de l'Event Loop
+
+1. **Call Stack** : Une pile où les fonctions sont exécutées.
+2. **Callback Queue** : Une file d'attente pour les callbacks prêts à être exécutés.
+3. **Event Loop** : Un processus qui surveille le Call Stack et la Callback Queue. Si le Call Stack est vide, il déplace les callbacks de la queue vers la pile.
+
+
+### Phases de l'Event Loop
+
+1. **Timers** : Exécution des callbacks de `setTimeout` et `setInterval`.
+2. **I/O Callbacks** : Exécution des callbacks des opérations I/O.
+3. **Idle, Prepare** : Utilisé en interne par Node.js.
+4. **Poll** : Récupération des nouvelles I/O et exécution des callbacks correspondants.
+5. **Check** : Exécution des callbacks de `setImmediate`.
+6. **Close Callbacks** : Exécution des callbacks de fermeture, comme `socket.on('close')`.
+
+
+### Exemple d'Event Loop
+
+```javascript
+console.log('Start');
+
+setTimeout(() => {
+    console.log('Timeout');
+}, 0);
+
+setImmediate(() => {
+    console.log('Immediate');
+});
+
+console.log('End');
+```
+
+
+**Résultat attendu :**
+```
+Start
+End
+Immediate
+Timeout
+```
+
+
+### Pourquoi l'Event Loop est importante ?
+
+- Permet à Node.js de gérer des milliers de connexions simultanées sur un seul thread.
+- Évite le blocage du thread principal grâce à la délégation des tâches lourdes.
+- Optimise les performances pour les applications I/O intensives.
+
+
+
 ## Traitements lourds
-## Architecture Backend
+
+
+
+## Clean Architecture
+
+La Clean Architecture, proposée par Robert C. Martin (Uncle Bob),
+est une approche pour structurer le code d'une application afin de le rendre maintenable, testable et évolutif.
+
+
+### Principes fondamentaux
+1. **Indépendance des frameworks** : L'architecture ne doit pas dépendre d'un framework spécifique.
+2. **Testabilité** : Le code doit être facilement testable, indépendamment des détails d'implémentation.
+3. **Indépendance de l'interface utilisateur** : Les règles métier ne doivent pas dépendre de l'interface utilisateur.
+4. **Indépendance de la base de données** : Les règles métier ne doivent pas dépendre de la technologie de stockage.
+5. **Indépendance des agents externes** : Les règles métier doivent être isolées des services externes.
+
+
+### Structure en couches
+- **Entities** : Contiennent les règles métier fondamentales.
+- **Use Cases** : Contiennent la logique métier spécifique à l'application.
+- **Interface Adapters** : Adaptent les données entre les cas d'utilisation et les frameworks ou outils externes.
+- **Frameworks & Drivers** : Contiennent les détails d'implémentation (frameworks, bases de données, etc.).
+
+
+### Diagramme
+<pre class="mermaid">
+graph TD
+    Entities --> UseCases
+    UseCases --> InterfaceAdapters
+    InterfaceAdapters --> FrameworksDrivers
+</pre>
+
+
+## Architecture Hexagonale
+
+L'architecture hexagonale, ou architecture Ports et Adapters, a été introduite par Alistair Cockburn.
+Elle vise à découpler le cœur métier des détails techniques.
+
+
+### Concepts clés
+1. **Domain** : Le cœur de l'application, contenant les règles métier.
+2. **Ports** : Interfaces définissant les points d'entrée et de sortie du domaine.
+3. **Adapters** : Implémentations des ports pour interagir avec des systèmes externes (bases de données, API, etc.).
+
+
+### Avantages
+- Isolation du domaine métier.
+- Facilité de test grâce à la substitution des adaptateurs.
+- Flexibilité pour changer les technologies externes.
+
+
+### Diagramme
+<pre class="mermaid">
+graph TD
+    Domain -->|Input Port| AdapterIn
+    AdapterIn -->|Output Port| Domain
+    Domain -->|Output Port| AdapterOut
+    AdapterOut -->|External System| External
+</pre>
+
+
+## Event Sourcing
+
+L'Event Sourcing est un modèle de conception où l'état d'une application est dérivé d'une séquence d'événements immuables.
+
+
+### Fonctionnement
+1. **Événements** : Chaque changement d'état est enregistré sous forme d'événement.
+2. **Stockage** : Les événements sont stockés dans un journal d'événements.
+3. **Reconstitution** : L'état actuel est reconstruit en rejouant les événements.
+
+
+### Avantages
+- Historique complet des changements.
+- Facilité d'audit et de débogage.
+- Possibilité de rejouer les événements pour corriger des erreurs ou migrer des données.
+
+
+### Exemple
+- **Commande passée** : `OrderPlaced`
+- **Paiement effectué** : `PaymentProcessed`
+- **Commande expédiée** : `OrderShipped`
+
+
+### Utilisation avec CQRS
+L'Event Sourcing est souvent combiné avec CQRS (Command Query Responsibility Segregation) pour séparer les opérations de lecture et d'écriture.
+
+
+
 ## Fin
+
+
+
+## Bonus : GraphQL
+
+GraphQL est un langage de requête pour les API, ainsi qu'un environnement d'exécution pour répondre à ces requêtes.
+Il a été développé par Facebook en 2012 et open-sourcé en 2015.
+
+
+### Pourquoi GraphQL ?
+
+- **Flexibilité** : Les clients peuvent demander exactement les données dont ils ont besoin.
+- **Réduction des surcharges** : Évite les requêtes multiples ou les réponses trop volumineuses.
+- **Typage fort** : Les schémas GraphQL sont fortement typés, ce qui améliore la validation et la documentation.
+- **Écosystème riche** : Compatible avec de nombreux langages et frameworks.
+
+
+### Comparaison avec REST
+
+| Fonctionnalité         | REST                          | GraphQL                     |
+|------------------------|-------------------------------|-----------------------------|
+| **Structure des données** | Fixe (endpoints définis)      | Flexible (requêtes dynamiques) |
+| **Récupération des données** | Multiples requêtes nécessaires | Une seule requête suffit     |
+| **Documentation**      | Manuelle ou Swagger           | Automatique via introspection |
+| **Versionnement**      | Requiert de nouveaux endpoints | Géré via le schéma          |
+
+
+### Concepts clés
+
+1. **Schéma** : Définit les types de données et les opérations disponibles.
+2. **Query** : Permet de lire des données.
+3. **Mutation** : Permet de modifier des données.
+4. **Subscription** : Permet de recevoir des mises à jour en temps réel.
+5. **Resolvers** : Fonctions qui répondent aux requêtes et mutations.
+
+
+### Exemple de Schéma
+
+```graphql
+type Query {
+    pokemon(id: ID!): Pokemon
+    pokemons: [Pokemon]
+}
+
+type Mutation {
+    capturePokemon(id: ID!): Pokemon
+}
+
+type Pokemon {
+    id: ID!
+    name: String!
+    type: String!
+}
+```
+
+
+### Exemple de Requête
+
+```graphql
+query {
+    pokemons {
+        id
+        name
+        type
+    }
+}
+```
+
+**Réponse :**
+```json
+{
+    "data": {
+        "pokemons": [
+            { "id": "1", "name": "Pikachu", "type": "Electric" },
+            { "id": "2", "name": "Charmander", "type": "Fire" }
+        ]
+    }
+}
+```
+
+
+### Exemple de Mutation
+
+```graphql
+mutation {
+    capturePokemon(id: "1") {
+        id
+        name
+        type
+    }
+}
+```
+
+**Réponse :**
+```json
+{
+    "data": {
+        "capturePokemon": {
+            "id": "1",
+            "name": "Pikachu",
+            "type": "Electric"
+        }
+    }
+}
+```
+
+
+### Intégration avec Node.js
+
+```bash
+npm install graphql express-graphql
+```
+
+
+#### Exemple de Serveur GraphQL
+
+```javascript
+import express from 'express';
+import { graphqlHTTP } from 'express-graphql';
+import { buildSchema } from 'graphql';
+
+const schema = buildSchema(`
+    type Query {
+        hello: String
+    }
+`);
+
+const root = {
+    hello: () => 'Hello, world!',
+};
+
+const app = express();
+app.use('/graphql', graphqlHTTP({
+    schema: schema,
+    rootValue: root,
+    graphiql: true,
+}));
+
+app.listen(4000, () => {
+    console.log('GraphQL server running at http://localhost:4000/graphql');
+});
+```
+
+
+### Outils pour GraphQL
+
+- **GraphiQL** : Interface web pour tester les requêtes.
+- **Apollo Client** : Client GraphQL pour JavaScript.
+- **Relay** : Client GraphQL développé par Facebook.
+- **GraphQL Playground** : Alternative moderne à GraphiQL.
+
+
+### TP : Implémentez GraphQL
+
+1. Créez un serveur GraphQL avec `express-graphql`.
+2. Ajoutez un schéma pour gérer les pokémons (lecture, capture, suppression).
+3. Testez vos requêtes avec GraphiQL ou Apollo Client.
+
+
+
 ## Bonus : Socket.io
+
+Socket.io est une bibliothèque JavaScript qui permet de créer des applications en temps réel en utilisant WebSocket.
+Elle offre une API simple pour gérer les connexions bidirectionnelles entre le client et le serveur.
+
+
+### Pourquoi utiliser Socket.io ?
+
+- **Temps réel** : Permet des communications instantanées entre le client et le serveur.
+- **Fallback automatique** : Passe à d'autres protocoles (comme HTTP long-polling) si WebSocket n'est pas disponible.
+- **Facilité d'utilisation** : API simple et abstraite pour gérer les événements.
+- **Écosystème riche** : Compatible avec de nombreux frameworks et environnements.
+
+
+### Installation de Socket.io
+
+```bash
+npm install socket.io
+```
+
+
+#### Client
+
+```bash
+npm install socket.io-client
+```
+
+
+### Exemple de serveur Socket.io
+
+```javascript
+import { Server } from 'socket.io';
+import http from 'http';
+
+const server = http.createServer();
+const io = new Server(server);
+
+io.on('connection', (socket) => {
+    console.log('Un utilisateur est connecté');
+
+    socket.on('message', (data) => {
+        console.log('Message reçu :', data);
+        socket.emit('response', 'Message reçu avec succès');
+    });
+
+    socket.on('disconnect', () => {
+        console.log('Un utilisateur s\'est déconnecté');
+    });
+});
+
+server.listen(3000, () => {
+    console.log('Serveur Socket.io en écoute sur le port 3000');
+});
+```
+
+
+### Exemple de client Socket.io
+
+```javascript
+import { io } from 'socket.io-client';
+
+const socket = io('http://localhost:3000');
+
+socket.on('connect', () => {
+    console.log('Connecté au serveur');
+    socket.emit('message', 'Bonjour serveur !');
+});
+
+socket.on('response', (data) => {
+    console.log('Réponse du serveur :', data);
+});
+
+socket.on('disconnect', () => {
+    console.log('Déconnecté du serveur');
+});
+```
+
+
+### Événements personnalisés
+
+Socket.io permet de définir des événements personnalisés pour structurer les communications.
+
+
+#### Serveur
+
+```javascript
+socket.on('chatMessage', (msg) => {
+    console.log('Message de chat :', msg);
+    io.emit('chatMessage', msg); // Diffusion à tous les clients
+});
+```
+
+
+#### Client
+
+```javascript
+socket.emit('chatMessage', 'Salut tout le monde !');
+socket.on('chatMessage', (msg) => {
+    console.log('Nouveau message :', msg);
+});
+```
+
+
+### Rooms et namespaces
+
+Les rooms permettent de regrouper des sockets pour envoyer des messages à un sous-ensemble de clients.
+
+```javascript
+socket.join('room1');
+io.to('room1').emit('message', 'Message pour room1');
+```
+
+
+#### Namespaces
+
+Les namespaces permettent de créer des espaces de noms pour organiser les connexions.
+
+```javascript
+const chat = io.of('/chat');
+chat.on('connection', (socket) => {
+    console.log('Utilisateur connecté au namespace /chat');
+});
+```
+
+
+### TP : Chat en temps réel
+
+1. Créez un serveur Socket.io.
+2. Implémentez un système de chat en temps réel.
+3. Ajoutez des rooms pour permettre des discussions privées.
+4. Testez avec plusieurs clients connectés.
