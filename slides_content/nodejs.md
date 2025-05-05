@@ -663,7 +663,7 @@ GET /api/pokemon/25
 
 ## Les dépendances
 
-![https://slides.com/florentberthelot/outillage-node-js#/2/1](https://slides.com/florentberthelot/outillage-node-js#/2/1)
+[https://slides.com/florentberthelot/outillage-node-js#/2/1](https://slides.com/florentberthelot/outillage-node-js#/2/1)
 
 
 ## ESLint
@@ -696,6 +696,7 @@ export default defineConfig([
 ]);
 ```
 
+
 ### Utilisation d'ESLint
 
 ```bash
@@ -703,13 +704,14 @@ eslint <nom_du_fichier_ou_dossier>
 eslint <nom_du_fichier_ou_dossier> --fix
 ```
 
+
 ## ESLINT et npm script
 
 ```json
 {
     "scripts": {
-        "lint": "eslint .",
-        "lint:fix": "eslint . --fix"
+        "test:static": "eslint .",
+        "test:static:fix": "eslint . --fix"
     }
 }
 ```
@@ -725,6 +727,7 @@ AJV est un validateur de schéma JSON rapide et performant.
 ```bash
 npm install ajv
 ```
+
 
 ### Exemple de validation avec AJV
 
@@ -759,12 +762,14 @@ if (!valid) {
 ## AJV pour TypeScript
 
 Le standard de validation côté TypeScript c'est Zod.
+<iframe src="https://zod.dev/" width="100%" style="height:60vh;"></iframe>
 
 
 
 # TP 9
 
 Ajoutez ESLint à votre projet et créez les NPM scripts neccessaires.
+
 Ajoutez AJV pour valider le format JSON de votre fichier pokedex.json
 
 
@@ -900,6 +905,8 @@ DELETE /pokemon/:id
 
 
 
+## Les templates
+## Debugger
 ## Gestion des erreurs
 ## Base de données
 ## Les tests
