@@ -319,7 +319,7 @@ Récupérez via l'API de node.js le temps depuis lequel votre machine est lancé
 
 ## TP 4
 
-Passer de CommonJS à ES module
+Passer de CommonJS à ES Module
 
 
 
@@ -328,7 +328,7 @@ Passer de CommonJS à ES module
 ```javascript
 import { readFile } from 'node:fs';
 try {
-  const URL = new URL('file:///home/florent/Dev/formation-nodejs/package.js');
+  const URL = new URL('file:///home/florent/Dev/formation-nodejs/package.json');
   const contents = readFile(filePath, { encoding: 'utf8' });
   console.log(contents);
 } catch (err) {
@@ -347,7 +347,7 @@ console.log(import.meta.url); // file:///home/florent/Dev/formation-nodejs/src/i
 ## Parlons Meta
 
 ```javascript
-console.log(import.meta.url); // ES module
+console.log(import.meta.url); // ESM
 ```
 
 ```javascript
@@ -359,12 +359,12 @@ console.log(__dirname); // CommonJS
 ## Et URL ?
 
 ```javascript
-const URL = new URL('./package.json', import.meta.url); // ES module
+const fileUrl = new URL('./package.json', import.meta.url); // ESM
 ```
 
 ```javascript
 const path = require('path');
-const URL = path.resolve(__dirname, './package.json'); // CommonJS
+const filePath = path.resolve(__dirname, './package.json'); // CommonJS
 ```
 
 
@@ -372,7 +372,7 @@ const URL = path.resolve(__dirname, './package.json'); // CommonJS
 ```javascript
 import { readFile } from 'node:fs';
 try {
-  const URL = new URL('./package.json', import.meta.url);
+  const fileUrl = new URL('./package.json', import.meta.url);
   const contents = readFile(filePath, { encoding: 'utf8' });
   console.log(contents);
 } catch (err) {
@@ -387,7 +387,8 @@ Vous verrez peut-être ce genre de code parfois (CommonJS)
 const fs = require('fs');
 const path = require('path');
 try {
-  const contents = fs.readFileSync(path.resolve(__dirname, './package.json'), { encoding: 'utf8' });
+  const filePath = path.resolve(__dirname, './package.json');
+  const contents = fs.readFileSync(filePath, { encoding: 'utf8' });
   console.log(contents);
 } catch (err) {
   console.error(err.message);
