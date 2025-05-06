@@ -1273,7 +1273,7 @@ app.use((err, req, res, next) => {
 
 
 
-## TP 11
+## TP 12
 
 Créez un middleware qui créer un id unique pour la requête.
 (correlation id)
@@ -1282,9 +1282,9 @@ Créez un middleware qui log chaque requête entrante et l'id de la requête.
 
 Ajoutez ces routes :
 ```
-POST /pokemon
-PATCH /pokemon/:id
-DELETE /pokemon/:id
+POST /capturedPokemon/{id}/evolve
+PATCH /capturedPokemon/{id}
+DELETE /capturedPokemon/{id}
 ```
 
 
@@ -1318,7 +1318,7 @@ node --inspect src/index.js
 
 
 
-### TP 12
+### TP 13
 
 le serveur doit se mettre en pause à chaque requête quand il reçoit le paramètre ?debug dans l'url.
 
@@ -1394,7 +1394,7 @@ app.get('/blog', (req, res) => {
 
 
 
-## TP 13
+## TP 14
 
 A l'aide du moteur de template de votre choix, créez une page HTML qui affiche la liste des pokémons capturé.
 
@@ -1489,6 +1489,66 @@ node src/index.js
 
 
 
+## SQLite
+
+SQLite est une base de données relationnelle légère, intégrée et sans serveur.
+
+
+### SQLite Natif
+
+(Node.js 22.5+)
+```javascript
+import { DatabaseSync } from 'node:sqlite';
+const database = new DatabaseSync(':memory:');
+
+database.exec(`
+  CREATE TABLE data(
+    key INTEGER PRIMARY KEY,
+    value TEXT
+  ) STRICT
+`);
+const insert = database.prepare('INSERT INTO data (key, value) VALUES (?, ?)');
+insert.run(1, 'hello');
+insert.run(2, 'world');
+const query = database.prepare('SELECT * FROM data ORDER BY key');
+
+console.log(query.all());
+// Prints: [ { key: 1, value: 'hello' }, { key: 2, value: 'world' } ]
+```
+
+
+#### Pour les vieux node.js
+
+```bash
+npm install sqlite
+```
+
+##### Exemple d'utilisation
+
+```javascript
+import sqlite from 'sqlite';
+
+const db = await sqlite.open({
+    filename: './database.sqlite',
+    driver: sqlite3.Database
+});
+
+await db.exec(`
+    CREATE TABLE IF NOT EXISTS users (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL,
+        email TEXT UNIQUE NOT NULL
+    )
+`);
+
+await db.run('INSERT INTO users (name, email) VALUES (?, ?)', ['Bob', 'bob@example.com']);
+
+const users = await db.all('SELECT * FROM users');
+console.log(users);
+```
+
+
+
 ## MongoDB
 
 
@@ -1527,7 +1587,7 @@ C'est géré automatiquement par le driver via l'URI.
 
 
 
-### TP 14
+### TP 15
 
 Sauvegardez les pokémons capturés dans une base de données PostgreSQL ou mongoDB si vous préférez.
 
@@ -1617,7 +1677,7 @@ describe('Blog', () => {
 
 
 
-## TP 15
+## TP 16
 
 Créez des tests pour votre API avec Supertest et Vitest.
 
