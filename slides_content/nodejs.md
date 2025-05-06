@@ -925,7 +925,7 @@ servers:
   - url: http://localhost:8080
 tags:
   - name: pokemon
-    description: Everything about your Pokemon infos
+    description: Everything about Pokemon species
   - name: capturedPokemon
     description: the pokemon you own
 paths:
@@ -937,7 +937,7 @@ paths:
       responses:
         '200':
           description: Successful operation
-  /pokemon/:id/capture:
+  /pokemon/{id}/capture:
     post:
       tags:
         - capturedPokemon
@@ -961,7 +961,7 @@ paths:
       responses:
         '200':
           description: Successful operation
-  /capturedPokemon/:id/evolve:
+  /capturedPokemon/{id}/evolve:
     post:
       tags:
         - capturedPokemon
@@ -976,7 +976,7 @@ paths:
       responses:
         '200':
           description: Successful operation
-  /capturedPokemon/:id:
+  /capturedPokemon/{id}:
     patch:
       tags:
         - capturedPokemon
@@ -1038,7 +1038,7 @@ paths:
   "tags": [
     {
       "name": "pokemon",
-      "description": "Everything about your Pokemon infos"
+      "description": "Everything about Pokemon species"
     },
     {
       "name": "capturedPokemon",
@@ -1059,7 +1059,7 @@ paths:
         }
       }
     },
-    "/pokemon/:id/capture": {
+    "/pokemon/{id}/capture": {
       "post": {
         "tags": [
           "capturedPokemon",
@@ -1097,7 +1097,7 @@ paths:
         }
       }
     },
-    "/capturedPokemon/:id/evolve": {
+    "/capturedPokemon/{id}/evolve": {
       "post": {
         "tags": [
           "capturedPokemon"
@@ -1121,7 +1121,7 @@ paths:
         }
       }
     },
-    "/capturedPokemon/:id": {
+    "/capturedPokemon/{id}": {
       "patch": {
         "tags": [
           "capturedPokemon"
