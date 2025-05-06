@@ -1911,3 +1911,35 @@ Immutable, toutes timezones, etc.
 
 - [Code kata](http://codekata.com/)
 - [Coding Dojo](http://codingdojo.org/kata/) -->
+
+
+## Bonus
+
+
+### L'asynchrone en JS
+
+
+
+```javascript
+function playLoto() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (Math.random() > 0.5) {
+        resolve('La FIV a fonctionné');
+        return;
+      }
+      reject(new Error("La FIV n'a pas fonctionné"));
+    }, 1000);
+  });
+}
+
+async function go() {
+  try {
+    const result = await Promise.any([haveABaby(), haveABaby(), haveABaby()]);
+    console.log(result, "Préparons une chambre pour l'enfant 1");
+  } catch (err) {
+    console.error('Recommençons !', err.message);
+  }
+}
+go();
+```

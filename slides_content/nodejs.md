@@ -922,7 +922,7 @@ info:
   version: 1.0.0
   title: Node.js Formation
 servers:
-  - url: https://localhost:8080
+  - url: http://localhost:8080
 tags:
   - name: pokemon
     description: Everything about your Pokemon infos
@@ -943,6 +943,13 @@ paths:
         - capturedPokemon
         - pokemon
       summary: Catpure a pokemon
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the pokemon to be released
+          schema:
+            type: string
       responses:
         '200':
           description: Successful operation
@@ -959,6 +966,13 @@ paths:
       tags:
         - capturedPokemon
       summary: make the pokemon evolve
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the pokemon to be released
+          schema:
+            type: string
       responses:
         '200':
           description: Successful operation
@@ -967,6 +981,13 @@ paths:
       tags:
         - capturedPokemon
       summary: release a pokemon in the wild
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the pokemon to be released
+          schema:
+            type: string
       responses:
         '200':
           description: Successful operation
@@ -974,6 +995,13 @@ paths:
       tags:
         - capturedPokemon
       summary: release a pokemon in the wild
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the pokemon to be released
+          schema:
+            type: string
       responses:
         '200':
           description: Successful operation
@@ -981,6 +1009,13 @@ paths:
       tags:
         - capturedPokemon
       summary: Get one captured pokemon
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the pokemon to be released
+          schema:
+            type: string
       responses:
         '200':
           description: Successful operation
@@ -997,7 +1032,7 @@ paths:
   },
   "servers": [
     {
-      "url": "https://localhost:8080"
+      "url": "http://localhost:8080"
     }
   ],
   "tags": [
@@ -1030,6 +1065,17 @@ paths:
           "capturedPokemon",
           "pokemon"
         ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the pokemon to be released",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "summary": "Catpure a pokemon",
         "responses": {
           "200": {
@@ -1057,6 +1103,17 @@ paths:
           "capturedPokemon"
         ],
         "summary": "make the pokemon evolve",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the pokemon to be released",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Successful operation"
@@ -1070,6 +1127,17 @@ paths:
           "capturedPokemon"
         ],
         "summary": "release a pokemon in the wild",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the pokemon to be released",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Successful operation"
@@ -1081,6 +1149,17 @@ paths:
           "capturedPokemon"
         ],
         "summary": "release a pokemon in the wild",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the pokemon to be released",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Successful operation"
@@ -1092,6 +1171,17 @@ paths:
           "capturedPokemon"
         ],
         "summary": "Get one captured pokemon",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the pokemon to be released",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Successful operation"
