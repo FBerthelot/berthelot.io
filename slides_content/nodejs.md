@@ -1523,6 +1523,7 @@ console.log(query.all());
 npm install sqlite
 ```
 
+
 ##### Exemple d'utilisation
 
 ```javascript
@@ -1586,6 +1587,14 @@ run()
 C'est géré automatiquement par le driver via l'URI.
 
 
+## MongoDB, Jointure
+
+[https://www.mongodb.com/docs/manual/core/views/join-collections-with-view/](https://www.mongodb.com/docs/manual/core/views/join-collections-with-view/)
+
+Mais c'est pas une database relationnelle !
+Il est préférable de stocker des données imbriquées dans un même document.
+
+
 
 ### TP 15
 
@@ -1635,47 +1644,6 @@ describe('Test des routes de l\'API', () => {
 ```
 
 
-### Intégration avec Jest
-
-Supertest s'intègre parfaitement avec Jest pour écrire des tests unitaires et d'intégration.
-
-```bash
-npm install jest --save-dev
-```
-
-Ajoutez un script dans votre `package.json` :
-
-```json
-{
-    "scripts": {
-        "test": "jest"
-    }
-}
-```
-
-
-### Exemple de test avec Jest et Supertest
-
-```javascript
-import request from 'supertest';
-import app from './app';
-
-describe('Blog', () => {
-    it('GET /capturedPokemon - devrait retourner une liste de pokémons capturés', async () => {
-        const response = await request(app).get('/capturedPokemon');
-        expect(response.status).toBe(200);
-        expect(response.body).toBeInstanceOf(Array);
-    });
-
-    it('POST /pokemon/:id/capture - devrait capturer un pokémon', async () => {
-        const response = await request(app).post('/pokemon/1/capture');
-        expect(response.status).toBe(200);
-        expect(response.body.message).toBe('Pokémon capturé avec succès');
-    });
-});
-```
-
-
 
 ## TP 16
 
@@ -1683,18 +1651,17 @@ Créez des tests pour votre API avec Supertest et Vitest.
 
 
 
-## Event Loop
+## Parrallélisme
 
-L'Event Loop est un mécanisme central dans Node.js qui permet de gérer les opérations asynchrones.
-Elle est essentielle pour le fonctionnement du système mono-thread de Node.js, qui repose sur un seul thread pour exécuter le code JavaScript.
+Node.js repose sur un seul thread pour exécuter le code JavaScript.
+Comment ont fait ?
 
 
-### Node.js et le système mono-thread
+### Event-loop
 
-Node.js utilise un modèle mono-threadé pour exécuter du JavaScript,
-mais il est capable de gérer des opérations asynchrones grâce à l'Event Loop.
 Les tâches longues ou bloquantes, comme les opérations I/O ou les requêtes réseau,
-sont déléguées à des threads en arrière-plan via la bibliothèque libuv, permettant au thread principal de rester disponible pour d'autres tâches.
+sont déléguées à des threads en arrière-plan via la bibliothèque libuv,
+permettant au thread principal de rester disponible pour d'autres tâches.
 
 
 ### Fonctionnement de l'Event Loop
@@ -1702,6 +1669,17 @@ sont déléguées à des threads en arrière-plan via la bibliothèque libuv, pe
 1. **Call Stack** : Une pile où les fonctions sont exécutées.
 2. **Callback Queue** : Une file d'attente pour les callbacks prêts à être exécutés.
 3. **Event Loop** : Un processus qui surveille le Call Stack et la Callback Queue. Si le Call Stack est vide, il déplace les callbacks de la queue vers la pile.
+
+
+<pre class="mermaid">
+graph TB
+    A[Timers]---B[I/O Callbacks]
+    B---C[Idle, Prepare]
+    C---D[Pool]
+    D---E[Check]
+    E---F[Close Callbacks]
+    F---A
+</pre>
 
 
 ### Phases de l'Event Loop
@@ -1731,7 +1709,7 @@ console.log('End');
 ```
 
 
-**Résultat attendu :**
+**Résultat :**
 ```
 Start
 End
@@ -1740,15 +1718,203 @@ Timeout
 ```
 
 
-### Pourquoi l'Event Loop est importante ?
+## Node.js en cluster
 
-- Permet à Node.js de gérer des milliers de connexions simultanées sur un seul thread.
-- Évite le blocage du thread principal grâce à la délégation des tâches lourdes.
-- Optimise les performances pour les applications I/O intensives.
+```javascript
+import cluster from 'node:cluster';
+import http from 'node:http';
+import { availableParallelism } from 'node:os';
+import process from 'node:process';
+
+const numCPUs = availableParallelism();
+
+if (cluster.isPrimary) {
+  console.log(`Primary ${process.pid} is running`);
+
+  // Fork workers.
+  for (let i = 0; i < numCPUs; i++) {
+    cluster.fork();
+  }
+
+  cluster.on('exit', (worker, code, signal) => {
+    console.log(`worker ${worker.process.pid} died`);
+  });
+} else {
+  // In this case it is an HTTP server
+  http.createServer((req, res) => {
+    res.writeHead(200);
+    res.end('hello world\n');
+  }).listen(8000);
+
+  console.log(`Worker ${process.pid} started`);
+}
+```
+
+
+## Node.js et la RAM
+
+JavaScript est un langage avec une **garbage collection**. On ne gère pas la mémoire manuellement.
+
+
+### Limite de mémoire par défaut
+
+- **2 Go** sur les systèmes 32 bits
+- **4 Go** sur les systèmes 64 bits.
+
+Limite qui est définie pour éviter que le garbage collector ne consomme trop de temps sur de grandes quantités de mémoire.
+
+
+### Augmenter la limite de mémoire
+
+```bash
+node --max-old-space-size=8192 src/index.js
+```
+
+ou
+
+```bash
+NODE_OPTIONS="--max-old-space-size=8192" node src/index.js
+```
 
 
 
-## Traitements lourds
+## TP 17
+
+Passer votre serveur en mode cluster.
+
+Bonus: [https://www.artillery.io/](https://www.artillery.io/)
+
+
+## Le bonus
+
+```yaml
+config:
+  target: http://localhost:8080
+  phases:
+    - duration: 60
+      arrivalRate: 1
+      rampTo: 5
+      name: Warm up phase
+    - duration: 60
+      arrivalRate: 5
+      rampTo: 10
+      name: Ramp up load
+    - duration: 30
+      arrivalRate: 10
+      rampTo: 30
+      name: Spike phase
+  plugins:
+    ensure: {}
+    apdex: {}
+    metrics-by-endpoint: {}
+  apdex:
+    threshold: 100
+  ensure:
+    thresholds:
+      - http.response_time.p99: 100
+      - http.response_time.p95: 75
+scenarios:
+  - flow:
+      - loop:
+          - get:
+              url: '/pokemon'
+          - get:
+              url: '/capturedPokemon'
+          - get:
+              url: '/pokemon/0/capture'
+          - get:
+              url: '/pokemon/1/capture'
+          - get:
+              url: '/capturedPokemon'
+          - get:
+              url: '/capturedPokemon/0/evolve'
+          - delete:
+              url: '/capturedPokemon/0'
+          - delete:
+              url: '/capturedPokemon/1'
+        count: 100
+```
+
+
+
+
+## Comment faire encore mieux&nbsp;?
+
+Discussion sur les solutions possibles
+
+
+- **Compression** : Utiliser gzip ou brotli pour compresser les réponses HTTP.
+- **Cache** : Utiliser un cache en mémoire (Redis) pour stocker les résultats des requêtes fréquentes.
+- **CDN** : Utiliser un CDN pour distribuer le contenu statique.
+- **Scalabilité horizontale** : Ajouter plus d'instances de l'application pour gérer la charge.
+- **Rendre l'application asynchrone** : Utiliser un système de message (RabbitMQ, Kafka) pour traiter les tâches en arrière-plan.
+
+
+
+## Les streams
+
+Les streams permet de traiter les données par morceaux plutôt qu'en une seule fois.
+
+
+### Types de streams
+1. **Readable** : Permet de lire des données (ex: `fs.createReadStream`).
+2. **Writable** : Permet d'écrire des données (ex: `fs.createWriteStream`).
+3. **Duplex** : Permet à la fois de lire et d'écrire (ex: `net.Socket`).
+4. **Transform** : Permet de modifier les données en cours de lecture ou d'écriture (ex: `zlib.createGzip`).
+
+
+### Avantages des streams
+- **Efficacité** : Traite les données au fur et à mesure qu'elles arrivent, réduisant ainsi l'utilisation de la mémoire.
+- **Performance** : Permet de traiter de grandes quantités de données sans bloquer l'exécution du programme.
+
+
+### Exemple de stream
+```javascript
+import fs from 'fs';
+const readStream = fs.createReadStream('input.txt');
+const writeStream = fs.createWriteStream('output.txt');
+readStream.pipe(writeStream);
+```
+
+
+### Exemple de stream transform
+```javascript
+import { Transform } from 'stream';
+const removeSpaces = new Transform({
+  transform(chunk, encoding, callback) {
+    callback(null, String(chunk).replace(' ', ''));
+  },
+});
+
+fs.createReadStream('input.txt')
+    .pipe(removeSpaces)
+    .pipe(fs.createWriteStream('output.txt'));
+```
+
+
+### Vous vous rappelez ?
+
+```javascript
+import {createServer} from 'node:http';
+
+const server = createServer((req, res) => {
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.write('Hello World\n');
+    res.end();
+});
+server.listen(8080, () => {
+    console.log('Server is running on http://localhost:8080');
+});
+```
+
+
+
+## TP 18
+
+A l'aide des streams, ajoutez les pokemons dans votre base de données au démarrage du serveur.
+Les pokémons ne sont donc plus stockés en mémoire.
+
+Utilisez [JSONStream](https://github.com/dominictarr/JSONStream).
 
 
 
@@ -1758,28 +1924,7 @@ La Clean Architecture, proposée par Robert C. Martin (Uncle Bob),
 est une approche pour structurer le code d'une application afin de le rendre maintenable, testable et évolutif.
 
 
-### Principes fondamentaux
-1. **Indépendance des frameworks** : L'architecture ne doit pas dépendre d'un framework spécifique.
-2. **Testabilité** : Le code doit être facilement testable, indépendamment des détails d'implémentation.
-3. **Indépendance de l'interface utilisateur** : Les règles métier ne doivent pas dépendre de l'interface utilisateur.
-4. **Indépendance de la base de données** : Les règles métier ne doivent pas dépendre de la technologie de stockage.
-5. **Indépendance des agents externes** : Les règles métier doivent être isolées des services externes.
-
-
-### Structure en couches
-- **Entities** : Contiennent les règles métier fondamentales.
-- **Use Cases** : Contiennent la logique métier spécifique à l'application.
-- **Interface Adapters** : Adaptent les données entre les cas d'utilisation et les frameworks ou outils externes.
-- **Frameworks & Drivers** : Contiennent les détails d'implémentation (frameworks, bases de données, etc.).
-
-
-### Diagramme
-<pre class="mermaid">
-graph TD
-    Entities --> UseCases
-    UseCases --> InterfaceAdapters
-    InterfaceAdapters --> FrameworksDrivers
-</pre>
+![clean archi](/slides_content/typscript_avancee_img/clean_archi.webp)
 
 
 ## Architecture Hexagonale
@@ -1794,20 +1939,7 @@ Elle vise à découpler le cœur métier des détails techniques.
 3. **Adapters** : Implémentations des ports pour interagir avec des systèmes externes (bases de données, API, etc.).
 
 
-### Avantages
-- Isolation du domaine métier.
-- Facilité de test grâce à la substitution des adaptateurs.
-- Flexibilité pour changer les technologies externes.
-
-
-### Diagramme
-<pre class="mermaid">
-graph TD
-    Domain -->|Input Port| AdapterIn
-    AdapterIn -->|Output Port| Domain
-    Domain -->|Output Port| AdapterOut
-    AdapterOut -->|External System| External
-</pre>
+![Hexa archi](/slides_content/typscript_avancee_img/hexa_archi.png)
 
 
 ## Event Sourcing
@@ -1828,18 +1960,43 @@ L'Event Sourcing est un modèle de conception où l'état d'une application est 
 
 
 ### Exemple
-- **Commande passée** : `OrderPlaced`
-- **Paiement effectué** : `PaymentProcessed`
-- **Commande expédiée** : `OrderShipped`
+
+1. **Commande passée** : `OrderPlaced`
+2. **Premier paiement effectué** : `PaymentProcessed`
+3. **Deuxième paiement effectué** : `PaymentProcessed`
+4. **Troisième paiement effectué** : `PaymentProcessed`
+5. **Commande expédiée** : `OrderShipped`
+
+
+#### Implémentation technique
+
+1. **Stockage des événements**
+2. **Reconstitution de l'état** : Une fonction lit les événements dans l'ordre chronologique et applique les changements pour obtenir l'état actuel.
+3. **Projections** : Pré-calculer et stocker l'état courant dans une base de données dédiée.
 
 
 ### Utilisation avec CQRS
-L'Event Sourcing est souvent combiné avec CQRS (Command Query Responsibility Segregation) pour séparer les opérations de lecture et d'écriture.
+
+L'Event Sourcing est souvent combiné avec CQRS (Command Query Responsibility Segregation)
+pour séparer les opérations de lecture et d'écriture.
+
+
+
+## TP 19
+
+Organisez votre code avec la Clean Architecture ou l'architecture hexagonale.
+Séparez en plusieurs fichiers et dossiers !
 
 
 
 ## Fin
 
+Florent Berthelot
+FBerthelot
+
+https://berthelot.io
+
+florent@berthelot.io
 
 
 ## Bonus : GraphQL
@@ -1850,20 +2007,10 @@ Il a été développé par Facebook en 2012 et open-sourcé en 2015.
 
 ### Pourquoi GraphQL ?
 
-- **Flexibilité** : Les clients peuvent demander exactement les données dont ils ont besoin.
-- **Réduction des surcharges** : Évite les requêtes multiples ou les réponses trop volumineuses.
-- **Typage fort** : Les schémas GraphQL sont fortement typés, ce qui améliore la validation et la documentation.
-- **Écosystème riche** : Compatible avec de nombreux langages et frameworks.
-
-
-### Comparaison avec REST
-
-| Fonctionnalité         | REST                          | GraphQL                     |
-|------------------------|-------------------------------|-----------------------------|
-| **Structure des données** | Fixe (endpoints définis)      | Flexible (requêtes dynamiques) |
-| **Récupération des données** | Multiples requêtes nécessaires | Une seule requête suffit     |
-| **Documentation**      | Manuelle ou Swagger           | Automatique via introspection |
-| **Versionnement**      | Requiert de nouveaux endpoints | Géré via le schéma          |
+- **Flexibilité** : On a ce qu'on demande.
+- **Réduction des surcharges** : Multiplexing.
+- **Typage** : Moins que SOAP, plus que REST.
+- **Documentation** : Auto-documentation via le schéma.
 
 
 ### Concepts clés
@@ -1910,12 +2057,10 @@ query {
 **Réponse :**
 ```json
 {
-    "data": {
-        "pokemons": [
-            { "id": "1", "name": "Pikachu", "type": "Electric" },
-            { "id": "2", "name": "Charmander", "type": "Fire" }
-        ]
-    }
+    "pokemons": [
+        { "id": "1", "name": "Pikachu", "type": "Electric" },
+        { "id": "2", "name": "Charmander", "type": "Fire" }
+    ]
 }
 ```
 
@@ -1926,7 +2071,6 @@ query {
 mutation {
     capturePokemon(id: "1") {
         id
-        name
         type
     }
 }
@@ -1935,12 +2079,9 @@ mutation {
 **Réponse :**
 ```json
 {
-    "data": {
-        "capturePokemon": {
-            "id": "1",
-            "name": "Pikachu",
-            "type": "Electric"
-        }
+    "capturePokemon": {
+        "id": "1",
+        "type": "Electric"
     }
 }
 ```
@@ -1949,7 +2090,7 @@ mutation {
 ### Intégration avec Node.js
 
 ```bash
-npm install graphql express-graphql
+npm install express graphql-http graphql ruru
 ```
 
 
@@ -1957,8 +2098,9 @@ npm install graphql express-graphql
 
 ```javascript
 import express from 'express';
-import { graphqlHTTP } from 'express-graphql';
+import { createHandler } from 'graphql-http/lib/use/express';
 import { buildSchema } from 'graphql';
+import { ruruHTML } from 'ruru';
 
 const schema = buildSchema(`
     type Query {
@@ -1971,11 +2113,18 @@ const root = {
 };
 
 const app = express();
-app.use('/graphql', graphqlHTTP({
+app.all(
+  '/graphql',
+  createHandler({
     schema: schema,
     rootValue: root,
-    graphiql: true,
-}));
+  }),
+);
+ 
+app.get('/doc', (_req, res) => {
+    res.type('html');
+    res.end(ruruHTML({ endpoint: '/graphql' }));
+});
 
 app.listen(4000, () => {
     console.log('GraphQL server running at http://localhost:4000/graphql');
@@ -1983,19 +2132,16 @@ app.listen(4000, () => {
 ```
 
 
-### Outils pour GraphQL
+## Apollo
 
-- **GraphiQL** : Interface web pour tester les requêtes.
-- **Apollo Client** : Client GraphQL pour JavaScript.
-- **Relay** : Client GraphQL développé par Facebook.
-- **GraphQL Playground** : Alternative moderne à GraphiQL.
+Appolo est un framework complet graphql avec des implémentations pour le serveur et le client.
+[https://www.apollographql.com/docs/guides/graphql/setup](https://www.apollographql.com/docs/guides/graphql/setup)
 
 
 ### TP : Implémentez GraphQL
 
 1. Créez un serveur GraphQL avec `express-graphql`.
-2. Ajoutez un schéma pour gérer les pokémons (lecture, capture, suppression).
-3. Testez vos requêtes avec GraphiQL ou Apollo Client.
+2. Recréez les routes de votre API REST en GraphQL.
 
 
 
@@ -2124,9 +2270,8 @@ chat.on('connection', (socket) => {
 ```
 
 
-### TP : Chat en temps réel
+### TP 
 
-1. Créez un serveur Socket.io.
-2. Implémentez un système de chat en temps réel.
-3. Ajoutez des rooms pour permettre des discussions privées.
-4. Testez avec plusieurs clients connectés.
+Sur votre page qui affiche les pokémons capturés,
+faire en sorte que dès qu'un pokémon est capturé,
+il s'affiche sur la page dans rafraichir.
