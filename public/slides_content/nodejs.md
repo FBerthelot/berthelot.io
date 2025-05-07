@@ -226,12 +226,12 @@ npm run start --port 8080 # L'argument est passé à npm
 ```
 
 
-
 ## Alternatives à NPM
 
 - Yarn
 - PNPM
 - Bun
+
 
 
 ## TP 2
