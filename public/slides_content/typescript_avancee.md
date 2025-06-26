@@ -37,7 +37,6 @@ Les solutions sont toujours multiples.
 Posez-moi des questions.
 
 
-
 ## Travaux pratiques
 
 Le sujet : Pokédex
@@ -314,7 +313,7 @@ Qui est impacté par le bug ?
 Créez une constante pokemons qui contient les statisiques de 4 Pokémons.
 
 Aussi, créez une fonction qui prends un Pokémon en entrée,
-ne retourne rien et affiche en console un jolie message avec les stats du pokemon.
+ne retourne rien et affiche en console un joli message avec les stats du pokemon.
 
 
 
