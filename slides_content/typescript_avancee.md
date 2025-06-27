@@ -312,7 +312,7 @@ Qui est impacté par le bug ?
 
 Créez une constante pokemons qui contient les statisiques de 4 Pokémons.
 
-Aussi, créez une fonction qui prends un Pokémon en entrée,
+Aussi, créez une fonction qui prend un Pokémon en entrée,
 ne retourne rien et affiche en console un joli message avec les stats du pokemon.
 
 
@@ -1006,8 +1006,8 @@ Le type de retour est un pokemon du type demandé.
 
 Exemple d'utilisation :
 ```typescript
-const result: PokemonPsy = repository.getPokemonByType<PokemonPsy>('psy');
-const result2: Pokemon = repository.getPokemonByType<Pokemon>('elec');
+const result: PokemonPsy = gateway.getPokemonByType<PokemonPsy>('psy');
+const result2: Pokemon = gateway.getPokemonByType<Pokemon>('elec');
 ```
 
 
@@ -1229,11 +1229,43 @@ const pokemonByType: Record<PokemonTypes, string[]> = {
 type PokemonTypes = "fire" | "water" | "electric";
 
 const pokemonByType: {
-  [PokemonTypes]: string[];
+  [key in PokemonTypes]: string[];
 } = {
   fire: ["Charmander", "Vulpix"],
   water: ["Squirtle", "Psyduck"],
   electric: ["Pikachu", "Electabuzz"],
+};
+```
+
+
+### Mapped Types vs Record
+
+
+```typescript
+type booleanObject = {
+  [key: string]: boolean ;
+};
+type booleanObjectRecord = Record<string, boolean>;
+```
+
+
+### Mapped Types vs Record
+
+```typescript
+type FeatureFlagsConfig<Type> = {
+  [Property in keyof Type]: boolean;
+};
+
+type Features = {
+  Pay3X: () => void;
+  UltraMaxGoldCard: () => void;
+};
+ 
+type FeatureOptions = FeatureFlagsConfig<Features>;
+
+const featureFlags: FeatureOptions = {
+  Pay3X: true,
+  UltraMaxGoldCard: false,
 };
 ```
 
@@ -1488,7 +1520,7 @@ export default defineComponent({
 
 ### React et TypeScript
 
-React a l'avantage dee typer l'html (JSX)
+React a l'avantage de typer l'html (JSX)
 
 
 ### Typage des Props
@@ -1563,33 +1595,6 @@ export { UserProvider, UserProfile };
 Angular est conçu pour fonctionner avec TypeScript dès le départ et se base sur les decorators...
 
 
-## Typage des Services
-Les services Angular peuvent être typés pour garantir la sécurité des données :
-```typescript
-import { Injectable } from '@angular/core';
-
-export interface Todo {
-  id: number;
-  text: string;
-}
-
-@Injectable({
-  providedIn: 'root'
-})
-export class TodoService {
-  private todos: Todo[] = [];
-
-  addTodo(todo: Todo): void {
-   this.todos.push(todo);
-  }
-
-  getTodos(): Todo[] {
-   return this.todos;
-  }
-}
-```
-
-
 ### Typage des Composants
 Les composants Angular utilisent des interfaces pour typer leurs entrées et sorties :
 ```typescript
@@ -1610,6 +1615,33 @@ export class TodoListComponent {
 
   addTodo(): void {
    this.addTodoEvent.emit('New Todo');
+  }
+}
+```
+
+
+## Les Services
+
+```typescript
+import { Injectable } from '@angular/core';
+
+export interface Todo {
+  id: number;
+  text: string;
+}
+
+@Injectable({
+  providedIn: 'root'
+})
+export class TodoService {
+  private todos: Todo[] = [];
+
+  addTodo(todo: Todo): void {
+   this.todos.push(todo);
+  }
+
+  getTodos(): Todo[] {
+   return this.todos;
   }
 }
 ```
