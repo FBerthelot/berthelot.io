@@ -304,6 +304,13 @@ console.log(crypto.randomUUID());
 ```
 
 
+## La concurence
+
+
+Deno - L'inverse de node, par le créateur de Node.js
+Bun - Similaire avec un outillage clé en main.
+
+
 
 ## TP 3
 
