@@ -379,7 +379,7 @@ const filePath = path.resolve(__dirname, './package.json'); // CommonJS
 ```javascript
 import { readFileSync } from 'node:fs';
 try {
-  const fileUrl = new URL('./package.json', import.meta.url);
+  const filePath = new URL('./package.json', import.meta.url);
   const contents = readFileSync(filePath, { encoding: 'utf8' });
   console.log(contents);
 } catch (err) {
