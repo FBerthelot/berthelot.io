@@ -923,6 +923,24 @@ app.get('/users/:userId/books/:bookId', (req, res) => {
 ```
 
 
+## Express close
+
+```javascript
+const server = app.listen(8080, () => {
+    console.log(`Server is running on http://localhost:8080`);
+});
+
+server.close(() => {
+    console.log('Server closed');
+});
+```
+
+
+## La doc
+
+<iframe src="https://expressjs.com/en/api.html" width="100%" style="height:60vh;"></iframe>
+
+
 
 # TP 10
 
@@ -934,7 +952,8 @@ GET  /capturedPokemons
 POST /pokemon/:id/capture
 ```
 
-La liste initiale des pokémons est dans le fichier `src/data/pokedex.json` et doit être lue au démarrage du serveur uniquement.
+GET /pokemon retourne toujours `src/data/pokedex.json`.
+Qu'est ce qu'il se passe si on essai de capturer un pokémon qui n'existe pas ?
 
 
 
