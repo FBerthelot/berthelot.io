@@ -306,7 +306,6 @@ console.log(crypto.randomUUID());
 
 ## La concurence
 
-
 Deno - L'inverse de node, par le créateur de Node.js
 Bun - Similaire avec un outillage clé en main.
 
@@ -463,6 +462,20 @@ fs.readFile(filePath, { encoding: 'utf8' }, (err, content) => {
 Les callbacks 🤩
 
 
+## Ancienne API
+
+```javascript
+const fs = require('fs');
+const path = require('path');
+const {promisify} = require('utils')
+
+const readFile = promisify(fs.readFile);
+
+const filePath = path.resolve(__dirname, './package.json');
+const contents = await readFile(filePath, { encoding: 'utf8' });
+console.log(contents);
+```
+
 
 ## TP 6
 
@@ -524,6 +537,27 @@ process.on('uncaughtExceptionMonitor', (err, origin) => {
 ```
 
 
+## API Exit
+
+```javascript
+process.on('SIGINT', (code) => {
+  console.log('Process exit event with code: ', code);
+  process.exit(0); // Terminer le processus proprement
+});
+```
+
+
+## Arguments
+
+```javascript
+console.log(process.argv); // Affiche les arguments de la ligne de commande
+```
+
+```bash
+node src/index.js --port 8080
+```
+
+
 
 ## TP 7
 
@@ -566,6 +600,23 @@ const server = http.createServer((req, res) => {
 server.listen(8000);
 ```
 
+
+## HTTP the end
+
+```javascript
+import http from 'node:http';
+
+// Create a local server to receive data from
+const server = http.createServer((req, res) => {});
+
+server.listen(8000);
+
+setTimeout(() => {
+  server.close(() => {
+    console.log('Server closed');
+  });
+}, 5000);
+```
 
 
 ## TP 8
