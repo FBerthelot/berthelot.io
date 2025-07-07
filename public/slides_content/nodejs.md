@@ -333,10 +333,10 @@ Passer de CommonJS à ES Module
 ## File System API
 
 ```javascript
-import { readFile } from 'node:fs';
+import { readFileSync } from 'node:fs';
 try {
-  const URL = new URL('file:///home/florent/Dev/formation-nodejs/package.json');
-  const contents = readFile(filePath, { encoding: 'utf8' });
+  const filePath = new URL('file:///home/florent/Dev/formation-nodejs/package.json');
+  const contents = readFileSync(filePath, { encoding: 'utf8' });
   console.log(contents);
 } catch (err) {
   console.error(err.message);
