@@ -832,6 +832,44 @@ Ajoutez AJV pour valider le format JSON de votre fichier pokedex.json
 
 
 
+## Point amélioration DX
+
+C'est embêtant de redémarrer le serveur à chaque fois qu'on modifie le code, non ?
+
+
+## Nodemon
+
+Nodemon est un outil qui surveille les changements dans le code source et redémarre automatiquement le serveur.
+
+```bash
+npm install --save-dev nodemon
+```
+
+
+## Utilisation de Nodemon
+
+```json
+{
+    "scripts": {
+        "dev": "nodemon src/index.js"
+    }
+}
+```
+
+
+## Nodemon configuration
+
+```json
+{
+    "nodemonConfig": {
+        "ignore": ["**/__test__/**", "**/docs/**"],
+        "watch": ["src"],
+        "ext": "js,json"
+    }
+}
+```
+
+
 ## Les frameworks Node.js
 
 Il existe de nombreux frameworks pour Node.js :
