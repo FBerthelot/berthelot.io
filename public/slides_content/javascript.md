@@ -1877,6 +1877,7 @@ Iterator.prototype.from(fn)
 ```
 
 
+
 <!-- .slide: data-background="#1E5945" -->
 # ES2026
 
