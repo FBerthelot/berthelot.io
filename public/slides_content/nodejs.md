@@ -948,7 +948,7 @@ Migrez votre serveur HTTP vers Express.js
 
 Créez ces routes : 
 ```
-GET  /capturedPokemons
+GET  /capturedPokemon
 POST /pokemon/:id/capture
 ```
 
@@ -1103,6 +1103,12 @@ paths:
           description: ID of the pokemon to be released
           schema:
             type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
       responses:
         '200':
           description: Successful operation
@@ -1229,6 +1235,16 @@ paths:
             }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Successful operation"
