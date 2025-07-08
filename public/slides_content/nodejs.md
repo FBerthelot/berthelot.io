@@ -2405,4 +2405,69 @@ chat.on('connection', (socket) => {
 
 Sur votre page qui affiche les pokémons capturés,
 faire en sorte que dès qu'un pokémon est capturé,
-il s'affiche sur la page dans rafraichir.
+il s'affiche sur la page sans rafraichir.
+
+
+
+## Bonus : Loosely Coupled Monolith
+
+L'avantage, des micro-services et du monolithe.
+
+
+### Désavatages des mirco-services
+
+- **Complexité** : Plus de services, plus de complexité.
+- **Communication** : Nécessite une communication réseau, ce qui peut introduire de la latence.
+- **Gestion des transactions** : Plus difficile à gérer dans un environnement distribué.
+
+
+### Avantages du monolithe
+
+- **Simplicité** : Tout est dans un seul projet, plus facile à gérer.
+- **Performance** : Pas de latence réseau pour les appels internes.
+- **Transactions** : Plus facile à gérer les transactions dans une base de données unique.
+
+
+## Loosely Coupled Monolith
+
+Un monolithe mais avec des modules indépendants qui peuvent être développés, testés et déployés séparément.
+
+
+## Désavantages du Loosely Coupled Monolith
+
+Tout est déployé en même temps.
+(On peut imaginer un système de versioning pour les modules, mais c'est plus complexe à mettre en place.)
+
+
+## Pour aller plus loin
+
+[Migro-services](https://www.youtube.com/watch?v=877-lVkWWZ4)
+
+
+### Strucutre de projet exemple en clean architecture
+
+```
+/src
+  /00_infra
+    /logger
+      logger.js
+      requestLogger.middleware.js
+    /correlation
+      correlationId.middleware.js
+  /Doc
+    swagger_ui.controller.js
+    openapi.yaml
+  /Capture
+    /existingPokemon
+      existingPokemon.controller.js
+      existingPokemon.usecase.js
+      existingPokemon.gateway.js
+    /capturedPokemon
+      capturedPokemon.controller.js
+      capturedPokemon.usecase.js
+      capturedPokemon.repository.js
+    /evolvePokemon
+      evolvePokemon.controller.js
+      evolvePokemon.usecase.js
+      evolvePokemon.repository.js
+```
