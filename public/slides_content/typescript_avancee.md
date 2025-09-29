@@ -191,7 +191,7 @@ Challenge, votre projet doit être compilé dans un dossier nommé `build`.
 # Rappels TypeScript - Langue
 
 
-## Types prémitifs
+## Types primitifs
 ```typescript
 const pi: number = 1;
 const name: string = 'toto';
@@ -310,7 +310,7 @@ Qui est impacté par le bug ?
 
 ## TP 2
 
-Créez une constante pokemons qui contient les statisiques de 4 Pokémons.
+Créez une constante pokemons qui contient les statistiques de 4 Pokémons.
 
 Aussi, créez une fonction qui prend un Pokémon en entrée,
 ne retourne rien et affiche en console un joli message avec les stats du pokemon.
