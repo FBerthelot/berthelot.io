@@ -1885,7 +1885,17 @@ Qu'est ce qu'ils nous cuisinent ?
 
 
 <!-- .slide: data-background="#1E5945" -->
-## Temporal
+## Error.isError
+
+```javascript
+Error.isError(new Error()); // true
+Error.isError({}); // false
+```
+Va révolutionner la gestion des erreurs en TS !
+
+
+<!-- .slide: data-background="#1E5945" -->
+## Temporal (Stage 3)
 
 Bye bye `new Date()`
 
@@ -1893,6 +1903,7 @@ Bye bye `new Date()`
 const now = Temporal.now.plainDateTimeISO();
 ```
 Immutable, toutes timezones, etc.
+
 
 
 # Suivre l'actualité
@@ -1918,7 +1929,6 @@ Immutable, toutes timezones, etc.
 
 
 ### L'asynchrone en JS
-
 
 
 ```javascript
