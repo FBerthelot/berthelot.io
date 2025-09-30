@@ -987,7 +987,7 @@ function loggingIdentity<Type extends Pokemon>(arg: Type): Type {
 ### Les génériques - les types
 
 ```typescript
-interface Pokemon {
+type Pokemon = {
   name: string;
 }
  
@@ -1306,10 +1306,14 @@ function describePokemon(poke: {
 const pichu = {
   name: 'Pichu',
   evolutions: ['Pikachu', 'raichu'],
-}
+} as unknown;
+// C'est pour l'exemple, describePokemon est un code que nous ne maitrisons pas
 
-describePokemon(pichu); // Fail ?
+describePokemon(pichu); // Fail car pichu est de type unknown
+```
 
+
+```typescript
 type FirstArgumentOfAFunction<T> = T extends (arg1: infer FirstArgument, ...otherArgs: unknown[]) => unknown
   ? FirstArgument
   : never;
@@ -1708,3 +1712,94 @@ florent@berthelot.io
 ## Correction
 
 [https://github.com/FBerthelot/training-typescript-advanced](https://github.com/FBerthelot/training-typescript-advanced)
+
+
+
+## Exemples complexes pêle mêle
+
+Inférence d'object en fonction d'un schéma
+```typescript
+type PropsDefinition = {
+  type: StringConstructor | NumberConstructor,
+  required?: true,
+  default?: unknown
+}
+
+function defineProps<T extends Record<string, PropsDefinition>>(arg: T)
+  : {
+      [K in keyof T]: T[K] extends { type: infer Type } ? Type : never
+    }
+{
+  return null as any
+}
+
+const props = defineProps({
+  foo: {
+    type: String,
+    required: true
+  },
+  bar: {
+    type: Number,
+    default: 42
+  }
+})
+
+props.foo // Type: string
+props.bar
+```
+
+
+Query Builder
+```typescript
+class SocialPost {
+  id!: `SP-${string}`
+  post!: string
+}
+type SocialPostId = SocialPost['id']
+
+type NationalCampaignId = `NC-${string}`
+class NationalCampaign {
+  id!: NationalCampaignId
+  puretech!: boolean
+}
+
+class axios {
+  get<T> (url: string): T {
+    return {} as T
+  }
+}
+
+type RessourceNameToType<T extends 'SocialPost' | 'NationalCampaign'> = 
+  T extends 'SocialPost' ? SocialPost  : NationalCampaign;
+
+class QueryBuilder<T extends 'SocialPost' | 'NationalCampaign'> {
+  constructor(private entityType: T) {}
+
+  getOne(id: RessourceNameToType<T>['id'])
+    : RessourceNameToType<T> {
+      return new axios().get<RessourceNameToType<T>>(`url/${this.entityType}/${id}`)
+  }
+
+  // Surcharge de méthode, impossible de se baser sur le entityType
+  getOne2(id: NationalCampaignId): NationalCampaign
+  getOne2(id: SocialPostId): SocialPost
+  getOne2(id: NationalCampaignId | SocialPostId):NationalCampaign | SocialPost {
+    if(id.startsWith('SP')) {
+      return {
+        id: 'SP-spoticar',
+        post: 'ocassion 1.2L puretech a saisir pour 2008km max'
+      }
+    }
+    return {
+      id: 'NC-2008',
+      puretech: true
+    }
+  }
+}
+
+
+const SocialPostA = new QueryBuilder('SocialPost').getOne2('SP-01')
+console.log(SocialPostA.post)
+const NationalCampaignB = new QueryBuilder('NationalCampaign').getOne2('NC-01')
+console.log(NationalCampaignB.puretech)
+```
