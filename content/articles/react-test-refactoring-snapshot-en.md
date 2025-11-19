@@ -2,7 +2,6 @@
 title: 'React refactoring: Kills of the legacy with snapshot testing'
 description: You want to refactor a big React codebase but you're not sure you won't break anything? I will guide you through this!
 slug: 'react-test-refactoring-snapshot'
-content: reactRefactoring
 image: '/illustrations/cowboy.jpg'
 locale: en
 createdDate: 2020/06/04

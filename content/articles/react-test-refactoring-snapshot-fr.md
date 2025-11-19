@@ -2,7 +2,6 @@
 title: 'Refactoring React: débarassons-nous du code legacy avec les tests de snapshot'
 description: Vous voulez refactoriser une grande base de code React mais vous n'êtes pas sûr de ne rien casser ? Je vais vous guider à travers cela !
 slug: 'react-test-refactoring-snapshot'
-content: reactRefactoring
 image: '/illustrations/cowboy.jpg'
 locale: fr
 createdDate: 2020/06/04

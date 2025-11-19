@@ -136,7 +136,7 @@ const subjects = ref([
                 Duration: 3 days.
               `,
     },
-    url: 'https://slides.com/florentberthelot/react',
+    url: '/slides/react.html',
     external: true,
     type: 'course',
   },
