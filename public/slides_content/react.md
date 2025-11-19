@@ -80,8 +80,8 @@ Cette page charge un fichier JS et aussi ceci :
 ```html
 <!-- Votre page HTML --> 
 
-<script src="https://unpkg.com/react@19.2.0/umd/react.development.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@19.2.0/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
 
 <!-- Votre page HTML --> 
 ```
