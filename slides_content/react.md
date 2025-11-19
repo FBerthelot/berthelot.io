@@ -7,7 +7,7 @@
 - Consultant - ESN
 - Consultant Formateur - ESN
 - Freelance (WeFacto, Human Coder)
- 
+
 Web Software Craftsman
 
 [https://berthelot.io](https://berthelot.io)
@@ -78,12 +78,12 @@ Créez une page Web, pour l'instant Vide.
 Cette page charge un fichier JS et aussi ceci :
 
 ```html
-<!-- Votre page HTML --> 
+<!-- Votre page HTML -->
 
 <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
 <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
 
-<!-- Votre page HTML --> 
+<!-- Votre page HTML -->
 ```
 
 
@@ -100,7 +100,7 @@ Meta
 mais depuis Octobre 2025, React Foundation
 
 
-### Popularité 
+### Popularité
 
 ![React Popularity](/slides_content/react/stats.png)
 
@@ -167,10 +167,10 @@ const domContainer = document.querySelector('#my-react-application');
 
 const root = ReactDOM.createRoot(domContainer);
 root.render(
-  React.createElement('main', {}, 
+  React.createElement('main', {},
   [
     React.createElement('header', {},
-       React.createElement('h1', {}, 'Hello world')           
+       React.createElement('h1', {}, 'Hello world')
     ),
     React.createElement('section', {}, 'lorem ipsum')
   ])
@@ -185,10 +185,10 @@ const domContainer = document.querySelector('#my-react-application');
 
 const root = ReactDOM.createRoot(domContainer);
 root.render(
-  React.createElement('main', {}, 
+  React.createElement('main', {},
   [
     React.createElement('header', {},
-       React.createElement('h1', {}, 'Hello world')           
+       React.createElement('h1', {}, 'Hello world')
     ),
     /** ... **/
     React.createElement('section', {},
@@ -299,7 +299,7 @@ npm create vite@latest pokemonArena -- --template react
 <LikeButton></LikeButton>
 ```
 
-ou 
+ou
 
 ```html
 <LikeButton />
@@ -352,7 +352,7 @@ graph LR
 // like.component.jsx
 const LikeButton = () => {
   const nbOfLike = 0;
-  
+
   return <button>{nbOfLike} j'aime</button>;
 }
 ```
@@ -373,7 +373,7 @@ graph LR
 // like.component.jsx
 const LikeButton = () => {
   const nbOfLike = 0;
-  
+
   return <button>{nbOfLike} j'aime{nbOfLike > 1 ? 's' : ''}</button>;
 }
 ```
@@ -394,7 +394,7 @@ graph LR
 // like.component.jsx
 const LikeButton = () => {
   const nbOfLike = 0;
-  
+
   return (
     <button type="button">
     	{nbOfLike} j'aime{nbOfLike > 1 ? 's' : ''}
@@ -419,7 +419,7 @@ graph LR
 // like.component.jsx
 const LikeButton = () => {
   const nbOfLike = 0;
-  
+
   return (
     <button type="button" className="btn-primary">
     	{nbOfLike} j'aime{nbOfLike > 1 ? 's' : ''}
@@ -445,7 +445,7 @@ graph LR
 const LikeButton = () => {
   const nbOfLike = 0;
   const liked = true;
-  
+
   return (
     <button type="button" className="btn-primary" style={{color: liked ? 'red' : 'grey'}}>
     	{nbOfLike} j'aime{nbOfLike > 1 ? 's' : ''}
@@ -471,7 +471,7 @@ graph LR
 const LikeButton = () => {
   const nbOfLike = 0;
   const liked = true;
-  
+
   return (
     <button type="button" className={`btn-primary ${liked ? 'btn-liked' : ''}`}>
     	{nbOfLike} j'aime{nbOfLike > 1 ? 's' : ''}
@@ -559,7 +559,7 @@ Ajoutez Vitest a votre projet et écrivez un test pour s'assurer que les 2 poké
 const LikeButton = () => {
   const nbOfLike = 0;
   const liked = true;
-  
+
   return (
     <button type="button" className={`btn-primary ${liked ? 'btn-liked' : ''}`}>
     	{nbOfLike} j'aime{nbOfLike > 1 ? 's' : ''}
@@ -590,7 +590,7 @@ graph LR
 const LikeButton = (props) => {
   const nbOfLike = props.nbOfLike;
   const liked = props.liked;
-  
+
   return (
     <button type="button" className={`btn-primary ${liked ? 'btn-liked' : ''}`}>
     	{nbOfLike} j'aime{nbOfLike > 1 ? 's' : ''}
@@ -623,7 +623,7 @@ graph LR
 const LikeButton = (props) => {
   const nbOfLike = props.nbOfLike;
   const liked = props.liked;
-  
+
   return (
     <button type="button" className={`btn-primary ${liked ? 'btn-liked' : ''}`}>
     	{nbOfLike} j'aime{nbOfLike > 1 ? 's' : ''}
@@ -701,7 +701,7 @@ Et effets de bords
 // like.component.jsx
 const LikeButton = () => {
   const nbOfLike = 0;
-  
+
   return (
     <button type="button">
     	{nbOfLike} j'aime{nbOfLike > 1 ? 's' : ''}
@@ -731,7 +731,7 @@ graph LR
 // like.component.jsx
 const LikeButton = () => {
   const NbLikeState = React.useState(0);
-  
+
   return (
     <button type="button">
     	{NbLikeState[0]} j'aime{nbOfLike > 1 ? 's' : ''}
@@ -762,7 +762,7 @@ style state fill:#a685e2,stroke:#333,stroke-width:2px
 // like.component.jsx
 const LikeButton = () => {
   const [nbOfLike, setNbOfLike] = React.useState(0);
-  
+
   return (
     <button type="button">
     	{nbOfLike} j'aime{nbOfLike > 1 ? 's' : ''}
@@ -799,8 +799,8 @@ Qu'est ce qu'un effet de bords ?
 ```jsx
 const Timer = () => {
   const [ellapsedTime, setEllapsedTime] = React.useState(0);
-  
-  
+
+
   return <span>Il s'est passé {ellapsedTime} secondes.</span>;
 }
 ```
@@ -826,14 +826,14 @@ style state fill:#a685e2,stroke:#333,stroke-width:2px
 ```jsx
 const Timer = () => {
   const [ellapsedTime, setEllapsedTime] = React.useState(0);
-  
+
   React.useEffect(() => {
     setInterval(() => {
       setEllapsedTime((ellapsedTime) => ellapsedTime + 1);
     }, 1000)
   }, [])
-  
-  
+
+
   return <span>Il s'est passé {ellapsedTime} secondes.</span>;
 }
 ```
@@ -862,18 +862,18 @@ style state fill:#a685e2,stroke:#333,stroke-width:2px
 ```jsx
 const Timer = () => {
   const [ellapsedTime, setEllapsedTime] = React.useState(0);
-  
+
   React.useEffect(() => {
     const interval = setInterval(() => {
       setEllapsedTime((ellapsedTime) => ellapsedTime + 1);
     }, 1000)
-    
+
     return () => {
       clearInterval(interval);
     }
   }, [])
-  
-  
+
+
   return <span>Il s'est passé {ellapsedTime} secondes.</span>;
 }
 ```
@@ -912,7 +912,7 @@ Les Pokémons s'attaquent maintenant à raison d'une attaque (ou tour) par secon
 // like.component.jsx
 const LikeButton = () => {
   const [nbOfLike, setNbOfLike] = React.useState(0);
-  
+
   return (
     <button type="button">
     	{nbOfLike} j'aime{nbOfLike > 1 ? 's' : ''}
@@ -943,7 +943,7 @@ style state fill:#a685e2,stroke:#333,stroke-width:2px
 // like.component.jsx
 const LikeButton = () => {
   const [nbOfLike, setNbOfLike] = React.useState(0);
-  
+
   return (
     <button type="button" onClick={() => setNbOfLike(nbOfLike++)}>
     	{nbOfLike} j'aime{nbOfLike > 1 ? 's' : ''}
@@ -968,6 +968,7 @@ style state fill:#a685e2,stroke:#333,stroke-width:2px
   View --Event--> Component
 ```
 
+
 ## Ses propres évènements ?
 
 ```jsx
@@ -980,7 +981,7 @@ const Tweet = () => {
 ```jsx
 // like.component.jsx
 const LikeButton = ({onLike, nbOfLike}) => {
-  
+
   return (
     <button type="button" onClick={() => onLike()}>
     	{nbOfLike} j'aime{nbOfLike > 1 ? 's' : ''}
@@ -1018,7 +1019,7 @@ import { fireEvent, render, screen } from '@testing-library/react';
 
 it('should display 1 like when cliking on the button', () => {
   render(<LikeButton />);
-  
+
   screen.fireEvent(screen.getByRole('button'))
 
   expect(screen.getByText('1 like')).toBeVisible()
@@ -1034,7 +1035,7 @@ import userEvent from '@testing-library/user-event'
 
 it('should display 1 like when cliking on the button', async () => {
   render(<LikeButton />);
-  
+
   await userEvent.click(screen.getByRole('button'));
 
   screen.getByText('1 like');
@@ -1062,7 +1063,7 @@ Validation et valeurs par défault
 const LikeButton = ({
   onLike = () => {},
   nbOfLike = 0
-}) => {  
+}) => {
   return (
     <button type="button" onClick={() => onLike()}>
     	{nbOfLike} j'aime{nbOfLike > 1 ? 's' : ''}
@@ -1075,7 +1076,7 @@ const LikeButton = ({
 ### Valeurs par défaut
 
 ```jsx
-const LikeButton = ({onLike, nbOfLike}) => {  
+const LikeButton = ({onLike, nbOfLike}) => {
   return (
     <button type="button" onClick={() => onLike()}>
     	{nbOfLike} j'aime{nbOfLike > 1 ? 's' : ''}
@@ -1095,7 +1096,7 @@ LikeButton.defaultProps = {
 ```jsx
 import PropTypes from 'prop-types';
 
-const LikeButton = ({onLike, nbOfLike}) => {  
+const LikeButton = ({onLike, nbOfLike}) => {
   return (
     <button type="button" onClick={() => onLike()}>
     	{nbOfLike} j'aime{nbOfLike > 1 ? 's' : ''}
@@ -1267,7 +1268,7 @@ const Modal = ({children}} => {
 ```
 
 
-### Destructuring 
+### Destructuring
 
 ```jsx
 const TweetPage = () => {
@@ -1282,7 +1283,7 @@ const TweetPage = () => {
 	return (
 	<section>
 		{tweets.map(tweet => {
-		return <Tweet 
+		return <Tweet
 			key={tweet.id}
 			message={tweet.message}
 			isLiked={tweet.isLiked}
@@ -1296,7 +1297,7 @@ const TweetPage = () => {
 ```
 
 
-## Destructuring 
+## Destructuring
 
 ```jsx
 const TweetPage = () => {
@@ -1338,11 +1339,11 @@ Les classes components
 ### Classe Component
 
 ```jsx
-class LikeComponent extends React.Component {  
+class LikeComponent extends React.Component {
   render() {
     return (
        <button type="button">
-       	0 j'aime  
+        0 j'aime
        </button>
     );
   }
@@ -1353,17 +1354,18 @@ class LikeComponent extends React.Component {
 ### Props dans une classe Component
 
 ```jsx
-class LikeComponent extends React.Component {  
+class LikeComponent extends React.Component {
   render() {
     const {nbOfLike} = this.props
     return (
        <button type="button">
-       	{nbOfLike} j'aime  
+        {nbOfLike} j'aime
        </button>
     );
   }
 }
 ```
+
 
 ### State dans une classe Component
 
@@ -1372,22 +1374,22 @@ class LikeComponent extends React.Component {
   state = {
     nbOfLike: 0
   }
-  
+
   constructor() {
     super();
     this.handleLike = this.handleLike.bind(this);
   }
-  
+
   handleLike() {
     this.setState({
       nbOfLike: this.state.nbOfLike + 1
     })
   }
-  
+
   render() {
     return (
        <button type="button" onClick={this.handleLike}>
-       	{this.state.nbOfLike} j'aime  
+        {this.state.nbOfLike} j'aime
        </button>
     );
   }
@@ -1405,7 +1407,6 @@ const Tweet = () => {
     </ErrorBoundary>
   )
 }
-
 
 const LikeButton = () => {
   throw new Error('Not Implemented');
@@ -1439,3 +1440,301 @@ class ErrorBoundary extends React.Component {
   }
 }
 ```
+
+
+
+## TP10
+
+Créer un composant ErrorBoundary qui affiche un message d'erreur à l'utilisateur et qui dans le même temps afficher l'erreur dans la console du navigateur.
+<br/>
+<br/>
+Pour tester, modifiez un composant pour qu'il renvoi une erreur.
+<br/>
+Qu'observez-vous ?
+
+
+
+## Cycle de vie d'un composant
+
+- Mount
+- Updates
+    - (Errors)
+- Unmount
+
+
+### Classe Component
+
+```jsx
+class LikeComponent extends React.Component {
+  state = {
+    nbOfLike: 0
+  }
+
+  constructor() {
+    super();
+    this.handleLike = this.handleLike.bind(this);
+  }
+
+  handleLike() {
+    this.setState({
+      nbOfLike: this.state.nbOfLike + 1
+    })
+  }
+
+  render() {
+    return (
+       <button type="button" onClick={this.handleLike}>
+        {this.state.nbOfLike} j'aime
+       </button>
+    );
+  }
+}
+```
+
+
+### Cycle de vie - Mount
+
+```jsx
+class LikeComponent extends React.Component {
+  state = {
+    nbOfLike: 0
+  }
+
+  constructor() {
+    super();
+    this.handleLike = this.handleLike.bind(this);
+  }
+
+  handleLike() {
+    this.setState({
+      nbOfLike: this.state.nbOfLike + 1
+    })
+  }
+
+  componentDidMount() {
+    sendDataToAnalytics();
+  }
+
+  render() {
+    return (
+       <button type="button" onClick={this.handleLike}>
+       	{this.state.nbOfLike} j'aime
+       </button>
+    );
+  }
+}
+```
+
+
+### Mount
+
+- constructor
+- getDerivedStateFromProps
+- render
+- componentDidMount
+
+
+### Updates
+
+- getDerivedStateFromProps
+- shouldComponentUpdate
+- getSnapshotBeforeUpdate
+- render
+- componentDidUpdate
+
+
+### Unmount
+
+- ComponentWillUnmount
+
+
+
+## Les hooks
+
+Enfin l'explication !
+
+
+### Règle #1
+
+> Toujours appeler les hooks depuis un composant React.
+
+
+### Règle #2
+
+> Toujours appeler les hooks au plus haut niveau de la fonction de rendu.
+<br/>
+(Pas dans une boucle, pas dans un if, etc.)
+
+
+### Pourquoi les hooks ?
+
+1. Découper le code
+2. &nbsp;
+2. &nbsp;
+
+
+### Pourquoi les hooks ?
+
+1. Découper le code
+2. Donner du sens au code <br> (on ne parle plus technique mais métier)
+2. &nbsp;
+
+
+### Pourquoi les hooks ?
+
+1. Découper le code
+2. Donner du sens au code <br> (on ne parle plus technique mais métier)
+2. Partager de la logique entre les composants
+
+
+### UseState
+
+```jsx
+const LikeButton = () => {
+  const [nbOfLike, setNbOfLike] = React.useState(0);
+
+  return (
+    <button type="button">
+    	{nbOfLike} j'aime{nbOfLike > 1 ? 's' : ''}
+    </button>;
+  );
+}
+```
+
+
+### UseMemo
+
+```jsx
+const Einstein = () => {
+  const result = React.useMemo(() => whatIsTheLifeGoal(), []);
+
+  return result;
+}
+```
+
+
+### UseMemo
+
+```jsx
+const Einstein = ({
+  humanName
+}) => {
+  const result = React.useMemo(
+    () => whatIsTheLifeGoal(humanName),
+    [humanName]
+  );
+
+  return result;
+}
+```
+
+
+### UseMemo
+
+```jsx
+const Einstein = ({
+  humanName
+}) => {
+  const result = React.useMemo(() => whatIsTheLifeGoal(humanName));
+
+  return result;
+}
+```
+
+
+### useEffect
+
+```jsx
+const Tweet = ({id}) => {
+  useEffect(() => {
+   	console.log('A new render occured');
+  })
+
+  return result;
+}
+```
+
+
+### useEffect
+
+```jsx
+const Tweet = ({id}) => {
+  useEffect(() => {
+   	console.log('Id changed', id);
+  }, [id])
+
+  return result;
+}
+```
+
+### useEffect
+
+```jsx
+const Tweet = ({id}) => {
+  useEffect(() => {
+   	console.log('Initial id', id);
+  }, [])
+
+  return result;
+}
+```
+
+
+### UseCallback
+
+```jsx
+const TweetEdit = ({id}) => {
+  const handleSubmit = useCallback(() => {
+    fetch(`addTweet?userId=${id}`)
+  }, [id])
+
+  return <TweetForm onSubmit={handleSubmit} />;
+}
+```
+
+
+### Un hook custom ?
+
+```jsx
+const TweetEdit = ({id}) => {
+  const [inputValue, setInputValue] = useState(initialValue);
+
+  const onInput = (e) => {
+    setInputValue(e.target.value);
+  }
+
+  return <input type="text" onInput={onInput} value={inputValue} />;
+}
+```
+
+
+### Un hook custom !
+
+```jsx
+const useInput = (initialValue) => {
+  const [inputValue, setInputValue] = useState(initialValue);
+
+  const onInput = (e) => {
+    setInputValue(e.target.value);
+  }
+
+  return [inputValue, onInput];
+}
+
+const TweetEdit = ({id}) => {
+  const [value, onInput] = useInput()
+
+  return <input type="text" onInput={onInput} value={value} />;
+}
+```
+
+
+### Les autres hooks
+
+<iframe src="https://react.dev/reference/react/hooks" width="100%" height="400px" style="background: white;" frameborder="0"></iframe>
+
+
+
+## TP11
+
+Déplacez la logique de bataille dans un hook custom.
