@@ -1929,3 +1929,8 @@ const Tweet = () => {
    return <>{data}</>
  }
 ```
+
+
+## TP12
+
+Faites appel à une API Pokémon pour récupérer les stats des Pokémons
