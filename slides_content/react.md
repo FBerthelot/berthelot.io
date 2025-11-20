@@ -1936,3 +1936,472 @@ const Tweet = () => {
 ## TP12
 
 Faites appel à une API Pokémon pour récupérer les stats des Pokémons
+
+[https://pokeapi.co/](https://pokeapi.co/)
+
+
+
+## Le Router
+
+
+
+## TP 13
+
+Ajoutez un écran qui permet de sélectionner deux Pokemons
+
+Les deux Pokemons sélectionné sont envoyé en paramètre d'url à l'écran de combat
+
+
+
+## Les formulaires
+
+
+## Les formulaires
+
+```jsx
+const useInput = (initialValue) => {
+  const [inputValue, setInputValue] = useState(initialValue);
+  
+  const onChange = (e) => {
+    setInputValue(e.target.value);
+  }
+  
+  return [inputValue, onChange];
+}
+
+const TweetEdit = ({id}) => {
+  const [value, onChange] = useInput()
+  
+  return <input type="text" onChange={onChange} value={value} />;
+}
+```
+
+
+### Les formulaires
+
+```jsx
+const TweetEdit = ({id}) => {
+  const [valueInput, onChangeInput] = useInput('')
+  const [valueSelect, onChangeSelect] = useInput('false')
+  const [valueTextArea, onChangeTextArea] = useInput('')
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // ...
+  }
+  
+  return (
+    <form onSubmit={handleSubmit}>
+    	<label>
+    		Titre :
+    		<input type="text" name="title" onChange={onChangeInput} value={valueInput} />
+        </label>
+		<label>
+    		Message :
+            <textarea name="message" value={valueTextArea} onChange={onChangeTextArea} />
+        </label>
+		<label>
+    		NSFW :
+            <select value={valueSelect} onChange={onChangeSelect}>
+              <option value="true">Oui</option>
+              <option value="false">Non</option>
+          	</select>
+        </label>
+    	<button type="submit">Envoyer</submit>
+    </form>
+  );
+}
+```
+
+
+### React Hook Form
+
+```jsx
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import Header from "./Header";
+
+export function App() {
+  const { register, handleSubmit } = useForm();
+
+  const onSubmit = handleSubmit((data) => {
+    // ...
+    console.log(data)
+  })
+
+  return (
+    <form onSubmit={onSubmit}>
+      <input {...register("firstName")} placeholder="Titre" />
+      <select {...register("NSFW")}>
+        <option value="true">Oui</option>
+        <option value="false">Non</option>
+      </select>
+      <textarea {...register("message")} placeholder="Un T-8 !" />
+      <button type="submit" >Envoyer</button>
+    </form>
+  );
+}
+```
+
+
+### Gestion des erreurs
+
+```jsx
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import Header from "./Header";
+
+export function App() {
+  const { register, handleSubmit } = useForm();
+
+  const onSubmit = handleSubmit((data) => {
+    // ...
+    console.log(data)
+  })
+
+  return (
+    <form onSubmit={onSubmit}>
+      <input {...register("firstName", {required: true})} placeholder="Titre" />
+        
+      {/* ... */}
+      <button type="submit" >Envoyer</button>
+    </form>
+  );
+}
+```
+
+
+### Gestion des erreurs
+
+```jsx
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import Header from "./Header";
+
+export function App() {
+  const { register, handleSubmit, formState } = useForm();
+
+  const onSubmit = handleSubmit((data) => {
+    // ...
+    console.log(data)
+  })
+
+  return (
+    <form onSubmit={onSubmit}>
+      <input {...register("firstName", {required: true})} placeholder="Titre" />
+      <span>{formState.errors?.firstName.message}</span>
+        
+      {/* ... */}
+      <button type="submit" >Envoyer</button>
+    </form>
+  );
+}
+```
+
+
+### Gestion des erreurs
+
+```jsx
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import Header from "./Header";
+
+export function App() {
+  const { register, handleSubmit, formState } = useForm();
+
+  const onSubmit = handleSubmit((data) => {
+    // ...
+    console.log(data)
+  })
+
+  return (
+    <form onSubmit={onSubmit}>
+      <input
+		{...register("firstName", {
+			required: {
+				value: true,
+				message: 'Ce champ est requis.'
+			}
+		})}
+		placeholder="Titre"
+		/>
+      <span>{formState.errors?.firstName.message}</span>
+        
+      {/* ... */}
+      <button type="submit" >Envoyer</button>
+    </form>
+  );
+}
+```
+
+
+### React Hook Form
+
+<iframe src="https://react-hook-form.com/" width="100%" height="400px" style="background: white;" frameborder="0"></iframe>
+
+
+
+## TP14
+
+Transformez (ou ajouter) la page de selection de Pokémon en formulaire
+
+
+## TP14 - alternative sans router
+
+Ajoutez un formulaire qui permet de définir le niveau des Pokémons avant le combat.
+À la validation du formulaire, le combat commence.
+
+Calcul de points de vie en fonction du niveau : `pointsDeVie = niveau * baseStats`;
+
+
+
+## Bonus 1 : CSS
+
+
+## Vous avez remarqué ?
+
+```jsx
+import 'app.css';
+
+export const App = () => {
+	/*
+ 		...
+	*/
+}
+```
+Tout se passe au moment du build (Webpack, Vite, ...)
+
+
+## Tout est global ?
+
+```jsx
+import classes from 'app.module.css';
+
+export const App = () => {	
+  	return <h1 className={classes.title}>hello world</h1>
+}
+```
+
+[CRA doc](https://create-react-app.dev/docs/adding-a-css-modules-stylesheet/)
+
+[Vite et ça marche](https://vite.dev/guide/features#css-modules)
+
+
+## Alternative : styled-components
+
+```jsx
+import styled from 'styled-component';
+
+const Title = styled.h1`
+  font-size: 1.5em;
+  text-align: center;
+  color: #BF4F74;
+`;
+
+const Wrapper = styled.section`
+  padding: 4em;
+  background: papayawhip;
+`;
+
+render(
+  <Wrapper>
+    <Title>
+      Hello World!
+    </Title>
+  </Wrapper>
+);
+```
+
+
+## Alternative : styled-components
+
+<iframe src="https://styled-components.com/docs" width="100%" height="400px" style="background: white;" frameborder="0"></iframe>
+
+
+
+## Bonus 2 : Devtools
+
+[Démo React Devtools](https://react-devtools-tutorial.vercel.app/)
+
+
+
+## Bonus 3 : Context API
+
+```jsx
+// app.tsx
+const App = () => {
+	return (
+      		<MyApp giveIt={'toMe'} />
+	)
+}
+
+// MyApp.tsx
+const MyApp = (props) => {
+   return (
+		<OtherCmp {...props} />
+	)
+}
+
+// OtherCmp.tsx
+const OtherCmp = () => {
+   return (
+		<div>{giveIt} gnon</div>
+	)
+}
+```
+
+
+## Bonus 3 : Context API
+
+```jsx
+// Fichier A
+const CookieContext = React.createContext(null);
+export const CookieProvider = SessionState.Provider;
+export const useCookie = () => React.useContext(CookieContext);
+
+// // app.tsx
+const App = () => {
+	return (
+		<CookieProvider value={{giveIt: "toMe"}}>
+			<MyApp />
+		</CookieProvider>
+	)
+}
+
+// MyApp.tsx
+const MyApp = (props) => {
+   return (
+		<OtherCmp />
+	)
+}
+
+// OtherCmp.tsx
+const OtherCmp = () => {
+  const {giveIt} = useCookie()
+   return (
+		<div>{giveIt} gnon</div>
+	)
+}
+```
+
+
+
+### Bonus 4 : UseReducer
+
+```jsx
+const initialState = {count: 0};
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'increment':
+      return {count: state.count + 1};
+    case 'decrement':
+      return {count: state.count - 1};
+    default:
+      throw new Error();
+  }
+}
+
+function Counter() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+  return (
+    <>
+      Total : {state.count}
+      <button onClick={() => dispatch({type: 'decrement'})}>-</button>
+      <button onClick={() => dispatch({type: 'increment'})}>+</button>
+    </>
+  );
+}
+```
+
+
+
+## Bonus 5 : Les autres hooks
+
+
+## UseRef
+
+```jsx
+function TextInputWithFocusButton() {
+  const inputEl = useRef(null);
+  const onButtonClick = () => {
+    // `current` fait référence au champ textuel monté dans le DOM
+    inputEl.current.focus();
+  };
+  return (
+    <>
+      <input ref={inputEl} type="text" />
+      <button onClick={onButtonClick}>Donner le focus au champ</button>
+    </>
+  );
+}
+```
+
+
+## UseImperativeHandle
+
+```jsx
+function FancyInput(props, ref) {
+  const inputRef = useRef();
+  useImperativeHandle(ref, () => ({
+    focus: () => {
+      inputRef.current.focus();
+    }
+  }));
+  return <input ref={inputRef} ... />;
+}
+
+FancyInput = forwardRef(FancyInput);
+```
+
+
+## UseLayoutEffect
+
+```jsx
+const Tweet = () => {
+  useLayoutEffect(() => {
+   	// Interact with another framework, ...
+  }, [])
+  
+  return result;
+}
+```
+
+
+## UseTransition
+
+```jsx
+function TabContainer() {
+  const [isPending, startTransition] = useTransition();
+  const [tab, setTab] = useState('about');
+
+  function selectTab(nextTab) {
+    startTransition(() => {
+      setTab(nextTab);
+    });
+  }
+  // ...
+}
+```
+
+
+## Le receuil des hooks
+
+<iframe src="https://usehooks.com/" width="100%" height="400px" style="background: white;" frameborder="0"></iframe>
+
+
+
+## Bonus 6 : Les différents modes de rendu
+
+
+### Multi Page Application (MPA)
+
+### Single Page Application (SPA)
+
+### Server Side Rendering (SSR)
+
+### Static Site Generation (SSG)
+
+### Incremental Static Regeneration (ISR)
+
+
