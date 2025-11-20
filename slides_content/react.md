@@ -1792,6 +1792,7 @@ const Tweet = () => {
 }
 ```
 
+
 ### Fetch API Généralisation
 
 ```jsx
@@ -1929,6 +1930,7 @@ const Tweet = () => {
    return <>{data}</>
  }
 ```
+
 
 
 ## TP12
