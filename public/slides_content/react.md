@@ -2396,12 +2396,62 @@ function TabContainer() {
 
 ### Multi Page Application (MPA)
 
+```mermaid
+sequenceDiagram
+    actor U as User
+    participant S as Server
+
+    U->>S: HTTP GET /page1
+    S->>S: Injection des donnée dans l'HTML
+    S->>U: HTML + CSS + JS
+
+    U->>S: HTTP GET /page2
+    S->>S: Injection des donnée dans l'HTML
+    S->>U: HTML + CSS + JS
+```
+
+
 ### Single Page Application (SPA)
+
+```mermaid
+sequenceDiagram
+    actor U as User
+    participant S as Server
+
+    rect rgb(191, 223, 255)
+    note over U,S: Téléchargement de l'app
+      U->>S: HTTP GET /page1
+      S->>U: HTML + CSS + JS
+      U->>S: HTTP GET /data-for-page1
+      S->>U: JSON data
+    end
+
+    rect rgba(255, 191, 235, 1)
+    note over U,S: navigation
+      U->>S: HTTP GET /data-for-page2
+      S->>U: JSON
+    end
+```
+
 
 ### Server Side Rendering (SSR)
 
+
 ### Static Site Generation (SSG)
+
 
 ### Incremental Static Regeneration (ISR)
 
 
+
+## Merci
+
+[https://berthelot.io](https://berthelot.io)
+
+
+
+## Corrections
+
+- L'exemple : [http://pokemon.lux.frachet.berthelot.io/](http://pokemon.lux.frachet.berthelot.io/)
+- Le code de l'application de démo (le code date un peu) : [https://github.com/Swiip/pokemon-arena](https://github.com/Swiip/pokemon-arena)
+- La correction des TPs : [https://github.com/FBerthelot/training-react-pokemon](https://github.com/FBerthelot/training-react-pokemon)
