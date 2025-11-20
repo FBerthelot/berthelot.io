@@ -1668,6 +1668,7 @@ const Tweet = ({id}) => {
 }
 ```
 
+
 ### useEffect
 
 ```jsx
@@ -1885,3 +1886,46 @@ const Tweet = () => {
 
 <iframe src="https://tanstack.com/query/latest/" width="100%" height="400px" style="background: white;" frameborder="0"></iframe>
 
+
+### Tanstack Query
+
+```bash
+npm i @tanstack/react-query
+```
+
+```jsx
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+
+const queryClient = new QueryClient()
+const App = () =>  {
+   return (
+     <QueryClientProvider client={queryClient}>
+       <YourAppComponents />
+     </QueryClientProvider>
+   )
+ }
+```
+
+
+### Tanstack Query
+
+```jsx
+import { useQuery } from '@tanstack/react-query'
+
+const Tweet = () => {
+   const { isLoading, error, data } = useQuery({
+      queryKey: ['peoples'],
+      queryFn: () => fetch('/peoples.json').then(res => res.json())
+   });
+
+   if (isLoading) {
+     return 'Loading...';
+   }
+
+   if (error) {
+     return 'Please refresh the page.';
+   }
+
+   return <>{data}</>
+ }
+```
