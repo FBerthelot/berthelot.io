@@ -1150,6 +1150,7 @@ const Tweets = () => {
 }
 ```
 
+
 ## Boucles
 
 ```jsx
@@ -1738,3 +1739,149 @@ const TweetEdit = ({id}) => {
 ## TP11
 
 Déplacez la logique de bataille dans un hook custom.
+
+
+
+## Les appels HTTP
+
+
+## Les appels HTTP
+
+Il n'y a pas de manière officiel pour récupérer des données
+
+
+###  Fetch API
+
+```jsx
+const Tweet = () => {
+  const [fetchState, setFetchState] = useState({
+    error: null,
+    data: null,
+  	isLoading: true
+  });
+  
+  useEffect(() => {
+    fetch('/people.json')
+    	.then(res => res.json())
+    	.then(data => {
+      		setFetchState({
+              data,
+              isLoading: false
+            })      
+		});
+    	})
+        .catch(err => {
+        	setFetchState({
+            	error: err,
+              	isLoading: false
+            })      
+		});
+  }, [])
+  
+  
+  if(fetchState.isLoading) {
+    return 'loading...':
+  }
+
+  if(fetchState.error) {
+    return <>Refresh page</>
+  }
+
+  return <>{fetchState.data}</>
+}
+```
+
+### Fetch API Généralisation
+
+```jsx
+const useQuery = (url) => {
+  const [fetchState, setFetchState] = useState({
+    error: null,
+    data: null,
+    isLoading: true
+  });
+  
+  useEffect(() => {
+    fetch(url)
+      .then(res => {
+        if(!res.ok) {
+          throw new Error('bouu')
+        }
+        return res
+      })
+    	.then(res => res.json())
+    	.then(data => {
+          setFetchState({
+            data,
+            isLoading: false
+          })
+    	})
+        .catch(err => {
+          setFetchState({
+            error: err,
+            isLoading: false
+          })
+    	});
+  }, [])
+  
+  return fetchState;
+}
+
+const Tweet = () => {
+  const {
+    data,
+    isLoading,
+    error
+  } = useQuery('people.json')
+  
+  
+  if(isLoading) {
+    return 'loading...':
+  }
+ 
+  if(error) {
+    return <>Refresh page</>
+  }
+ 
+  return <>{data}</>
+}
+```
+
+
+### Tanstack Query
+
+```jsx
+import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query'
+ 
+const queryClient = new QueryClient()
+const App = () =>  {
+   return (
+     <QueryClientProvider client={queryClient}>
+       <Tweet />
+     </QueryClientProvider>
+   )
+ }
+ 
+const Tweet = () => {
+   const { isLoading, error, data } = useQuery({
+	queryKey: ['peoples'],
+	queryFn: () => fetch('/peoples.json').then(res => res.json())
+   });
+ 
+   if (isLoading) {
+     return 'Loading...';
+   }
+ 
+   if (error) {
+     return 'Please refresh the page.';
+   }
+ 
+   return <>{data}</>
+ }
+```
+
+
+### Tanstack Query
+
+<iframe src="https://tanstack.com/query/latest/" width="100%" height="400px" style="background: white;" frameborder="0"></iframe>
+
