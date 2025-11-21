@@ -1966,6 +1966,7 @@ Plus d'info dans les bonus
 npm install react-router-dom
 ```
 
+
 ### React Router
 
 ```jsx
@@ -1983,7 +1984,6 @@ const router = createBrowserRouter([
     element: <MyTweetPage />,
   },
 ]);
-
 
 createRoot(document.getElementById("#my-app")).render(
   <React.StrictMode>
@@ -2098,6 +2098,48 @@ function TweetDetails() {
   return <article>id du tweet: {id}</article>
 }
 ```
+
+
+### React Router - Redirection
+
+```jsx
+import { Routes, Route, Link } from "react-router-dom";
+
+const EditTweet = () => {
+  const user = useUser();
+  if(!user) {
+    return <Navigate to="/" />
+  }
+  /** ... **/ 
+}
+
+/** OU **/
+  
+const EditTweet = () => {
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+    fetch('user')
+      .catch(() => {
+        navigate('/')
+      })
+  }, [])
+  /** ... **/ 
+}
+```
+
+
+### React Router et Remix
+
+Depuis la version 6 :
+
+ - Nesting
+
+ - Gestion de loader
+ - Busy Indicator
+ - Error Handling
+ - ...
+
 
 
 ## TP 13
@@ -2411,7 +2453,7 @@ const OtherCmp = () => {
 ```jsx
 // Fichier A
 const CookieContext = React.createContext(null);
-export const CookieProvider = SessionState.Provider;
+export const CookieProvider = CookieContext.Provider;
 export const useCookie = () => React.useContext(CookieContext);
 
 // // app.tsx
@@ -2512,17 +2554,31 @@ function TextInputWithFocusButton() {
 ## UseImperativeHandle
 
 ```jsx
-function FancyInput(props, ref) {
-  const inputRef = useRef();
-  useImperativeHandle(ref, () => ({
-    focus: () => {
-      inputRef.current.focus();
-    }
-  }));
-  return <input ref={inputRef} ... />;
-}
+function MyInput({ ref }) {
+  return <input ref={ref} />;
+};
+```
 
-FancyInput = forwardRef(FancyInput);
+
+## UseImperativeHandle
+
+```jsx
+function MyInput({ ref }) {
+  const inputRef = useRef(null);
+
+  useImperativeHandle(ref, () => {
+    return {
+      focus() {
+        inputRef.current.focus();
+      },
+      scrollIntoView() {
+        inputRef.current.scrollIntoView();
+      },
+    };
+  }, []);
+
+  return <input ref={inputRef} />;
+};
 ```
 
 
@@ -2537,6 +2593,7 @@ const Tweet = () => {
   return result;
 }
 ```
+Se lance avant le repaint.
 
 
 ## UseTransition
