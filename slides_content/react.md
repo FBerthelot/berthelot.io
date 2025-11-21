@@ -1944,6 +1944,203 @@ Faites appel à une API Pokémon pour récupérer les stats des Pokémons
 ## Le Router
 
 
+### Plusieurs routeurs existent
+
+- React Router
+- Tanstack Router
+- Next.js (intégré)
+- Remix (intégré, le react-router)
+- Etc.
+
+
+### SPA
+
+SPA = naviation côté client
+
+Plus d'info dans les bonus
+
+
+### React Router
+
+```bash
+npm install react-router-dom
+```
+
+
+### React Router
+
+```jsx
+// Index.js
+import { BrowserRouter, RouterProvider } from "react-router-dom";
+import { createRoot } from "react-dom/client";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <HomePage />,
+  },
+  {
+    path: "/tweet",
+    element: <MyTweetPage />,
+  },
+]);
+
+createRoot(document.getElementById("#my-app")).render(
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>
+);
+```
+
+
+### React Router - Liens
+
+```jsx
+import { Link, useParams } from "react-router-dom";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <HomePage />,
+  },
+  {
+    path: "/tweet",
+    element: <MyTweetPage />,
+  }
+]);
+
+/* ... */
+
+function HomePage() {
+  return (
+    <div className="Home">
+      <h1>Tweeeeeet heure</h1>
+      <nav>
+        <Link to="/tweet">Mes Tweets</Link>
+      </nav>
+    </div>
+  );
+}
+```
+
+
+### React Router - Paramètres
+
+```jsx
+import { Link, useParams } from "react-router-dom";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <HomePage />,
+  },
+  {
+    path: "/tweet/:id",
+    element: <TweetDetails />,
+  },
+]);
+
+function HomePage() {
+  return (
+    <div className="Home">
+      <h1>Tweeeeeet heure</h1>
+      <nav>
+		<Link to="/tweet/lastTweet">Mon dernier tweet</Link>
+      </nav>
+    </div>
+  );
+}
+
+function TweetDetails() {
+  const {id} = useParams()
+
+  return <article>id du tweet: {id}</article>
+}
+```
+
+
+### React Router - Paramètres
+
+```jsx
+import { Link, useParams } from "react-router-dom";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <HomePage />,
+  },
+  {
+    path: "/tweet/:id",
+    element: <TweetDetails />,
+  },
+]);
+
+function HomePage() {
+  return (
+    <div className="Home">
+      <h1>Tweeeeeet heure</h1>
+      <nav>
+		<Link to="/tweet/lastTweet">Mon dernier tweet</Link>
+		<Link to="/tweet/lastTweet?display=edit">Editer mon dernier tweet</Link>
+      </nav>
+    </div>
+  );
+}
+
+function TweetDetails() {
+  const {id} = useParams()
+  let [searchParams, setSearchParams] = useSearchParams();
+
+  if(searchParams.display === 'edit') {
+    return /* ... */;
+  }
+
+  return <article>id du tweet: {id}</article>
+}
+```
+
+
+### React Router - Redirection
+
+```jsx
+import { Routes, Route, Link } from "react-router-dom";
+
+const EditTweet = () => {
+  const user = useUser();
+  if(!user) {
+    return <Navigate to="/" />
+  }
+  /** ... **/ 
+}
+
+/** OU **/
+  
+const EditTweet = () => {
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+    fetch('user')
+      .catch(() => {
+        navigate('/')
+      })
+  }, [])
+  /** ... **/ 
+}
+```
+
+
+### React Router et Remix
+
+Depuis la version 6 :
+
+ - Nesting
+
+ - Gestion de loader
+ - Busy Indicator
+ - Error Handling
+ - ...
+
+
 
 ## TP 13
 
@@ -2256,7 +2453,7 @@ const OtherCmp = () => {
 ```jsx
 // Fichier A
 const CookieContext = React.createContext(null);
-export const CookieProvider = SessionState.Provider;
+export const CookieProvider = CookieContext.Provider;
 export const useCookie = () => React.useContext(CookieContext);
 
 // // app.tsx
@@ -2338,20 +2535,50 @@ function TextInputWithFocusButton() {
 ```
 
 
+## UseRef
+
+```jsx
+function TextInputWithFocusButton() {
+  const intervalRef = useRef(0);
+
+  const handleStartClick = () => {
+    const intervalId = setInterval(() => {}, 1000);
+    intervalRef.current = intervalId;
+  }
+
+  return <button onClick={handleStartClick}>Start</button>;
+}
+```
+
+
 ## UseImperativeHandle
 
 ```jsx
-function FancyInput(props, ref) {
-  const inputRef = useRef();
-  useImperativeHandle(ref, () => ({
-    focus: () => {
-      inputRef.current.focus();
-    }
-  }));
-  return <input ref={inputRef} ... />;
-}
+function MyInput({ ref }) {
+  return <input ref={ref} />;
+};
+```
 
-FancyInput = forwardRef(FancyInput);
+
+## UseImperativeHandle
+
+```jsx
+function MyInput({ ref }) {
+  const inputRef = useRef(null);
+
+  useImperativeHandle(ref, () => {
+    return {
+      focus() {
+        inputRef.current.focus();
+      },
+      scrollIntoView() {
+        inputRef.current.scrollIntoView();
+      },
+    };
+  }, []);
+
+  return <input ref={inputRef} />;
+};
 ```
 
 
@@ -2366,6 +2593,7 @@ const Tweet = () => {
   return result;
 }
 ```
+Se lance avant le repaint.
 
 
 ## UseTransition
@@ -2401,13 +2629,19 @@ sequenceDiagram
     actor U as User
     participant S as Server
 
-    U->>S: HTTP GET /page1
-    S->>S: Injection des donnée dans l'HTML
-    S->>U: HTML + CSS + JS
+    rect rgb(191, 223, 255)
+    note over U,S: Page 1
+      U->>S: HTTP GET /page1
+      S->>S: Injection des donnée dans l'HTML
+      S->>U: HTML + CSS + JS
+    end
 
-    U->>S: HTTP GET /page2
-    S->>S: Injection des donnée dans l'HTML
-    S->>U: HTML + CSS + JS
+    rect rgba(255, 191, 235, 1)
+    note over U,S: navigation
+      U->>S: HTTP GET /page2
+      S->>S: Injection des donnée dans l'HTML
+      S->>U: HTML + CSS + JS
+    end
 ```
 
 
@@ -2442,6 +2676,122 @@ sequenceDiagram
 
 ### Incremental Static Regeneration (ISR)
 
+
+
+## Bonus 8 : React.memo
+
+```jsx
+const MyInput = ({onChange}) => {
+  /** ... **/
+};
+```
+
+
+## Bonus 8 : React.memo
+
+```jsx
+const MyForm = () => {
+  const [valueA, setValueA] = useState('');
+  const handleChangeA = (e) => {
+    setValueA(e.target.value);
+  }
+
+  return <MyInput onChange={handleChangeA} />
+}
+```
+
+
+## Bonus 8 : React.memo
+
+```jsx
+const MyForm = () => {
+  const [valueA, setValueA] = useState('');
+  const handleChangeA = useCallback((e) => {
+    setValueA(e.target.value);
+  }, [])
+
+  return <MyInput onChange={handleChangeA} />
+}
+```
+
+
+## Bonus 8 : React.memo
+
+```jsx
+const MyInput = React.memo(({onChange}) => {
+  /** ... **/
+});
+```
+
+
+
+## Bonus 9 : displayName
+
+```jsx
+const MyInput = React.memo(({onChange}) => {
+  /** ... **/
+});
+MyInput.displayName = 'MyInput';
+```
+
+
+
+## Bonus 10 : React.lazy
+
+```jsx
+import React, { Suspense } from 'react';
+const OtherComponent = React.lazy(() => import('./OtherComponent'));
+function MyComponent() {
+  return (
+    <div>
+      <Suspense fallback={<div>Loading...</div>}>
+        <OtherComponent />
+      </Suspense>
+    </div>
+  );
+}
+```
+
+
+## Bonus 10 : Suspense
+
+```jsx
+import {use} from 'react';
+import { fetchData } from './data.js';
+
+export default function Paycheck({ artistId }) {
+  const Paycheck = use(fetchData(`/${artistId}/bill`));
+  return (
+    <section>
+      <p>{Paycheck}</p>
+    </section>
+  );
+}
+```
+
+
+## Bonus 10 : Suspense
+
+```jsx
+import React, { Suspense } from 'react';
+import Biography from './Biography'; 
+
+export default function Paycheck({ artistId }) {
+  return (
+    <div>
+      <Suspense fallback={<h1>Loading paycheck...</h1>}>
+        <Biography artistId={artistId} />
+      </Suspense>
+    </div>
+  );
+}
+``` 
+
+
+
+## Comment se maintenir à jour ?
+
+<iframe src="https://react.dev/blog" width="100%" height="400px" style="background: white;" frameborder="0"></iframe>
 
 
 ## Merci
