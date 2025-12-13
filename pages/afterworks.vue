@@ -24,8 +24,7 @@
     marginwidth="0"
     src="https://xpxm0.mjt.lu/wgt/xpxm0/342/form?c=bfa86365"
     width="100%"
-  >
-  </iframe>
+  />
 </template>
 
 <script setup lang="js">

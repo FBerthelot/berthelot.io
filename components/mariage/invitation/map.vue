@@ -225,7 +225,7 @@
         </div>
       </article>
     </div>
-    <div id="gmap" ref="gmapRef"></div>
+    <div id="gmap" ref="gmapRef" />
   </section>
 </template>
 

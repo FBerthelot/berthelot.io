@@ -105,6 +105,14 @@
 <script setup lang="js">
 import { onMounted, ref } from 'vue'
 import { getTheInvitation } from '~/components/mariage/01_shared/fetcher'
+import MariageInvitationMap from '~/components/mariage/invitation/map.vue'
+import MariageInvitationAskPhoto from '~/components/mariage/invitation/askPhoto.vue'
+import MariageInvitationGifts from '~/components/mariage/invitation/gifts.vue'
+import MariageInvitationCountdown from '~/components/mariage/invitation/countdown.vue'
+import MariageInvitationLoveLetter from '~/components/mariage/invitation/loveLetter.vue'
+import MariageInvitationNeedAnswer from '~/components/mariage/invitation/needAnswer.vue'
+import MariageInvitationInfos from '~/components/mariage/invitation/infos.vue'
+import Mariage00DesignSystemAnimation from '~/components/mariage/00_design-system/animation/animation.vue'
 
 const { t } = useI18n({
   useScope: 'local',

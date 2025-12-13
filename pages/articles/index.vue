@@ -5,14 +5,16 @@
     "meta": {
       "title": "Blog d'un artisan du web - Florent Berthelot",
       "description": "J'écris sur le web, les tests, le JavaScript, les designs systems, ..."
-    }
+    },
+    "noArticle": "Il n'y a pas d'article pour le moment"
   },
   "en": {
     "title": "Blog",
     "meta": {
       "title": "Blog of a web craftsman guy - Florent Berthelot",
       "description": "I write on Web, tests, JavaScript, Design Systems, ..."
-    }
+    },
+    "noArticle": "There is no blog post for now."
   }
 }
 </i18n>
@@ -22,16 +24,9 @@
     <FlorentHeader :title="t('title')" />
 
     <main class="subjects">
-      <ContentList
-        v-slot="{ list }"
-        :query="{
-          path: '/articles',
-          where: [{ locale }],
-          sort: [{ createdDate: -1 }],
-        }"
-      >
+      <template v-if="data">
         <BerthelotSystemCard
-          v-for="article in list"
+          v-for="article in data"
           :key="article.slug"
           :link="`/articles/${article.slug}`"
           internal-link
@@ -51,7 +46,9 @@
             }}
           </time>
         </BerthelotSystemCard>
-      </ContentList>
+      </template>
+      <strong v-if="!data?.length">{{ t('noArticle') }}</strong>
+      <strong v-if="error">{{ error }}</strong>
     </main>
 
     <FlorentFooter />
@@ -73,6 +70,18 @@ useSeoMeta({
   twitterCard: 'summary',
   ogUrl: 'https://berthelot.io/articles/',
 })
+
+const { data, error } = await useAsyncData(
+  `navigation-${locale.value}`,
+  async () => {
+    return queryCollection('articles')
+      .select('id', 'title', 'slug', 'description', 'createdDate')
+      .where('locale', '=', locale.value)
+      .where('draft', '<>', true)
+      .order('createdDate', 'DESC')
+      .all()
+  },
+)
 </script>
 
 <style scoped>

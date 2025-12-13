@@ -32,7 +32,7 @@
           front-alt="Une photo de Florent avec des lunettes de soleil oranges."
           back-src="/assets/florent/joker.jpg"
           back-alt="Une photo du joker, un personnage que j'aime beaucoup car toujours souriant."
-        ></BerthelotSystemAvatar>
+        />
       </nuxt-link>
 
       <h1 class="typo_title title">
@@ -80,6 +80,8 @@
 </template>
 
 <script setup lang="js">
+import { useLocalePath } from '#imports'
+
 defineProps({
   title: {
     type: String,
@@ -95,6 +97,7 @@ defineProps({
 const { t } = useI18n({
   useScope: 'local',
 })
+const localePath = useLocalePath()
 </script>
 
 <style scoped>

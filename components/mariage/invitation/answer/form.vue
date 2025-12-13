@@ -523,7 +523,7 @@
           v-model="formValues.mealComment"
           name="mealComment"
           :placeholder="invitation.placeholderAllergies"
-        ></textarea>
+        />
       </label>
 
       <section v-if="!formValues.attending.includes('cant')" class="infos">
@@ -564,7 +564,7 @@
             v-model="formValues.comment"
             name="comment"
             :placeholder="invitation.placeholderComment"
-          ></textarea>
+          />
         </label>
         <div v-if="shouldValidateForm" class="error">
           {{
@@ -630,9 +630,8 @@
 </template>
 
 <script setup lang="js">
-import { computed, ref } from 'vue'
+import { computed, ref, reactive } from 'vue'
 import { saveInvitationAnswer } from '../../01_shared/fetcher'
-import { reactive } from 'vue'
 
 const { invitation } = defineProps({
   invitation: {
@@ -787,7 +786,6 @@ const submitForm = async () => {
       localePath(`/mariage/${route.params.invite}?noAnimation=true`),
     )
   } catch (err) {
-    // eslint-disable-next-line no-console
     console.error(err)
     submitFormStatus.value.error = err
   }

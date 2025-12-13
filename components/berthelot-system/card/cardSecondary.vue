@@ -5,7 +5,7 @@
       :class="{ 'alternatives--displayed': displayAlternatives }"
       :aria-hidden="!displayAlternatives"
     >
-      <slot></slot>
+      <slot />
     </div>
 
     <BerthelotSystemButtonMore
@@ -18,6 +18,7 @@
 </template>
 
 <script setup lang="js">
+import BerthelotSystemButtonMore from '../button/more.vue'
 import { ref } from 'vue'
 
 const displayAlternatives = ref(false)

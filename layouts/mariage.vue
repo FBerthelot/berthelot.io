@@ -29,7 +29,7 @@
     </Head>
     <Body>
       <div id="wedding">
-        <slot></slot>
+        <slot />
       </div>
     </Body>
   </Html>

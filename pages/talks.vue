@@ -51,7 +51,7 @@
           {{ subject.name }}
         </h2>
         <!-- eslint-disable-next-line vue/no-v-html -->
-        <span class="typo_default" v-html="subject.description"></span>
+        <span class="typo_default" v-html="subject.description" />
         <span class="card_meta typo_meta-info">{{ subject.metaData }}</span>
 
         <iframe
@@ -62,10 +62,15 @@
           :title="t('talks.video_title')"
           :src="subject.video"
           frameborder="0"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allow="
+            accelerometer;
+            autoplay;
+            encrypted-media;
+            gyroscope;
+            picture-in-picture;
+          "
           allowfullscreen
-        >
-        </iframe>
+        />
 
         <a
           class="typo_meta-info--link typo_white main_link"

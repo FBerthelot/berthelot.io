@@ -58,6 +58,7 @@
 <script setup lang="js">
 import { onMounted, ref } from 'vue'
 import { getTheInvitation } from '~/components/mariage/01_shared/fetcher'
+import MariageInvitationAnswerForm from '~/components/mariage/invitation/answer/form.vue'
 
 const invitation = ref({})
 const loading = ref(true)

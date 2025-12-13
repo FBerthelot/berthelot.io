@@ -21,7 +21,7 @@
       </template>
     </Head>
     <Body id="layout_default">
-      <slot></slot>
+      <slot />
     </Body>
   </Html>
 </template>

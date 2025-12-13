@@ -78,13 +78,7 @@
       </section>
 
       <div class="action">
-        <input
-          id="imageUpload"
-          type="file"
-          accept="video/*,image/*"
-          multiple
-          @change="handleImageChange"
-        />
+        <input id="imageUpload" type="file" accept="video/*,image/*" multiple />
         <label
           for="imageUpload"
           :class="{ noAnimate: isCaptureSupported, button: true }"
@@ -101,7 +95,6 @@
           type="file"
           accept="image/*"
           capture="user"
-          @change="handleImageChange"
         />
         <label v-if="isCaptureSupported" for="imageInput" class="button">
           <img
@@ -115,19 +108,6 @@
 </template>
 
 <script setup lang="js">
-import { ref, onMounted } from 'vue'
-import { initializeApp } from 'firebase/app'
-import {
-  getStorage,
-  uploadBytesResumable,
-  ref as firebaseRef,
-} from 'firebase/storage'
-const config = useRuntimeConfig()
-
-const { t } = useI18n({
-  useScope: 'local',
-})
-
 definePageMeta({
   layout: 'mariage',
 })
@@ -141,118 +121,6 @@ useSeoMeta({
   twitterDescription: t('meta.description'),
   twitterCard: 'summary',
   ogUrl: 'https://berthelot.io/mariage/photo',
-})
-
-const assets = ref([])
-const firebaseApp = ref(null)
-const firebaseStorage = ref(null)
-const isCaptureSupported = ref(false)
-
-const handleImageChange = (e) => {
-  assets.value = [
-    ...assets.value,
-    ...Array.from(e.target.files)
-      .map((file) => {
-        const firestoreUrl = `/photos/${file.lastModified}-${file.name}`
-
-        if (assets.value.find((asset) => asset.firestoreUrl === firestoreUrl)) {
-          return null
-        }
-
-        return {
-          firestoreUrl,
-          objectUrl: URL.createObjectURL(file),
-          rawFile: file,
-          status: 'starting',
-          uploadPct: 0,
-        }
-      })
-      .filter(Boolean),
-  ]
-
-  assets.value
-    .filter((asset) => asset.status === 'starting')
-    .forEach((asset) => {
-      uploadOnePhoto(asset)
-    })
-}
-
-const uploadOnePhoto = (asset) => {
-  const storageRef = firebaseRef(firebaseStorage.value, asset.firestoreUrl)
-  const uploadTask = uploadBytesResumable(storageRef, asset.rawFile, {
-    customMetadata: {
-      userAgent: window.navigator.userAgent,
-      lastModified: asset.rawFile.lastModified,
-      lastModifiedDate: asset.rawFile.lastModifiedDate?.toISOString(),
-      originalName: asset.rawFile.name,
-    },
-  })
-
-  assets.value = assets.value.map((a) => {
-    if (asset.firestoreUrl === a.firestoreUrl) {
-      return {
-        ...a,
-        status: 'running',
-      }
-    }
-    return a
-  })
-
-  uploadTask.on(
-    'state_changed',
-    (snapshot) => {
-      assets.value = assets.value.map((a) => {
-        if (asset.firestoreUrl === a.firestoreUrl) {
-          return {
-            ...a,
-            status: snapshot.state, // "canceled" | "running" | "paused" | "success" | "error"
-            uploadPct: (snapshot.bytesTransferred / snapshot.totalBytes) * 100,
-          }
-        }
-        return a
-      })
-    },
-    (error) => {
-      assets.value = assets.value.map((a) => {
-        if (asset.firestoreUrl === a.firestoreUrl) {
-          return {
-            ...a,
-            status: 'error',
-            error,
-          }
-        }
-        return a
-      })
-    },
-    () => {
-      assets.value = assets.value.map((a) => {
-        if (asset.firestoreUrl === a.firestoreUrl) {
-          return {
-            ...a,
-            status: 'success',
-          }
-        }
-        return a
-      })
-    },
-  )
-}
-
-onMounted(() => {
-  const firebaseConfig = {
-    apiKey: config.public.FIREBASE_API_KEY,
-    authDomain: config.public.FIREBASE_AUTH_DOMAIN,
-    projectId: config.public.FIREBASE_PROJECT_ID,
-    storageBucket: config.public.FIREBASE_STORAGE_BUCKET,
-    messagingSenderId: config.public.FIREBASE_MESSAGING_SENDER_ID,
-    appId: config.public.FIREBASE_APP_ID,
-  }
-
-  firebaseApp.value = initializeApp(firebaseConfig)
-  firebaseStorage.value = getStorage(firebaseApp.value)
-
-  const el = document.createElement('input')
-  isCaptureSupported.value = el.capture !== undefined
 })
 </script>
 

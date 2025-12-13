@@ -35,7 +35,7 @@
         <span
           class="typo_default typo_white"
           v-html="subject.description[locale]"
-        ></span>
+        />
         <!-- eslint-enable vue/no-v-html -->
         <span class="card_meta typo_meta-info typo_white">{{
           subject.metaData

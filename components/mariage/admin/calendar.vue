@@ -82,9 +82,9 @@
             currentDate.getHours() + currentDate.getMinutes() / 60
           } +  var(--timeHeight))`,
         }"
-      ></div>
+      />
       <div class="timeline">
-        <div class="spacer"></div>
+        <div class="spacer" />
         <div class="time-marker">{{ t('0:00') }}</div>
         <div class="time-marker">{{ t('1:00') }}</div>
         <div class="time-marker">{{ t('2:00') }}</div>
@@ -269,7 +269,7 @@
         <p
           class="typography-paragraph modal-content-detail"
           v-html="eventToShowInDetail.detail"
-        ></p>
+        />
         <!-- eslint-enable vue/no-v-html -->
         <button class="button" @click="closeEventModal">{{ t('ok') }}</button>
       </div>

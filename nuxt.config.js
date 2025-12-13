@@ -15,21 +15,15 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       MAPS_URL: process.env.NUXT_ENV_MAPS_URL,
-      FIREBASE_API_KEY: process.env.NUXT_ENV_FIREBASE_API_KEY,
-      FIREBASE_AUTH_DOMAIN: process.env.NUXT_ENV_FIREBASE_AUTH_DOMAIN,
-      FIREBASE_PROJECT_ID: process.env.NUXT_ENV_FIREBASE_PROJECT_ID,
-      FIREBASE_STORAGE_BUCKET: process.env.NUXT_ENV_FIREBASE_STORAGE_BUCKET,
-      FIREBASE_MESSAGING_SENDER_ID:
-        process.env.NUXT_ENV_FIREBASE_MESSAGING_SENDER_ID,
-      FIREBASE_APP_ID: process.env.NUXT_ENV_FIREBASE_APP_ID,
     },
   },
 
   modules: [
     '@nuxtjs/i18n',
     '@nuxt/content',
-    'nuxt-simple-robots',
-    'nuxt-simple-sitemap',
+    '@nuxtjs/robots',
+    '@nuxtjs/sitemap',
+    'nuxt-link-checker',
   ],
 
   i18n: {
@@ -53,15 +47,13 @@ export default defineNuxtConfig({
     },
   },
 
-  content: {
-    highlight: {
-      theme: 'github-light',
-    },
+  linkChecker: {
+    failOnError: true,
   },
 
   robots: {
-    disallow: ['/mariage/', '/en/mariage/'],
-    allow: ['/mariage/design', '/en/mariage/design', '/mariage', '/en/mariage'],
+    disallow: ['/mariage/'],
+    allow: ['/', '/mariage/design', '/mariage'],
   },
 
   routeRules: {
@@ -78,7 +70,7 @@ export default defineNuxtConfig({
           loc: '/articles/react-test-refactoring-snapshot',
         },
         {
-          lastmod: new Date('2020/06/04'),
+          lastmod: new Date('2023/11/19'),
           loc: '/en/articles/react-test-refactoring-snapshot',
         },
       ]
@@ -87,7 +79,6 @@ export default defineNuxtConfig({
 
   generate: {
     routes: [
-      '/slides/javascript',
       ...invitations.flatMap((invitation) => [
         `/mariage/${invitation.id}`,
         `/en/mariage/${invitation.id}`,

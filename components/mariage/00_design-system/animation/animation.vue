@@ -44,20 +44,20 @@
     />
     <div class="granville-light" />
 
-    <div class="sun-container sun-container-1"></div>
+    <div class="sun-container sun-container-1" />
     <div class="sun-container">
-      <div class="sun"></div>
+      <div class="sun" />
     </div>
 
     <div class="sun-container sun-container-reflection">
-      <div class="sun"></div>
+      <div class="sun" />
     </div>
 
-    <div class="cloud"></div>
-    <div class="cloud cloud-1"></div>
+    <div class="cloud" />
+    <div class="cloud cloud-1" />
 
-    <div class="water"></div>
-    <div class="water side"></div>
+    <div class="water" />
+    <div class="water side" />
     <svg>
       <filter id="turbulence" x="0" y="0" width="120%" height="110%">
         <feTurbulence
@@ -73,9 +73,9 @@
             keyTime="0;0.5;1"
             values="0.02 0.15; 0.04 0.05; 0.02 0.12"
             repeatCount="indefinite"
-          ></animate>
+          />
         </feTurbulence>
-        <feDisplacementMap scale="20" in="SourceGraphic"></feDisplacementMap>
+        <feDisplacementMap scale="20" in="SourceGraphic" />
       </filter>
     </svg>
 
@@ -198,35 +198,30 @@ onMounted(() => {
   }
 
   isImageLoaded(images.mont.src)
-    // eslint-disable-next-line no-console
     .catch(console.error)
     .finally(() => {
       images.mont.loaded = true
     })
 
   isImageLoaded(images.roc.src)
-    // eslint-disable-next-line no-console
     .catch(console.error)
     .finally(() => {
       images.roc.loaded = true
     })
 
   isImageLoaded(images.ponton.src)
-    // eslint-disable-next-line no-console
     .catch(console.error)
     .finally(() => {
       images.ponton.loaded = true
     })
 
   isImageLoaded(images.us.src)
-    // eslint-disable-next-line no-console
     .catch(console.error)
     .finally(() => {
       images.us.loaded = true
     })
 
   isImageLoaded(images.nobel.src)
-    // eslint-disable-next-line no-console
     .catch(console.error)
     .finally(() => {
       images.nobel.loaded = true

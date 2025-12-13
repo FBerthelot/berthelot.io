@@ -138,8 +138,7 @@
         <h2 class="typo_title--small section-title">
           {{ t('statusPage.title') }}
         </h2>
-        <iframe src="https://status.berthelot.io/" class="status_page_iframe">
-        </iframe>
+        <iframe src="https://status.berthelot.io/" class="status_page_iframe" />
         <a
           href="https://status.berthelot.io/"
           target="_blank"

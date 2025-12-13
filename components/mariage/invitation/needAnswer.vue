@@ -27,7 +27,7 @@
 
 <template>
   <section id="need-answer" class="need-answer">
-    <div class="firework-container"></div>
+    <div class="firework-container" />
 
     <div v-if="!ANSWER_PERIOD_IS_DONE" class="container">
       <!-- eslint-disable vue/no-v-html -->
@@ -38,7 +38,7 @@
             ? t('answered.title', invitation.nbOfPeople)
             : t('title', invitation.nbOfPeople)
         "
-      ></h3>
+      />
       <!-- eslint-enable vue/no-v-html -->
       <h4 class="subtitle">
         {{

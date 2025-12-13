@@ -48,7 +48,7 @@
         <hr />
 
         <!-- eslint-disable-next-line vue/no-v-html -->
-        <p class="typography-title-3" v-html="config.message"></p>
+        <p class="typography-title-3" v-html="config.message" />
       </div>
 
       <section v-if="config.displayOtherInfos">
@@ -121,7 +121,7 @@
         <p
           class="slide-message typography-paragraph"
           v-html="config.messagePlanDeTable"
-        ></p>
+        />
         <!-- eslint-enable vue/no-v-html -->
 
         <div class="slide-container">
@@ -149,7 +149,7 @@
 </template>
 
 <script setup lang="js">
-import { computed, watch } from 'vue'
+import { computed, watch, onMounted } from 'vue'
 import {
   CalendarEvents,
   Calendars,
@@ -179,7 +179,6 @@ import img21 from '~/components/mariage/admin/slides/21.png'
 import img22 from '~/components/mariage/admin/slides/22.png'
 import img23 from '~/components/mariage/admin/slides/23.png'
 import img24 from '~/components/mariage/admin/slides/24.png'
-import { onMounted } from 'vue'
 
 const allSlides = [
   img1,

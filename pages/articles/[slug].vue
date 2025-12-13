@@ -17,8 +17,7 @@
   <div v-if="data" id="article-page">
     <FlorentHeader :title="data.title" back-link="/articles/" />
 
-    <ContentRenderer :value="data">
-      <ContentRendererMarkdown :value="data" class="typo_default article" />
+    <ContentRenderer v-if="data" :value="data" class="typo_default article">
     </ContentRenderer>
 
     <FlorentFooter />
@@ -31,16 +30,19 @@ const { t, locale } = useI18n({
   useScope: 'local',
 })
 
-const { data, error } = await useAsyncData('page-data', () =>
-  queryContent(`/article`)
-    .where({ slug: route.params.slug, locale: locale.value })
-    .findOne(),
+const { data, error } = await useAsyncData(
+  `page-data-${locale.value}-${route.params.slug}`,
+  () =>
+    queryCollection('articles')
+      .where('slug', '=', route.params.slug)
+      .where('locale', '=', locale.value)
+      .first(),
 )
 
 if (error.value?.statusCode === 404) {
-  await navigateTo('/404')
+  await navigateTo('/404', { replace: true })
 } else if (error.value?.statusCode) {
-  await navigateTo('/500')
+  await navigateTo('/500', { replace: true })
 }
 
 useSeoMeta(
