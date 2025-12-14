@@ -78,7 +78,13 @@
       </section>
 
       <div class="action">
-        <input id="imageUpload" type="file" accept="video/*,image/*" multiple />
+        <input
+          id="imageUpload"
+          type="file"
+          accept="video/*,image/*"
+          multiple
+          @change="handleImageChange"
+        />
         <label
           for="imageUpload"
           :class="{ noAnimate: isCaptureSupported, button: true }"
@@ -95,6 +101,7 @@
           type="file"
           accept="image/*"
           capture="user"
+          @change="handleImageChange"
         />
         <label v-if="isCaptureSupported" for="imageInput" class="button">
           <img
@@ -108,6 +115,10 @@
 </template>
 
 <script setup lang="js">
+const { t } = useI18n({
+  useScope: 'locale',
+})
+
 definePageMeta({
   layout: 'mariage',
 })
@@ -122,6 +133,16 @@ useSeoMeta({
   twitterCard: 'summary',
   ogUrl: 'https://berthelot.io/mariage/photo',
 })
+
+const assets = ref([])
+const isCaptureSupported = ref(false)
+
+const handleImageChange = () => {
+  alert('Fonctionalité désactivée.')
+}
+const handleUploadingPhoto = () => {
+  alert('Fonctionalité désactivée.')
+}
 </script>
 
 <style scoped>
