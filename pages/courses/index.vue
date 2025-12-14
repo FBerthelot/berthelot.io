@@ -82,7 +82,7 @@ const subjects = ref([
                 Fitted for beginners.
               `,
     },
-    url: '/slides/javascript.html',
+    url: '/slides/javascript',
     external: true,
     type: 'course',
   },
@@ -136,7 +136,7 @@ const subjects = ref([
                 Duration: 3 days.
               `,
     },
-    url: '/slides/react.html',
+    url: '/slides/react',
     external: true,
     type: 'course',
   },
@@ -176,7 +176,7 @@ const subjects = ref([
                 Duration: 3 days.
               `,
     },
-    url: '/slides/nodejs.html',
+    url: '/slides/nodejs',
     external: true,
     type: 'course',
   },
@@ -234,7 +234,7 @@ const subjects = ref([
                 Let's discover together the subtleties of this language and how to use it at its best.
               `,
     },
-    url: '/slides/typescript_avancee.html',
+    url: '/slides/typescript-avancee',
     external: true,
     type: 'course',
   },

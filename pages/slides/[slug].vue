@@ -36,7 +36,7 @@ const route = useRoute()
 const slug = route.params.slug ?? ''
 
 if (slug.endsWith('.html')) {
-  await navigateTo(`/slides/${slug.replace('.html', '')}`)
+  await navigateTo(`/slides/${slug.replace('.html', '')}`, { replace: true })
 }
 
 const { t } = useI18n({

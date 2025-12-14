@@ -85,11 +85,7 @@
       {{ t(`intro.p1`) }}
       <br /><br />
 
-      <a
-        class="typography-link"
-        href="https://berthelot.io/mariage"
-        target="__blank"
-      >
+      <a class="typography-link" href="/mariage" target="__blank">
         {{ t('intro.p2Animation') }}
       </a>
 
@@ -108,23 +104,23 @@
           <h3 class="typography-title-3">
             {{ t('logo.whiteOnTransparent.title') }}
           </h3>
-          <img alt="" src="/assets/mariage/agnes_et_florent-transparent.svg" />
+          <img alt="" src="/assets/mariage/agnes-et-florent-transparent.svg" />
           <a
-            href="/assets/mariage/agnes_et_florent-transparent.png"
+            href="/assets/mariage/agnes-et-florent-transparent.png"
             class="typography-link"
-            download="logo_transparent-agnes_florent.png"
+            download="logo-transparent-agnes-florent.png"
             >{{ t('logo.whiteOnTransparent.downloadPng') }}</a
           >
           <a
-            href="/assets/mariage/agnes_et_florent-transparent-400x.png"
+            href="/assets/mariage/agnes-et-florent-transparent-400x.png"
             class="typography-link"
-            download="logo_transparent-agnes_florent.400x.png"
+            download="logo-transparent-agnes-florent.400x.png"
             >{{ t('logo.whiteOnTransparent.downloadPng400x') }}</a
           >
           <a
-            href="/assets/mariage/agnes_et_florent-transparent.svg"
+            href="/assets/mariage/agnes-et-florent-transparent.svg"
             class="typography-link"
-            download="logo_transparent-agnes_florent.svg"
+            download="logo-transparent-agnes-florent.svg"
             >{{ t('logo.whiteOnTransparent.downloadSvg') }}</a
           >
         </article>
@@ -133,23 +129,23 @@
           <h3 class="typography-title-3">
             {{ t('logo.whiteOnViolet.title') }}
           </h3>
-          <img alt="" src="/assets/mariage/agnes_et_florent-violet.svg" />
+          <img alt="" src="/assets/mariage/agnes-et-florent-violet.svg" />
           <a
-            href="/assets/mariage/agnes_et_florent-violet.png"
+            href="/assets/mariage/agnes-et-florent-violet.png"
             class="typography-link"
-            download="logo_violet-agnes_florent.png"
+            download="logo-violet-agnes-florent.png"
             >{{ t('logo.whiteOnViolet.downloadPng') }}</a
           >
           <a
-            href="/assets/mariage/agnes_et_florent-violet-400x.png"
+            href="/assets/mariage/agnes-et-florent-violet-400x.png"
             class="typography-link"
-            download="logo_violet-agnes_florent.400x.png"
+            download="logo-violet-agnes-florent.400x.png"
             >{{ t('logo.whiteOnViolet.downloadPng400x') }}</a
           >
           <a
-            href="/assets/mariage/agnes_et_florent-violet.svg"
+            href="/assets/mariage/agnes-et-florent-violet.svg"
             class="typography-link"
-            download="logo_violet-agnes_florent.svg"
+            download="logo-violet-agnes-florent.svg"
             >{{ t('logo.whiteOnViolet.downloadSvg') }}</a
           >
         </article>
@@ -160,12 +156,12 @@
           </h3>
           <img
             alt=""
-            src="/assets/mariage/agnes_et_florent_19-08-2023-transparent.svg"
+            src="/assets/mariage/agnes-et-florent-19-08-2023-transparent.svg"
           />
           <a
-            href="/assets/mariage/agnes_et_florent_19-08-2023-transparent.svg"
+            href="/assets/mariage/agnes-et-florent-19-08-2023-transparent.svg"
             class="typography-link"
-            download="logo_transparent_date-agnes_florent.svg"
+            download="logo-transparent-date-agnes-florent.svg"
             >{{ t('logo.whiteOnTransparentWithDate.downloadSvg') }}</a
           >
         </article>
@@ -176,12 +172,12 @@
           </h3>
           <img
             alt=""
-            src="/assets/mariage/agnes_et_florent_19-08-2023-violet.svg"
+            src="/assets/mariage/agnes-et-florent-19-08-2023-violet.svg"
           />
           <a
-            href="/assets/mariage/agnes_et_florent_19-08-2023-violet.svg"
+            href="/assets/mariage/agnes-et-florent-19-08-2023-violet.svg"
             class="typography-link"
-            download="logo_white_date-agnes_florent.svg"
+            download="logo-white-date-agnes-florent.svg"
             >{{ t('logo.whiteOnVioletWithDate.downloadSvg') }}</a
           >
         </article>
