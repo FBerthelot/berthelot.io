@@ -3,6 +3,7 @@ name: Continous Integration on PR
 on: ['pull_request']
 env:
   NODE_VERSION: '24.11.1'
+  NUXT_ENV_BASE_URL: 'https://berthelot.io'
 
 jobs:
   build-and-test:
