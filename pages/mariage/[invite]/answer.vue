@@ -44,7 +44,7 @@
     </div>
     <div v-if="loading" class="loading">
       <img
-        src="/assets/mariage/agnes_et_florent-violet.svg"
+        src="/assets/mariage/agnes-et-florent-violet.svg"
         :alt="t('loader_alt')"
       />
     </div>
