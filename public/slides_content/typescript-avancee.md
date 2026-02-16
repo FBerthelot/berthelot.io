@@ -111,7 +111,7 @@ Quel est la fonctionalité ajouté au JavaScript cette année vous a le plus plu
 
 ## TC39
 
-[Lien vers la formation JavaScript](./javascript#/2)
+[Lien vers la formation JavaScript](../javascript#/2)
 
 
 ## Les ESmodules
@@ -322,7 +322,7 @@ ne retourne rien et affiche en console un joli message avec les stats du pokemon
 
 ## ES5
 
-[Slide classes en JS](http://localhost:4040/slides/javascript#/3/21)
+[Slide classes en JS](../javascript#/3/21)
 
 Voir ES5, ES6 et ES2022.
 
