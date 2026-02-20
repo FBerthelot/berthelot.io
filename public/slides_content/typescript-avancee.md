@@ -1717,7 +1717,8 @@ florent@berthelot.io
 
 ## Exemples complexes pêle mêle
 
-Inférence d'object en fonction d'un schéma
+
+## Inférence d'object en fonction d'un schéma
 ```typescript
 type PropsDefinition = {
   type: StringConstructor | NumberConstructor,
@@ -1749,7 +1750,7 @@ props.bar
 ```
 
 
-Query Builder
+## Query Builder
 ```typescript
 class SocialPost {
   id!: `SP-${string}`
@@ -1797,9 +1798,53 @@ class QueryBuilder<T extends 'SocialPost' | 'NationalCampaign'> {
   }
 }
 
-
 const SocialPostA = new QueryBuilder('SocialPost').getOne2('SP-01')
 console.log(SocialPostA.post)
 const NationalCampaignB = new QueryBuilder('NationalCampaign').getOne2('NC-01')
 console.log(NationalCampaignB.puretech)
+```
+
+
+## Machine State Type Xstate
+```typescript
+type Action<TContext, TEvent> = (arg: { context: TContext, event: TEvent}) => TContext;
+
+type MachineConfig<TContext, TOn> = {
+  context: TContext,
+  on: {
+    [K in keyof TOn]: Action<TContext, TOn[K]>
+  }
+};
+
+function createMachine<TContext, TOn>(config: MachineConfig<TContext, TOn>) {
+  return config;
+}
+
+const countMachine = createMachine({
+  context: {
+    count: 0
+  },
+  on: {
+    INC: ({ context }) => ({
+      count: context.count + 1
+    }),
+    SET:  ({ event }: { event: { value: number } }) => ({
+      count: event.value,
+    }),
+  },
+});
+
+
+type Actor<TMachine extends ReturnType<typeof createMachine>> = {
+  [K in keyof TMachine['on']]: (arg?: unknown) => void
+}
+
+
+function createActor<TMachine extends ReturnType<typeof createMachine>>(_machine: TMachine): Actor<TMachine> {
+  return {} as unknown as Actor<TMachine>;
+}
+
+const countActor = createActor(countMachine)
+countActor.INC();
+countActor.SET({value: 45}) 
 ```
