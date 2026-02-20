@@ -1834,16 +1834,13 @@ const countMachine = createMachine({
   },
 });
 
-
 type Actor<TMachine extends ReturnType<typeof createMachine>> = {
   [K in keyof TMachine['on']]: (arg?: unknown) => void
 }
 
-
 function createActor<TMachine extends ReturnType<typeof createMachine>>(_machine: TMachine): Actor<TMachine> {
   return {} as unknown as Actor<TMachine>;
 }
-
 const countActor = createActor(countMachine)
 countActor.INC();
 countActor.SET({value: 45}) 
