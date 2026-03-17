@@ -2,27 +2,27 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://berthelot.io/</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://berthelot.io/en" />
-        <xhtml:link rel="alternate" hreflang="en-GB" href="https://berthelot.io/en" />
+        <xhtml:link rel="alternate" href="https://berthelot.io/" hreflang="x-default" />
+        <xhtml:link rel="alternate" href="https://berthelot.io/" hreflang="fr-FR" />
+        <xhtml:link rel="alternate" href="https://berthelot.io/en" hreflang="en-GB" />
     </url>
     <url>
         <loc>https://berthelot.io/activities</loc>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://berthelot.io/activities" />
-        <xhtml:link rel="alternate" hreflang="fr" href="https://berthelot.io/activities" />
-        <xhtml:link rel="alternate" hreflang="fr-FR" href="https://berthelot.io/activities" />
-        <xhtml:link rel="alternate" hreflang="en" href="https://berthelot.io/en/activities" />
-        <xhtml:link rel="alternate" hreflang="en-GB" href="https://berthelot.io/en/activities" />
+        <xhtml:link rel="alternate" href="https://berthelot.io/activities" hreflang="x-default" />
+        <xhtml:link rel="alternate" href="https://berthelot.io/activities" hreflang="fr-FR" />
+        <xhtml:link rel="alternate" href="https://berthelot.io/en/activities" hreflang="en-GB" />
     </url>
     <url>
         <loc>https://berthelot.io/afterworks</loc>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://berthelot.io/afterworks" />
-        <xhtml:link rel="alternate" hreflang="fr" href="https://berthelot.io/afterworks" />
-        <xhtml:link rel="alternate" hreflang="fr-FR" href="https://berthelot.io/afterworks" />
-        <xhtml:link rel="alternate" hreflang="en" href="https://berthelot.io/en/afterworks" />
-        <xhtml:link rel="alternate" hreflang="en-GB" href="https://berthelot.io/en/afterworks" />
+        <xhtml:link rel="alternate" href="https://berthelot.io/afterworks" hreflang="x-default" />
+        <xhtml:link rel="alternate" href="https://berthelot.io/afterworks" hreflang="fr-FR" />
+        <xhtml:link rel="alternate" href="https://berthelot.io/en/afterworks" hreflang="en-GB" />
     </url>
     <url>
         <loc>https://berthelot.io/agnes</loc>
+        <xhtml:link rel="alternate" href="https://berthelot.io/agnes" hreflang="x-default" />
+        <xhtml:link rel="alternate" href="https://berthelot.io/agnes" hreflang="fr-FR" />
+        <xhtml:link rel="alternate" href="https://berthelot.io/en/agnes" hreflang="en-GB" />
         <image:image>
             <image:loc>https://berthelot.io/assets/agnes/avatar.png</image:loc>
         </image:image>
@@ -32,68 +32,51 @@
         <image:image>
             <image:loc>https://berthelot.io/assets/linkedin.svg</image:loc>
         </image:image>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://berthelot.io/agnes" />
-        <xhtml:link rel="alternate" hreflang="fr" href="https://berthelot.io/agnes" />
-        <xhtml:link rel="alternate" hreflang="fr-FR" href="https://berthelot.io/agnes" />
-        <xhtml:link rel="alternate" hreflang="en" href="https://berthelot.io/en/agnes" />
-        <xhtml:link rel="alternate" hreflang="en-GB" href="https://berthelot.io/en/agnes" />
     </url>
     <url>
         <loc>https://berthelot.io/articles</loc>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://berthelot.io/articles" />
-        <xhtml:link rel="alternate" hreflang="fr" href="https://berthelot.io/articles" />
-        <xhtml:link rel="alternate" hreflang="fr-FR" href="https://berthelot.io/articles" />
-        <xhtml:link rel="alternate" hreflang="en" href="https://berthelot.io/en/articles" />
-        <xhtml:link rel="alternate" hreflang="en-GB" href="https://berthelot.io/en/articles" />
+        <xhtml:link rel="alternate" href="https://berthelot.io/articles" hreflang="x-default" />
+        <xhtml:link rel="alternate" href="https://berthelot.io/articles" hreflang="fr-FR" />
+        <xhtml:link rel="alternate" href="https://berthelot.io/en/articles" hreflang="en-GB" />
     </url>
     <url>
         <loc>https://berthelot.io/courses</loc>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://berthelot.io/courses" />
-        <xhtml:link rel="alternate" hreflang="fr" href="https://berthelot.io/courses" />
-        <xhtml:link rel="alternate" hreflang="fr-FR" href="https://berthelot.io/courses" />
-        <xhtml:link rel="alternate" hreflang="en" href="https://berthelot.io/en/courses" />
-        <xhtml:link rel="alternate" hreflang="en-GB" href="https://berthelot.io/en/courses" />
+        <xhtml:link rel="alternate" href="https://berthelot.io/courses" hreflang="x-default" />
+        <xhtml:link rel="alternate" href="https://berthelot.io/courses" hreflang="fr-FR" />
+        <xhtml:link rel="alternate" href="https://berthelot.io/en/courses" hreflang="en-GB" />
     </url>
     <url>
         <loc>https://berthelot.io/cv</loc>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://berthelot.io/cv" />
-        <xhtml:link rel="alternate" hreflang="fr" href="https://berthelot.io/cv" />
-        <xhtml:link rel="alternate" hreflang="fr-FR" href="https://berthelot.io/cv" />
-        <xhtml:link rel="alternate" hreflang="en" href="https://berthelot.io/en/cv" />
-        <xhtml:link rel="alternate" hreflang="en-GB" href="https://berthelot.io/en/cv" />
+        <xhtml:link rel="alternate" href="https://berthelot.io/cv" hreflang="x-default" />
+        <xhtml:link rel="alternate" href="https://berthelot.io/cv" hreflang="fr-FR" />
+        <xhtml:link rel="alternate" href="https://berthelot.io/en/cv" hreflang="en-GB" />
     </url>
     <url>
         <loc>https://berthelot.io/design</loc>
+        <xhtml:link rel="alternate" href="https://berthelot.io/design" hreflang="x-default" />
+        <xhtml:link rel="alternate" href="https://berthelot.io/design" hreflang="fr-FR" />
+        <xhtml:link rel="alternate" href="https://berthelot.io/en/design" hreflang="en-GB" />
         <image:image>
             <image:loc>https://placekitten.com/300/300</image:loc>
         </image:image>
         <image:image>
             <image:loc>https://placekitten.com/250/250</image:loc>
         </image:image>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://berthelot.io/design" />
-        <xhtml:link rel="alternate" hreflang="fr" href="https://berthelot.io/design" />
-        <xhtml:link rel="alternate" hreflang="fr-FR" href="https://berthelot.io/design" />
-        <xhtml:link rel="alternate" hreflang="en" href="https://berthelot.io/en/design" />
-        <xhtml:link rel="alternate" hreflang="en-GB" href="https://berthelot.io/en/design" />
     </url>
     <url>
         <loc>https://berthelot.io/mariage</loc>
         <xhtml:link rel="alternate" href="https://berthelot.io/mariage" hreflang="x-default" />
         <xhtml:link rel="alternate" href="https://berthelot.io/mariage" hreflang="fr-FR" />
         <xhtml:link rel="alternate" href="https://berthelot.io/en/mariage" hreflang="en-GB" />
-        <xhtml:link rel="alternate" hreflang="fr" href="https://berthelot.io/mariage" />
-        <xhtml:link rel="alternate" hreflang="en" href="https://berthelot.io/en/mariage" />
         <image:image>
             <image:loc>https://berthelot.io/assets/mariage/agnes-et-florent-transparent.svg</image:loc>
         </image:image>
     </url>
     <url>
         <loc>https://berthelot.io/talks</loc>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://berthelot.io/talks" />
-        <xhtml:link rel="alternate" hreflang="fr" href="https://berthelot.io/talks" />
-        <xhtml:link rel="alternate" hreflang="fr-FR" href="https://berthelot.io/talks" />
-        <xhtml:link rel="alternate" hreflang="en" href="https://berthelot.io/en/talks" />
-        <xhtml:link rel="alternate" hreflang="en-GB" href="https://berthelot.io/en/talks" />
+        <xhtml:link rel="alternate" href="https://berthelot.io/talks" hreflang="x-default" />
+        <xhtml:link rel="alternate" href="https://berthelot.io/talks" hreflang="fr-FR" />
+        <xhtml:link rel="alternate" href="https://berthelot.io/en/talks" hreflang="en-GB" />
     </url>
     <url>
         <loc>https://berthelot.io/articles/react-test-refactoring-snapshot</loc>
@@ -101,8 +84,6 @@
         <xhtml:link rel="alternate" href="https://berthelot.io/articles/react-test-refactoring-snapshot" hreflang="x-default" />
         <xhtml:link rel="alternate" href="https://berthelot.io/articles/react-test-refactoring-snapshot" hreflang="fr-FR" />
         <xhtml:link rel="alternate" href="https://berthelot.io/en/articles/react-test-refactoring-snapshot" hreflang="en-GB" />
-        <xhtml:link rel="alternate" hreflang="fr" href="https://berthelot.io/articles/react-test-refactoring-snapshot" />
-        <xhtml:link rel="alternate" hreflang="en" href="https://berthelot.io/en/articles/react-test-refactoring-snapshot" />
         <image:image>
             <image:loc>https://berthelot.io/assets/florent/avatar.jpg</image:loc>
         </image:image>
@@ -130,8 +111,6 @@
         <xhtml:link rel="alternate" href="https://berthelot.io/mariage/design" hreflang="x-default" />
         <xhtml:link rel="alternate" href="https://berthelot.io/mariage/design" hreflang="fr-FR" />
         <xhtml:link rel="alternate" href="https://berthelot.io/en/mariage/design" hreflang="en-GB" />
-        <xhtml:link rel="alternate" hreflang="fr" href="https://berthelot.io/mariage/design" />
-        <xhtml:link rel="alternate" hreflang="en" href="https://berthelot.io/en/mariage/design" />
         <image:image>
             <image:loc>https://berthelot.io/assets/mariage/agnes-et-florent-transparent.svg</image:loc>
         </image:image>
@@ -162,35 +141,23 @@
     </url>
     <url>
         <loc>https://berthelot.io/slides/javascript</loc>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://berthelot.io/slides/javascript" />
-        <xhtml:link rel="alternate" hreflang="fr" href="https://berthelot.io/slides/javascript" />
-        <xhtml:link rel="alternate" hreflang="fr-FR" href="https://berthelot.io/slides/javascript" />
-        <xhtml:link rel="alternate" hreflang="en" href="https://berthelot.io/en/slides/javascript" />
-        <xhtml:link rel="alternate" hreflang="en-GB" href="https://berthelot.io/en/slides/javascript" />
+        <xhtml:link rel="alternate" href="https://berthelot.io/slides/javascript" hreflang="x-default" />
+        <xhtml:link rel="alternate" href="https://berthelot.io/slides/javascript" hreflang="fr-FR" />
     </url>
     <url>
         <loc>https://berthelot.io/slides/nodejs</loc>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://berthelot.io/slides/nodejs" />
-        <xhtml:link rel="alternate" hreflang="fr" href="https://berthelot.io/slides/nodejs" />
-        <xhtml:link rel="alternate" hreflang="fr-FR" href="https://berthelot.io/slides/nodejs" />
-        <xhtml:link rel="alternate" hreflang="en" href="https://berthelot.io/en/slides/nodejs" />
-        <xhtml:link rel="alternate" hreflang="en-GB" href="https://berthelot.io/en/slides/nodejs" />
+        <xhtml:link rel="alternate" href="https://berthelot.io/slides/nodejs" hreflang="x-default" />
+        <xhtml:link rel="alternate" href="https://berthelot.io/slides/nodejs" hreflang="fr-FR" />
     </url>
     <url>
         <loc>https://berthelot.io/slides/react</loc>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://berthelot.io/slides/react" />
-        <xhtml:link rel="alternate" hreflang="fr" href="https://berthelot.io/slides/react" />
-        <xhtml:link rel="alternate" hreflang="fr-FR" href="https://berthelot.io/slides/react" />
-        <xhtml:link rel="alternate" hreflang="en" href="https://berthelot.io/en/slides/react" />
-        <xhtml:link rel="alternate" hreflang="en-GB" href="https://berthelot.io/en/slides/react" />
+        <xhtml:link rel="alternate" href="https://berthelot.io/slides/react" hreflang="x-default" />
+        <xhtml:link rel="alternate" href="https://berthelot.io/slides/react" hreflang="fr-FR" />
     </url>
     <url>
         <loc>https://berthelot.io/slides/typescript-avancee</loc>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://berthelot.io/slides/typescript-avancee" />
-        <xhtml:link rel="alternate" hreflang="fr" href="https://berthelot.io/slides/typescript-avancee" />
-        <xhtml:link rel="alternate" hreflang="fr-FR" href="https://berthelot.io/slides/typescript-avancee" />
-        <xhtml:link rel="alternate" hreflang="en" href="https://berthelot.io/en/slides/typescript-avancee" />
-        <xhtml:link rel="alternate" hreflang="en-GB" href="https://berthelot.io/en/slides/typescript-avancee" />
+        <xhtml:link rel="alternate" href="https://berthelot.io/slides/typescript-avancee" hreflang="x-default" />
+        <xhtml:link rel="alternate" href="https://berthelot.io/slides/typescript-avancee" hreflang="fr-FR" />
     </url>
 </urlset>
-<!-- XML Sitemap generated by @nuxtjs/sitemap v7.4.9 at 2026-02-20T09:49:26.965Z -->
+<!-- XML Sitemap generated by @nuxtjs/sitemap v7.6.0 at 2026-03-17T00:12:07.728Z -->
