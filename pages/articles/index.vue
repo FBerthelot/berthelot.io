@@ -28,7 +28,7 @@
         <BerthelotSystemCard
           v-for="article in data"
           :key="article.slug"
-          :link="`/articles/${article.slug}`"
+          :link="localePath(`/articles/${article.slug}`)"
           internal-link
           class="subject"
         >
@@ -59,6 +59,7 @@
 const { t, locale } = useI18n({
   useScope: 'local',
 })
+const localePath = useLocalePath()
 useSeoMeta({
   ogType: 'website',
   title: t('meta.title'),
@@ -74,9 +75,8 @@ useSeoMeta({
 const { data, error } = await useAsyncData(
   `navigation-${locale.value}`,
   async () => {
-    return queryCollection('articles')
+    return queryCollection(`articles_${locale.value}`)
       .select('id', 'title', 'slug', 'description', 'createdDate')
-      .where('locale', '=', locale.value)
       .where('draft', '<>', true)
       .order('createdDate', 'DESC')
       .all()

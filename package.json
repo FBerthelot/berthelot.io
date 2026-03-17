@@ -46,6 +46,7 @@
     "@nuxtjs/i18n": "^10.2.1",
     "better-sqlite3": "^12.5.0",
     "fireworks-js": "^2.10.8",
+    "mermaid": "^11.13.0",
     "reveal.js": "^5.2.1",
     "reveal.js-mermaid-plugin": "^11.6.0",
     "zod": "^4.3.6"

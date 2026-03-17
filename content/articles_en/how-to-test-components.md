@@ -1,12 +1,11 @@
 ---
 title: 'How to test components whenever the framework.'
-description:
+description: Testing components can be a real pain in every project whenever the framework you use. In this article, I will share with you the main ideas behind testing components and how to test them the same way no matter the framework you use.
 slug: 'how-to-test-components'
 content: reactRefactoring
 image: '/illustrations/cowboy.jpg'
-locale: en
-createdDate: 2020/06/04
-modifiedDate: 2020/06/04
+createdDate: 2026/03/16
+modifiedDate: 2026/03/16
 draft: true
 ---
 
@@ -23,12 +22,12 @@ However, I still want to share with you the main ideas behind testing composent 
 A component is a custom HTML element that produces a **View** (aka. a piece of others Component and HTML elements).
 So we can represent a component like this:
 
-```mermaid
+<pre class="mermaid">
 graph LR
-  style A fill:#4fa3ff,stroke:#333,stroke-width:2px
-  style B fill:#42b983,stroke:#333,stroke-width:2px
+  style A fill:#4fa3ff,stroke:#333,stroke-width:2px,color:#000;
+  style B fill:#42b983,stroke:#333,stroke-width:2px,color:#000;
   A[Component] --> B[View]
-```
+</pre>
 
 When represented like this, it is obvious that the main thing to test in a component is the **View** it produces.
 In other words :
@@ -40,7 +39,7 @@ So it's as easy as that, right ? Just render the component and check the produce
 
 We can naively represent this idea like this:
 
-```javascript
+```js
 it('should render hello world title', () => {
   const component = render(Component)
 
@@ -50,7 +49,7 @@ it('should render hello world title', () => {
 
 And if you think about it, this is exactly what snapshot testing is for!
 
-```javascript
+```js
 it('should render hello world title', () => {
   const component = render(Component)
   expect(component.html()).toMatchSnapshot()
@@ -66,7 +65,7 @@ That's why library for testing components (like Testing Library) provide a whole
 
 A better way to assert the view would be:
 
-```javascript
+```js
 it('should render hello world title', () => {
   const component = render(Component)
   expect(component.html().getElementByRole('heading')).toBe('Hello World')
@@ -81,18 +80,18 @@ Components cand receive **props** (or attributes, or input, the name really depe
 
 Let's represent this:
 
-```mermaid
+<pre class="mermaid">
 graph LR
-  style A fill:#4fa3ff,stroke:#333,stroke-width:2px
-  style B fill:#42b983,stroke:#333,stroke-width:2px
-  style Props fill:#f39c12,stroke:#333,stroke-width:2px
+  style A fill:#4fa3ff,stroke:#333,stroke-width:2px,color:#000;
+  style B fill:#42b983,stroke:#333,stroke-width:2px,color:#000;
+  style Props fill:#f39c12,stroke:#333,stroke-width:2px,color:#000;
   Props --> A
   A[Component] --> B[View]
-```
+</pre>
 
 And illustrate this with an example:
 
-```javascript
+```js
 it('should render "hello world" title', () => {
   const component = render(Component)
   expect(component.html().getElementByRole('heading')).toBe('Hello World')
@@ -119,23 +118,23 @@ When a user interact with the view, there is 2 possibilities:
 
 Let's represent this interaction:
 
-```mermaid
+<pre class="mermaid">
 graph LR
-  style Component fill:#4fa3ff,stroke:#333,stroke-width:2px
-  style View fill:#42b983,stroke:#333,stroke-width:2px
-  style Props fill:#f39c12,stroke:#333,stroke-width:2px
-  style Event fill:#e74c3c,stroke:#333,stroke-width:2px
+  style Component fill:#4fa3ff,stroke:#333,stroke-width:2px,color:#000;
+  style View fill:#42b983,stroke:#333,stroke-width:2px,color:#000;
+  style Props fill:#f39c12,stroke:#333,stroke-width:2px,color:#000;
+  style Event fill:#e74c3c,stroke:#333,stroke-width:2px,color:#000;
   Props --> Component
   Component --> View
   View --> Component
   Component --> Event
-```
+</pre>
 
 So we have to use a spy to catch the event emitted by the component when the user interact with it.
 
 An example with vitest:
 
-```javascript
+```js
 it('should emit onClick Event', () => {
   const spy = vi.fn()
   const component = render(Component, { events: { onLike: spy } })
@@ -149,176 +148,53 @@ it('should emit onClick Event', () => {
 When you look this example, you can be tempted to think is very close to End to End testing with Playwrite or Cypress.
 You are right, the code YOU write is very similar but here it's involve way less technologies, you don't need a browser, only node.js and depend on your testing framework a mock to the DOM API like jsdom or happy-dom.
 
-## Level 4 : Component can store data?!
+## Level 4: Component can store data?!
 
 Statefull component
 
 Unfortunately, components can sometimes be a bit more complex. For example when they have their own state. Considering the previous example, imagine the like button has different styles depending on whether or not the user have liked the related content.
 
-Because component-test-utils considers each component as a black box, you cannot modify or access their internal state.
+<pre class="mermaid">
+graph LR
+  style Component fill:#4fa3ff,stroke:#333,stroke-width:2px,color:#000;
+  style View fill:#42b983,stroke:#333,stroke-width:2px,color:#000;
+  style Props fill:#f39c12,stroke:#333,stroke-width:2px,color:#000;
+  Props --> Component
+  Component --> View
+  View --> Component
+</pre>
 
-Instead, you have to trigger an internal event from the view itself !
-
-Statefull component
-
-For example, if you want to test the different styles of your “like” button :
-
+```js
 describe('like button style', () => {
-it('should set button to notLiked by default', () => {
-const component = shallow(Component, {props: {nbLikes: 1}});
+  it('should set button to notLiked by default', () => {
+    const component = shallow(Component, { props: { nbLikes: 1 } })
 
-    component.querySelector('button').dispatchEvent('click');
+    component.querySelector('button').dispatchEvent('click')
 
     expect(component.html().querySelector('button').props.class).not.toContain(
-      'liked'
-    );
+      'liked',
+    )
+  })
 
-});
+  it('should set button to liked when clicking on the button', () => {
+    const component = shallow(Component, { props: { nbLikes: 1 } })
 
-it('should set button to liked when clicking on the button', () => {
-const component = shallow(Component, {props: {nbLikes: 1}});
-
-    component.querySelector('button').dispatchEvent('click');
+    component.querySelector('button').dispatchEvent('click')
 
     expect(component.html().querySelector('button').props.class).toContain(
-      'liked'
-    );
-
-});
-});
-
-Component, event output
-
-Important: React being the only rendering library currently supported, these features are not implemented yet as they're not needed in react
-
-Because components sometimes need to talk with parent components, frameworks usually use an event based system to setup an upward communication channel between components and their parents.
-
-Component that emit event
-
-To ensure your component emit the right event, you can attach spies to components and test if they have been called.
-
-describe('like button - onLike event', () => {
-it('should emit onClick Event', () => {
-const spy = createSpy();
-// const spy = jest.fn(); using jest
-const component = shallow(Component, {events: {onLike}});
-
-    component.querySelector('button').dispatchEvent('click');
-
-    expect(spy).toHaveBeenCalled();
-
-});
-});
+      'liked',
+    )
+  })
+})
+```
 
 ## Level 5 : External tools (services, mixins, ...)
 
-Component with externals
-
-Important: React being the only rendering library currently supported, these features are not implemented yet as they're not needed in react
-
-For example, Angular component can inject services in the constructor of the components.
-
-To inject services, mixins, etc, an external key to the shallow configuration object is available. The content of externals object is specific to the framework you are testing. It gives you the opportunity to provide some non-standardized data to a component.
-
-This part is the only framework specific thing you will have to learn for testing with component-test-utils !
-
-Component with externals
-
-An example :
-
-describe('user component', () => {
-it('should display the user retrieves from the service', () => {
-const component = shallow(Component, {
-externals: {
-userService: {
-getUser: () => Promise.resolve({name: 'component-test-utils'})
-}
-}
-});
-
-    expect(component).toContain('component-test-utils');
-
-});
-});
-
 ## Mocking strategies
-
-Mocking strategies
 
 Components doesn't only generate HTML element, they can have sub-components in their view. For this kind of "parent" component, here is the main question developers should ask themselves: "should I mock this child component ?".
 
 In this case, Component-test-utils provides two ways to create a component in a test environment:
 
-    White list: Every sub-component is mocked, you can give a list a component that won't be mocked and give their mock.
-    Black list: No sub-component is mocked, you can specify which component should be mocked.
-
-Given these components:
-
-const postListRender = ({posts}) => `
-
-  <div>
-    ${posts.map(postData => `<Post data={postData}/>`)}
-    <OtherComponent />
-  </div>
-`;
-
-const postRender = ({data}) => `
-
-  <article>
-    <h1>${data.title}</h1>
-    <p>${data.content}</p>
-  </article>
-`;
-
-White list (default)
-
-const cmp = shallow(postListRender, {
-props: {
-posts: [
-{title: 'post1', content: 'content1'},
-{title: 'post2', content: 'content2'},
-]
-},
-mocks: {
-OtherComponent: `<div>OtherComponent</div>`
-}
-});
-
-cmp.html() === `
-
-  <div>
-    <Post />
-    <Post />
-    <div>OtherComponent</div>
-  </div>
-`;
-
-Black list
-
-const cmp = shallow(postListRender, {
-props: {
-posts: [
-{title: 'post1', content: 'content1'},
-{title: 'post2', content: 'content2'},
-]
-},
-mocks: {
-OtherComponent: false
-},
-blackList: true
-});
-
-cmp.html() === `
-
-  <div>
-    <article>
-      <h1>post1</h1>
-      <p>content1</p>
-    </article>
-    <article>
-      <h1>post2</h1>
-      <p>content2</p>
-    </article>
-    <OtherComponent />
-  </div>
-`;
+- White list: Every sub-component is mocked, you can give a list a component that won't be mocked and give their mock.
+- Black list: No sub-component is mocked, you can specify which component should be mocked.

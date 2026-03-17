@@ -1,50 +1,55 @@
 ---
-title: 'React refactoring: Kills of the legacy with snapshot testing'
-description: You want to refactor a big React codebase but you're not sure you won't break anything? I will guide you through this!
+title: 'Refactoring React: débarassons-nous du code legacy avec les tests de snapshot'
+description: Vous voulez refactoriser une grande base de code React mais vous n'êtes pas sûr de ne rien casser ? Je vais vous guider à travers cela !
 slug: 'react-test-refactoring-snapshot'
 image: '/illustrations/cowboy.jpg'
-locale: en
 createdDate: 2020/06/04
-modifiedDate: 2020/06/04
+modifiedDate: 2023/11/19
 ---
 
-<img alt="The refactoring cowboy" src="/illustrations/cowboy.jpg" class="main-image" />
+<img alt="Le cowboy du refactoring" src="/illustrations/cowboy.jpg" class="main-image" />
 
-Once upon a time, there was a poor lonesome cowboy developer. He had a long long code to refactor. Whenever he went to a new town, he shot the legacy code faster than his shadow.
+Il était une fois, un pauvre cowboy développeur solitaire. Il avait un long code à refactoriser. Chaque fois qu'il arrivait dans une nouvelle ville, il tirait plus vite que son ombre sur le code legacy.
 
-He is a contractor, so he joins teams for that purpose, to refactor and to improve software quality.
+C'est un frelance, donc il rejoint des équipes en place, pour refactoriser et améliorer la qualité des codes.
 
-While the cowboy developer read the legacy code, he tends to refactor everything. He write clean new code and test his code properly. But, in the end, his refactoring always stumbles upon some edge case that he was not aware of and here it comes… Despite the tests he had created, he has introduced some bugs! :fearful:.
+Alors que le cowboy développeur lit le code legacy, il a tendance à tout refactoriser.
+Il écrit du nouveau code propre et teste correctement son code.
+Mais, à la fin, son refactoring tombe toujours sur un cas fonctionel particulier dont il n'avait pas conaissance et voilà…
+Malgré les tests qu'il avait créés, il a introduit des bugs ! :fearful:.
 
-What's wrong with this process ?
+Qu'est-ce qui ne va pas avec ce processus ?
 
-There are two major breaches in his way of refactoring:
+Il y a deux grandes failles dans sa façon de refactoriser :
 
-- our cowboy is refactoring a whole system without knowing the exact behavior
-- our cowboy is testing his code according to the refactored code and not according to both legacy and new code.
+- notre cowboy refactorise un système entier sans connaître le comportement exact
+- notre cowboy teste son code en fonction du code refactorisé et non en fonction des deux versions du code : le legacy et le nouveau.
 
-While the first mistake is hard to fix, we will improve the cowboy developer's process by changing the way he refactor the code.
+Alors que la première erreur est difficile à corriger, nous allons améliorer le processus du développeur cowboy en changeant la façon dont il refactorise le code.
 
-## Testing legacy code
+## Tester le code legacy
 
-The first step to successfully refactor a piece of code is to add tests to the legacy code.
-But tests should always refer to a behavior while keeping in mind empathy with the user.
-It's impossible to do that when you don't know the behaviour!
+La première étape pour refactoriser avec succès un morceau de code est d'ajouter des tests au code legacy.
+Même si les tests devraient toujours se référer à un comportement tout en gardant à l'esprit l'empathie avec l'utilisateur,
+dans notre cas c'est impossible à faire vu que l'on ne connaît pas le fonctionel !
 
-We have to find another way to achieve that. The first tool we will use is snapshot testing using Jest.
+Nous devons trouver une autre façon de procéder.
+Le premier outil que nous utiliserons : les tests de snapshot Jest.
 
-What is a snapshot test? It's simple:
+Qu'est-ce qu'un test de snapshot ? C'est simple :
 
-- Take a picture of a component
-- Modify the code
-- Take another picture after the code was changed
-- Compare both pictures (before and after the refactoring). They should look exactly the same.
+- Prenez un snapshot d'un composant
+- Modifiez le code
+- Prenez un autre snapshot après que le code ai été modifié
+- Comparez les deux snapshot (avant et après le refactoring). Ils devraient être exactement les mêmes.
 
-It means the output of the component should be the same before and after the refactoring. Let's try this with some code.
+Cela signifie que la sortie du composant devrait être la même avant et après le refactoring.
+Essayons cela avec un peu de code.
 
-Imagine an application our cowboy developer uses for counting cows and keep some data on them. Here is the application:
+Imaginez une application que notre cowboy développeur utilise pour compter les vaches et conserver des données sur elles.
+Voici l'application :
 
-The code:
+Le code :
 
 ```jsx
 import React from 'react'
@@ -123,7 +128,7 @@ export default function App() {
 }
 ```
 
-The application:
+L'application:
 
 <iframe
      src="https://codesandbox.io/embed/github/FBerthelot/my-cows-react-refactoring-kata/tree/master/?fontsize=14&hidenavigation=1&theme=dark&view=preview"
@@ -133,16 +138,18 @@ The application:
      sandbox="allow-autoplay allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
    ></iframe>
 
-As you can see, the application is quite simple but it doesn't rely at all on React as no component has been created. So the first thing we want to do is to create a Cow component.
+Le code est assez simple. Il y a un titre et un compteur de vaches.
+Le compteur de vaches est un composant qui contient toute la logique.
 
-In order to have the best refactoring workflow possible, we need to add tests on the application first.
+Quand on voit ce code, la première chose que l'on veut faire est de créer un composant Cow pour chaque vache.
+Pour respecter notre workflow de refactoring, nous allons d'abord ajouter des tests de snapshot au composant App.
 
-### Rendering the component to get a snapshot
+### Rendering du component pour un snapshot
 
-In the React ecosystem, there are 2 major libraries to test components: Enzyme and @testing-library.
-I’ve also created [my own library, component-test-utils](https://component-test-utils.berthelot.io/) earlier this year and I will write the tests with each library so you can have the one you use in an example.
+Dans l'écosysteme React, il y a deux grandes librairies pour tester les composants : Enzyme et @testing-library.
+J'ai aussi créé [ma propre librairie, component-test-utils](https://component-test-utils.berthelot.io/) plus tôt cette année et je vais écrire les tests avec chaque librairie pour que vous puissiez avoir l'exemple avec celle que vous utilisez.
 
-Whichever test library you’re using, make sure to render all the React tree and not only one component, so please _do not use any mock while you are refactoring_.
+Peut importe la librairie de test que vous utilisez, assurez-vous de rendre tout l'arbre React et pas seulement un seul composant, donc il _ne pas utiliser de mock pendant le refactoring_.
 
 ```jsx
 import App from './App'
@@ -188,11 +195,12 @@ describe('App - @testing-library/react - Refactoring Tests', () => {
 })
 ```
 
-When executing the tests for the first time, Jest will create a `__snapshots__` folder with a copy of your React tree. If you make any change, Jest will verify if the new code generates the same React tree.
+Quand on execute les tests, Jest va créer un dossier `__snapshots__` avec une copie de l'arbre React.
+Si vous faites des changements, Jest va vérifier si le nouveau code génère le même arbre React.
 
-### Creating a Cow component
+### Création d'un composant Vache
 
-Now we can start developing a Cow component using TDD as usual.
+Maintenant que nous avons des tests de snapshot, nous pouvons refactoriser le code en suivant un workflow normal de développement, par exemple TDD.
 
 ```jsx
 import React from 'react'
@@ -228,7 +236,8 @@ describe('Cow', () => {
 })
 ```
 
-As you can see we test that each data sent to the component is displayed no matter the HTML tree. The Cow component is very simple, nothing special here.
+Comme vous pouvez le voir, nous testons que chaque donnée envoyée au composant est affichée, peu importe l'arbre HTML.
+Le composant Cow est très simple, rien de spécial ici.
 
 ```jsx
 import React from 'react'
@@ -257,9 +266,9 @@ export const Cow = ({ cow }) => {
 }
 ```
 
-### Using the Cow component
+### Utilisation du composant vache
 
-The Cow component is ready now, it's time for our cowboy to destroy the old code and use his new Cow card.
+Maintenant que notre composant est prêt, il est temps pour notre cowboy de détruire le vieux code et d'utiliser sa nouvelle Card Cow.
 
 ```jsx
 import React from 'react'
@@ -307,20 +316,25 @@ export default function App() {
 }
 ```
 
-When refactoring this code, we are confident because we are sure to generate the same html output thanks to our snapshot tests.
+Quand on a fini de refactoriser, on peut lancer les tests de snapshot et voir si on a cassé quelque chose.
+Nous sommes donc confiants car nous sommes sûrs de générer la même sortie HTML grâce à nos tests de snapshot.
 
-### Deleting the snapshot tests
+### Supression du test de snapshot
 
-Refactoring is done, so we don't need the snapshot tests anymore. The snapshot tests helped the cowboy to refactor code and to create a Cow component, but now refactoring is done the first test is useless. This snapshot test has no value anymore.
+Les tests de snapshot ont aidé le cowboy à refactoriser le code et à créer un composant Cow, mais maintenant que le refactoring est terminé, le premier test est inutile.
+Ce test de snapshot n'a plus de valeur pour une future maintenance.
 
-As DOM is something very versatile, the HTML structure will likely change. This kind of tests will bring many false negative results, lots of noise while changing some HTML/CSS. It has now become something more annoying than helpful.
+Le DOM est très mouvant, la structure HTML va probablement changer.
+Ce genre de tests va apporter beaucoup de faux négatifs, beaucoup de bruit lors du changement de HTML/CSS.
+C'est même maintenant devenu un test avec plus d'inconvégnants que d'atouts.
 
-Let's execute our cowboy’s favorite command `rm ./src/App.snapshot.spec.js`!
+Éxécutons la commande préférée de notre cowboy : `rm ./src/App.snapshot.spec.js` !
 
-## What's next?
+## Et maintenant ?
 
-In this article, our cowboy developer refactors a very simple piece of code, there is no logic in this app. To handle more complexe piece of code, you can use another tools like property-based-testing to find what is the logic behind the crappy old code.
+Nous avons vu comment utiliser les tests de snapshot pour refactoriser du code legacy très simple.
+Pour aller plus loin, vous pouvez combiner les tests de snapshot et le property-based-testing pour retrouver la logic derrière un code poussiéreux.
 
 ---
 
-The code of [the repository is here](https://github.com/FBerthelot/my-cows-react-refactoring-kata) and you can navigate between steps with a branch system.
+Le code est disponible sur [Github](https://github.com/FBerthelot/my-cows-react-refactoring-kata) et vous pouvez naviguer entre chaque étapes avec un système de branches.

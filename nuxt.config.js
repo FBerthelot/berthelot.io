@@ -62,6 +62,16 @@ export default defineNuxtConfig({
     '/mariage/design': { index: true },
   },
 
+  content: {
+    build: {
+      markdown: {
+        highlight: {
+          theme: 'github-dark',
+        },
+      },
+    },
+  },
+
   sitemap: {
     urls: async () => {
       return [

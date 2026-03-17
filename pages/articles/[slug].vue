@@ -33,9 +33,8 @@ const { t, locale } = useI18n({
 const { data, error } = await useAsyncData(
   `page-data-${locale.value}-${route.params.slug}`,
   () =>
-    queryCollection('articles')
+    queryCollection(`articles_${locale.value}`)
       .where('slug', '=', route.params.slug)
-      .where('locale', '=', locale.value)
       .first(),
 )
 
@@ -66,6 +65,23 @@ useSeoMeta(
         ogArticleAuthor: 'https://berthelot.io',
       },
 )
+
+onMounted(() => {
+  import('mermaid').then(({ default: mermaid }) => {
+    mermaid.initialize({ startOnLoad: false, theme: 'dark' })
+    const mermaidElements = document.querySelectorAll('pre.mermaid')
+    mermaidElements.forEach((element) => {
+      element.textContent = element.textContent?.trim() ?? ''
+    })
+
+    mermaid.run({
+      nodes: mermaidElements,
+    })
+    mermaid.parseError = (err, hash) => {
+      console.error('Mermaid parse error:', err, hash)
+    }
+  })
+})
 </script>
 
 <style scoped>
@@ -164,10 +180,13 @@ useSeoMeta(
   font-size: 0.75rem;
   word-break: break-all;
   word-wrap: break-word;
-  background-color: var(--color-white);
   border: 1px solid var(--color-light);
   border-radius: 0.125rem;
   overflow-x: auto;
+}
+
+.article pre.mermaid {
+  background-color: var(--color-dark);
 }
 
 .article pre code {

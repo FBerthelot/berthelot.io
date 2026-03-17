@@ -1,3 +1,14 @@
+---
+title: 'How to test components whenever the framework.'
+description:
+slug: 'floder-structures-as-framework'
+content: reactRefactoring
+image: '/illustrations/cowboy.jpg'
+createdDate: 2026/03/16
+modifiedDate: 2026/03/16
+draft: true
+---
+
 ## Titres
 
 - Tell me your Folder Structure, I will see who you are
