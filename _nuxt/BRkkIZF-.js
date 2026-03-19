@@ -1,0 +1,1 @@
+import{_ as o,o as r,E as s,r as t}from"./BaCkRGBS.js";const n={};function a(e,c){return r(),s("tbody",null,[t(e.$slots,"default")])}const l=Object.assign(o(n,[["render",a]]),{__name:"ProseTbody"});export{l as default};
