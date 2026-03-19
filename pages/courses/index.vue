@@ -87,7 +87,7 @@ const subjects = ref([
     type: 'course',
   },
   {
-    name: 'JavaScript Craftmanship',
+    name: 'JavaScript Craftsmanship',
     description: {
       fr: `
                 Les tests sont souvent considéré comme innutiles et complexes. Le TDD ? Une utopie !
@@ -100,7 +100,7 @@ const subjects = ref([
                 Let's explains tests in JavaScript ecosystem to see together what workflow is thenmost likely to fit you.
               `,
     },
-    url: 'https://slides.com/florentberthelot/javascript-craftmanship/',
+    url: '/slides/javascript_craftsmanship/',
     type: 'course',
   },
   {

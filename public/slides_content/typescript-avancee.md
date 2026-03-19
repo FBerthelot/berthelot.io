@@ -454,7 +454,7 @@ Niveau architecture, nous avons besoin, à minima :
 
 ```mermaid
 flowchart LR
-    Index.ts-->UseCase
+    Index-->UseCase
     UseCase-->Repository
     UseCase-->Gateway
     Repository-->DataBase

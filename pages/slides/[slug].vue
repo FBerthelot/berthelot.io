@@ -93,5 +93,7 @@ onMounted(async () => {
 
 .mermaid {
   background: white;
+  max-height: 70vh;
+  overflow-y: auto;
 }
 </style>
