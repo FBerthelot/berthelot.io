@@ -96,4 +96,10 @@ onMounted(async () => {
   max-height: 70vh;
   overflow-y: auto;
 }
+
+.reveal table {
+  display: block;
+  max-height: 70vh;
+  overflow: auto;
+}
 </style>
