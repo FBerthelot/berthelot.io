@@ -684,6 +684,63 @@ Body: { "type": "Flying" }
 ```
 
 
+### Niveau 2 : Les Verbs HTTP
+
+| Verbe | Description | Idempotent |
+| :--- | :--- | :--- |
+| **GET** | Récupère une ressource ou une liste de ressources. | **Oui** |
+| **HEAD** | Récupère uniquement les en-têtes d'une ressource (sans le corps). | **Oui** |
+| **POST** | Transmet des données pour créer une nouvelle ressource. | **Non** |
+| **PUT** | Remplace intégralement une ressource existante par une nouvelle version. | **Oui** |
+| **PATCH** | Applique une modification partielle à une ressource existante. | **Non** |
+| **DELETE** | Supprime la ressource spécifiée. | **Oui** |
+| **OPTIONS** | Renvoie les méthodes de communication autorisées pour la ressource. | **Oui** |
+
+
+### Niveau 2 : Les status
+
+2xx : "Tout va bien !" (Success)
+
+3xx : "Allez voir ailleurs" (Redirection)
+
+4xx : "Tu as fait une erreur" (Client Error)
+
+5xx : "J'ai fait une erreur" (Server Error)
+
+
+### Niveau 2 : Les status
+
+| Code | Nom | Description |
+| :--- | :--- | :--- |
+| **200** | OK | La requête a réussi (standard pour GET). |
+| **201** | Created | La ressource a été créée avec succès (standard pour POST). |
+| **204** | No Content | La requête a réussi, mais il n'y a rien à renvoyer (souvent DELETE). |
+| **301** | Moved Permanently | La ressource a été déplacée définitivement vers une nouvelle URL. |
+| **304** | Not Modified | La ressource n'a pas changé (utile pour la mise en cache avec HEAD/GET). |
+| **400** | Bad Request | La syntaxe de la requête est erronée ou invalide. |
+| **401** | Unauthorized | L'authentification est nécessaire pour accéder à la ressource. |
+| **403** | Forbidden | Le serveur comprend la requête, mais refuse de l'exécuter (droits insuffisants). |
+| **404** | Not Found | La ressource demandée n'existe pas. |
+| **405** | Method Not Allowed | La méthode HTTP utilisée n'est pas autorisée pour cette URL. |
+| **500** | Internal Server Error | Le serveur a rencontré une erreur générique inattendue. |
+| **502** | Bad Gateway | Il y a un problème avec une API externe |
+| **503** | Service Unavailable | Le serveur est temporairement incapable de répondre (surcharge ou maintenance). |
+
+
+### Niveau 2
+
+| Verbe | Cible (URL Type) | Ressource | Status Type | Description du succès |
+| :--- | :--- | :--- | :--- | :--- |
+| **GET** | `/users` | Collection (Filtrée/Liste) | **200 OK** | Retourne une liste d'utilisateurs. |
+| **GET** | `/users/{id}` | Unique (ID spécifique) | **200 OK** | Retourne les détails de l'utilisateur précis. |
+| **HEAD** | `/users/{id}` | Unique (ID spécifique) | **200 OK** | Vérifie l'existence ou la taille sans le corps. |
+| **POST** | `/users` | Collection | **201 Created** | Crée un nouvel utilisateur dans la collection. |
+| **PUT** | `/users/{id}` | Unique (ID spécifique) | **200** ou **204** | Remplace l'utilisateur complet lié à cet ID. |
+| **PATCH** | `/users/{id}` | Unique (ID spécifique) | **200** ou **204** | Modifie un champ précis de cet utilisateur. |
+| **DELETE** | `/users/{id}` | Unique (ID spécifique) | **204 No Content** | Supprime définitivement l'utilisateur. |
+| **OPTIONS**| `/users` | Collection/Unique | **200 OK** | Liste les méthodes autorisées (Allow: GET, POST). |
+
+
 #### Niveau intérmédiaire : Les actions
 
 ```http
