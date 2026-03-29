@@ -1878,13 +1878,13 @@ Iterator.prototype.from(fn)
 
 
 
-<!-- .slide: data-background="#1E5945" -->
+<!-- .slide: data-background="#3e4fae" -->
 # ES2026
 
-Qu'est ce qu'ils nous cuisinent ?
+Le temps passe, 11 ans déjà !
 
 
-<!-- .slide: data-background="#1E5945" -->
+<!-- .slide: data-background="#3e4fae" -->
 ## Error.isError
 
 ```javascript
@@ -1894,8 +1894,22 @@ Error.isError({}); // false
 Va révolutionner la gestion des erreurs en TS !
 
 
-<!-- .slide: data-background="#1E5945" -->
-## Temporal (Stage 3)
+<!-- .slide: data-background="#3e4fae" -->
+## Array.fromAsync
+
+```javascript
+const arr = [];
+for await (const v of genPromises()) {
+  arr.push(v);
+}
+
+const arr = await Array.fromAsync(genPromises(4));
+```
+Plus rapide qu'un `Promise.all` ! (event loop friendly)
+
+
+<!-- .slide: data-background="#3e4fae" -->
+## Temporal
 
 Bye bye `new Date()`
 
@@ -1903,6 +1917,98 @@ Bye bye `new Date()`
 const now = Temporal.now.plainDateTimeISO();
 ```
 Immutable, toutes timezones, etc.
+
+
+<!-- .slide: data-background="#3e4fae" -->
+## Temporal
+
+```javascript
+const now = Temporal.now.plainDateTimeISO();
+const later = now.add({ hours: 1 });
+```
+
+
+<!-- .slide: data-background="#3e4fae" -->
+## Temporal Duration
+
+```javascript
+const duration = new Temporal.Duration(0, 0, 0, 7, 2); // 7 jours et 2 heures
+const later = Temporal.now.plainDateTimeISO().add(duration);
+```
+
+
+<!-- .slide: data-background="#3e4fae" -->
+## Upsert
+
+```javascript
+let prefs = new Map();
+prefs.set("useDarkmode", true);
+prefs.getOrInsert("lang", "fr");
+prefs.getOrInsert("useDarkmode", false);
+
+console.log(prefs.get("useDarkmode")); // true
+console.log(prefs.get("lang")); // fr
+```
+
+
+<!-- .slide: data-background="#3e4fae" -->
+### Iterator.concat
+
+```javascript
+let lows = Iterator.from([0, 1, 2, 3]);
+let highs = Iterator.from([6, 7, 8, 9]);
+
+let digits = Iterator.concat(lows, [4, 5], highs);
+
+Array.from(digits); // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+```
+
+
+<!-- .slide: data-background="#3e4fae" -->
+### Translate to Uint8Array
+
+```javascript
+let arr = new Uint8Array([72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100]);
+console.log(arr.toBase64());
+// 'SGVsbG8gV29ybGQ='
+console.log(arr.toHex());
+// '48656c6c6f20576f726c64'
+```
+
+
+<!-- .slide: data-background="#3e4fae" -->
+### Math.sumPrecise
+
+```javascript
+Math.sumPrecise([0.1, 0.2]);
+0.30000000000000004 
+```
+🤦
+
+```javascript
+let values = [1e20, 0.1, -1e20];
+values.reduce((a, b) => a + b, 0); // 0
+Math.sumPrecise(values); // 0.1
+```
+
+
+
+<!-- .slide: data-background="#20d598" -->
+# ES2027
+
+Les décorateurs ???
+
+
+<!-- .slide: data-background="#20d598" -->
+## Import Text
+
+```javascript
+import text from "path/to/file.txt" with { type: "text" };
+
+// Autre proposition
+import uint8array from "path/to/file.txt" with { type: "bytes" };
+let text = new TextDecoder().decode(uint8array);
+```
 
 
 
