@@ -482,7 +482,7 @@ vi
   .spyOn(console, 'error')
   .mockImplementation(() => {});
 
-const getUserStub = jest.fn(() => {
+const getUserStub = vi.fn(() => {
   return Promise
     .resolve({friends: []})
 })
