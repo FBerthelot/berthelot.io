@@ -1,0 +1,1 @@
+import{_ as o,o as r,E as s,r as n}from"./DTcTQRD8.js";const t={};function a(e,c){return r(),s("ol",null,[n(e.$slots,"default")])}const _=Object.assign(o(t,[["render",a]]),{__name:"ProseOl"});export{_ as default};
