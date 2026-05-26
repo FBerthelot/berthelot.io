@@ -315,11 +315,11 @@ ou
 
 <br/>
 
-```mermaid
+<pre class="mermaid">
 graph LR
   style A fill:#4fa3ff,stroke:#333,stroke-width:2px
   A[Component]
-```
+</pre>
 
 
 ### Qu'est ce qu'un composant ?
@@ -338,12 +338,12 @@ const LikeButton = () => {
 
 <br/>
 
-```mermaid
+<pre class="mermaid">
 graph LR
   style A fill:#4fa3ff,stroke:#333,stroke-width:2px
   style B fill:#42b983,stroke:#333,stroke-width:2px
   A[Component] --> B[View]
-```
+</pre>
 
 
 ## Améliorons notre code !
@@ -359,7 +359,7 @@ const LikeButton = () => {
 
 <br/>
 
-```mermaid
+<pre class="mermaid">
 graph LR
   style A fill:#4fa3ff,stroke:#333,stroke-width:2px
   style B fill:#42b983,stroke:#333,stroke-width:2px
@@ -380,12 +380,12 @@ const LikeButton = () => {
 
 <br/>
 
-```mermaid
+<pre class="mermaid">
 graph LR
   style A fill:#4fa3ff,stroke:#333,stroke-width:2px
   style B fill:#42b983,stroke:#333,stroke-width:2px
   A[Component] --> B[View]
-```
+</pre>
 
 
 ## Et la sémantique ?
@@ -405,12 +405,12 @@ const LikeButton = () => {
 
 <br/>
 
-```mermaid
+<pre class="mermaid">
 graph LR
   style A fill:#4fa3ff,stroke:#333,stroke-width:2px
   style B fill:#42b983,stroke:#333,stroke-width:2px
   A[Component] --> B[View]
-```
+</pre>
 
 
 ## Et le style ?
@@ -430,12 +430,12 @@ const LikeButton = () => {
 
 <br/>
 
-```mermaid
+<pre class="mermaid">
 graph LR
   style A fill:#4fa3ff,stroke:#333,stroke-width:2px
   style B fill:#42b983,stroke:#333,stroke-width:2px
   A[Component] --> B[View]
-```
+</pre>
 
 
 ## Mieux ?
@@ -456,12 +456,12 @@ const LikeButton = () => {
 
 <br/>
 
-```mermaid
+<pre class="mermaid">
 graph LR
   style A fill:#4fa3ff,stroke:#333,stroke-width:2px
   style B fill:#42b983,stroke:#333,stroke-width:2px
   A[Component] --> B[View]
-```
+</pre>
 
 
 ## Encore mieux ?
@@ -482,12 +482,12 @@ const LikeButton = () => {
 
 <br/>
 
-```mermaid
+<pre class="mermaid">
 graph LR
   style A fill:#4fa3ff,stroke:#333,stroke-width:2px
   style B fill:#42b983,stroke:#333,stroke-width:2px
   A[Component] --> B[View]
-```
+</pre>
 
 
 
@@ -570,12 +570,12 @@ const LikeButton = () => {
 
 <br/>
 
-```mermaid
+<pre class="mermaid">
 graph LR
   style A fill:#4fa3ff,stroke:#333,stroke-width:2px
   style B fill:#42b983,stroke:#333,stroke-width:2px
   A[Component] --> B[View]
-```
+</pre>
 
 
 ### Comment passer des données ?
@@ -601,14 +601,14 @@ const LikeButton = (props) => {
 
 <br/>
 
-```mermaid
+<pre class="mermaid">
 graph LR
   style A fill:#4fa3ff,stroke:#333,stroke-width:2px
   style B fill:#42b983,stroke:#333,stroke-width:2px
   style Props fill:#f39c12,stroke:#333,stroke-width:2px
   Props --> A
   A[Component] --> B[View]
-```
+</pre>
 
 
 ### Mieux ?
@@ -634,14 +634,14 @@ const LikeButton = (props) => {
 
 <br/>
 
-```mermaid
+<pre class="mermaid">
 graph LR
   style A fill:#4fa3ff,stroke:#333,stroke-width:2px
   style B fill:#42b983,stroke:#333,stroke-width:2px
   style Props fill:#f39c12,stroke:#333,stroke-width:2px
   Props --> A
   A[Component] --> B[View]
-```
+</pre>
 
 
 ## Destructuring ?!
@@ -667,14 +667,14 @@ const LikeButton = ({
 
 <br/>
 
-```mermaid
+<pre class="mermaid">
 graph LR
   style A fill:#4fa3ff,stroke:#333,stroke-width:2px
   style B fill:#42b983,stroke:#333,stroke-width:2px
   style Props fill:#f39c12,stroke:#333,stroke-width:2px
   Props --> A
   A[Component] --> B[View]
-```
+</pre>
 
 
 
@@ -712,14 +712,14 @@ const LikeButton = () => {
 
 <br/>
 
-```mermaid
+<pre class="mermaid">
 graph LR
   style A fill:#4fa3ff,stroke:#333,stroke-width:2px
   style B fill:#42b983,stroke:#333,stroke-width:2px
   style Props fill:#f39c12,stroke:#333,stroke-width:2px
   Props --> A
   A[Component] --> B[View]
-```
+</pre>
 
 
 ![React archi](/slides_content/react/react-archi.png)
@@ -742,7 +742,7 @@ const LikeButton = () => {
 
 <br/>
 
-```mermaid
+<pre class="mermaid">
 graph LR
   style Component fill:#4fa3ff,stroke:#333,stroke-width:2px
   style View fill:#42b983,stroke:#333,stroke-width:2px
@@ -753,7 +753,7 @@ style state fill:#a685e2,stroke:#333,stroke-width:2px
   end
   Props --> Component
   Component --> View
-```
+</pre>
 
 
 ## Destructuring ?!
@@ -773,7 +773,7 @@ const LikeButton = () => {
 
 <br/>
 
-```mermaid
+<pre class="mermaid">
 graph LR
   style Component fill:#4fa3ff,stroke:#333,stroke-width:2px
   style View fill:#42b983,stroke:#333,stroke-width:2px
@@ -784,7 +784,7 @@ style state fill:#a685e2,stroke:#333,stroke-width:2px
   end
   Props --> Component
   Component --> View
-```
+</pre>
 
 
 ## Instant bonne pratique
@@ -807,7 +807,7 @@ const Timer = () => {
 
 <br/>
 
-```mermaid
+<pre class="mermaid">
 graph LR
   style Component fill:#4fa3ff,stroke:#333,stroke-width:2px
   style View fill:#42b983,stroke:#333,stroke-width:2px
@@ -818,7 +818,7 @@ style state fill:#a685e2,stroke:#333,stroke-width:2px
   end
   Props --> Component
   Component --> View
-```
+</pre>
 
 
 ## UseEffect
@@ -840,7 +840,7 @@ const Timer = () => {
 
 <br/>
 
-```mermaid
+<pre class="mermaid">
 graph LR
   style Component fill:#4fa3ff,stroke:#333,stroke-width:2px
   style View fill:#42b983,stroke:#333,stroke-width:2px
@@ -851,7 +851,7 @@ style state fill:#a685e2,stroke:#333,stroke-width:2px
   end
   Props --> Component
   Component --> View
-```
+</pre>
 
 
 ## Quel est le problème dans l'exemple précédent ?
@@ -880,7 +880,7 @@ const Timer = () => {
 
 <br/>
 
-```mermaid
+<pre class="mermaid">
 graph LR
   style Component fill:#4fa3ff,stroke:#333,stroke-width:2px
   style View fill:#42b983,stroke:#333,stroke-width:2px
@@ -891,7 +891,7 @@ style state fill:#a685e2,stroke:#333,stroke-width:2px
   end
   Props --> Component
   Component --> View
-```
+</pre>
 
 
 
@@ -923,7 +923,7 @@ const LikeButton = () => {
 
 <br/>
 
-```mermaid
+<pre class="mermaid">
 graph LR
   style Component fill:#4fa3ff,stroke:#333,stroke-width:2px
   style View fill:#42b983,stroke:#333,stroke-width:2px
@@ -934,7 +934,7 @@ style state fill:#a685e2,stroke:#333,stroke-width:2px
   end
   Props --> Component
   Component --> View
-```
+</pre>
 
 
 ## onClick ! (camelCase)
@@ -954,7 +954,7 @@ const LikeButton = () => {
 
 <br/>
 
-```mermaid
+<pre class="mermaid">
 graph LR
   style Component fill:#4fa3ff,stroke:#333,stroke-width:2px
   style View fill:#42b983,stroke:#333,stroke-width:2px
@@ -966,7 +966,7 @@ style state fill:#a685e2,stroke:#333,stroke-width:2px
   Props --> Component
   Component ---> View
   View --Event--> Component
-```
+</pre>
 
 
 ## Ses propres évènements ?
@@ -992,7 +992,7 @@ const LikeButton = ({onLike, nbOfLike}) => {
 
 <br/>
 
-```mermaid
+<pre class="mermaid">
 graph LR
   style Component fill:#4fa3ff,stroke:#333,stroke-width:2px
   style View fill:#42b983,stroke:#333,stroke-width:2px
@@ -1004,7 +1004,7 @@ style state fill:#a685e2,stroke:#333,stroke-width:2px
   Props --> Component
   Component ---> View
   View --Event--> Component
-```
+</pre>
 
 
 ## Comment tester des évènements ?
@@ -2624,7 +2624,7 @@ function TabContainer() {
 
 ### Multi Page Application (MPA)
 
-```mermaid
+<pre class="mermaid">
 sequenceDiagram
     actor U as User
     participant S as Server
@@ -2642,12 +2642,12 @@ sequenceDiagram
       S->>S: Injection des donnée dans l'HTML
       S->>U: HTML + CSS + JS
     end
-```
+</pre>
 
 
 ### Single Page Application (SPA)
 
-```mermaid
+<pre class="mermaid">
 sequenceDiagram
     actor U as User
     participant S as Server
@@ -2665,7 +2665,7 @@ sequenceDiagram
       U->>S: HTTP GET /data-for-page2
       S->>U: JSON
     end
-```
+</pre>
 
 
 ### Server Side Rendering (SSR)
