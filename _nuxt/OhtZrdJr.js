@@ -1,1 +1,0 @@
-import{_ as r,o as s,E as o,r as t}from"./DTcTQRD8.js";const n={};function a(e,c){return s(),o("th",null,[t(e.$slots,"default")])}const l=Object.assign(r(n,[["render",a]]),{__name:"ProseTh"});export{l as default};
