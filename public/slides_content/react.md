@@ -364,7 +364,7 @@ graph LR
   style A fill:#4fa3ff,stroke:#333,stroke-width:2px
   style B fill:#42b983,stroke:#333,stroke-width:2px
   A[Component] --> B[View]
-```
+</pre>
 
 
 ## Améliorons notre code !
