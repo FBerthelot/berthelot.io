@@ -364,7 +364,7 @@ graph LR
   style A fill:#4fa3ff,stroke:#333,stroke-width:2px
   style B fill:#42b983,stroke:#333,stroke-width:2px
   A[Component] --> B[View]
-```
+</pre>
 
 
 ## Améliorons notre code !
@@ -540,7 +540,13 @@ Réparez vos tests.
 
 ## TP5 - V2
 
-Ajoutez Vitest a votre projet et écrivez un test pour s'assurer que les 2 pokémons ont bien toutes leurs vies.
+Ajoutez Vitest et testing-library a votre projet et écrivez un test pour s'assurer que les 2 pokémons ont bien toutes leurs vies.
+
+
+## TP5 - V2
+
+- [https://testing-library.com/docs/react-testing-library/intro](https://testing-library.com/docs/react-testing-library/intro)
+- [https://vitest.dev/guide/](https://vitest.dev/guide/)
 
 
 
@@ -800,25 +806,9 @@ Qu'est ce qu'un effet de bords ?
 const Timer = () => {
   const [ellapsedTime, setEllapsedTime] = React.useState(0);
 
-
   return <span>Il s'est passé {ellapsedTime} secondes.</span>;
 }
 ```
-
-<br/>
-
-<pre class="mermaid">
-graph LR
-  style Component fill:#4fa3ff,stroke:#333,stroke-width:2px
-  style View fill:#42b983,stroke:#333,stroke-width:2px
-  style Props fill:#f39c12,stroke:#333,stroke-width:2px
-style state fill:#a685e2,stroke:#333,stroke-width:2px
-  subgraph Component
-    state
-  end
-  Props --> Component
-  Component --> View
-</pre>
 
 
 ## UseEffect
@@ -832,7 +822,6 @@ const Timer = () => {
       setEllapsedTime((ellapsedTime) => ellapsedTime + 1);
     }, 1000)
   }, [])
-
 
   return <span>Il s'est passé {ellapsedTime} secondes.</span>;
 }
@@ -872,7 +861,6 @@ const Timer = () => {
       clearInterval(interval);
     }
   }, [])
-
 
   return <span>Il s'est passé {ellapsedTime} secondes.</span>;
 }
