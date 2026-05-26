@@ -806,25 +806,9 @@ Qu'est ce qu'un effet de bords ?
 const Timer = () => {
   const [ellapsedTime, setEllapsedTime] = React.useState(0);
 
-
   return <span>Il s'est passé {ellapsedTime} secondes.</span>;
 }
 ```
-
-<br/>
-
-<pre class="mermaid">
-graph LR
-  style Component fill:#4fa3ff,stroke:#333,stroke-width:2px
-  style View fill:#42b983,stroke:#333,stroke-width:2px
-  style Props fill:#f39c12,stroke:#333,stroke-width:2px
-style state fill:#a685e2,stroke:#333,stroke-width:2px
-  subgraph Component
-    state
-  end
-  Props --> Component
-  Component --> View
-</pre>
 
 
 ## UseEffect
@@ -838,7 +822,6 @@ const Timer = () => {
       setEllapsedTime((ellapsedTime) => ellapsedTime + 1);
     }, 1000)
   }, [])
-
 
   return <span>Il s'est passé {ellapsedTime} secondes.</span>;
 }
@@ -878,7 +861,6 @@ const Timer = () => {
       clearInterval(interval);
     }
   }, [])
-
 
   return <span>Il s'est passé {ellapsedTime} secondes.</span>;
 }
