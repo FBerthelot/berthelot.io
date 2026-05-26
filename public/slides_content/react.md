@@ -63,7 +63,7 @@ Quel est la nouveauté qui vous a plus le plu dans la dernière version de JavaS
 
 ## TC39
 
-[Lien vers la formation JavaScript](./javascript#/2)
+[Lien vers la formation JavaScript](/slides/javascript#/2)
 
 
 ## Les ESmodules
