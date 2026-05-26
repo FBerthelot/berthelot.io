@@ -540,7 +540,13 @@ Réparez vos tests.
 
 ## TP5 - V2
 
-Ajoutez Vitest a votre projet et écrivez un test pour s'assurer que les 2 pokémons ont bien toutes leurs vies.
+Ajoutez Vitest et testing-library a votre projet et écrivez un test pour s'assurer que les 2 pokémons ont bien toutes leurs vies.
+
+
+## TP5 - V2
+
+- [https://testing-library.com/docs/react-testing-library/intro](https://testing-library.com/docs/react-testing-library/intro)
+- [https://vitest.dev/guide/](https://vitest.dev/guide/)
 
 
 
